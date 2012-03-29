@@ -1,0 +1,32 @@
+<dayforecast>
+    <forecast_conditions>
+            <time_of_day>8am</time_of_day>
+            <low>57</low>
+            <high>84</high>
+            <condition>Mostly Sunny</condition>
+    </forecast_conditions>
+    <forecast_conditions>
+            <time_of_day>11am</time_of_day>
+            <low>59</low>
+            <high>84</high>
+            <condition>Mostly Sunny</condition>
+    </forecast_conditions>
+    <forecast_conditions>
+            <time_of_day>2pm</time_of_day>
+            <low>61</low>
+            <high>82</high>
+            <condition>Mostly Sunny</condition>
+    </forecast_conditions>
+    <forecast_conditions>
+            <time_of_day>5pm</time_of_day>
+            <low>57</low>
+            <high>77</high>
+            <condition>Cloudy</condition>
+   </forecast_conditions>
+   <forecast_conditions>
+       <time_of_day>8pm</time_of_day>
+       <low>57</low>
+       <high>77</high>
+       <condition>Cloudy</condition>
+  </forecast_conditions>
+</dayforecast>
