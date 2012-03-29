@@ -64,13 +64,19 @@ Rectangle {
         width: 615
         height: 120
         onMusicClicked: {
-            musicanim.start()
+            musicanimopen.start()
+            healthanimclose.start()
+            socialanimclose.start()
         }
         onHealthClicked:{
-            healthanim.start()
+            musicanimclose.start()
+            healthanimopen.start()
+            socialanimclose.start()
         }
         onSocialClicked:{
-            socialanim.start()
+            musicanimclose.start()
+            healthanimclose.start()
+            socialanimopen.start()
         }
     }
 
@@ -100,8 +106,12 @@ Rectangle {
         height: 496
         opacity: 0
     }
-    PropertyAnimation {id:musicanim; target: musicplayer; property: "opacity"; to: (musicplayer.opacity == 0) ? displayOpacity : 0; duration: 500}
-    PropertyAnimation {id:healthanim; target: healthwidget; property: "opacity"; to: (healthwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
-    PropertyAnimation {id:socialanim; target: socialwidget; property: "opacity"; to: (socialwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
+    PropertyAnimation {id:musicanimopen; target: musicplayer; property: "opacity"; to: (musicplayer.opacity == 0) ? displayOpacity : 0; duration: 500}
+    PropertyAnimation {id:healthanimopen; target: healthwidget; property: "opacity"; to: (healthwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
+    PropertyAnimation {id:socialanimopen; target: socialwidget; property: "opacity"; to: (socialwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
+
+    PropertyAnimation {id:musicanimclose; target: musicplayer; property: "opacity"; to: 0; duration: 500}
+    PropertyAnimation {id:healthanimclose; target: healthwidget; property: "opacity"; to: 0; duration: 500 }
+    PropertyAnimation {id:socialanimclose; target: socialwidget; property: "opacity"; to: 0; duration: 500 }
 
 }
