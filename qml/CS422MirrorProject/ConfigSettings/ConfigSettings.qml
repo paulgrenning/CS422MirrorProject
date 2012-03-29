@@ -34,6 +34,7 @@ Item {
         id: cameraenablebutton1
         x: 274
         y: 206
+        opacity: 1.0-opacitybutton.genOpacity
     }
 
 
