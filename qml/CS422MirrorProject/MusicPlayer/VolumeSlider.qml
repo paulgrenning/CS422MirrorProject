@@ -1,61 +1,53 @@
 import QtQuick 1.1
 
 Item {
-    id: slider; width: 8; height: 90
+    id: slider; width: 140; height: 29
     // value is read/write.
     property real value: 0.5
     property real maximum: 1
     property real minimum: 1
-    property int yMax: height - 15
+    property int xMax: width - 15
     onValueChanged: updatePos();
-    onYMaxChanged: updatePos();
+    onXMaxChanged: updatePos();
     onMinimumChanged: updatePos();
 
     function updatePos() {
         if (maximum > minimum) {
-            var pos =  (value - minimum) * slider.yMax / (maximum - minimum);
-            pos = Math.min(pos, height - handle.height);
+            var pos =  (value - minimum) * slider.xMax / (maximum - minimum);
+            pos = Math.min(pos, width - handle.width);
             pos = Math.max(pos, 2);
-            handle.y =  pos;
+            handle.x =  pos;
 
         } else {
-            handle.y = height-30;
+            handle.x = width-30;
         }
     }
 
     Rectangle {
-        x: -9
-        y: 4
-        width: 27
-        height: 96
+        x: 0
+        y: 0
+        width: 145
+        height: 29
         color: "#00000000"
         radius: 8
 
         BorderImage {
             id: border_image1
-            x: 0
-            y: -15
-            width: 27
-            height: slider.height + 30
-            border { left: 1; top: 1; right: 1; bottom: 1}
+            anchors.fill: parent
+            border { left: 10; top: 10; right: 10; bottom: 10}
             horizontalTileMode: BorderImage.Stretch
             verticalTileMode: BorderImage.Stretch
-            source: "images/volumeSlider.png"
+            source: "images/sliderLine.png"
         }
     }
 
-    Rectangle {
+    Image {
         id: handle; smooth: true
-        x: -6
-        y: 0
-        width: slider.width+12;
+        x: 55
+        y: 5
+        width: 20;
         height: 20;
-        radius: 20
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: "lightgray" }
-            GradientStop { position: 1.0; color: "gray" }
-        }
-
+        source: "images/sliderHandle.png"
         MouseArea {
             id: mouse
             x: 0
@@ -66,10 +58,12 @@ Item {
             anchors.topMargin: 0
             anchors.fill: parent;
             drag.target: parent
-            drag.axis: Drag.YAxis;
-            drag.minimumY: 0;
-            drag.maximumY: slider.yMax
-            onPositionChanged: { value = (maximum - minimum) * (handle.y) / slider.yMax + minimum;}
+            drag.axis: Drag.XAxis;
+            drag.minimumX: 0;
+            drag.maximumX: slider.xMax
+            onPositionChanged: { value = (maximum - minimum) * (handle.x) / slider.xMax + minimum;}
         }
-    }
+        }
+
+
 }
