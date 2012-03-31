@@ -32,7 +32,7 @@ Item {
             y: 16
             width: 129
             height: 30
-            onClicked: {bargraphmodel.reload();healthwidget.state = "fitness"; }
+            onClicked: healthwidget.state = "fitness"
         }
 
         MouseArea {
@@ -61,47 +61,33 @@ Item {
             height: 30
             onClicked: healthwidget.state = "sleep"
         }
-    }
 
-    XmlListModel {
-        id: bargraphmodel
-        source: "http://nikeplus.nike.com/nikeplus/v1/services/widget/get_public_run_list.jsp?userID=340599345"
-        query: "/plusService/runList/run"
-        XmlRole { name: "bar_height"; query: "calories/string()" }
-    }
+        Rectangle {
+            id: rectangle1
+            x: 14
+            y: 46
+            width: 520
+            height: 310
+            color: "#00000000"
 
-    Rectangle {
-        id: clipGraph
-        x: 53
-        y: 88
-        width: 434
-        height: 199
-        color: "#00000000"
-        z: 1
-        clip: true
-        Behavior on opacity{ NumberAnimation{duration: 2000}}
-
-        GridView{
-            id: grid
-            x: -6
-            y: 19
-            width: 50*bargraphmodel.count
-            height: 180
-            cellHeight: 180
-            flickableDirection: Flickable.HorizontalFlick
-            interactive: true
-            cellWidth: 25
-            model: bargraphmodel
-            delegate: BarGraphDelegate{
+            Loader{
+                id:loader
+                focus:true
             }
         }
     }
+
+
     states: [
         State {
             name: "fitness"
             PropertyChanges {
                 target: background
                 source: "images/fitnessTabBackground.png"
+            }
+            PropertyChanges {
+                target: loader
+                source: "Fitness.qml"
             }
         },
         State {
@@ -112,8 +98,8 @@ Item {
             }
 
             PropertyChanges {
-                target: clipGraph
-                opacity: 0
+                target: loader
+                source: "Weight.qml"
             }
         },
         State {
@@ -124,8 +110,8 @@ Item {
             }
 
             PropertyChanges {
-                target: clipGraph
-                opacity: 0
+                target: loader
+                source: "Nutrition.qml"
             }
         },
         State {
@@ -136,8 +122,8 @@ Item {
             }
 
             PropertyChanges {
-                target: clipGraph
-                opacity: 0
+                target: loader
+                source: "Sleep.qml"
             }
         }
     ]

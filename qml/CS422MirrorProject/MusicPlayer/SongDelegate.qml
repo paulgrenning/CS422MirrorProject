@@ -3,7 +3,7 @@ import QtQuick 1.1
 
 Item{
     id: songDelegate
-    state:"itunes"
+
     property alias songName: songName.text
     property alias songColor: songName.color
     property alias songItalic: songName.font.italic
@@ -13,6 +13,7 @@ Item{
     height: 50
     width: 275
 
+    Component.onCompleted: state="itunes"
 
     Image {
         id: image1
