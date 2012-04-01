@@ -27,6 +27,8 @@ Item{
                 return "images/cloudy.png";
             case "Drizzle":
                 return "images/drizzle.png";
+            case "Haze":
+                return "images/haze.png";
             case "Chance of Showers":
                 return "images/slightdrizzle.png";
             case "Chance of Rain":
@@ -39,10 +41,14 @@ Item{
                 return "images/partlycloudy.png";
             case "Thunderstorm":
                 return "images/thunderstorm.png";
+
+//spanish
             case "Soleado":
                 return "images/sunny.png";
             case "Nublado" :
                 return "images/cloudy.png";
+            case "Neblina" :
+                return "images/haze.png";
             case "Posibilidad de tormenta":
                 return "images/drizzle.png";
             case "Lluvias de poca intensidad":

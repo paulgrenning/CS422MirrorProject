@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import Qt 4.7
+import "../AppVariables"
 //import QtMultimediaKit 1.1
 
 Item {
@@ -10,6 +11,10 @@ Item {
     height:375
 
     state: "fitness"
+
+    AppVariables{
+        id:appVar
+    }
 
     MouseArea {
          anchors.fill: parent

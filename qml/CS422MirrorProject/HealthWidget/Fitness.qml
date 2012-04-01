@@ -9,13 +9,12 @@ Item {
 
     AppVariables{
         id:appVar
-
     }
 
     Text {
         id: text1
-        x: 14
-        y: 24
+        x: 23
+        y: 25
         text: (appVar.currentLanguage == "Español") ? "carrera de hoy" : "today's run"
         font.bold: true
         font.family: "Futura"
@@ -25,8 +24,8 @@ Item {
 
     Rectangle {
         id: clipGraph
-        x: 67
-        y: 150
+        x: 83
+        y: 147
         width: 343
         height: 126
         color: "#00000000"
@@ -60,17 +59,17 @@ Item {
 
     Image {
         id: image1
-        x: 317
+        x: 300
         y: 19
-        width: 190
+        width: 220
         height: 50
         source: "images/runningPressed.png"
     }
 
     Text {
         id: text2
-        x: 40
-        y: 83
+        x: 42
+        y: 77
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "tiempo" : "time"
         font.pixelSize: 15
@@ -80,8 +79,8 @@ Item {
 
     Text {
         id: text3
-        x: 208
-        y: 83
+        x: 211
+        y: 77
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "distancia" : "distance"
         font.pixelSize: 15
@@ -91,8 +90,8 @@ Item {
 
     Text {
         id: text4
-        x: 369
-        y: 83
+        x: 372
+        y: 77
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "calorías" : "calories"
         font.pixelSize: 15
@@ -102,11 +101,11 @@ Item {
 
     Text {
         id: text5
-        x: 208
-        y: 111
+        x: 211
+        y: 282
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "este mes" : "this month"
-        font.pixelSize: 20
+        text: (appVar.currentLanguage == "Español") ? "por mes" : "by month"
+        font.pixelSize: 17
         font.bold: true
         font.family: "Futura"
     }
