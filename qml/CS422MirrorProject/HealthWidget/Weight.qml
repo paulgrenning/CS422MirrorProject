@@ -15,9 +15,11 @@ Item {
 
     Text {
         id: text1
-        x: 312
-        y: 17
-        text: (kg).toFixed(1)+"kg"
+        x: 316
+        y: 24
+        text: (kg).toFixed(1)
+        anchors.right: parent.right
+        anchors.rightMargin: 134
         font.bold: true
         font.family: "Futura"
         font.pixelSize: 45
@@ -43,10 +45,14 @@ Item {
 
     Text {
         id: text2
-        x: 330
-        y: 76
+        x: 334
+        y: 83
+        width: 35
+        height: 26
         color: "#bfe4d5"
-        text: (kg*2.2).toFixed(1)+"lbs"
+        text: (kg*2.2).toFixed(1)
+        anchors.right: parent.right
+        anchors.rightMargin: 151
         font.pixelSize: 20
         font.bold: true
         font.family: "Futura"
@@ -54,10 +60,13 @@ Item {
 
     Text {
         id: text3
-        x: 36
-        y: 43
+        x: 48
+        y: 55
+        width: 218
+        height: 33
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "su peso actual" : "your current weight:"
+        text: (appVar.currentLanguage == "Español") ? "su peso actual:" : "your current weight:"
+        horizontalAlignment: Text.AlignRight
         font.pixelSize: 25
         font.bold: true
         font.family: "Futura"
@@ -87,6 +96,30 @@ Item {
             delegate: BarGraphDelegate{
             }
         }
+    }
+
+    Text {
+        id: text4
+        x: 397
+        y: 24
+        color: "#eefff9"
+        text: "kg"
+        font.pixelSize: 45
+    }
+
+    Text {
+        id: text5
+        x: 397
+        y: 83
+        width: 35
+        height: 26
+        color: "#bfe4d5"
+        text: "lbs"
+        font.pixelSize: 20
+        anchors.rightMargin: 88
+        font.bold: true
+        font.family: "Futura"
+        anchors.right: parent.right
     }
 
 }

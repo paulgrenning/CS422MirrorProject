@@ -22,6 +22,13 @@ Item {
         color: "#bfe4d5"
     }
 
+    XmlListModel {
+        id: bargraphmodel
+        source: "http://nikeplus.nike.com/nikeplus/v1/services/widget/get_public_run_list.jsp?userID=340599345"
+        query: "/plusService/runList/run"
+        XmlRole { name: "bar_height"; query: "calories/string()" }
+    }
+
     Rectangle {
         id: clipGraph
         x: 83
@@ -50,12 +57,6 @@ Item {
         }
     }
 
-    XmlListModel {
-        id: bargraphmodel
-        source: "http://nikeplus.nike.com/nikeplus/v1/services/widget/get_public_run_list.jsp?userID=340599345"
-        query: "/plusService/runList/run"
-        XmlRole { name: "bar_height"; query: "calories/string()" }
-    }
 
     Image {
         id: image1

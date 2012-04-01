@@ -17,6 +17,8 @@ Item{
 
     Image {
         id: image1
+        x: 7
+        y: 5
         width: 40
         height: 40
     }

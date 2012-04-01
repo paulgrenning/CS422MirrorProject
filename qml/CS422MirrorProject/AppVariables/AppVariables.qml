@@ -21,7 +21,7 @@ import QtQuick 1.1
 // QMl Diner Example Application http://projects.developer.nokia.com/QMLRestaurantApp/wiki
 
 QtObject {
-    property string currentLanguage:"Español"
+    property string currentLanguage:"English"
     property string currentDegreeSystem:"Celsius"
 
 }
