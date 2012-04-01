@@ -1,5 +1,6 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import Qt 4.7
 
 Item {
     width: 520
@@ -9,7 +10,7 @@ Item {
         id: text1
         x: 186
         y: 129
-        text: qsTr("Sleep")
+        text:"today's run"
         font.bold: true
         font.family: "Futura"
         font.pixelSize: 40

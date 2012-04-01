@@ -13,15 +13,12 @@ Item{
     height: 50
     width: 275
 
-    Component.onCompleted: state="itunes"
+    state:"itunes"
 
     Image {
         id: image1
-        x: 11
-        y: 5
         width: 40
         height: 40
-        source: "music/"+song_artist+"/"+song_artist+".jpg"
     }
 
     Text {
@@ -69,11 +66,6 @@ Item{
             name: "itunes"
 
             PropertyChanges {
-                target: image1
-                source: "music/"+song_artist+"/"+song_artist+".jpg"
-            }
-
-            PropertyChanges {
                 target: songDescription
                 x: 178
                 y: 5
@@ -84,6 +76,11 @@ Item{
                 target: songName
                 x: 68
                 y: 5
+            }
+
+            PropertyChanges {
+                target: image1
+                source: "music/"+ song_artist + "/" + song_artist+".jpg"
             }
 
         },

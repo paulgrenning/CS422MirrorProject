@@ -16,14 +16,14 @@ Item{
 
     Image {
         id: image1
-        x: 12
-        y: 0
-        width: 125
-        height: 125
+        x: 19
+        y: 10
+        width: 110
+        height: 114
         z: -2
         source:  {
             switch(condition){
-            case "Overcast":
+            case "Overcast" :
                 return "images/cloudy.png";
             case "Drizzle":
                 return "images/drizzle.png";
@@ -38,6 +38,24 @@ Item{
             case "Partly Cloudy":
                 return "images/partlycloudy.png";
             case "Thunderstorm":
+                return "images/thunderstorm.png";
+            case "Soleado":
+                return "images/sunny.png";
+            case "Nublado" :
+                return "images/cloudy.png";
+            case "Posibilidad de tormenta":
+                return "images/drizzle.png";
+            case "Lluvias de poca intensidad":
+                return "images/slightdrizzle.png";
+            case "Posibilidad de Tormenta":
+                return "images/slightdrizzle.png";
+            case "Mayormente soleado":
+                return "images/partlycloudy.png";
+            case "Mostly Cloudy":
+                return "images/partlycloudy.png";
+            case "Partly Cloudy":
+                return "images/partlycloudy.png";
+            case "Tormenta eléctrica":
                 return "images/thunderstorm.png";
             case "Clear":
                 return "images/sunny.png";

@@ -58,6 +58,7 @@ Item{
         interactive: false
         model: weathercurrent
         delegate: WeatherWidgetItem{}
+
     }
 
     GridView{
@@ -107,6 +108,8 @@ Item{
         XmlRole { name: "high_f"; query: "high/string()" }
         XmlRole { name: "condition"; query: "condition/string()" }
     }
+
+
     states: [
         State {
             name: "simple"

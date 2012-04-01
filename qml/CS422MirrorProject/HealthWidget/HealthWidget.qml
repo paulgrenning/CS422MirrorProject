@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 import Qt 4.7
 //import QtMultimediaKit 1.1
 
@@ -83,7 +83,7 @@ Item {
             name: "fitness"
             PropertyChanges {
                 target: background
-                source: "images/fitnessTabBackground.png"
+                source: (appVar.currentLanguage == "Español") ? "images/fitnessTabBackgroundSP.png" : "images/fitnessTabBackground.png"
             }
             PropertyChanges {
                 target: loader
@@ -94,7 +94,7 @@ Item {
             name: "weight"
             PropertyChanges {
                 target: background
-                source: "images/weightTabBackground.png"
+                source: (appVar.currentLanguage == "Español") ? "images/weightTabBackgroundSP.png" : "images/weightTabBackground.png"
             }
 
             PropertyChanges {
@@ -106,7 +106,7 @@ Item {
             name: "nutrition"
             PropertyChanges {
                 target: background
-                source: "images/nutritionTabBackground.png"
+                source: (appVar.currentLanguage == "Español") ? "images/nutritionTabBackgroundSP.png": "images/nutritionTabBackground.png"
             }
 
             PropertyChanges {
@@ -118,7 +118,7 @@ Item {
             name: "sleep"
             PropertyChanges {
                 target: background
-                source: "images/sleepTabBackground.png"
+                source: (appVar.currentLanguage == "Español") ? "images/sleepTabBackgroundSP.png" : "images/sleepTabBackground.png"
             }
 
             PropertyChanges {

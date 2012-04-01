@@ -12,7 +12,7 @@ Item{
         x: 0
         width: 30
         height: (bar_height > 100) ? bar_height/4 : 50
-        y:(bar_height > 100) ? 180-bar_height/4 : 180-50
+        y:(bar_height > 100) ? 126-bar_height/4 : 126-50
         border { left: 15; top: 20; right: 15; bottom: 20}
         horizontalTileMode: BorderImage.Stretch
         verticalTileMode: BorderImage.Stretch

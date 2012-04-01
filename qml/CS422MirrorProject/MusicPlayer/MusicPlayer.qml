@@ -26,14 +26,6 @@ Item {
         anchors.fill: parent
         source: (appVar.currentLanguage == "Español") ? "images/musicwidgetbackgroundSP.png" : "images/musicwidgetbackground.png"
 
-        Image {
-            id: image1
-            x: 120
-            y: 11
-            width: 71
-            height: 30
-            source: "images/musicTitleEN.png"
-        }
 
         VolumeSliderVertical {
             id: volumeslider
@@ -107,6 +99,28 @@ Item {
 //        source: "music/ABandaMaisBonitaDaCidade/11-11 Oração.mp3"
 //    }
 
+    XmlListModel {
+        id: ituneslibrarymodel
+        source: "iTunesMusicLibrary.xml"
+        query: "/plist/dict/dict/dict"
+        //XmlRole { name: "song_name"; query: "key[text()='Track ID']/following-sibling/string()"}
+        XmlRole { name: "song_name"; query: "key[text()='Name']/following-sibling::string[1]/string()"}
+        XmlRole { name: "song_genre"; query: "key[text()='Genre']/following-sibling::string[1]/string()"}
+        XmlRole { name: "song_file"; query: "key[text()='Location']/following-sibling::string[1]/string()"}
+        XmlRole { name: "song_artist"; query: "key[text()='Artist']/following-sibling::string[1]/string()"}
+
+    }
+
+    XmlListModel {
+        id: somalibrarymodel
+        source: "http://somafm.com/channels.xml"
+        query: "/channels/channel"
+        XmlRole { name: "song_name"; query: "@id/string()"}
+        XmlRole { name: "song_genre"; query: "genre/string()"}
+        XmlRole { name: "song_file"; query: "fastpls[@format='mp3']/string()"}
+        XmlRole { name: "song_image"; query: "image/string()"}
+    }
+
     ListView{
         id: songlist
         x: 18
@@ -135,26 +149,5 @@ Item {
         }
     }
 
-    XmlListModel {
-        id: ituneslibrarymodel
-        source: "iTunesMusicLibrary.xml"
-        query: "/plist/dict/dict/dict"
-        //XmlRole { name: "song_name"; query: "key[text()='Track ID']/following-sibling/string()"}
-        XmlRole { name: "song_name"; query: "key[text()='Name']/following-sibling::string[1]/string()"}
-        XmlRole { name: "song_genre"; query: "key[text()='Genre']/following-sibling::string[1]/string()"}
-        XmlRole { name: "song_file"; query: "key[text()='Location']/following-sibling::string[1]/string()"}
-        XmlRole { name: "song_artist"; query: "key[text()='Artist']/following-sibling::string[1]/string()"}
 
-    }
-
-    XmlListModel {
-        id: somalibrarymodel
-        source: "http://somafm.com/channels.xml"
-        query: "/channels/channel"
-        XmlRole { name: "song_name"; query: "@id/string()"}
-        XmlRole { name: "song_genre"; query: "genre/string()"}
-        XmlRole { name: "song_file"; query: "fastpls[@format='mp3']/string()"}
-        XmlRole { name: "song_image"; query: "image/string()"}
-
-    }
 }
