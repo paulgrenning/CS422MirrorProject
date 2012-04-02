@@ -10,7 +10,8 @@ Item {
     width:554
     height:375
 
-    state: "fitness"
+
+    state : "fitness"
 
     AppVariables{
         id:appVar

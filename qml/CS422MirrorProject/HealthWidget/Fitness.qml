@@ -4,8 +4,16 @@ import Qt 4.7
 import "../AppVariables"
 
 Item {
+    id: item1
     width: 520
     height: 310
+
+    function getMonth(){
+        var date = new Date();
+        var months = ['January','February','March','April','May','June','July','August','September','October','November','December']
+        return months[date.getMonth()]
+    }
+
 
     AppVariables{
         id:appVar
@@ -24,34 +32,43 @@ Item {
 
     XmlListModel {
         id: bargraphmodel
-        source: "http://nikeplus.nike.com/nikeplus/v1/services/widget/get_public_run_list.jsp?userID=340599345"
+
+        source: "runplus.xml"
         query: "/plusService/runList/run"
-        XmlRole { name: "bar_height"; query: "calories/string()" }
+        XmlRole { name: "run_distance"; query: "distance/string()" }
+        XmlRole { name: "run_time"; query: "duration/string()" }
+        XmlRole { name: "run_calories"; query: "calories/string()" }
+        XmlRole { name: "run_date"; query: "startTime/string()" }
     }
 
     Rectangle {
         id: clipGraph
-        x: 83
-        y: 147
-        width: 343
-        height: 126
+        x: 71
+        y: 110
+        width: 379
+        height: 170
         color: "#00000000"
         z: 1
         clip: true
         GridView{
             id: grid
             width: 50*bargraphmodel.count
-            anchors.left: parent.left
-            anchors.leftMargin: 0
+            x: -50*bargraphmodel.count+contentWidth+10
+            y: 0
+            contentWidth: 379
+            contentHeight: 170
+            clip:true
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 0
             anchors.top: parent.top
             anchors.topMargin: 0
-            cellHeight: 180
+            cellHeight: 170
             flickableDirection: Flickable.HorizontalFlick
             interactive: true
-            cellWidth: 25
+            cellWidth: 50
             model: bargraphmodel
+            highlight: Rectangle { color: "lightsteelblue"; radius:14 }
+            highlightFollowsCurrentItem: true
             delegate: BarGraphDelegate{
             }
         }
@@ -102,11 +119,27 @@ Item {
 
     Text {
         id: text5
-        x: 211
-        y: 282
+        x: -4
+        y: 287
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "por mes" : "by month"
+        text: (appVar.currentLanguage == "Español") ? "por mes" : getMonth()
+        anchors.horizontalCenter: clipGraph.horizontalCenter
+        horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 17
+        font.bold: true
+        font.family: "Futura"
+    }
+
+    Text {
+        x: 31
+        y: 110
+        width: 29
+        height: 124
+        color: "#bfe4d5"
+        text: "10km 9km 8km 7km 6km 5km 4km 3km 2km 1km"
+        horizontalAlignment: Text.AlignRight
+        wrapMode: Text.WordWrap
+        font.pixelSize: 10
         font.bold: true
         font.family: "Futura"
     }
