@@ -5,7 +5,7 @@ Item{
     id: barGraphDelegate
 
     width:50
-    height:170
+    height:180
 
 
     function getTodaysText(){
@@ -15,12 +15,14 @@ Item{
         var day = today.slice(8,10);
         var date = new Date(parseInt(year),parseInt(month),parseInt(day))
         var days = ['S','M','T','W','T','F','S']
+        var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 
-        console.log(year)
-        console.log(month)
-        console.log(day)
+        //console.log(year)
+        //console.log(month)
+        //console.log(day)
         text1.text = days[date.getDay()];
         text2.text = day
+        text3.text = months[parseInt(month)]
         //console.log(date.getDay())
     }
 
@@ -41,7 +43,6 @@ Item{
         verticalTileMode: BorderImage.Stretch
         source: "images/graphBarBorderImage.png"
         PropertyAnimation {id: animation; target: barimage; property: "scale"; from: 0; to: 1; duration: 1000}
-
     }
     Text {
         Component.onCompleted: animationtext.start()
@@ -55,7 +56,7 @@ Item{
         font.family: "Futura"
         font.bold: true
         horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 20
+        font.pixelSize: 16
         opacity:1
         PropertyAnimation {id: animationtext; target: text1; property: "opacity"; from: 0; to: 1; duration: 200}
     }
@@ -64,12 +65,33 @@ Item{
         Component.onCompleted: animationtext2.start()
         id: text2
         x: 14
-        y: 156
+        y: 150
         width: 23
         height: 14
         color: "#bfe4d5"
         text: qsTr("text")
+        horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 12
          PropertyAnimation {id: animationtext2; target: text2; property: "opacity"; from: 0; to: 1; duration: 200}
+    }
+
+    Text {
+        id: text3
+        x: 14
+        y: 166
+        width: 23
+        height: 14
+        color: "#bfe4d5"
+        text: qsTr("text")
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 12
+        PropertyAnimation {
+            id: animationtext3
+            target: text3
+            property: "opacity"
+            to: 1
+            from: 0
+            duration: 200
+        }
     }
 }

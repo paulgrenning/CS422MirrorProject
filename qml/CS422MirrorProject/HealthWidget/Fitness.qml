@@ -43,32 +43,33 @@ Item {
 
     Rectangle {
         id: clipGraph
-        x: 71
-        y: 110
-        width: 379
-        height: 170
+        x: 69
+        y: 105
+        width: 381
+        height: 182
         color: "#00000000"
-        z: 1
         clip: true
-        GridView{
+        ListView{
             id: grid
-            width: 50*bargraphmodel.count
-            x: -50*bargraphmodel.count+contentWidth+10
+            width: 382
+            height: 182
+            interactive: false
+            boundsBehavior: Flickable.StopAtBounds
+            snapMode: ListView.SnapOneItem
+            orientation: ListView.Horizontal
+            x: 0
             y: 0
-            contentWidth: 379
-            contentHeight: 170
-            clip:true
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 0
             anchors.top: parent.top
             anchors.topMargin: 0
-            cellHeight: 170
             flickableDirection: Flickable.HorizontalFlick
-            interactive: true
-            cellWidth: 50
             model: bargraphmodel
             highlight: Rectangle { color: "lightsteelblue"; radius:14 }
             highlightFollowsCurrentItem: true
+            highlightRangeMode: ListView.StrictlyEnforceRange
+            preferredHighlightBegin: -48*bargraphmodel.count-44
+            preferredHighlightEnd: -48*bargraphmodel.count-44
             delegate: BarGraphDelegate{
             }
         }
@@ -118,21 +119,8 @@ Item {
     }
 
     Text {
-        id: text5
-        x: -4
-        y: 287
-        color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "por mes" : getMonth()
-        anchors.horizontalCenter: clipGraph.horizontalCenter
-        horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 17
-        font.bold: true
-        font.family: "Futura"
-    }
-
-    Text {
         x: 31
-        y: 110
+        y: 105
         width: 29
         height: 124
         color: "#bfe4d5"
