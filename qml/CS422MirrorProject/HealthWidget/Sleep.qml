@@ -19,7 +19,7 @@ Item {
     Text {
         id: text3
         x: 39
-        y: 48
+        y: 55
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "tiempo de sueño última noche:" : "last night sleep time:"
         wrapMode: Text.WordWrap

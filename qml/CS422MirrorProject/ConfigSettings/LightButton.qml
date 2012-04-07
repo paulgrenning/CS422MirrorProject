@@ -9,6 +9,7 @@ Item {
     state: "closed"
 
     property alias state: config.state
+    signal clicked();
 
     Image {
         id: lightButImage
@@ -21,7 +22,12 @@ Item {
         MouseArea {
             id: lightButMouseArea
             anchors.fill: parent
-            onClicked: (config.state == "open") ? config.state = "closed" : config.state = "open"
+            onClicked:{
+                config.clicked();
+                if(config.state == "open")  config.state = "closed"
+                else config.state = "open";
+            }
+
         }
     }
 

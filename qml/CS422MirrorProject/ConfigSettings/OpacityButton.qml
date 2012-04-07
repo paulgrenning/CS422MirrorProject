@@ -9,6 +9,7 @@ Item {
 
     property alias state: config.state
     property alias genOpacity: sliderOpacity.value
+    signal clicked();
 
     Image {
         id: opacityButImage
@@ -21,7 +22,11 @@ Item {
         MouseArea {
             id: opacityButMouseArea
             anchors.fill: parent
-            onClicked: (config.state == "open") ? config.state = "closed" : config.state = "open"
+            onClicked:  {
+                config.clicked();
+                if(config.state == "open")  config.state = "closed"
+                else config.state = "open";
+            }
         }
     }
 

@@ -9,6 +9,7 @@ import "./SocialWidget"
 import "./ConfigSettings"
 import "./AppVariables"
 
+
 Rectangle {
     width: 1280
     height: 960

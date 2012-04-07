@@ -7,6 +7,7 @@ Item {
     height:300
 
     property alias state: config.state
+        signal clicked();
 
     Image {
         id: image1
@@ -20,6 +21,12 @@ Item {
         MouseArea {
             id: mouse_area1
             anchors.fill: parent
+            onClicked:
+            {
+                config.clicked();
+                if(config.state == "open")  config.state = "closed"
+                else config.state = "open";
+            }
         }
     }
     states: [

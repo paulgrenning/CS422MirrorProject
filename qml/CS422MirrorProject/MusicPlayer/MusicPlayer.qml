@@ -11,6 +11,8 @@ Item {
     width:310
     height:496
 
+    state: "itunes"
+
     MouseArea {
          anchors.fill: parent
          drag.target: parent
@@ -89,7 +91,6 @@ Item {
                     playMusic.play();
                     playMusic.volume = 1.0;
                 }
-                console.log(playMusic.status)
             }
         }
     }

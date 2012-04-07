@@ -37,7 +37,10 @@ Item{
         width: 30
         height: parseFloat(run_distance)*11
         anchors.horizontalCenter: parent.horizontalCenter
-        y: 140 - parseFloat(run_distance)*11
+        y:{
+            if(appVar.currentDistanceUnit == "Km") return 140 - parseFloat(run_distance)*11
+            else return 140 - parseFloat(run_distance)*11
+        }
         border { left: 15; top: 15; right: 15; bottom: 15}
         horizontalTileMode: BorderImage.Stretch
         verticalTileMode: BorderImage.Stretch
@@ -60,7 +63,6 @@ Item{
         opacity:1
         PropertyAnimation {id: animationtext; target: text1; property: "opacity"; from: 0; to: 1; duration: 200}
     }
-
     Text {
         Component.onCompleted: animationtext2.start()
         id: text2
@@ -74,8 +76,8 @@ Item{
         font.pixelSize: 12
          PropertyAnimation {id: animationtext2; target: text2; property: "opacity"; from: 0; to: 1; duration: 200}
     }
-
     Text {
+        Component.onCompleted: animationtext3.start()
         id: text3
         x: 14
         y: 166
@@ -85,13 +87,6 @@ Item{
         text: qsTr("text")
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 12
-        PropertyAnimation {
-            id: animationtext3
-            target: text3
-            property: "opacity"
-            to: 1
-            from: 0
-            duration: 200
-        }
+        PropertyAnimation { id: animationtext3; target: text3; property: "opacity"; to: 1; from: 0; duration: 200 }
     }
 }

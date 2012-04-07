@@ -17,10 +17,10 @@ Item {
     Text {
         id: text1
         x: 378
-        y: 28
+        y: 47
         text: (cal)+" cal"
         anchors.right: parent.right
-        anchors.rightMargin: 63
+        anchors.rightMargin: 50
         horizontalAlignment: Text.AlignRight
         font.bold: true
         font.family: "Futura"
@@ -31,8 +31,8 @@ Item {
                          else return 50;}
                running:true;
                repeat: true;
-               onTriggered:{if(cal<=1840) return (cal = cal + 50);
-                       else if (cal>1845 && cal< 1850) return (cal = cal + 1);
+               onTriggered:{if(cal<1800) return (cal = cal + 100);
+                       else if (cal>=1800 && cal< 1850) return (cal = cal + 3);
                  }
         }
     }
@@ -40,7 +40,7 @@ Item {
     Text {
         id: text3
         x: 39
-        y: 38
+        y: 57
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "calorías consumidas ayer:" : "calories consumed yesterday:"
         wrapMode: Text.WordWrap
@@ -58,12 +58,13 @@ Item {
 
     Text {
         id: text2
+
         x: 378
-        y: 92
+        y: 120
         color: "#eefff9"
         text: (objcal)+" cal"
         font.pixelSize: 35
-        anchors.rightMargin: 63
+        anchors.rightMargin: 50
         font.bold: true
         font.family: "Futura"
         anchors.right: parent.right
@@ -74,14 +75,16 @@ Item {
                repeat: true;
                onTriggered:{if(objcal<=1790) return (objcal = objcal + 50);
                        else if (objcal>1790 && objcal< 1800) return (objcal = objcal + 1);
-                 }
+
+                   if(objcal==1800){ running=false; animationtext6.start();animationtext7.start()}
+                }
+
         }
     }
-
     Text {
         id: text4
         x: 39
-        y: 102
+        y: 130
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "objetivo de hoy:" : "today's goal:"
         font.pixelSize: 20
@@ -91,16 +94,52 @@ Item {
 
     Text {
         id: text5
-        x: 17
-        y: 186
-        width: 276
+        x: 39
+        y: 197
+        width: 263
         height: 33
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "ejercicio recomendado para hoy:" : "recommended workout for today:"
+        text: (appVar.currentLanguage == "Español") ? "ejercicio recomendado:" : "recommended workout:"
         wrapMode: Text.WordWrap
-        font.pixelSize: 25
+        font.pixelSize: 23
         font.family: "Futura"
         font.bold: true
     }
 
+    Text {
+        id: text6
+        x: 352
+        y: 190
+        width: 105
+        height: 33
+        color: "#eefff9"
+        text: "running"
+        wrapMode: Text.WordWrap
+        font.pixelSize: 30
+        anchors.rightMargin: 50
+        font.bold: true
+        font.family: "Futura"
+        anchors.right: parent.right
+        horizontalAlignment: Text.AlignRight
+        opacity: 0
+        PropertyAnimation {id: animationtext6; target: text6; property: "opacity"; from: 0; to: 1; duration: 500}
+    }
+    Text {
+        id: text7
+        x: 300
+        y: 230
+        width: 157
+        height: 33
+        color: "#eefff9"
+        text: "30min"
+        wrapMode: Text.WordWrap
+        font.pixelSize: 23
+        anchors.rightMargin: 50
+        font.bold: true
+        font.family: "Futura"
+        anchors.right: parent.right
+        horizontalAlignment: Text.AlignRight
+        opacity: 0
+        PropertyAnimation {id: animationtext7; target: text7; property: "opacity"; from: 0; to: 1; duration: 500}
+    }
 }

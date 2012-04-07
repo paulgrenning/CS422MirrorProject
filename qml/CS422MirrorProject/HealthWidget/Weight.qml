@@ -25,23 +25,16 @@ Item {
         font.pixelSize: 45
         color: "#eefff9"
 
-        Timer{ interval: {if(kg<60) return 3;
-                         else return 50;}
+        Timer{ interval: {if(kg<60) return 1;
+                         else return 5;}
                running:true;
                repeat: true;
-               onTriggered:{if(kg<=63.0 && kg < 65.4) return (kg = kg + 1.0);
+               onTriggered:{if(kg<=63.0 && kg < 65.4) return (kg = kg + 2.0);
                        else if (kg>63.0 && kg < 65.4) return (kg = kg + 0.1);
                  }
         }
     }
 
-
-    XmlListModel {
-        id: bargraphmodel
-        source: "http://nikeplus.nike.com/nikeplus/v1/services/widget/get_public_run_list.jsp?userID=340599345"
-        query: "/plusService/runList/run"
-        XmlRole { name: "bar_height"; query: "calories/string()" }
-    }
 
     Text {
         id: text2
@@ -72,38 +65,55 @@ Item {
         font.family: "Futura"
     }
 
-
     Rectangle {
         id: clipGraph
-        x: 43
-        y: 161
-        width: 434
-        height: 129
+        x: 70
+        y: 114
+        width: 394
+        height: 182
         color: "#00000000"
-        z: 1
         clip: true
-        GridView{
+        ListView{
             id: grid
-            x: 0
+            width: 382
+            height: 182
+            interactive: false
+            boundsBehavior: Flickable.StopAtBounds
+            snapMode: ListView.SnapOneItem
+            orientation: ListView.Horizontal
+            x: -7
             y: 0
-            width: 50*bargraphmodel.count
-            height: 180
-            cellHeight: 180
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            anchors.top: parent.top
+            anchors.topMargin: 0
             flickableDirection: Flickable.HorizontalFlick
-            interactive: true
-            cellWidth: 25
             model: bargraphmodel
             delegate: BarGraphDelegate{
             }
         }
     }
 
+    XmlListModel {
+        id: bargraphmodel
+
+        source: "runplus.xml"
+        query: "/plusService/runList/run"
+        XmlRole { name: "run_distance"; query: "distance/string()" }
+        XmlRole { name: "run_time"; query: "duration/string()" }
+        XmlRole { name: "run_calories"; query: "calories/string()" }
+        XmlRole { name: "run_date"; query: "startTime/string()" }
+    }
+
     Text {
         id: text4
-        x: 397
+        x: 394
         y: 24
+        width: 57
+        height: 53
         color: "#eefff9"
         text: "kg"
+        z: 1
         font.pixelSize: 45
     }
 
@@ -120,6 +130,21 @@ Item {
         font.bold: true
         font.family: "Futura"
         anchors.right: parent.right
+    }
+
+    Text {
+        id: text
+        x: 31
+        y: 114
+        width: 29
+        height: 124
+        color: "#bfe4d5"
+        text: "200kg 9km 8km 7km 6km 5km 4km 3km 2km 1km"
+        horizontalAlignment: Text.AlignRight
+        wrapMode: Text.WordWrap
+        font.pixelSize: 10
+        font.bold: true
+        font.family: "Futura"
     }
 
 }

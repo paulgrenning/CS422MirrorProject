@@ -15,6 +15,7 @@ Item {
         x: 0
         y: 0
         opacity: 1.0-opacitybutton.genOpacity
+        onClicked: {lightbutton.state = "closed";opacitybutton.state = "closed"}
     }
 
     LightButton {
@@ -22,12 +23,14 @@ Item {
         x: 91
         y: 0
         opacity: 1.0-opacitybutton.genOpacity
+        onClicked: opacitybutton.state = "closed"
     }
 
     OpacityButton {
         id: opacitybutton
         x: 182
         y: 0
+        onClicked: lightbutton.state = "closed"
     }
 
     CameraEnableButton {

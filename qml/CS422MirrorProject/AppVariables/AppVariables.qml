@@ -23,5 +23,8 @@ import QtQuick 1.1
 QtObject {
     property string currentLanguage:"English"
     property string currentDegreeSystem:"Celsius"
+    property string currentDistanceUnit: "K"
+    property string currentWeightUnit:"K"
+
 
 }
