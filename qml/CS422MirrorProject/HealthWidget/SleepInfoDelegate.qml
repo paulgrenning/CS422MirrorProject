@@ -33,7 +33,7 @@ Item{
                 id: text3
                 y: 12
                 color: "#bfe4d5"
-                text: (light_minutes/60).toFixed(2)+" hrs"
+                text: (parseInt(light_minutes)/60.0).toFixed(1)+" hrs"
                 anchors.left: parent.left
                 anchors.leftMargin: 191
                 anchors.verticalCenter: parent.verticalCenter
@@ -61,7 +61,7 @@ Item{
                 id: text1
                 y: 12
                 color: "#bfe4d5"
-                text: (rem_minutes/60).toFixed(2)+" hrs"
+                text: (parseInt(rem_minutes/60)).toFixed(1)+" hrs"
                 anchors.left: parent.left
                 anchors.leftMargin: 191
                 anchors.verticalCenterOffset: 0
@@ -90,7 +90,7 @@ Item{
                 id: text2
                 y: 10
                 color: "#bfe4d5"
-                text: (deep_minutes/60).toFixed(2)+" hrs"
+                text: (parseInt(deep_minutes)/60).toFixed(1)+" hrs"
                 anchors.left: parent.left
                 anchors.leftMargin: 191
                 anchors.verticalCenter: parent.verticalCenter

@@ -18,13 +18,13 @@ Item{
 
     BorderImage {
         id: border_image1
-        x: 0
-        y: 1
-        width: 323
-        height: 143
+        x: -8
+        y: -7
+        width: 339
+        height: 158
         anchors.horizontalCenterOffset: 0
         anchors.horizontalCenter: parent.horizontalCenter
-        border { left: 20; top: 20; right: 20; bottom: 20}
+        border { left: 40; top: 40; right: 40; bottom: 40}
         Behavior on height {
             NumberAnimation { duration: 500 }
         }
@@ -39,7 +39,7 @@ Item{
         }
         horizontalTileMode: BorderImage.Stretch
         verticalTileMode: BorderImage.Stretch
-        source: "images/borderImage.png"
+        source: "images/borderImage2.png"
     }
 
 
@@ -131,8 +131,8 @@ Item{
             PropertyChanges {
                 target: border_image1
                 x: 1
-                y: 1
-                height: 260
+                width: 339
+                height: 280
                 anchors.horizontalCenterOffset: 0
             }
 

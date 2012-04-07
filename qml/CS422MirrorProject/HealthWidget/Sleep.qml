@@ -19,10 +19,13 @@ Item {
     Text {
         id: text3
         x: 39
-        y: 55
+        y: 58
+        width: 231
+        height: 33
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "tiempo de sueño última noche:" : "last night sleep time:"
-        wrapMode: Text.WordWrap
+        text: (appVar.currentLanguage == "Español") ? "tiempo de sueño ayer:" : "last night sleep time:"
+        verticalAlignment: Text.AlignVCenter
+        clip: false
         font.pixelSize: 25
         font.bold: true
         font.family: "Futura"
@@ -32,7 +35,7 @@ Item {
     Text {
         id: text4
         x: 39
-        y: 189
+        y: 191
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "sueño ligero:" : "light sleep:"
         font.pixelSize: 25
@@ -57,9 +60,12 @@ Item {
     Text {
         id: text6
         x: 39
-        y: 243
+        y: 242
+        width: 186
+        height: 33
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "sueño profundo:" : "deep sleep:"
+        wrapMode: Text.NoWrap
         font.pixelSize: 25
         font.bold: true
         font.family: "Futura"
@@ -77,9 +83,11 @@ Item {
 
 
     ListView {
-        x: 188
-        y: 39
-         width: 180; height: 250
+        x: 225
+        y: 36
+         width: 270; height: 250
+         anchors.left: text6.right
+         anchors.leftMargin: 0
          clip: false
          model: sleeptimemodel
          delegate: SleepInfoDelegate{}

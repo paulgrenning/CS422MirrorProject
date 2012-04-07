@@ -4,7 +4,7 @@ import Qt 4.7
 import "../AppVariables"
 
 Item {
-    id: item1
+    id: fitnessItem
     width: 520
     height: 310
 
@@ -17,31 +17,39 @@ Item {
         y: 19
         width: 220
         height: 50
-        z: 1
+        z: 2
         source: "images/runningPressed.png"
+
+        MouseArea {
+            id: mouseAreaRunning
+            x: 0
+            y: 0
+            width: 110
+            height: 50
+            opacity: 1
+            onClicked: {
+                console.log("run")
+                fitnessItem.state = "running"
+            }
+        }
+
+        MouseArea {
+            id: mouseAreaSteps
+            x: 110
+            y: 0
+            width: 110
+            height: 50
+            opacity: 1
+            onClicked: {
+                console.log("step")
+                fitnessItem.state = "steps"
+            }
+        }
     }
 
     Loader{
         id:loader
         focus:true
-    }
-
-    MouseArea {
-        id: mouseAreaRunning
-        x: 300
-        y: 19
-        width: 110
-        height: 50
-        opacity: 0
-    }
-
-    MouseArea {
-        id: mouseAreaSteps
-        x: 410
-        y: 19
-        width: 110
-        height: 50
-        opacity: 0
     }
 
     states: [
@@ -54,32 +62,17 @@ Item {
             }
 
             PropertyChanges {
-                target: mouseAreaRunning
-                opacity: 1
+                target: image1
+                source: (appVar.currentLanguage == "Español") ? "images/runningPressedSP.png" :  "images/runningPressed.png"
             }
+
         },
         State {
             name: "steps"
 
             PropertyChanges {
-                target: clipGraph
-                x: 75
-                y: 89
-                width: 371
-                height: 159
-            }
-
-            PropertyChanges {
-                target: grid
-                x: 0
-                y: 0
-                height: 159
-            }
-
-            PropertyChanges {
-                target: text1
-                x: 31
-                y: 19
+                target: image1
+                source: (appVar.currentLanguage == "Español") ? "images/stepsPressedSP.png" : "images/stepsPressed.png"
             }
         }
     ]

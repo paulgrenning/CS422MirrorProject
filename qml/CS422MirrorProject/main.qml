@@ -73,6 +73,7 @@ Rectangle {
             musicanimclose.start()
             healthanimopen.start()
             socialanimclose.start()
+            healthwidget.barstate = healthwidget.laststate
         }
         onSocialClicked:{
             musicanimclose.start()

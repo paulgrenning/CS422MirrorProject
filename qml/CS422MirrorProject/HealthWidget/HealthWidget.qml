@@ -6,12 +6,10 @@ import "../AppVariables"
 Item {
     id:healthwidget
     property alias barstate: healthwidget.state
+    property variant laststate: "fitness"
 
     width:554
     height:375
-
-
-    state : "fitness"
 
     AppVariables{
         id:appVar
@@ -38,7 +36,11 @@ Item {
             y: 16
             width: 129
             height: 30
-            onClicked: healthwidget.state = "fitness"
+            onClicked: {
+                healthwidget.laststate = "fitness"
+                healthwidget.state = "fitness"
+
+            }
         }
 
         MouseArea {
@@ -47,7 +49,10 @@ Item {
             y: 16
             width: 121
             height: 30
-            onClicked: healthwidget.state = "weight"
+            onClicked: {
+                healthwidget.laststate = "weight"
+                healthwidget.state = "weight"
+            }
         }
 
         MouseArea {
@@ -56,7 +61,10 @@ Item {
             y: 16
             width: 121
             height: 30
-            onClicked: healthwidget.state = "nutrition"
+            onClicked: {
+                healthwidget.laststate = "nutrition"
+                healthwidget.state = "nutrition"
+            }
         }
 
         MouseArea {
@@ -65,7 +73,10 @@ Item {
             y: 16
             width: 126
             height: 30
-            onClicked: healthwidget.state = "sleep"
+            onClicked: {
+                healthwidget.laststate = "sleep"
+                healthwidget.state = "sleep"
+            }
         }
 
         Rectangle {
