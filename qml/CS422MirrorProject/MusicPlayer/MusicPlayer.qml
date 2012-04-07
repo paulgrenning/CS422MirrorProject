@@ -31,8 +31,8 @@ Item {
 
         VolumeSliderVertical {
             id: volumeslider
-            x: 252
-            y: 50
+            x: 262
+            y: 48
             width: 29
             height: 90
             maximum: 1.0
@@ -60,8 +60,8 @@ Item {
 
         Image {
             id: image2
-            x: 248
-            y: 136
+            x: 258
+            y: 134
             width: 38
             height: 35
             source: (volumeslider.value >0.9)? "images/volumeMin.png":"images/volumeMax.png"
@@ -72,8 +72,8 @@ Item {
 
     Image {
         id: playimage
-        x: 59
-        y: 59
+        x: 132
+        y: 55
         width: 45
         height: 50
         source: (playMusic.playing) ? "images/pausebutton.png" : "images/playbutton.png"
@@ -142,12 +142,9 @@ Item {
         onCurrentIndexChanged:{
             if(currentItem==null){
                 currentIndex=0
-                console.log("null")
             }
             else{
-                currentSongPlaying.text = currentItem.currName
-                currentSongImage.source = currentItem.currImage
-                console.log(currentItem.currName)
+                currentSongPlaying.text = currentItem.currName + " - " + currentItem.currGenre
             }
 
             //console.log("new index"+songlist.currentIndex + currentItem.currName)
@@ -159,8 +156,11 @@ Item {
             property variant currName: songName
             property variant currImage: songImage
             property variant currFile: songFile
+            property variant currGenre: songGenre
+
             songName:song_name
             songFile:song_file
+            songGenre: song_genre
             songImage: {if (songlist.model === somalibrarymodel)  return song_image;
                 else return "music/"+ song_artist + "/" + song_artist+".jpg"}
 
@@ -173,31 +173,44 @@ Item {
                 playMusic.source = song_file
                 playMusic.play()
                 songlist.currentIndex = songlist.indexAt(x,y)
+                currentSongPlaying.x = 50
             }
         }
     }
 
-    Text {
-        id: currentSongPlaying
-        x: 59
-        y: 130
-        width: 164
-        height: 24
-        color: "#ffffff"
-        text: ""
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        font.pixelSize: 15
-        font.italic: true
-    }
+    Rectangle {
+        id: rectangle1
+        x: 60
+        y: 110
+        width: 188
+        height: 44
+        color: "#00000000"
+        radius: 10
+        clip: true
 
-    Image {
-        id: currentSongImage
-        x: 173
-        y: 59
-        width: 50
-        height: 50
-        source: ""
+        Text {
+            id: currentSongPlaying
+            y: 14
+            height: 24
+            color: "#ffffff"
+            text: ""
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 20
+            font.italic: true
+            Timer{ interval: 50
+                   running:true;
+                   repeat: true;
+                   onTriggered:{
+                       if(currentSongPlaying.x < -currentSongPlaying.width){
+                           currentSongPlaying.x = 188
+                       }
+                       else{
+                            currentSongPlaying.x=currentSongPlaying.x-2;
+                       }
+                     }
+            }
+        }
     }
 
 }

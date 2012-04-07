@@ -7,6 +7,7 @@ Item{
     property alias songColor: songNameTxt.color
     property alias songItalic: songNameTxt.font.italic
     property variant songImage
+    property variant songGenre
     property variant songFile: song_file
     property alias state: songItem.state
     signal songClicked()
