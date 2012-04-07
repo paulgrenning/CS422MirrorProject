@@ -2,13 +2,13 @@
 import QtQuick 1.1
 
 Item{
-    id: songDelegate
-
-    property alias songName: songName.text
-    property alias songColor: songName.color
-    property alias songItalic: songName.font.italic
-    property alias songImage: image1.source
+    id: songItem
+    property alias songName: songNameTxt.text
+    property alias songColor: songNameTxt.color
+    property alias songItalic: songNameTxt.font.italic
+    property variant songImage
     property variant songFile: song_file
+    property alias state: songItem.state
     signal songClicked()
     height: 50
     width: 275
@@ -21,15 +21,16 @@ Item{
         y: 5
         width: 40
         height: 40
+        source:songImage
     }
 
     Text {
-        id: songName
+        id: songNameTxt
         x: 71
         y: 5
         height: 40
         color: "#ffffff"
-        text: song_name
+        text: ""
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 15
     }
@@ -75,24 +76,14 @@ Item{
             }
 
             PropertyChanges {
-                target: songName
+                target: songNameTxt
                 x: 68
                 y: 5
-            }
-
-            PropertyChanges {
-                target: image1
-                source: "music/"+ song_artist + "/" + song_artist+".jpg"
             }
 
         },
         State {
             name: "radio"
-
-            PropertyChanges {
-                target: image1
-                source: song_image
-            }
 
             PropertyChanges {
                 target: songDescription
@@ -102,7 +93,7 @@ Item{
             }
 
             PropertyChanges {
-                target: songName
+                target: songNameTxt
                 x: 73
                 y: -5
             }

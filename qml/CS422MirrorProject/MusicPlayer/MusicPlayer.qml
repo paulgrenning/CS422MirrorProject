@@ -52,11 +52,11 @@ Item {
             }
             onRadioClicked: {
                 songlist.model = somalibrarymodel
+                songlist.model.reload()
                 songlist.currentIndex = 0
             }
-
-
         }
+
 
         Image {
             id: image2
@@ -66,12 +66,14 @@ Item {
             height: 35
             source: (volumeslider.value >0.9)? "images/volumeMin.png":"images/volumeMax.png"
         }
+
+
     }
 
     Image {
         id: playimage
         x: 59
-        y: 64
+        y: 59
         width: 45
         height: 50
         source: (playMusic.playing) ? "images/pausebutton.png" : "images/playbutton.png"
@@ -94,6 +96,9 @@ Item {
             }
         }
     }
+
+
+
 
    Audio {
         id: playMusic
@@ -132,23 +137,67 @@ Item {
         z: 1
         flickableDirection: Flickable.VerticalFlick
         model: ituneslibrarymodel
-        currentIndex: 0
         highlight: Rectangle { color: "lightsteelblue"; radius:14 }
         highlightFollowsCurrentItem: true
-        delegate: SongDelegate{
-            id:songdelegate
+        onCurrentIndexChanged:{
+            if(currentItem==null){
+                currentIndex=0
+                console.log("null")
+            }
+            else{
+                currentSongPlaying.text = currentItem.currName
+                currentSongImage.source = currentItem.currImage
+                console.log(currentItem.currName)
+            }
+
+            //console.log("new index"+songlist.currentIndex + currentItem.currName)
+        }
+        delegate:
+
+            SongDelegate{
+                id: songItem
+            property variant currName: songName
+            property variant currImage: songImage
+            property variant currFile: songFile
+            songName:song_name
+            songFile:song_file
+            songImage: {if (songlist.model === somalibrarymodel)  return song_image;
+                else return "music/"+ song_artist + "/" + song_artist+".jpg"}
+
             state: {
                 if(songlist.model=== somalibrarymodel) return "radio"
                 else return "itunes"
             }
             onSongClicked:{
                 playMusic.stop()
-                playMusic.source = songFile
+                playMusic.source = song_file
                 playMusic.play()
                 songlist.currentIndex = songlist.indexAt(x,y)
             }
         }
     }
 
+    Text {
+        id: currentSongPlaying
+        x: 59
+        y: 130
+        width: 164
+        height: 24
+        color: "#ffffff"
+        text: ""
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 15
+        font.italic: true
+    }
+
+    Image {
+        id: currentSongImage
+        x: 173
+        y: 59
+        width: 50
+        height: 50
+        source: ""
+    }
 
 }
