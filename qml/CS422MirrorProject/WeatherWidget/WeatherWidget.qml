@@ -24,7 +24,7 @@ Item{
         height: 158
         anchors.horizontalCenterOffset: 0
         anchors.horizontalCenter: parent.horizontalCenter
-        border { left: 40; top: 40; right: 40; bottom: 40}
+        border { left: 25; top: 25; right: 25; bottom: 25}
         Behavior on height {
             NumberAnimation { duration: 500 }
         }
