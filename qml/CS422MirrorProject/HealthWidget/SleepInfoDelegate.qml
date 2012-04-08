@@ -32,7 +32,7 @@ Item{
             Text {
                 id: text3
                 y: 12
-                color: "#bfe4d5"
+                color: "#eefff9"
                 text: (parseInt(light_minutes)/60.0).toFixed(1)+" hrs"
                 anchors.left: parent.left
                 anchors.leftMargin: 191
@@ -60,7 +60,7 @@ Item{
             Text {
                 id: text1
                 y: 12
-                color: "#bfe4d5"
+                color: "#eefff9"
                 text: (parseInt(rem_minutes/60)).toFixed(1)+" hrs"
                 anchors.left: parent.left
                 anchors.leftMargin: 191
@@ -89,7 +89,7 @@ Item{
             Text {
                 id: text2
                 y: 10
-                color: "#bfe4d5"
+                color: "#eefff9"
                 text: (parseInt(deep_minutes)/60).toFixed(1)+" hrs"
                 anchors.left: parent.left
                 anchors.leftMargin: 191
@@ -111,7 +111,7 @@ Item{
         y: 5
         width: 101
         height: 60
-        color: "#ffffff"
+        color: "#eefff9"
         text: ((parseInt(light_minutes)+parseInt(deep_minutes)+parseInt(rem_minutes))/60).toFixed(1)
         verticalAlignment: Text.AlignBottom
         font.pixelSize: 60

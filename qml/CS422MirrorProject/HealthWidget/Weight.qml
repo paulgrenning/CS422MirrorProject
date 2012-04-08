@@ -65,23 +65,26 @@ Item {
         font.family: "Futura"
     }
 
+
     Rectangle {
         id: clipGraph
-        x: 70
+        x: 69
         y: 114
-        width: 394
+        width: 403
         height: 182
         color: "#00000000"
         clip: true
         ListView{
             id: grid
-            width: 382
+            width: 403
             height: 182
-            interactive: false
-            boundsBehavior: Flickable.StopAtBounds
-            snapMode: ListView.SnapOneItem
+            keyNavigationWraps: true
+            preferredHighlightEnd: 0
+            preferredHighlightBegin: 0
+            highlightRangeMode: ListView.NoHighlightRange
+            highlightMoveSpeed: 50000
             orientation: ListView.Horizontal
-            x: -7
+            x: 0
             y: 0
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 0
@@ -89,14 +92,32 @@ Item {
             anchors.topMargin: 0
             flickableDirection: Flickable.HorizontalFlick
             model: bargraphmodel
-            delegate: BarGraphDelegate{
+            highlight: Rectangle { color: "transparent"; radius:14 }
+            highlightFollowsCurrentItem: true
+            onCurrentIndexChanged:{
+                if(currentIndex == 0){
+                    decrementCurrentIndex()
+                }
+                console.log(bargraphmodel.get(count-1).run_time)
             }
+            delegate: WeightGraphDelegate{
+                id:bargraphdelegate
+                barImageHeight: parseFloat(run_distance)*10
+                barImageY:{
+                    if(appVar.currentDistanceUnit == "Km") return 140 - parseFloat(run_distance)*10
+                    else return 140 - parseFloat(run_distance)*10
+                }
+                runDate: run_date
+                onBarclicked: {
+                    grid.currentIndex = grid.indexAt(x,y)
+                }
+            }
+
         }
     }
 
     XmlListModel {
         id: bargraphmodel
-
         source: "runplus.xml"
         query: "/plusService/runList/run"
         XmlRole { name: "run_distance"; query: "distance/string()" }
@@ -104,7 +125,6 @@ Item {
         XmlRole { name: "run_calories"; query: "calories/string()" }
         XmlRole { name: "run_date"; query: "startTime/string()" }
     }
-
     Text {
         id: text4
         x: 394
@@ -134,12 +154,14 @@ Item {
 
     Text {
         id: text
-        x: 31
-        y: 114
-        width: 29
+        x: 20
+        y: 101
+        width: 40
         height: 124
         color: "#bfe4d5"
-        text: "200kg 9km 8km 7km 6km 5km 4km 3km 2km 1km"
+        text: { if(appVar.currentWeightUnit == "Kg") return "100 kg 90 kg 80 kg 70 kg 60 kg 50 kg 40 kg 30 kg 20 kg 10 kg"
+              else return "220 lbs 200 lbs 180 lbs 160 lbs 140 lbs 120 lbs 100 lbs 80 lbs 60 lbs 40 lbs 20 lbs"
+        }
         horizontalAlignment: Text.AlignRight
         wrapMode: Text.WordWrap
         font.pixelSize: 10

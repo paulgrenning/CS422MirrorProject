@@ -30,56 +30,15 @@ Item {
         color: "#bfe4d5"
     }
 
-    XmlListModel {
-        id: bargraphmodel
-
-        source: "runplus.xml"
-        query: "/plusService/runList/run"
-        XmlRole { name: "run_distance"; query: "distance/string()" }
-        XmlRole { name: "run_time"; query: "duration/string()" }
-        XmlRole { name: "run_calories"; query: "calories/string()" }
-        XmlRole { name: "run_date"; query: "startTime/string()" }
-    }
-
-    Rectangle {
-        id: clipGraph
-        x: 69
-        y: 114
-        width: 381
-        height: 182
-        color: "#00000000"
-        clip: true
-        ListView{
-            id: grid
-            width: 382
-            height: 182
-            interactive: false
-            boundsBehavior: Flickable.StopAtBounds
-            snapMode: ListView.SnapOneItem
-            orientation: ListView.Horizontal
-            x: 0
-            y: 0
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 0
-            anchors.top: parent.top
-            anchors.topMargin: 0
-            flickableDirection: Flickable.HorizontalFlick
-            model: bargraphmodel
-            highlightRangeMode: ListView.StrictlyEnforceRange
-            preferredHighlightBegin: -48*bargraphmodel.count-44
-            preferredHighlightEnd: -48*bargraphmodel.count-44
-            delegate: BarGraphDelegate{
-            }
-        }
-    }
 
 
     Text {
         id: text2
-        x: 42
+        x: 35
         y: 77
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "tiempo" : "time"
+        text: (appVar.currentLanguage == "Español") ? "tiempo:" : "time:"
+        verticalAlignment: Text.AlignVCenter
         font.pixelSize: 15
         font.bold: true
         font.family: "Futura"
@@ -87,10 +46,11 @@ Item {
 
     Text {
         id: text3
-        x: 211
+        x: 189
         y: 77
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "distancia" : "distance"
+        text: (appVar.currentLanguage == "Español") ? "distancia:" : "distance:"
+        verticalAlignment: Text.AlignVCenter
         font.pixelSize: 15
         font.family: "Futura"
         font.bold: true
@@ -98,10 +58,11 @@ Item {
 
     Text {
         id: text4
-        x: 372
+        x: 350
         y: 77
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "calorías" : "calories"
+        text: (appVar.currentLanguage == "Español") ? "calorías:" : "calories:"
+        verticalAlignment: Text.AlignVCenter
         font.pixelSize: 15
         font.bold: true
         font.family: "Futura"
@@ -113,9 +74,10 @@ Item {
         width: 29
         height: 124
         color: "#bfe4d5"
-        text:
-            if(appVar.currentWeightUnit == "Kg") return "10km 9km 8km 7km 6km 5km 4km 3km 2km 1km";
-            else return "7mi 5.5mi 5mi 4.3mi 3.8mi 3mi 2.5mi 2mi 1.2mi 0.6mi";
+        text:{
+            if(appVar.currentDistanceUnit == "Km") return "10 km 9 km 8 km 7 km 6 km 5 km 4 km 3 km 2 km 1 km";
+            else return "7 mi 5.5 mi 5 mi 4.3 mi 3.8 mi 3 mi 2.5 mi 2 mi 1.2 mi 0.6 mi";
+        }
         horizontalAlignment: Text.AlignRight
         wrapMode: Text.WordWrap
         font.pixelSize: 10
@@ -123,4 +85,129 @@ Item {
         font.family: "Futura"
     }
 
+
+
+    Rectangle {
+        id: clipGraph
+        x: 69
+        y: 114
+        width: 403
+        height: 182
+        color: "#00000000"
+        clip: true
+        ListView{
+            id: grid
+            width: 403
+            height: 182
+            keyNavigationWraps: true
+            preferredHighlightEnd: 0
+            preferredHighlightBegin: 0
+            highlightRangeMode: ListView.NoHighlightRange
+            highlightMoveSpeed: 50000
+            orientation: ListView.Horizontal
+            x: 0
+            y: 0
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            flickableDirection: Flickable.HorizontalFlick
+            model: bargraphmodel
+            highlight: Rectangle { color: "white"; radius:3; opacity:0.2; height: 130; }
+            highlightFollowsCurrentItem: true
+            onCurrentIndexChanged:{
+                if(currentIndex == 0){
+                    decrementCurrentIndex()
+                }
+                console.log(bargraphmodel.get(count-1).run_time)
+            }
+            delegate: BarGraphDelegate{
+                id:bargraphdelegate
+                barImageHeight: parseFloat(run_distance)*10
+                barImageY:{
+                    if(appVar.currentDistanceUnit == "Km") return 140 - parseFloat(run_distance)*10
+                    else return 140 - parseFloat(run_distance)*10
+                }
+                runDate: run_date
+                onBarclicked: {
+                    grid.currentIndex = grid.indexAt(x,y)
+                }
+            }
+
+        }
+    }
+
+    XmlListModel {
+        id: bargraphmodel
+        source: "runplus.xml"
+        query: "/plusService/runList/run"
+        XmlRole { name: "run_distance"; query: "distance/string()" }
+        XmlRole { name: "run_time"; query: "duration/string()" }
+        XmlRole { name: "run_calories"; query: "calories/string()" }
+        XmlRole { name: "run_date"; query: "startTime/string()" }
+    }
+
+
+    Text {
+        id: text5
+        x: 83
+        y: 77
+        width: 109
+        height: 20
+        color: "#eefff9"
+        text:{
+            var timeTotSec = parseInt(bargraphmodel.get(bargraphmodel.count-1).run_time)/1000
+            var timeHrs = parseInt(timeTotSec/3600)
+            var timeMin = ((timeTotSec%3600)/60).toFixed(0)
+            var timeSec = ((timeTotSec%3600)%60).toFixed(0)
+            var returnString = (timeHrs===0)? "":timeHrs+"hrs"
+            returnString = returnString + timeMin + "min"
+            var retunTimeSec = ((appVar.currentLanguage=="Español"))?timeSec+"seg": timeSec+"sec"
+            returnString = returnString + retunTimeSec
+            return returnString
+        }
+        anchors.left: text2.right
+        anchors.leftMargin: 10
+        verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 18
+        font.bold: true
+        font.family: "Futura"
+    }
+
+    Text {
+        id: text6
+        x: 261
+        y: 77
+        width: 83
+        height: 20
+        color: "#eefff9"
+        text:{
+            var distanceKm = parseFloat(bargraphmodel.get(bargraphmodel.count-1).run_distance)
+            return  distanceKm.toFixed(1) + " kms"
+        }
+        anchors.left: text3.right
+        anchors.leftMargin: 12
+        font.pixelSize: 18
+        font.family: "Futura"
+        font.bold: true
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    Text {
+        id: text7
+        y: 77
+        width: 80
+        height: 20
+        color: "#eefff9"
+        text: {
+            var caloriesCal = parseFloat(bargraphmodel.get(bargraphmodel.count-1).run_calories)
+            return caloriesCal.toFixed(0) + " cal"
+        }
+        anchors.left: text4.right
+        anchors.leftMargin: 10
+        font.pixelSize: 18
+        font.bold: true
+        font.family: "Futura"
+        verticalAlignment: Text.AlignVCenter
+    }
 }

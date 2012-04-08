@@ -150,7 +150,7 @@ Item{
         },
         Transition{
             from: "expanded"; to: "simple"
-            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 800}
+            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 300}
         }
     ]
 

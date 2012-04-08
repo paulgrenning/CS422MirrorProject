@@ -10,15 +10,22 @@ Item {
 
     state: "running"
 
-
     Image {
         id: image1
-        x: 300
-        y: 19
+        x: 288
+        y: 14
         width: 220
         height: 50
-        z: 2
+        z: 3
         source: "images/runningPressed.png"
+        Timer{ interval: 1
+               running:true;
+               repeat: true;
+               onTriggered:{
+                   if(opacity==1)opacity=0.99
+                   else opacity=1
+                 }
+        }
 
         MouseArea {
             id: mouseAreaRunning
@@ -63,7 +70,7 @@ Item {
 
             PropertyChanges {
                 target: image1
-                source: (appVar.currentLanguage == "Español") ? "images/runningPressedSP.png" :  "images/runningPressed.png"
+                source: (appVar.currentLanguage === "Español") ? "images/runningPressedSP.png" :  "images/runningPressed.png"
             }
 
         },
@@ -72,7 +79,7 @@ Item {
 
             PropertyChanges {
                 target: image1
-                source: (appVar.currentLanguage == "Español") ? "images/stepsPressedSP.png" : "images/stepsPressed.png"
+                source: (appVar.currentLanguage === "Español") ? "images/stepsPressedSP.png" : "images/stepsPressed.png"
             }
         }
     ]

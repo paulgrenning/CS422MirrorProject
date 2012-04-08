@@ -224,7 +224,7 @@ Item {
         Transition{
             from: "open"; to: "closed"
             NumberAnimation { target: arrowImage; properties: "source"; easing.type: Easing.Linear; duration: 1}
-                NumberAnimation { targets: [widget_locker, widgetTextImage]; properties: "width, x"; easing.type: Easing.InCubic; duration: 800}
+            NumberAnimation { targets: [widget_locker, widgetTextImage]; properties: "width, x"; easing.type: Easing.InCubic; duration: 800}
             NumberAnimation { targets: [healthIcon,musicIcon,socialIcon,emailIcon,newsIcon]; properties: "opacity,x"; easing.type: Easing.InCubic; duration: 800}
 
 

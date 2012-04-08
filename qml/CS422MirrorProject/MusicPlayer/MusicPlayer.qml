@@ -137,7 +137,7 @@ Item {
         z: 1
         flickableDirection: Flickable.VerticalFlick
         model: ituneslibrarymodel
-        highlight: Rectangle { color: "lightsteelblue"; radius:14 }
+        highlight: Rectangle { color: "white"; opacity:0.3; radius:10 }
         highlightFollowsCurrentItem: true
         onCurrentIndexChanged:{
             if(currentItem==null){

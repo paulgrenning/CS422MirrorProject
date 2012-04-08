@@ -22,7 +22,7 @@ Item{
 
         //console.log(year)
         //console.log(day)
-        text1.text = days[date.getDay()];
+        //text1.text = days[date.getDay()];
         text2.text = day
         text3.text = months[parseInt(month-1)]
         //console.log(date.getDay())
@@ -44,27 +44,12 @@ Item{
         source: "images/graphBarBorderImage.png"
         PropertyAnimation {id: animation; target: barimage; property: "scale"; from: 0; to: 1; duration: 1000}
     }
-    Text {
-        Component.onCompleted: animationtext.start()
-        id: text1
-        x: -29
-        y: 129
-        color: "#bfe4d5"
-        text: run_date
-        anchors.horizontalCenterOffset: 0
-        anchors.horizontalCenter: parent.horizontalCenter
-        font.family: "Futura"
-        font.bold: true
-        horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 16
-        opacity:1
-        PropertyAnimation {id: animationtext; target: text1; property: "opacity"; from: 0; to: 1; duration: 200}
-    }
+
     Text {
         Component.onCompleted: animationtext2.start()
         id: text2
         x: 14
-        y: 150
+        y: 143
         width: 23
         height: 14
         color: "#bfe4d5"
@@ -77,7 +62,7 @@ Item{
         Component.onCompleted: animationtext3.start()
         id: text3
         x: 14
-        y: 166
+        y: 159
         width: 23
         height: 14
         color: "#bfe4d5"
