@@ -16,8 +16,8 @@ Item{
         var year = today.slice(0,4);
         var month = today.slice(5,7);
         var day = today.slice(8,10);
-        var date = new Date(parseInt(year),parseInt(month),parseInt(day))
-        var days = ['S','M','T','W','T','F','S']
+        var date = new Date(parseInt(year),parseInt(month),parseInt(day)-1)
+        var days = ['S','S','M','T','W','T','F']
         var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 
         //console.log(year)
@@ -47,8 +47,8 @@ Item{
     Text {
         Component.onCompleted: animationtext.start()
         id: text1
-        x: -29
-        y: 129
+        x: -2
+        y: 132
         color: "#bfe4d5"
         text: run_date
         anchors.horizontalCenterOffset: 0
@@ -56,7 +56,7 @@ Item{
         font.family: "Futura"
         font.bold: true
         horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 16
+        font.pixelSize: 10
         opacity:1
         PropertyAnimation {id: animationtext; target: text1; property: "opacity"; from: 0; to: 1; duration: 200}
     }
@@ -64,29 +64,28 @@ Item{
         Component.onCompleted: animationtext2.start()
         id: text2
         x: 14
-        y: 150
+        y: 145
         width: 23
         height: 14
         color: "#bfe4d5"
         text: qsTr("text")
         horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 12
+        font.pixelSize: 10
         PropertyAnimation {id: animationtext2; target: text2; property: "opacity"; from: 0; to: 1; duration: 200}
     }
     Text {
         Component.onCompleted: animationtext3.start()
         id: text3
         x: 14
-        y: 166
+        y: 159
         width: 23
         height: 14
         color: "#bfe4d5"
         text: qsTr("text")
         horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: 12
+        font.pixelSize: 10
         PropertyAnimation { id: animationtext3; target: text3; property: "opacity"; to: 1; from: 0; duration: 200 }
     }
-
     MouseArea {
         id: mouse_area1
         x: 0

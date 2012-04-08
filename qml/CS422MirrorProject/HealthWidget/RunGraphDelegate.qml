@@ -3,26 +3,26 @@ import QtQuick 1.1
 
 Item{
     id: barGraphDelegate
-    signal weightbarclicked()
+    signal barclicked()
     property alias barImageHeight: barimage.height
     property alias barImageY: barimage.y
-    property variant weightDate
+    property variant runDate
 
     width:50
     height:180
 
     function getTodaysText(){
-        var today = weightDate
+        var today = runDate
         var year = today.slice(0,4);
         var month = today.slice(5,7);
         var day = today.slice(8,10);
-        var date = new Date(parseInt(year),parseInt(month),parseInt(day))
-        var days = ['S','M','T','W','T','F','S']
+        var date = new Date(parseInt(year),parseInt(month),parseInt(day)-1)
+        var days = ['S','S','M','T','W','T','F']
         var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 
         //console.log(year)
         //console.log(day)
-        //text1.text = days[date.getDay()];
+        text1.text = days[date.getDay()]
         text2.text = day
         text3.text = months[parseInt(month-1)]
         //console.log(date.getDay())
@@ -44,7 +44,6 @@ Item{
         source: "images/graphBarBorderImage.png"
         PropertyAnimation {id: animation; target: barimage; property: "scale"; from: 0; to: 1; duration: 1000}
     }
-
     Text {
         Component.onCompleted: animationtext.start()
         id: text1

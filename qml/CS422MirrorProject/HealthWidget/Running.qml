@@ -8,6 +8,8 @@ Item {
     width: 520
     height: 310
 
+    Component.onCompleted: bargraphmodel.reload()
+
     function getMonth(){
         var date = new Date();
         var months = ['January','February','March','April','May','June','July','August','September','October','November','December']
@@ -26,7 +28,7 @@ Item {
         text: (appVar.currentLanguage == "Español") ? "carrera de hoy" : "today's run"
         font.bold: true
         font.family: "Futura"
-        font.pixelSize: 30
+        font.pixelSize: 25
         color: "#bfe4d5"
     }
 
@@ -34,7 +36,7 @@ Item {
 
     Text {
         id: text2
-        x: 35
+        x: 25
         y: 77
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "tiempo:" : "time:"
@@ -46,7 +48,7 @@ Item {
 
     Text {
         id: text3
-        x: 189
+        x: 201
         y: 77
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "distancia:" : "distance:"
@@ -58,7 +60,7 @@ Item {
 
     Text {
         id: text4
-        x: 350
+        x: 355
         y: 77
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "calorías:" : "calories:"
@@ -69,8 +71,8 @@ Item {
     }
 
     Text {
-        x: 31
-        y: 114
+        x: 30
+        y: 128
         width: 29
         height: 124
         color: "#bfe4d5"
@@ -90,19 +92,16 @@ Item {
     Rectangle {
         id: clipGraph
         x: 69
-        y: 114
+        y: 128
         width: 403
-        height: 182
+        height: 169
         color: "#00000000"
         clip: true
         ListView{
             id: grid
             width: 403
-            height: 182
+            height: 169
             keyNavigationWraps: true
-            preferredHighlightEnd: 0
-            preferredHighlightBegin: 0
-            highlightRangeMode: ListView.NoHighlightRange
             highlightMoveSpeed: 50000
             orientation: ListView.Horizontal
             x: 0
@@ -121,12 +120,11 @@ Item {
                 }
                 console.log(bargraphmodel.get(count-1).run_time)
             }
-            delegate: BarGraphDelegate{
+            delegate: RunGraphDelegate{
                 id:bargraphdelegate
-                barImageHeight: parseFloat(run_distance)*10
+                barImageHeight: parseFloat(run_distance)*14
                 barImageY:{
-                    if(appVar.currentDistanceUnit == "Km") return 140 - parseFloat(run_distance)*10
-                    else return 140 - parseFloat(run_distance)*10
+                    return 140 - parseFloat(run_distance)*14
                 }
                 runDate: run_date
                 onBarclicked: {
@@ -139,7 +137,8 @@ Item {
 
     XmlListModel {
         id: bargraphmodel
-        source: "runplus.xml"
+        //"runplus.xml"
+        source: "http://nikeplus.nike.com/nikeplus/v1/services/widget/get_public_run_list.jsp?userID=340599345"
         query: "/plusService/runList/run"
         XmlRole { name: "run_distance"; query: "distance/string()" }
         XmlRole { name: "run_time"; query: "duration/string()" }
@@ -183,10 +182,10 @@ Item {
         color: "#eefff9"
         text:{
             var distanceKm = parseFloat(bargraphmodel.get(bargraphmodel.count-1).run_distance)
-            return  distanceKm.toFixed(1) + " kms"
+            return  distanceKm.toFixed(1) + " km"
         }
         anchors.left: text3.right
-        anchors.leftMargin: 12
+        anchors.leftMargin: 10
         font.pixelSize: 18
         font.family: "Futura"
         font.bold: true

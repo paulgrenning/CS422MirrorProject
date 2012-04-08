@@ -1,6 +1,160 @@
 <plusService>
 <status>success</status>
 <runList endIndex="-1" startIndex="0">
+<run id="230647628" workoutType="standard">
+<startTime>2010-09-25T08:54:54-05:00</startTime>
+<distance>1.046024</distance>
+<duration>367508</duration>
+<syncTime>2010-09-25T15:39:46+00:00</syncTime>
+<calories>76.462</calories>
+<name/>
+<description>
+<![CDATA[ Primer kilometro de entrenamiento WE RUN QUITO 10k ]]>
+</description>
+<howFelt>2</howFelt>
+<weather>1</weather>
+<terrain>4</terrain>
+<intensity/>
+<gpxId>2fc4b585-34db-42ac-94c2-585462cc4678</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="297756492" workoutType="standard">
+<startTime>2010-09-25T09:09:03-05:00</startTime>
+<distance>1.020836</distance>
+<duration>321650</duration>
+<syncTime>2010-09-25T15:39:51+00:00</syncTime>
+<calories>75.932</calories>
+<name/>
+<description/>
+<howFelt>2</howFelt>
+<weather>1</weather>
+<terrain>4</terrain>
+<intensity/>
+<gpxId>e5fa8b88-6fc9-4f0a-a654-63450050faac</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="364865356" workoutType="standard">
+<startTime>2010-09-25T09:22:05-05:00</startTime>
+<distance>1.006459</distance>
+<duration>348626</duration>
+<syncTime>2010-09-25T15:39:54+00:00</syncTime>
+<calories>74.158</calories>
+<name/>
+<description/>
+<howFelt>2</howFelt>
+<weather>1</weather>
+<terrain>4</terrain>
+<intensity/>
+<gpxId>c16f2a19-47ef-4ab6-87da-d8fdd73b5d75</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="968709103" workoutType="standard">
+<startTime>2010-10-02T07:51:07-05:00</startTime>
+<distance>0.743776</distance>
+<duration>310279</duration>
+<syncTime>2010-10-02T12:56:03+00:00</syncTime>
+<calories>52.949</calories>
+<name/>
+<description/>
+<howFelt>1</howFelt>
+<weather>1</weather>
+<terrain>4</terrain>
+<intensity/>
+<gpxId>f70f4ded-bc9f-425a-946e-3bb280711cf9</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="431838154" workoutType="standard">
+<startTime>2010-10-02T08:22:55-05:00</startTime>
+<distance>1.973394</distance>
+<duration>726650</duration>
+<syncTime>2010-10-02T13:35:28+00:00</syncTime>
+<calories>143.645</calories>
+<name/>
+<description/>
+<howFelt>1</howFelt>
+<weather>1</weather>
+<terrain>4</terrain>
+<intensity/>
+<gpxId>ef92e059-a9a3-4651-b15c-7c00615d8507</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="901600193" workoutType="standard">
+<startTime>2010-10-02T08:39:11-05:00</startTime>
+<distance>2.012217</distance>
+<duration>771336</duration>
+<syncTime>2010-10-02T13:52:12+00:00</syncTime>
+<calories>143.625</calories>
+<name/>
+<description/>
+<howFelt>1</howFelt>
+<weather>1</weather>
+<terrain>4</terrain>
+<intensity/>
+<gpxId>0eff871e-0028-4a06-83c0-20ad7c581794</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="968511167" workoutType="standard">
+<startTime>2010-10-09T17:55:25-05:00</startTime>
+<distance>3.069695</distance>
+<duration>1131457</duration>
+<syncTime>2010-10-10T00:13:45+00:00</syncTime>
+<calories>224.528</calories>
+<name/>
+<description/>
+<howFelt>1</howFelt>
+<weather>2</weather>
+<terrain>4</terrain>
+<intensity/>
+<gpxId>98b8fc76-5dc2-4c5d-9515-c840cc457cf4</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="968379896" workoutType="standard">
+<startTime>2010-10-16T07:51:53-05:00</startTime>
+<distance>0.584644</distance>
+<duration>238753</duration>
+<syncTime>2010-10-16T12:55:22+00:00</syncTime>
+<calories>42.913</calories>
+<name/>
+<description/>
+<howFelt>0</howFelt>
+<weather>0</weather>
+<terrain>0</terrain>
+<intensity/>
+<gpxId>7d245853-e4f5-4418-b984-112beed7a75a</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="163180510" workoutType="standard">
+<startTime>2010-10-16T07:56:22-05:00</startTime>
+<distance>3.087353</distance>
+<duration>1096007</duration>
+<syncTime>2010-10-16T15:59:19+00:00</syncTime>
+<calories>224.967</calories>
+<name/>
+<description/>
+<howFelt>1</howFelt>
+<weather>1</weather>
+<terrain>4</terrain>
+<intensity/>
+<gpxId>4981f378-2ffa-4cb6-969c-1736c4bac4d2</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="1840771045" workoutType="standard">
+<startTime>2010-10-23T17:44:18-05:00</startTime>
+<distance>9.852119</distance>
+<duration>3786704</duration>
+<syncTime>2010-10-24T01:30:20+00:00</syncTime>
+<calories>708.964</calories>
+<name/>
+<description>
+<![CDATA[ WE RUN QUITO 10K ]]>
+</description>
+<howFelt>2</howFelt>
+<weather>2</weather>
+<terrain>1</terrain>
+<intensity/>
+<gpxId>7ab68328-a119-4098-bc6f-a582b30b1989</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
 <run id="831553186" workoutType="standard">
 <startTime>2011-03-02T05:38:06-05:00</startTime>
 <distance>3.56212</distance>
@@ -3360,7 +3514,9 @@ Conociendo el Chaquiï¿½an. Primera semana cumplida con ï¿½xito.
 <syncTime>2012-03-28T11:12:02+00:00</syncTime>
 <calories>522.228027</calories>
 <name/>
-<description>...</description>
+<description>
+<![CDATA[ La Carolina ]]>
+</description>
 <howFelt>1</howFelt>
 <weather>2</weather>
 <terrain>1</terrain>
@@ -3368,6 +3524,78 @@ Conociendo el Chaquiï¿½an. Primera semana cumplida con ï¿½xito.
 <gpxId>0d8328eb-4c11-4920-8d81-5e4a4772b58e</gpxId>
 <equipmentType>iphone</equipmentType>
 </run>
+<run id="623122847" workoutType="standard">
+<startTime>2012-04-01T06:43:39-05:00</startTime>
+<distance>18.400982</distance>
+<duration>5456985</duration>
+<syncTime>2012-04-01T13:16:13+00:00</syncTime>
+<calories>1152.689941</calories>
+<name/>
+<description>
+<![CDATA[ Chaquiñan 18k ]]>
+</description>
+<howFelt>1</howFelt>
+<weather>2</weather>
+<terrain>2</terrain>
+<intensity/>
+<gpxId>120141d8-b4fe-4276-b24f-6f4138fa41e3</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="153436729" workoutType="standard">
+<startTime>2012-04-05T05:38:46-05:00</startTime>
+<distance>8.011545</distance>
+<duration>2462318</duration>
+<syncTime>2012-04-05T11:32:11+00:00</syncTime>
+<calories>500.479004</calories>
+<name/>
+<description/>
+<howFelt>1</howFelt>
+<weather>3</weather>
+<terrain>4</terrain>
+<intensity/>
+<gpxId>2e282c0b-3b2d-4ddc-be83-a610eafb1ab2</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="1025646980" workoutType="standard">
+<startTime>2012-04-06T06:44:24-05:00</startTime>
+<distance>8.494764</distance>
+<duration>2712668</duration>
+<syncTime>2012-04-06T12:29:57+00:00</syncTime>
+<calories>526.932007</calories>
+<name/>
+<description>
+<![CDATA[ Carolina 8.5k ]]>
+</description>
+<howFelt>1</howFelt>
+<weather>3</weather>
+<terrain>1</terrain>
+<intensity/>
+<gpxId>ea216d82-2d3c-4350-b997-c2d4af3ec0ef</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
+<run id="421677205" workoutType="standard">
+<startTime>2012-04-08T06:49:24-05:00</startTime>
+<distance>10.173322</distance>
+<duration>2850706</duration>
+<syncTime>2012-04-08T12:49:54+00:00</syncTime>
+<calories>641.268982</calories>
+<name/>
+<description>
+<![CDATA[ UTE 10k ]]>
+</description>
+<howFelt>2</howFelt>
+<weather>2</weather>
+<terrain>1</terrain>
+<intensity/>
+<gpxId>c547bfca-8f6b-4026-9c42-9a56f0cd20e3</gpxId>
+<equipmentType>iphone</equipmentType>
+</run>
 </runList>
-<runListSummary>...</runListSummary>
+<runListSummary>
+<runs>229</runs>
+<distance>1312.680354</distance>
+<runDuration>488858494</runDuration>
+<calories>86286.78</calories>
+<duration>488858494</duration>
+</runListSummary>
 </plusService>

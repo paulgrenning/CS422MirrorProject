@@ -1,0 +1,136 @@
+<sportsData type="pedometer"><vers>10</vers>
+<runSummary>
+<time>2012-03-26</time>
+<distance unit="km">3.1</distance>
+<calories>166.75</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>3335</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-03-27</time>
+<distance unit="km">3.1</distance>
+<calories>166.65</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>3333</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-03-28</time>
+<distance unit="km">3.1</distance>
+<calories>165.8</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>3316</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-03-29</time>
+<distance unit="km">3.1</distance>
+<calories>166.35</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>3327</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-03-30</time>
+<distance unit="km">3.1</distance>
+<calories>165.5</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>3315</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-03-31</time>
+<distance unit="km">3.0</distance>
+<calories>165</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>3310</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-04-01</time>
+<distance unit="km">3.1</distance>
+<calories>165</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>3300</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-04-02</time>
+<distance unit="km">3.2</distance>
+<calories>175</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>3500</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-04-03</time>
+<distance unit="km">1.9</distance>
+<calories>105</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>2100</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-04-04</time>
+<distance unit="km">2.0</distance>
+<calories>110</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>2200</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-04-05</time>
+<distance unit="km">1.2</distance>
+<calories>65</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>1300</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-04-06</time>
+<distance unit="km">3.25</distance>
+<calories>175</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>3500</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-04-07</time>
+<distance unit="km">3.72</distance>
+<calories>200</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>4000</walkEnd>
+</stepCounts>
+</runSummary>
+<runSummary>
+<time>2012-04-08</time>
+<distance unit="km">0.9</distance>
+<calories>50</calories>
+<stepCounts>
+<walkBegin>0</walkBegin>
+<walkEnd>1000</walkEnd>
+</stepCounts>
+</runSummary>
+
+<ipodInfo>
+<model>MC688LL</model>
+<softwareVersion>1.2 (36B10147)</softwareVersion>
+<serialNumber>C7RDM306DDVX</serialNumber>
+</ipodInfo>
+
+
+</sportsData>

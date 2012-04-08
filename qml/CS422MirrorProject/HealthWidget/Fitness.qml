@@ -48,7 +48,6 @@ Item {
             height: 50
             opacity: 1
             onClicked: {
-                console.log("step")
                 fitnessItem.state = "steps"
             }
         }
@@ -76,6 +75,11 @@ Item {
         },
         State {
             name: "steps"
+
+            PropertyChanges {
+                target: loader
+                source: "Steps.qml"
+            }
 
             PropertyChanges {
                 target: image1
