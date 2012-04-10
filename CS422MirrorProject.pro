@@ -23,6 +23,13 @@ symbian:TARGET.CAPABILITY += NetworkServices
 #CONFIG += mobility
 #MOBILITY += multimedia
 
+##UNCOMMENT TO USE OPENCV
+#OPENCV:
+# LIBS += -L/usr/local/lib -lopencv_calib3d -lopencv_contrib -lopencv_features2d -lopencv_flann -lopencv_gpu -lopencv_imgproc -lopencv_legacy -lopencv_ml -lopencv_objdetect -lopencv_video -lopencv_highgui -lopencv_core
+#INCLUDEPATH += /usr/local/include
+##UNCOMMENT TO USE OPENCV
+
+
 # Speed up launching on MeeGo/Harmattan when using applauncherd daemon
 # CONFIG += qdeclarative-boostable
 
@@ -30,7 +37,10 @@ symbian:TARGET.CAPABILITY += NetworkServices
 # CONFIG += qt-components
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+ ##UNCOMMENT TO USE OPENCV
+ #cameraobject.cpp
+ ##UNCOMMENT TO USE OPENCV
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -38,3 +48,9 @@ qtcAddDeployment()
 
 OTHER_FILES += \
     readme.txt
+
+HEADERS += \
+    ##UNCOMMENT TO USE OPENCV
+    #cameraopencv.h \
+    #cameraobject.h
+    ##UNCOMMENT TO USE OPENCV

@@ -1,6 +1,5 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
-import QtWebKit 1.0
 import "./Clock"
 import "./WeatherWidget"
 import "./WidgetBar"
@@ -9,17 +8,18 @@ import "./HealthWidget"
 import "./SocialWidget"
 import "./ConfigSettings"
 import "./AppVariables"
+//OPENCV: import opencvqml 1.0
 
 
 Rectangle {
     width: 1280
     height: 960
-    color: "#dbdada"
+    color: "#00000000"
     id: rootElement
 
     property real displayOpacity : 1.0-configsettings.generalOpacity
 
-//    CameraOpenCv{
+//OPENCV    CameraOpenCv{
 //        id:cambackground
 //        x:0
 //        y:0
