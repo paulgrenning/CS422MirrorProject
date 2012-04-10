@@ -24,8 +24,7 @@ symbian:TARGET.CAPABILITY += NetworkServices
 #MOBILITY += multimedia
 
 ##UNCOMMENT TO USE OPENCV
-#OPENCV:
-# LIBS += -L/usr/local/lib -lopencv_calib3d -lopencv_contrib -lopencv_features2d -lopencv_flann -lopencv_gpu -lopencv_imgproc -lopencv_legacy -lopencv_ml -lopencv_objdetect -lopencv_video -lopencv_highgui -lopencv_core
+#LIBS += -L/usr/local/lib -lopencv_calib3d -lopencv_contrib -lopencv_features2d -lopencv_flann -lopencv_gpu -lopencv_imgproc -lopencv_legacy -lopencv_ml -lopencv_objdetect -lopencv_video -lopencv_highgui -lopencv_core
 #INCLUDEPATH += /usr/local/include
 ##UNCOMMENT TO USE OPENCV
 

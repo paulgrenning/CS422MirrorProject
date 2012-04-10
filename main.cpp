@@ -1,11 +1,11 @@
 #include <QtGui/QApplication>
 #include "qmlapplicationviewer.h"
-//OPENCV:#include "cameraopencv.h"
+//#include "cameraopencv.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QScopedPointer<QApplication> app(createApplication(argc, argv));
-    //OPENCV:qmlRegisterType<CameraOpenCv>("opencvqml", 1, 0, "CameraOpenCv");
+    //qmlRegisterType<CameraOpenCv>("opencvqml", 1, 0, "CameraOpenCv");
     QmlApplicationViewer viewer;
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/CS422MirrorProject/main.qml"));
