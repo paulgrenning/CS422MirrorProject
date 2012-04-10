@@ -8,7 +8,7 @@ import "./HealthWidget"
 import "./SocialWidget"
 import "./ConfigSettings"
 import "./AppVariables"
-//OPENCV: import opencvqml 1.0
+//import opencvqml 1.0
 
 
 Rectangle {
@@ -19,7 +19,7 @@ Rectangle {
 
     property real displayOpacity : 1.0-configsettings.generalOpacity
 
-//OPENCV    CameraOpenCv{
+//    CameraOpenCv{
 //        id:cambackground
 //        x:0
 //        y:0
