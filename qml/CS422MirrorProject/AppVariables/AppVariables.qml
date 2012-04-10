@@ -26,5 +26,5 @@ QtObject {
     property string currentDistanceUnit: "K"
     property string currentWeightUnit:"Kg"
 
-
+    property bool renderIntroFlow: false
 }

@@ -6,8 +6,11 @@ import "./WidgetBar"
 import "./MusicPlayer"
 import "./HealthWidget"
 import "./SocialWidget"
+import "./CalendarWidget"
 import "./ConfigSettings"
 import "./AppVariables"
+import "./UtilityElements"
+import "./IntroFlow"
 
 
 Rectangle {
@@ -17,6 +20,12 @@ Rectangle {
     id: rootElement
 
     property real displayOpacity : 1.0-configsettings.generalOpacity
+
+    Component.onCompleted: handleNewUser();
+
+    function handleNewUser() {
+        if(appVar.renderIntroFlow) ;
+    }
 
     //create object to hold all important variables for the application
     AppVariables{
@@ -108,6 +117,11 @@ Rectangle {
         height: 496
         opacity: 0
     }
+
+    CalendarWidget {
+         id: calendarWidget
+    }
+
     PropertyAnimation {id:musicanimopen; target: musicplayer; property: "opacity"; to: (musicplayer.opacity == 0) ? displayOpacity : 0; duration: 500}
     PropertyAnimation {id:healthanimopen; target: healthwidget; property: "opacity"; to: (healthwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
     PropertyAnimation {id:socialanimopen; target: socialwidget; property: "opacity"; to: (socialwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
