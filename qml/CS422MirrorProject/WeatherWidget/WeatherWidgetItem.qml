@@ -57,13 +57,13 @@ Item{
                 return "images/slightdrizzle.png";
             case "Mayormente soleado":
                 return "images/partlycloudy.png";
-            case "Mostly Cloudy":
+            case "Mayormente nublado":
                 return "images/partlycloudy.png";
-            case "Partly Cloudy":
+            case "Parcialmente nublado":
                 return "images/partlycloudy.png";
             case "Tormenta eléctrica":
                 return "images/thunderstorm.png";
-            case "Clear":
+            case "Despejado":
                 return "images/sunny.png";
             default: return "images/sunny.png";
             }

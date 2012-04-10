@@ -137,8 +137,8 @@ Item {
 
     XmlListModel {
         id: bargraphmodel
-        //"runplus.xml"
-        source: "http://nikeplus.nike.com/nikeplus/v1/services/widget/get_public_run_list.jsp?userID=340599345"
+        source: "runplus.xml"
+        //source: "http://nikeplus.nike.com/nikeplus/v1/services/widget/get_public_run_list.jsp?userID=340599345"
         query: "/plusService/runList/run"
         XmlRole { name: "run_distance"; query: "distance/string()" }
         XmlRole { name: "run_time"; query: "duration/string()" }

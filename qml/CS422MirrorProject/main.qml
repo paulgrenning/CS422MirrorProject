@@ -1,5 +1,6 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import QtWebKit 1.0
 import "./Clock"
 import "./WeatherWidget"
 import "./WidgetBar"
@@ -17,6 +18,13 @@ Rectangle {
     id: rootElement
 
     property real displayOpacity : 1.0-configsettings.generalOpacity
+
+//    CameraOpenCv{
+//        id:cambackground
+//        x:0
+//        y:0
+//        z:-1
+//    }
 
     //create object to hold all important variables for the application
     AppVariables{
