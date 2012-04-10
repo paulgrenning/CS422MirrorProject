@@ -7,6 +7,7 @@ Item {
     signal musicClicked();
     signal healthClicked();
     signal socialClicked();
+    signal newsClicked();
 
     clip: true
 
@@ -91,6 +92,7 @@ Item {
         MouseArea {
             id: newsMouseArea
             anchors.fill: parent
+            onClicked: newsClicked()
         }
         source:  (appVar.currentLanguage == "Español") ? "images/newsIconSP.png" : "images/newsIcon.png"
     }

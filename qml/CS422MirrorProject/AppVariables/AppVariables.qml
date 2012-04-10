@@ -23,8 +23,12 @@ import QtQuick 1.1
 QtObject {
     property string currentLanguage:"Español"
     property string currentDegreeSystem:"Celsius"
+<<<<<<< HEAD
     property string currentDistanceUnit: "K"
     property string currentWeightUnit:"Kg"
 
 
+=======
+    property string userInput: ""
+>>>>>>> Includes keyboard and News feed (has bug)
 }
