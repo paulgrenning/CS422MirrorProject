@@ -1,6 +1,6 @@
 import QtQuick 1.0
 import Qt 4.7
-import QtMultimediaKit 1.1
+//import QtMultimediaKit 1.1
 
 //code used as reference: http://doc.qt.nokia.com/4.7-snapshot/demos-declarative-flickr-common-slider-qml.html
 //modifications made to make it a vertical slider and used our own images
@@ -10,8 +10,6 @@ Item {
     id:music
     width:310
     height:496
-
-    state: "itunes"
 
     MouseArea {
          anchors.fill: parent
@@ -27,7 +25,6 @@ Item {
         id: musicbackground
         anchors.fill: parent
         source: (appVar.currentLanguage == "Español") ? "images/musicwidgetbackgroundSP.png" : "images/musicwidgetbackground.png"
-
 
         VolumeSliderVertical {
             id: volumeslider
@@ -49,14 +46,15 @@ Item {
             onItunesClicked: {
                 songlist.model = ituneslibrarymodel
                 songlist.currentIndex = 0
+                if(!playMusic.playing)playMusic.source= ituneslibrarymodel.get(songlist.currentIndex).song_file
             }
             onRadioClicked: {
                 songlist.model = somalibrarymodel
                 songlist.model.reload()
                 songlist.currentIndex = 0
+                if(!playMusic.playing)playMusic.source= somalibrarymodel.get(songlist.currentIndex).song_file
             }
         }
-
 
         Image {
             id: image2
@@ -87,23 +85,79 @@ Item {
             onReleased: {
                 if(playMusic.playing){
                     playMusic.stop();
+                    //playMusic.source = songlist.model.get(songlist.currentIndex).song_file
                 }
                 else
                 {
+                    playMusic.source = songlist.model.get(songlist.currentIndex).song_file
                     playMusic.play();
+                    currentSongPlaying.text = songlist.currentItem.currName + " - " + songlist.currentItem.currGenre
                     playMusic.volume = 1.0;
                 }
             }
         }
     }
 
-
-
-
-   Audio {
+   /*Audio {
         id: playMusic
         source: "music/ABandaMaisBonitaDaCidade/11-11 Oração.mp3"
-    }
+    }*/
+
+   ListView{
+       id: songlist
+       x: 18
+       y: 228
+       width: 275
+       height: 250
+       clip: true
+       z: 1
+       flickableDirection: Flickable.VerticalFlick
+       model: ituneslibrarymodel
+       highlight: Rectangle { color: "white"; opacity:0.3; radius:10 }
+       highlightFollowsCurrentItem: true
+       onCurrentIndexChanged:{
+           if(currentItem==null){
+               if(!playMusic.playing){
+                   playMusic.source = songlist.model.get(currentIndex).song_file
+                   currentSongPlaying.text = currentItem.currName + " - " + currentItem.currGenre
+               }
+               currentIndex=0
+           }
+           else{
+                   playMusic.source = songlist.model.get(currentIndex).song_file
+                   currentSongPlaying.text = currentItem.currName + " - " + currentItem.currGenre
+           }
+
+           //console.log("new index"+songlist.currentIndex + currentItem.currName)
+       }
+       delegate:
+
+           SongDelegate{
+               id: songItem
+           property variant currName: songName
+           property variant currImage: songImage
+           property variant currFile: songFile
+           property variant currGenre: songGenre
+
+           songName:song_name
+           songFile:song_file
+           songGenre: song_genre
+           songImage: {if (songlist.model === somalibrarymodel)  return song_image;
+               else return "music/"+ song_artist + "/" + song_artist+".jpg"}
+
+           state: {
+               if(songlist.model=== somalibrarymodel) return "radio"
+               else return "itunes"
+           }
+           onSongClicked:{
+               playMusic.stop()
+               playMusic.source = song_file
+               playMusic.play()
+               songlist.currentIndex = songlist.indexAt(x,y)
+               currentSongPlaying.x = 50
+           }
+       }
+   }
 
     XmlListModel {
         id: ituneslibrarymodel
@@ -127,56 +181,6 @@ Item {
         XmlRole { name: "song_image"; query: "image/string()"}
     }
 
-    ListView{
-        id: songlist
-        x: 18
-        y: 228
-        width: 275
-        height: 250
-        clip: true
-        z: 1
-        flickableDirection: Flickable.VerticalFlick
-        model: ituneslibrarymodel
-        highlight: Rectangle { color: "white"; opacity:0.3; radius:10 }
-        highlightFollowsCurrentItem: true
-        onCurrentIndexChanged:{
-            if(currentItem==null){
-                currentIndex=0
-            }
-            else{
-                currentSongPlaying.text = currentItem.currName + " - " + currentItem.currGenre
-            }
-
-            //console.log("new index"+songlist.currentIndex + currentItem.currName)
-        }
-        delegate:
-
-            SongDelegate{
-                id: songItem
-            property variant currName: songName
-            property variant currImage: songImage
-            property variant currFile: songFile
-            property variant currGenre: songGenre
-
-            songName:song_name
-            songFile:song_file
-            songGenre: song_genre
-            songImage: {if (songlist.model === somalibrarymodel)  return song_image;
-                else return "music/"+ song_artist + "/" + song_artist+".jpg"}
-
-            state: {
-                if(songlist.model=== somalibrarymodel) return "radio"
-                else return "itunes"
-            }
-            onSongClicked:{
-                playMusic.stop()
-                playMusic.source = song_file
-                playMusic.play()
-                songlist.currentIndex = songlist.indexAt(x,y)
-                currentSongPlaying.x = 50
-            }
-        }
-    }
 
     Rectangle {
         id: rectangle1

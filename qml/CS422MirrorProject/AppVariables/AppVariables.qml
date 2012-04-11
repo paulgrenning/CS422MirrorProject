@@ -27,4 +27,6 @@ QtObject {
     property string currentWeightUnit:"Kg"
 
     property bool renderIntroFlow: false
+
+    property string userInput: ""
 }

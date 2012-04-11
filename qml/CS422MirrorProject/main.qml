@@ -11,12 +11,15 @@ import "./ConfigSettings"
 import "./AppVariables"
 import "./UtilityElements"
 import "./IntroFlow"
+import "./Keyboard"
+import "./News"
 
+//import opencvqml 1.0
 
 Rectangle {
     width: 1280
     height: 960
-    color: "#dbdada"
+    color: "#00000000"
     id: rootElement
 
     property real displayOpacity : 1.0-configsettings.generalOpacity
@@ -26,6 +29,13 @@ Rectangle {
     function handleNewUser() {
         if(appVar.renderIntroFlow) ;
     }
+
+//    CameraOpenCv{
+//        id:cambackground
+//        x:0
+//        y:0
+//        z:-1
+//    }
 
     //create object to hold all important variables for the application
     AppVariables{
@@ -77,17 +87,27 @@ Rectangle {
             musicanimopen.start()
             healthanimclose.start()
             socialanimclose.start()
+            newsanimclose.start()
         }
         onHealthClicked:{
             musicanimclose.start()
             healthanimopen.start()
             socialanimclose.start()
             healthwidget.barstate = healthwidget.laststate
+            newsanimclose.start()
+            // Includes keyboard and News feed (has bug)
         }
         onSocialClicked:{
             musicanimclose.start()
             healthanimclose.start()
             socialanimopen.start()
+            newsanimclose.start()
+        }
+        onNewsClicked: {
+            musicanimclose.start()
+            healthanimclose.start()
+            socialanimclose.start()
+            newsanimopen.start()
         }
     }
 
@@ -122,12 +142,26 @@ Rectangle {
          id: calendarWidget
     }
 
+    KeyBoard {
+        x: 116
+        y: 144
+        inUse: true
+    }
+
+    News {
+        id: newswidget
+        x: 964
+        y: 153
+        opacity: 0
+    }
+
     PropertyAnimation {id:musicanimopen; target: musicplayer; property: "opacity"; to: (musicplayer.opacity == 0) ? displayOpacity : 0; duration: 500}
     PropertyAnimation {id:healthanimopen; target: healthwidget; property: "opacity"; to: (healthwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
     PropertyAnimation {id:socialanimopen; target: socialwidget; property: "opacity"; to: (socialwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
+    PropertyAnimation {id:newsanimopen; target: newswidget; property: "opacity"; to: (newswidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
 
     PropertyAnimation {id:musicanimclose; target: musicplayer; property: "opacity"; to: 0; duration: 500}
     PropertyAnimation {id:healthanimclose; target: healthwidget; property: "opacity"; to: 0; duration: 500 }
     PropertyAnimation {id:socialanimclose; target: socialwidget; property: "opacity"; to: 0; duration: 500 }
-
+    PropertyAnimation {id:newsanimclose; target: newswidget; property: "opacity"; to: 0; duration: 500 }
 }
