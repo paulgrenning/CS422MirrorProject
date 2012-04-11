@@ -17,6 +17,8 @@ Item {
     property int fontSize: 32
     property string fontColor: "#7dd9b3"
 
+    signal inputReady(string input)
+
     function deleteLast(){
         key_board.input = key_board.input.substring(0, key_board.input.length-1)
     }
@@ -28,14 +30,13 @@ Item {
 
     Row {
         id: inputField
-        x: 273
         y: 25
         width: inputFieldLabel.width + inputBG.width + spacing
+        anchors.horizontalCenter: parent.horizontalCenter
         spacing: 5
 
         Text {
             id: inputFieldLabel
-            width: 200
             height: 49
             text: key_board.inputLabel
             font.pixelSize: 29
@@ -454,12 +455,15 @@ Item {
             }
 
             onClicked: {
-                appVar.userInput = input;
+                //appVar.userInput = input;
                 key_board.shift = false;
                 key_board.doShift();
+
+                inputReady(key_board.input);
+
                 key_board.sym = false;
                 key_board.input = "";
-                key_board.inUse = false
+                // key_board.inUse = false
             }
         }
 

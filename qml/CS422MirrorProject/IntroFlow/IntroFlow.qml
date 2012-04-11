@@ -8,32 +8,56 @@ Item {
     height: nameInput.height
     anchors.centerIn: parent
 
-    property InputView activeView: NULL
+    property InputView activeView
 
     state: "inactive"
     states: [
         State { name: "inactive" },
-        State { name: "nameEntry" }
+        State { name: "photoView" },
+        State { name: "nameEntry" },
+        State { name: "emailEntry" }
     ]
 
     onStateChanged: {
-        if(activeView) activeView.visible = false;
+        if(activeView) activeView.toggleHide()
         switch(state) {
-            case "nameEntry":
-                activeView = nameInput;
-                break;
-            default:
-                break;
+            case "photoView": activeView = photoView; break
+            case "nameEntry": activeView = nameInput; break
+            case "emailEntry": activeView = emailInput; break
+            default: break
         }
-        if(activeView) activeView.render();
+        if(activeView) activeView.toggleHide()
     }
 
     function start() {
-        state = "nameEntry"
+        state = "photoView"
     }
 
-    InputView {
+    PhotoView {
+        id: photoView
+
+        onPhotoReady: {
+            console.log("GOT 'PHOTO'")
+            parent.state = "nameEntry"
+        }
+    }
+
+    TextView {
         id: nameInput
-        inputLabel: "Enter your name: "
+        inputLabel: "What is your name: "
+
+        onInputReady: {
+            console.log("GOT NAME: " + input)
+            parent.state = "emailEntry"
+        }
+    }
+
+    TextView {
+        id: emailInput
+        inputLabel: "Enter your email: "
+
+        onInputReady: {
+            console.log("GOT EMAIL: " + input)
+        }
     }
 }
