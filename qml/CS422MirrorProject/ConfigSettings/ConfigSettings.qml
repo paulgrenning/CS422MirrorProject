@@ -23,14 +23,14 @@ Item {
         x: 91
         y: 0
         opacity: 1.0-opacitybutton.genOpacity
-        onClicked: opacitybutton.state = "closed"
+        onClicked: {opacitybutton.state = "closed"; configbutton1.state = "closed" }
     }
 
     OpacityButton {
         id: opacitybutton
         x: 182
         y: 0
-        onClicked: lightbutton.state = "closed"
+        onClicked: {lightbutton.state = "closed"; configbutton1.state = "closed" }
     }
 
     CameraEnableButton {
