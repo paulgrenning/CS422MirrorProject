@@ -1,72 +1,58 @@
 import QtQuick 1.0
 import Qt 4.7
+import "../UtilityElements"
 //import QtMultimediaKit 1.1
 
 //code used as reference: http://doc.qt.nokia.com/4.7-snapshot/demos-declarative-flickr-common-slider-qml.html
 //modifications made to make it a vertical slider and used our own images
 
 
-Item {
+Widget {
     id:music
     width:310
     height:496
 
-    MouseArea {
-         anchors.fill: parent
-         drag.target: parent
-         drag.axis: Drag.XandYAxis
-         drag.minimumX: 0
-         drag.maximumX: rootElement.width - parent.width
-         drag.minimumY: 0
-         drag.maximumY: rootElement.height - parent.height
+    bgImgPath:  (appVar.currentLanguage == "Español") ? "../MusicPlayer/images/musicwidgetbackgroundSP.png" : "./MusicPlayer/images/musicwidgetbackground.png"
+
+    VolumeSliderVertical {
+        id: volumeslider
+        x: 262
+        y: 48
+        width: 29
+        height: 90
+        maximum: 1.0
+        minimum: 0.0
+        onValueChanged: {
+            playMusic.volume = 1.0-volumeslider.value;
+        }
+    }
+
+    ItunesRadioButton {
+        id: itunesradiobutton1
+        x: 21
+        y: 158
+        onItunesClicked: {
+            songlist.model = ituneslibrarymodel
+            songlist.currentIndex = 0
+            if(!playMusic.playing)playMusic.source= ituneslibrarymodel.get(songlist.currentIndex).song_file
+        }
+        onRadioClicked: {
+            songlist.model = somalibrarymodel
+            songlist.model.reload()
+            songlist.currentIndex = 0
+            if(!playMusic.playing)playMusic.source= somalibrarymodel.get(songlist.currentIndex).song_file
+        }
     }
 
     Image {
-        id: musicbackground
-        anchors.fill: parent
-        source: (appVar.currentLanguage == "Español") ? "images/musicwidgetbackgroundSP.png" : "images/musicwidgetbackground.png"
-
-        VolumeSliderVertical {
-            id: volumeslider
-            x: 262
-            y: 48
-            width: 29
-            height: 90
-            maximum: 1.0
-            minimum: 0.0
-            onValueChanged: {
-                playMusic.volume = 1.0-volumeslider.value;
-            }
-        }
-
-        ItunesRadioButton {
-            id: itunesradiobutton1
-            x: 21
-            y: 158
-            onItunesClicked: {
-                songlist.model = ituneslibrarymodel
-                songlist.currentIndex = 0
-                if(!playMusic.playing)playMusic.source= ituneslibrarymodel.get(songlist.currentIndex).song_file
-            }
-            onRadioClicked: {
-                songlist.model = somalibrarymodel
-                songlist.model.reload()
-                songlist.currentIndex = 0
-                if(!playMusic.playing)playMusic.source= somalibrarymodel.get(songlist.currentIndex).song_file
-            }
-        }
-
-        Image {
-            id: image2
-            x: 258
-            y: 134
-            width: 38
-            height: 35
-            source: (volumeslider.value >0.9)? "images/volumeMin.png":"images/volumeMax.png"
-        }
-
-
+        id: image2
+        x: 258
+        y: 134
+        width: 38
+        height: 35
+        source: (volumeslider.value >0.9)? "images/volumeMin.png":"images/volumeMax.png"
     }
+
 
     Image {
         id: playimage
