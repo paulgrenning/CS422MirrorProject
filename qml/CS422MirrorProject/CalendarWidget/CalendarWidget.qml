@@ -5,5 +5,5 @@ Widget {
     id: calendarContainer
     pWidth: 305
     pHeight: 334
-    bgImgPath: "images/calendarBG.png"
+    bgImgPath: "../CalendarWidget/images/calendarBG.png"
 }

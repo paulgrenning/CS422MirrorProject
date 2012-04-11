@@ -6,39 +6,54 @@ Item {
     width: 1001
     height: 458
 
+    property string inputLabel
+
     property string input: ""
     property bool shift: false
     property bool sym: false
     property bool isPassword: false
-    property bool inUse: true
+    property bool inUse: false
     property string fontType: "Futura"
     property int fontSize: 32
     property string fontColor: "#7dd9b3"
-
-    visible: key_board.inUse
 
     function deleteLast(){
         key_board.input = key_board.input.substring(0, key_board.input.length-1)
     }
 
-    Rectangle {
-        id: inputBG
+    opacity: (inUse) ? 100 : 0
+    Behavior on opacity {
+        NumberAnimation { duration: 200 }
+    }
+
+    Row {
+        id: inputField
         x: 273
         y: 25
-        width: 455
-        height: 49
-        color: "#ffffff"
+        width: inputFieldLabel.width + inputBG.width + spacing
+        spacing: 5
 
         Text {
-            id: inputTxt
-            x: 9
-            y: 7
-            width: 437
-            height: 35
-            text: key_board.input
-            anchors.verticalCenterOffset: 0
-            anchors.verticalCenter: parent.verticalCenter
+            id: inputFieldLabel
+            width: 200
+            height: 49
+            text: key_board.inputLabel
             font.pixelSize: 29
+        }
+
+        Rectangle {
+            id: inputBG
+            width: 455
+            height: 49
+            color: "#eeeeee"
+
+            Text {
+                id: inputTxt
+                width: 437
+                height: 35
+                text: key_board.input
+                font.pixelSize: 29
+            }
         }
     }
 

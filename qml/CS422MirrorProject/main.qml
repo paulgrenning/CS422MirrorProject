@@ -27,7 +27,10 @@ Rectangle {
     Component.onCompleted: handleNewUser();
 
     function handleNewUser() {
-        if(appVar.renderIntroFlow) ;
+        if(appVar.renderIntroFlow) {
+            introFlow.start();
+            widgets.hideWidgets = true
+        }
     }
 
 //    CameraOpenCv{
@@ -38,8 +41,12 @@ Rectangle {
 //    }
 
     //create object to hold all important variables for the application
-    AppVariables{
+    AppVariables {
         id: appVar
+    }
+
+    IntroFlow {
+        id: introFlow
     }
 
     ConfigSettings {
@@ -61,15 +68,6 @@ Rectangle {
         }
     }
 
-    WeatherWidget{
-        id: weatherwidget
-        x: 954
-        y: 5
-        width: 324
-        height: 125
-
-    }
-
     Clock {
         id: clockWidget
         x: 540
@@ -77,6 +75,61 @@ Rectangle {
         width: 200
         height: 50
     }
+
+    Item {
+        id: widgets
+        property bool hideWidgets: false
+
+        WeatherWidget {
+            id: weatherwidget
+            x: 954
+            y: 5
+            width: 324
+            height: 125
+        }
+
+        MusicPlayer{
+            id: musicplayer
+            x: 964
+            y: 160
+            width: 310
+            height: 496
+            opacity: 0
+        }
+
+        HealthWidget{
+            id: healthwidget
+            x: 725
+            y: 280
+            width: 554
+            height: 375
+            opacity: 0
+        }
+
+        SocialWidget{
+            id: socialwidget
+            x: 964
+            y: 160
+            width: 310
+            height: 496
+            opacity: 0
+        }
+
+        CalendarWidget {
+             id: calendarWidget
+             hideWidget: parent.hideWidgets
+        }
+
+        News {
+            id: newswidget
+            x: 964
+            y: 153
+            opacity: 0
+        }
+    }
+
+
+
     WidgetBar{
         id: widgetbar
         x: 690
@@ -111,49 +164,6 @@ Rectangle {
         }
     }
 
-    MusicPlayer{
-        id: musicplayer
-        x: 964
-        y: 160
-        width: 310
-        height: 496
-        opacity: 0
-    }
-
-    HealthWidget{
-        id: healthwidget
-        x: 725
-        y: 280
-        width: 554
-        height: 375
-        opacity: 0
-    }
-
-    SocialWidget{
-        id: socialwidget
-        x: 964
-        y: 160
-        width: 310
-        height: 496
-        opacity: 0
-    }
-
-    CalendarWidget {
-         id: calendarWidget
-    }
-
-    KeyBoard {
-        x: 116
-        y: 144
-        inUse: true
-    }
-
-    News {
-        id: newswidget
-        x: 964
-        y: 153
-        opacity: 0
-    }
 
     PropertyAnimation {id:musicanimopen; target: musicplayer; property: "opacity"; to: (musicplayer.opacity == 0) ? displayOpacity : 0; duration: 500}
     PropertyAnimation {id:healthanimopen; target: healthwidget; property: "opacity"; to: (healthwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }

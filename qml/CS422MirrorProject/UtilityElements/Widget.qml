@@ -9,6 +9,16 @@ Item {
     property int pHeight
     property string bgImgPath
 
+    property bool hideWidget: false
+    property bool isRendered: true
+    property bool isVisible: !hideWidget && isRendered
+
+    onIsVisibleChanged: opacity = (isVisible) ? 100 : 0
+
+    Behavior on opacity {
+        NumberAnimation { duration: 200 }
+    }
+
     MouseArea {
          anchors.fill: parent
          drag.target: widget
