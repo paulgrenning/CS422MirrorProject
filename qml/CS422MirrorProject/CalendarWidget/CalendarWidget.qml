@@ -3,7 +3,7 @@ import "../UtilityElements"
 
 Widget {
     id: calendarContainer
-    pWidth: 305
-    pHeight: 334
+    width: 305
+    height: 334
     bgImgPath: "../CalendarWidget/images/calendarBG.png"
 }

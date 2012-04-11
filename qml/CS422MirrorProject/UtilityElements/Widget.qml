@@ -2,11 +2,7 @@ import QtQuick 1.1
 
 Item {
     id: widget
-    width: pWidth
-    height: pHeight
 
-    property int pWidth
-    property int pHeight
     property string bgImgPath
 
     property bool hideWidget: false
