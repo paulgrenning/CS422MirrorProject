@@ -2,11 +2,14 @@ import QtQuick 1.1
 import Qt 4.7
 import "../AppVariables"
 //import QtMultimediaKit 1.1
+import "../UtilityElements"
 
-Item {
+Widget{
     id:healthwidget
-    property alias barstate: healthwidget.state
+    bgImgPath: (appVar.currentLanguage == "Español") ? "../HealthWidget/images/fitnessTabBackgroundSP.png" : "../HealthWidget/images/fitnessTabBackground.png"
+    isVisible: false
     property variant laststate: "fitness"
+    property alias barstate: healthwidget.state
 
     width:554
     height:375
@@ -24,11 +27,6 @@ Item {
          drag.minimumY: 0
          drag.maximumY: rootElement.height - parent.height
     }
-
-    Image {
-        id: background
-        anchors.fill: parent
-        source: "images/fitnessTabBackground.png"
 
         MouseArea {
             id: fitnessTabMouseArea
@@ -92,15 +90,14 @@ Item {
                 focus:true
             }
         }
-    }
 
 
     states: [
         State {
             name: "fitness"
             PropertyChanges {
-                target: background
-                source: (appVar.currentLanguage == "Español") ? "images/fitnessTabBackgroundSP.png" : "images/fitnessTabBackground.png"
+                target: healthwidget
+                bgImgPath: (appVar.currentLanguage == "Español") ? "../HealthWidget/images/fitnessTabBackgroundSP.png" : "../HealthWidget/images/fitnessTabBackground.png"
             }
             PropertyChanges {
                 target: loader
@@ -110,8 +107,8 @@ Item {
         State {
             name: "weight"
             PropertyChanges {
-                target: background
-                source: (appVar.currentLanguage == "Español") ? "images/weightTabBackgroundSP.png" : "images/weightTabBackground.png"
+                target: healthwidget
+                bgImgPath: (appVar.currentLanguage == "Español") ? "../HealthWidget/images/weightTabBackgroundSP.png" : "../HealthWidget/images/weightTabBackground.png"
             }
 
             PropertyChanges {
@@ -122,8 +119,8 @@ Item {
         State {
             name: "nutrition"
             PropertyChanges {
-                target: background
-                source: (appVar.currentLanguage == "Español") ? "images/nutritionTabBackgroundSP.png": "images/nutritionTabBackground.png"
+                target: healthwidget
+                bgImgPath: (appVar.currentLanguage == "Español") ? "../HealthWidget/images/nutritionTabBackgroundSP.png": "../HealthWidget/images/nutritionTabBackground.png"
             }
 
             PropertyChanges {
@@ -134,13 +131,13 @@ Item {
         State {
             name: "sleep"
             PropertyChanges {
-                target: background
-                source: (appVar.currentLanguage == "Español") ? "images/sleepTabBackgroundSP.png" : "images/sleepTabBackground.png"
+                target: healthwidget
+                bgImgPath: (appVar.currentLanguage == "Español") ? "../HealthWidget/images/sleepTabBackgroundSP.png" : "../HealthWidget/images/sleepTabBackground.png"
             }
 
             PropertyChanges {
                 target: loader
-                source: "Sleep.qml"
+                source: "../HealthWidget/Sleep.qml"
             }
         }
     ]
