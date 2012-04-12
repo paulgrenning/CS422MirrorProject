@@ -36,12 +36,13 @@ InputView {
             }
         }
 
-        Button {
+        ClickableButton {
             id: photoButton
             width: 123
             height: 104
             anchors.horizontalCenter: parent.horizontalCenter
             defaultPath: "../IntroFlow/images/photoButtonUP.png"
+            clickedPath: "../IntroFlow/images/photoButtomDN.png"
 
             opacity: (parent.hideElements) ? 0 : 100
             Behavior on opacity {

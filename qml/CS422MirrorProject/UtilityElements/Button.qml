@@ -12,8 +12,6 @@ Item {
     property string hoverPath
     property string clickedPath
 
-    property bool isSelectable: true
-    property bool isSelected: false
     property bool canHover: true
 
     signal buttonClicked()
@@ -45,28 +43,5 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         visible: parent.displayLabel
-    }
-
-    MouseArea {
-        id: mousearea
-        anchors.fill: parent
-        hoverEnabled: canHover
-
-        onEntered: if(canHover) overlay.opacity = .6
-        onExited: if(canHover) overlay.opacity = 0
-        onClicked: {
-            if(isSelectable) {
-                if(!isSelected) select()
-                else deselect()
-            }
-        }
-    }
-
-    function select() {
-        currentPath = clickedPath;
-    }
-
-    function deselect() {
-        currentPath = defaultPath
     }
 }
