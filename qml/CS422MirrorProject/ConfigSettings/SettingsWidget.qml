@@ -63,6 +63,15 @@ Item {
         }
     }
 
+    LanguageSettings {
+        id: languageSettings
+        opacity: 0
+        anchors {
+            top: parent.top
+            left: parent.left
+        }
+    }
+
     states: [
         State {
             name: "accounts"
@@ -71,6 +80,7 @@ Item {
         State {
             name: "language"
             PropertyChanges { target: backgroundImage; source: "images/tab2.png" }
+            PropertyChanges { target: languageSettings; opacity: 1.0 }
         },
         State {
             name: "wifi"
