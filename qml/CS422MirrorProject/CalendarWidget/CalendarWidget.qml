@@ -31,9 +31,35 @@ Widget {
         Component {
             id: calendarDelegate
 
-            Text {
-                anchors.centerIn: parent
-                text: events
+            Item {
+                id: eventsWrapper
+                height: parent.height
+                width: parent.width
+
+                Text { text: id }
+//                XmlListModel {
+//                    id: eventsModel
+//                    xml: events
+//                    query: "/events"
+
+//                    XmlRole { name: "start_time"; query: "start_time/string()" }
+//                }
+
+//                ListView {
+//                    id: eventsView
+//                    height: parent.height
+//                    width: parent.width
+//                    anchors.centerIn: parent
+
+//                    model: eventsModel
+//                    delegate: eventsDelegate
+
+//                    Component {
+//                        id: eventsDelegate
+
+//                        Text { text: start_time }
+//                    }
+//                }
             }
         }
     }

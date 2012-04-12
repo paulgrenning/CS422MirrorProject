@@ -132,8 +132,6 @@ Rectangle {
         }
     }
 
-
-
     WidgetBar{
         id: widgetbar
         x: 690
