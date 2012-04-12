@@ -11,6 +11,11 @@ Button {
     property string currentValue: (shiftPressed) ? shiftValue : defaultValue
     property string defaultValue
     property string shiftValue
+    property string symValue
+
+    property string fontType: "Futura"
+    property int fontSize: 32
+    property string fontColor: "#7dd9b3"
 
     defaultPath: "../Keyboard/images/keyBackground.png"
     clickedPath: "../Keyboard/images/keyClicked.png"
@@ -22,5 +27,8 @@ Button {
         text: currentValue
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
+        color: key.fontColor
+        font.family: key.fontType;
+        font.pixelSize: key.fontSize;
     }
 }
