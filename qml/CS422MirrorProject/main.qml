@@ -107,6 +107,7 @@ Rectangle {
             width: 554
             height: 375
             opacity: 0
+            hideWidget: parent.hideWidgets
         }
 
         SocialWidget{

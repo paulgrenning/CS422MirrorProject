@@ -4,15 +4,8 @@ import QtQuick 1.1
 Item {
     id: button
 
-    property string label
-    property bool displayLabel: false
-
-    property string currentPath: defaultPath
     property string defaultPath
-    property string hoverPath
     property string clickedPath
-
-    property bool canHover: true
 
     signal buttonClicked()
     Component.onCompleted: mousearea.clicked.connect(buttonClicked)
@@ -23,25 +16,31 @@ Item {
 
         fillMode: Image.PreserveAspectFit
         smooth: true
-        source: currentPath
+        source: defaultPath
     }
 
     Image {
-        id: hoverOverlay
+        id: clickedOverlay
         anchors.fill: parent
         opacity: 0
         z: 2
 
         fillMode: Image.PreserveAspectFit
         smooth: true
-        source: hoverPath
+        source: clickedPath
     }
 
-    Text {
-        anchors.centerIn: parent
-        text: label
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        visible: parent.displayLabel
+    MouseArea {
+        id: mousearea
+        anchors.fill: parent
+
+        onClicked: clickAnimation.start()
+    }
+
+    SequentialAnimation {
+        id: clickAnimation
+        running: false
+        NumberAnimation { target: clickedOverlay; property: "opacity"; to: .75; duration: 100 }
+        NumberAnimation { target: clickedOverlay; property: "opacity"; to: 0; duration: 100 }
     }
 }

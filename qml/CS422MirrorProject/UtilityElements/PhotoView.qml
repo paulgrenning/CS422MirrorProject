@@ -36,7 +36,7 @@ InputView {
             }
         }
 
-        ClickableButton {
+        Button {
             id: photoButton
             width: 123
             height: 104

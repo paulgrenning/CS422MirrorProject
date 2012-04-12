@@ -6,6 +6,7 @@ import "../UtilityElements"
 
 Widget{
     id:healthwidget
+
     bgImgPath: (appVar.currentLanguage == "Español") ? "../HealthWidget/images/fitnessTabBackgroundSP.png" : "../HealthWidget/images/fitnessTabBackground.png"
     isVisible: false
     property variant laststate: "fitness"
