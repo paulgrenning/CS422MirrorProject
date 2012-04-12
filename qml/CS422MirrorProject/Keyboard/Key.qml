@@ -16,6 +16,9 @@ Button {
     defaultPath: "../Keyboard/images/keyBackground.png"
     clickedPath: "../Keyboard/images/keyClicked.png"
 
+    signal keyPressed(string value)
+    onButtonClicked: keyPressed(currentValue)
+
     Text {
         anchors.centerIn: parent
         text: currentValue
