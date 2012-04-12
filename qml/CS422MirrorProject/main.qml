@@ -13,8 +13,10 @@ import "./UtilityElements"
 import "./IntroFlow"
 import "./Keyboard"
 import "./News"
-
 //import opencvqml 1.0
+//import opencvqml 1.0
+import "./Keyboard"
+import "./News"
 
 Rectangle {
     width: 1280
@@ -95,6 +97,7 @@ Rectangle {
             width: 310
             height: 496
             opacity: 0
+            isRendered: false
         }
 
         HealthWidget{
@@ -148,7 +151,6 @@ Rectangle {
             socialanimclose.start()
             healthwidget.barstate = healthwidget.laststate
             newsanimclose.start()
-            // Includes keyboard and News feed (has bug)
         }
         onSocialClicked:{
             musicanimclose.start()

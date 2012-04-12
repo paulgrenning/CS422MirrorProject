@@ -25,8 +25,6 @@ QtObject {
     property string currentDegreeSystem:"Celsius"
     property string currentDistanceUnit: "K"
     property string currentWeightUnit:"Kg"
-
     property bool renderIntroFlow: true
-
     property string userInput: ""
 }
