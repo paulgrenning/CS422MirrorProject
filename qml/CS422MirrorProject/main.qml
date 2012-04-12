@@ -6,6 +6,7 @@ import "./WidgetBar"
 import "./MusicPlayer"
 import "./HealthWidget"
 import "./SocialWidget"
+import "./DateWidget"
 import "./CalendarWidget"
 import "./ConfigSettings"
 import "./AppVariables"
@@ -82,6 +83,20 @@ Rectangle {
         id: widgets
         property bool hideWidgets: false
 
+        DateWidget {
+            id: dateWidget
+            x: 0
+            y: 0
+            hideWidget: parent.hideWidget
+        }
+
+        CalendarWidget {
+             id: calendarWidget
+             hideWidget: parent.hideWidgets
+             x: 0
+             y: dateWidget.height
+        }
+
         WeatherWidget {
             id: weatherwidget
             x: 954
@@ -117,11 +132,6 @@ Rectangle {
             width: 310
             height: 496
             opacity: 0
-        }
-
-        CalendarWidget {
-             id: calendarWidget
-             hideWidget: parent.hideWidgets
         }
 
         News {

@@ -7,16 +7,17 @@ Widget {
     height: 334
     bgImgPath: "../CalendarWidget/images/calendarBG.png"
 
+    property int day: 0
 
     XmlListModel {
         id: calendarModel
         source: "data/calendar.xml"
-        query: "/calendar/day"
+        query: "/calendar/day[@id=\"" + day + "\"]/events/event"
 
-        XmlRole { name: "id"; query: "id/string()" }
-        XmlRole { name: "events"; query: "events/string()" }
-
-        onStatusChanged: console.log(calendarModel.get(1).events)
+        XmlRole { name: "startTime"; query: "start_time/string()" }
+        XmlRole { name: "endTime"; query: "end_time/string()" }
+        XmlRole { name: "description"; query: "description/string()" }
+        XmlRole { name: "location"; query: "location/string()" }
     }
 
     ListView {
@@ -32,34 +33,20 @@ Widget {
             id: calendarDelegate
 
             Item {
-                id: eventsWrapper
-                height: parent.height
+                id: eventDescription
+                height: timeRow.height
                 width: parent.width
 
-                Text { text: id }
-//                XmlListModel {
-//                    id: eventsModel
-//                    xml: events
-//                    query: "/events"
+                Row {
+                    id: timeRow
+                    width: parent.width
+                    height: startVal.height
+                    spacing: 5
 
-//                    XmlRole { name: "start_time"; query: "start_time/string()" }
-//                }
-
-//                ListView {
-//                    id: eventsView
-//                    height: parent.height
-//                    width: parent.width
-//                    anchors.centerIn: parent
-
-//                    model: eventsModel
-//                    delegate: eventsDelegate
-
-//                    Component {
-//                        id: eventsDelegate
-
-//                        Text { text: start_time }
-//                    }
-//                }
+                    Text { id: startLabel; text: "" }
+                    Text { id: startVal; text: startTime }
+                    Text { id: endVal; text: endTime }
+                }
             }
         }
     }
