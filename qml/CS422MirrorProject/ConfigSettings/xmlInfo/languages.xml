@@ -1,33 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<all>
-  <languages>
-    <language>English</language>
-  </languages>
-  <languages>
-    <language>Spanish</language>
-  </languages>
-  <languages>
-    <language>German</language>
-  </languages>
-  <languages>
-    <language>Portuguese</language>
-  </languages>
-  <languages>
-    <language>Arabic</language>
-  </languages>
-  <languages>
-    <language>Mandarin</language>
-  </languages>
-  <languages>
-    <language>Japanese</language>
-  </languages>
-  <languages>
-    <language>French</language>
-  </languages>
-  <languages>
-    <language>Russian</language>
-  </languages>
-  <languages>
-    <language>Bengali</language>
-  </languages>
-</all>
+<?xml version="1.0" encoding="UTF-8"?>
+<languageList>
+            <language>
+                <name>English</name>
+            </language>
+            <language>
+                <name>Español</name>
+            </language>
+            <language>
+                <name>Français</name>
+            </language>
+            <language>
+                <name>Deutsch</name>
+            </language>
+            <language>
+                <name>Portugués</name>
+            </language>
+            <language>
+                <name>Italiano</name>
+            </language>
+            <language>
+                <name>Svenska</name>
+            </language>
+            <language>
+                <name>Ελληνικά</name>
+            </language>
+            <language>
+                <name>汉语/漢語</name>
+            </language>
+            <language>
+                <name>日本語</name>
+            </language>
+</languageList>
+

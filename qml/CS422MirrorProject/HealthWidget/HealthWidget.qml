@@ -15,10 +15,6 @@ Widget{
     width:554
     height:375
 
-    AppVariables{
-        id:appVar
-    }
-
     MouseArea {
          anchors.fill: parent
          drag.target: healthwidget
