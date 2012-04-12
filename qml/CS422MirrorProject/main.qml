@@ -97,7 +97,7 @@ Rectangle {
             width: 310
             height: 496
             opacity: 0
-            isRendered: false
+            hideWidget: parent.hideWidgets
         }
 
         HealthWidget{
