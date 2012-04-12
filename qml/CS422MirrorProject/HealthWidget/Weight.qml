@@ -9,10 +9,6 @@ Item {
     width: 520
     height: 310
 
-    AppVariables{
-        id:appVar
-    }
-
     Text {
         id: text1
         x: 313

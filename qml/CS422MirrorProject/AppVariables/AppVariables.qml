@@ -21,9 +21,9 @@ import QtQuick 1.1
 // QMl Diner Example Application http://projects.developer.nokia.com/QMLRestaurantApp/wiki
 
 QtObject {
-    property string currentLanguage:"Español"
+    property string currentLanguage:"English"
     property string currentDegreeSystem:"Celsius"
-    property string currentDistanceUnit: "K"
+    property string currentDistanceUnit: "Km"
     property string currentWeightUnit:"Kg"
     property bool renderIntroFlow: false
     property string userInput: ""

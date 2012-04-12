@@ -16,11 +16,6 @@ Item {
         return months[date.getMonth()]
     }
 
-
-    AppVariables{
-        id:appVar
-    }
-
     Text {
         id: text1
         x: 23
