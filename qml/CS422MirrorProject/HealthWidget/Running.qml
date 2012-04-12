@@ -125,9 +125,22 @@ Item {
                 runDate: run_date
                 onBarclicked: {
                     grid.currentIndex = grid.indexAt(x,y)
+                    rectangle1.visible = true
+                    if(timer1.running) timer1.restart()
+                    else timer1.running=true
                 }
             }
 
+        }
+    }
+
+    Timer{
+        id: timer1
+        interval: 2000
+        running:false;
+        repeat: false;
+        onTriggered:{
+           rectangle1.visible = false
         }
     }
 
@@ -206,5 +219,17 @@ Item {
         font.bold: true
         font.family: "Futura"
         verticalAlignment: Text.AlignVCenter
+    }
+
+    Rectangle {
+        id: rectangle1
+        x: 25
+        y: 104
+        width: 479
+        height: 56
+        color: "#555758"
+        opacity: 0.5
+        radius: 15
+        visible: false
     }
 }

@@ -56,7 +56,7 @@ Item {
         width: 218
         height: 33
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "su peso actual:" : "your current weight:"
+        text: (appVar.currentLanguage === "Español") ? "su peso actual:" : "your current weight:"
         horizontalAlignment: Text.AlignRight
         font.pixelSize: 25
         font.bold: true
