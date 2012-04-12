@@ -39,6 +39,11 @@ Item {
 
              onLanguageClicked: {
                  languageList.currentIndex = languageList.indexAt(x,y)
+                 if(languageList.currentIndex == 0){
+                     appVar.currentLanguage = "English";
+                 } else if(languageList.currentIndex == 1){
+                     appVar.currentLanguage = "Español";
+                 }
              }
 
              Text {
@@ -75,9 +80,9 @@ Item {
         id: allLanguages
         source: "xmlInfo/languages.xml"
 
-        query: "/all/languages"
+        query: "/languageList/language"
 
 
-        XmlRole { name: "language"; query: "language/string()" }
+        XmlRole { name: "language"; query: "name/string()" }
     }
 }
