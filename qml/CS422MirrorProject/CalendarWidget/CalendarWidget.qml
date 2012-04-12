@@ -8,6 +8,26 @@ Widget {
     bgImgPath: "../CalendarWidget/images/calendarBG.png"
 
     property int day: 0
+    property string dayTitle: "today"
+
+    onDayChanged: {
+        switch(day) {
+            case 0: return "today"
+            case 1: return "tomorrow"
+            default: return "not defined yet"
+        }
+    }
+
+    StdText {
+        id: title
+        font.pixelSize: 30
+        anchors {
+            top: parent.top
+            topMargin: -10
+            horizontalCenter: parent.horizontalCenter
+        }
+        text: dayTitle
+    }
 
     XmlListModel {
         id: calendarModel
@@ -22,9 +42,14 @@ Widget {
 
     ListView {
         id: calendarView
-        height: parent.height - 20
-        width: parent.width - 20
-        anchors.centerIn: parent
+        height: parent.height - anchors.topMargin
+        width: parent.width - anchors.leftMargin
+        anchors {
+            top: parent.top
+            topMargin: 30
+            left: parent.left
+            leftMargin: 50
+        }
 
         model: calendarModel
         delegate: calendarDelegate
@@ -34,18 +59,32 @@ Widget {
 
             Item {
                 id: eventDescription
-                height: timeRow.height
+                height: textContainer.height
                 width: parent.width
 
-                Row {
-                    id: timeRow
-                    width: parent.width
-                    height: startVal.height
-                    spacing: 5
+                Column {
+                    id: textContainer
+                    width: timeRow
+                    height: startText.height + descText.height + locText.height + spacing * 2
+                    spacing: 1
 
-                    Text { id: startLabel; text: "" }
-                    Text { id: startVal; text: startTime }
-                    Text { id: endVal; text: endTime }
+                    StdText {
+                        id: startText
+                        font.pixelSize: 20
+                        text: startTime
+                    }
+
+                    StdText {
+                        id: descText
+                        font.pixelSize: 16
+                        text: "   • " + description
+                    }
+
+                    StdText {
+                        id: locText
+                        font.pixelSize: 14
+                        text: "          " + location
+                    }
                 }
             }
         }

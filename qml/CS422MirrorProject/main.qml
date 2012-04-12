@@ -87,7 +87,7 @@ Rectangle {
             id: dateWidget
             x: 0
             y: 0
-            hideWidget: parent.hideWidget
+            hideWidget: parent.hideWidgets
         }
 
         CalendarWidget {
