@@ -1,0 +1,100 @@
+<calendar>
+    <day>
+        <id 0 />
+        <events>
+            <event>
+               <start_time>9:00</start_time>
+               <end_time>10:00</end_time>
+               <description>Pick up Billy</description>
+               <location>McJones Elementary</location>
+            </event>
+
+            <event>
+               <start_time>10:45</start_time>
+               <end_time>11:30</end_time>
+               <description>Mid-morning Strategy Meeting</description>
+               <location>John's Office</location>
+            </event>
+
+            <event>
+               <start_time>12:00</start_time>
+               <end_time>1:00</end_time>
+               <description>Lunch With Joan</description>
+               <location>The Spot</location>
+            </event>
+
+            <event>
+               <start_time>5:45</start_time>
+               <end_time>7:00</end_time>
+               <description>Take a nap</description>
+               <location>My bed</location>
+            </event>
+        </events>
+    </day>
+
+    <day>
+        <id 1 />
+        <events>
+            <event>
+               <start_time>9:00</start_time>
+               <end_time>10:00</end_time>
+               <description>Pick up Billy</description>
+               <location>McJones Elementary</location>
+            </event>
+
+            <event>
+               <start_time>10:45</start_time>
+               <end_time>11:30</end_time>
+               <description>Mid-morning Strategy Meeting</description>
+               <location>John's Office</location>
+            </event>
+
+            <event>
+               <start_time>12:00</start_time>
+               <end_time>1:00</end_time>
+               <description>Lunch With Joan</description>
+               <location>The Spot</location>
+            </event>
+
+            <event>
+               <start_time>5:45</start_time>
+               <end_time>7:00</end_time>
+               <description>Take a nap</description>
+               <location>My bed</location>
+            </event>
+        </events>
+    </day>
+
+    <day>
+        <id 3 />
+        <events>
+            <event>
+               <start_time>9:00</start_time>
+               <end_time>10:00</end_time>
+               <description>Pick up Billy</description>
+               <location>McJones Elementary</location>
+            </event>
+
+            <event>
+               <start_time>10:45</start_time>
+               <end_time>11:30</end_time>
+               <description>Mid-morning Strategy Meeting</description>
+               <location>John's Office</location>
+            </event>
+
+            <event>
+               <start_time>12:00</start_time>
+               <end_time>1:00</end_time>
+               <description>Lunch With Joan</description>
+               <location>The Spot</location>
+            </event>
+
+            <event>
+               <start_time>5:45</start_time>
+               <end_time>7:00</end_time>
+               <description>Take a nap</description>
+               <location>My bed</location>
+            </event>
+        </events>
+    </day>
+</calendar>

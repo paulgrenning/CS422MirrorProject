@@ -55,6 +55,10 @@ Item {
                 text: key_board.input
                 font.pixelSize: 29
             }
+        Cursor {
+            id: cursor
+            x: 0
+            y: 5
         }
     }
 
@@ -93,6 +97,7 @@ Item {
                 key_board.input = key_board.input + text_z.text;
                 key_board.shift = false;
                 key_board.doShift();
+                cursor.x = cursor.x + 22;
             }
         }
 
@@ -122,6 +127,7 @@ Item {
                 key_board.input = key_board.input + text_u.text;
                 key_board.shift = false;
                 key_board.doShift();
+                cursor.x = cursor.x + 22;
             }
         }
 
@@ -151,6 +157,8 @@ Item {
             onClicked: {
                 key_board.input = key_board.input + text_q.text;
                 key_board.shift = false;
+                key_board.doShift();
+                cursor.x = cursor.x + 22;
             }
         }
 
@@ -181,6 +189,7 @@ Item {
                 key_board.input = key_board.input + text_m.text;
                 key_board.shift = false;
                 key_board.doShift();
+                cursor.x = cursor.x + 22;
             }
         }
 
@@ -211,6 +220,7 @@ Item {
                 key_board.input = key_board.input + text_i.text;
                 key_board.shift = false;
                 key_board.doShift();
+                cursor.x = cursor.x + 22;
             }
         }
 
@@ -241,6 +251,7 @@ Item {
                 key_board.input = key_board.input + text_k.text;
                 key_board.shift = false;
                 key_board.doShift();
+                cursor.x = cursor.x + 22;
             }
         }
 
@@ -294,6 +305,7 @@ Item {
                 key_board.input = key_board.input + text_o.text;
                 key_board.shift = false;
                 key_board.doShift();
+                cursor.x = cursor.x + 22;
             }
         }
 
@@ -323,6 +335,7 @@ Item {
                 key_board.input = key_board.input + text_l.text;
                 key_board.shift = false;
                 key_board.doShift();
+                cursor.x = cursor.x + 22;
             }
         }
 
@@ -376,6 +389,7 @@ Item {
                 key_board.input = key_board.input + text_p.text;
                 key_board.shift = false;
                 key_board.doShift();
+                cursor.x = cursor.x + 22;
             }
         }
 
@@ -428,7 +442,9 @@ Item {
 
             onClicked: {
                 key_board.deleteLast();
+                cursor.x = cursor.x - 22;
             }
+
         }
 
         MouseArea {
@@ -464,6 +480,7 @@ Item {
                 key_board.sym = false;
                 key_board.input = "";
                 // key_board.inUse = false
+                key_board.inUse = false
             }
         }
 
@@ -556,6 +573,7 @@ Item {
             key_board.input = key_board.input + text_q.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -586,6 +604,7 @@ Item {
             key_board.input = key_board.input + text_a.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -615,6 +634,7 @@ Item {
             key_board.input = key_board.input + text_w.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -645,6 +665,7 @@ Item {
             key_board.input = key_board.input + text_s.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -675,6 +696,7 @@ Item {
             key_board.input = key_board.input + text_x.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -704,6 +726,7 @@ Item {
             key_board.input = key_board.input + text_e.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -734,6 +757,7 @@ Item {
             key_board.input = key_board.input + text_d.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -763,6 +787,7 @@ Item {
             key_board.input = key_board.input + text_c.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -792,6 +817,7 @@ Item {
             key_board.input = key_board.input + text_r.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -821,6 +847,7 @@ Item {
             key_board.input = key_board.input + text_f.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -850,6 +877,7 @@ Item {
             key_board.input = key_board.input + text_v.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -879,7 +907,9 @@ Item {
             key_board.input = key_board.input + text_t.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
+
     }
 
     MouseArea {
@@ -908,6 +938,7 @@ Item {
             key_board.input = key_board.input + text_g.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -937,6 +968,7 @@ Item {
             key_board.input = key_board.input + text_b.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -966,6 +998,7 @@ Item {
             key_board.input = key_board.input + text_y.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -993,7 +1026,9 @@ Item {
 
         onClicked: {
             key_board.input = key_board.input + text_h.text;
-            shift = false;
+            key_board.shift = false;
+            key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -1024,6 +1059,7 @@ Item {
             key_board.input = key_board.input + text_n.text;
             key_board.shift = false;
             key_board.doShift();
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -1052,6 +1088,7 @@ Item {
 
         onClicked: {
             key_board.input = key_board.input + " ";
+            cursor.x = cursor.x + 22;
         }
     }
 
@@ -1172,4 +1209,5 @@ Item {
             text_m.text = "m";
         }
     }
+}
 }

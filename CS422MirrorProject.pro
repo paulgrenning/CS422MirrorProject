@@ -46,7 +46,8 @@ include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
 OTHER_FILES += \
-    readme.txt
+    readme.txt \
+    calendar.xml
 
 HEADERS += \
     ##UNCOMMENT TO USE OPENCV
