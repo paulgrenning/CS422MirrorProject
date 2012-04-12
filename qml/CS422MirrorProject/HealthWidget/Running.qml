@@ -73,7 +73,7 @@ Item {
         height: 124
         color: "#bfe4d5"
         text:{
-            if(appVar.currentDistanceUnit == "Km") return "10 km 9 km 8 km 7 km 6 km 5 km 4 km 3 km 2 km 1 km";
+            if(appVar.currentDistanceUnit === "Km") return "10 km 9 km 8 km 7 km 6 km 5 km 4 km 3 km 2 km 1 km";
             else return "7 mi 5.5 mi 5 mi 4.3 mi 3.8 mi 3 mi 2.5 mi 2 mi 1.2 mi 0.6 mi";
         }
         horizontalAlignment: Text.AlignRight
@@ -157,7 +157,7 @@ Item {
             var timeSec = ((timeTotSec%3600)%60).toFixed(0)
             var returnString = (timeHrs===0)? "":timeHrs+"hrs"
             returnString = returnString + timeMin + "min"
-            var retunTimeSec = ((appVar.currentLanguage=="Español"))?timeSec+"seg": timeSec+"sec"
+            var retunTimeSec = ((appVar.currentLanguage==="Español"))?timeSec+"seg": timeSec+"sec"
             returnString = returnString + retunTimeSec
             return returnString
         }
@@ -178,7 +178,9 @@ Item {
         color: "#eefff9"
         text:{
             var distanceKm = parseFloat(bargraphmodel.get(bargraphmodel.count-1).run_distance)
-            return  distanceKm.toFixed(1) + " km"
+
+            if(appVar.currentDistanceUnit === "Km") return distanceKm.toFixed(1) + " km"
+            else return  distanceKm.toFixed(1)+ " mi"
         }
         anchors.left: text3.right
         anchors.leftMargin: 10

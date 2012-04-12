@@ -25,6 +25,8 @@ Item{
             switch(condition){
             case "Overcast" :
                 return "images/cloudy.png";
+            case "Cloudy" :
+                return "images/cloudy.png";
             case "Drizzle":
                 return "images/drizzle.png";
             case "Haze":

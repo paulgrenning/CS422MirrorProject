@@ -3,25 +3,47 @@ import QtQuick 1.1
 
 Item {
     id: settingsTab
-    state: "accounts"
+    state: "general"
     width: 400
     height: 400
 
     Image {
         id: backgroundImage
-        source: "images/tab1.png"
+        source: "images/configTabGeneral.png"
     }
 
     MouseArea {
-        id: accountsMouseArea
+        id: generalMouseArea
+        x: 21
+        y: 10
         anchors {
             top: parent.top
             left: parent.left
             topMargin: 10
         }
 
+        width: 143
+        height: 36
+        anchors.leftMargin: 21
+
+        onClicked: {
+            console.log("general");
+            settingsTab.state = "general";
+        }
+    }
+
+    MouseArea {
+        id: accountsMouseArea
+        x: 164
+        y: 10
+        anchors {
+            top: parent.top
+            left: accountsMouseArea.right
+            topMargin: 10
+        }
+
         width: 133
-        height: 50
+        height: 36
 
         onClicked: {
             console.log("accounts");
@@ -30,32 +52,17 @@ Item {
     }
 
     MouseArea {
-        id: languageMouseArea
-        anchors {
-            top: parent.top
-            left: accountsMouseArea.right
-            topMargin: 10
-        }
-
-        width: 133
-        height: 50
-
-        onClicked: {
-            console.log("languages");
-            settingsTab.state = "language";
-        }
-    }
-
-    MouseArea {
         id: wifiMouseArea
+        x: 297
+        y: 10
         anchors {
             top: parent.top
             left: languageMouseArea.right
             topMargin: 10
         }
 
-        width: 133
-        height: 50
+        width: 138
+        height: 36
 
         onClicked: {
             console.log("wifi");
@@ -74,17 +81,17 @@ Item {
 
     states: [
         State {
-            name: "accounts"
-            PropertyChanges { target: backgroundImage; source: "images/tab1.png" }
-        },
-        State {
-            name: "language"
-            PropertyChanges { target: backgroundImage; source: "images/tab2.png" }
+            name: "general"
+            PropertyChanges { target: backgroundImage; source: "images/configTabGeneral.png" }
             PropertyChanges { target: languageSettings; opacity: 1.0 }
         },
         State {
+            name: "accounts"
+            PropertyChanges { target: backgroundImage; source: "images/configTabAccounts.png" }
+        },
+        State {
             name: "wifi"
-            PropertyChanges { target: backgroundImage; source: "images/tab3.png" }
+            PropertyChanges { target: backgroundImage; source: "images/configTabWifi.png" }
         }
 
     ]
