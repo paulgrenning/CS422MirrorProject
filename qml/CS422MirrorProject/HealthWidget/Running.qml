@@ -180,7 +180,7 @@ Item {
             var distanceKm = parseFloat(bargraphmodel.get(bargraphmodel.count-1).run_distance)
 
             if(appVar.currentDistanceUnit === "Km") return distanceKm.toFixed(1) + " km"
-            else return  distanceKm.toFixed(1)+ " mi"
+            else return (distanceKm*0.62).toFixed(1)+ " mi"
         }
         anchors.left: text3.right
         anchors.leftMargin: 10

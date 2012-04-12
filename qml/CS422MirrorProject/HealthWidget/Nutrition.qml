@@ -38,7 +38,7 @@ Item {
         x: 39
         y: 57
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "calorías consumidas ayer:" : "calories consumed yesterday:"
+        text: (appVar.currentLanguage === "Español") ? "calorías consumidas ayer:" : "calories consumed yesterday:"
         wrapMode: Text.WordWrap
         font.pixelSize: 20
         font.bold: true
@@ -82,7 +82,7 @@ Item {
         x: 39
         y: 130
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "objetivo de hoy:" : "today's goal:"
+        text: (appVar.currentLanguage === "Español") ? "objetivo de hoy:" : "today's goal:"
         font.pixelSize: 20
         font.bold: true
         font.family: "Futura"
@@ -95,7 +95,7 @@ Item {
         width: 263
         height: 33
         color: "#bfe4d5"
-        text: (appVar.currentLanguage == "Español") ? "ejercicio recomendado:" : "recommended workout:"
+        text: (appVar.currentLanguage === "Español") ? "ejercicio recomendado:" : "recommended workout:"
         wrapMode: Text.WordWrap
         font.pixelSize: 23
         font.family: "Futura"
@@ -109,7 +109,7 @@ Item {
         width: 105
         height: 33
         color: "#eefff9"
-        text: "running"
+        text: (appVar.currentLanguage === "Español") ? "correr":"running"
         wrapMode: Text.WordWrap
         font.pixelSize: 30
         anchors.rightMargin: 50
@@ -127,7 +127,7 @@ Item {
         width: 157
         height: 33
         color: "#eefff9"
-        text: "30min"
+        text: "30 min"
         wrapMode: Text.WordWrap
         font.pixelSize: 23
         anchors.rightMargin: 50

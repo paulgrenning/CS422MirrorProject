@@ -30,7 +30,7 @@ Item {
 
     Text {
         id: text2
-        x: 108
+        x: 69
         y: 77
         text: (appVar.currentLanguage == "Español") ? "pasos:" : "step count:"
         font.bold: true
@@ -42,7 +42,7 @@ Item {
 
     Text {
         id: text4
-        x: 283
+        x: 284
         y: 77
         color: "#bfe4d5"
         text: (appVar.currentLanguage == "Español") ? "calorías:" : "calories:"
@@ -128,50 +128,35 @@ Item {
     }
 
 
-//    Text {
-//        id: text5
-//        x: 83
-//        y: 77
-//        width: 109
-//        height: 20
-//        color: "#eefff9"
-//        text:{
-//            var timeTotSec = parseInt(bargraphmodel.get(bargraphmodel.count-1).run_time)/1000
-//            var timeHrs = parseInt(timeTotSec/3600)
-//            var timeMin = ((timeTotSec%3600)/60).toFixed(0)
-//            var timeSec = ((timeTotSec%3600)%60).toFixed(0)
-//            var returnString = (timeHrs===0)? "":timeHrs+"hrs"
-//            returnString = returnString + timeMin + "min"
-//            var retunTimeSec = ((appVar.currentLanguage=="Español"))?timeSec+"seg": timeSec+"sec"
-//            returnString = returnString + retunTimeSec
-//            return returnString
-//        }
-//        anchors.left: text2.right
-//        anchors.leftMargin: 10
-//        verticalAlignment: Text.AlignVCenter
-//        font.pixelSize: 18
-//        font.bold: true
-//        font.family: "Futura"
-//    }
+    Text {
+        id: text5
+        x: 83
+        y: 77
+        width: 109
+        height: 20
+        color: "#eefff9"
+        text: bargraphmodel.get(bargraphmodel.count-1).steps_count + " stps"
+        anchors.left: text2.right
+        anchors.leftMargin: 10
+        verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 18
+        font.bold: true
+        font.family: "Futura"
+    }
 
-//    Text {
-//        id: text6
-//        x: 261
-//        y: 77
-//        width: 83
-//        height: 20
-//        color: "#eefff9"
-//        text:{
-//            var distanceKm = parseFloat(bargraphmodel.get(bargraphmodel.count-1).run_distance)
-//            return  distanceKm.toFixed(1) + " kms"
-//        }
-//        anchors.left: text3.right
-//        anchors.leftMargin: 12
-//        font.pixelSize: 18
-//        font.family: "Futura"
-//        font.bold: true
-//        verticalAlignment: Text.AlignVCenter
-//    }
+    Text {
+        id: text6
+        y: 77
+        width: 83
+        height: 20
+        color: "#eefff9"
+        text:bargraphmodel.get(bargraphmodel.count-1).steps_calories + " cal"
+        anchors.left: text4.right
+        anchors.leftMargin: 10
+        font.pixelSize: 18
+        font.bold: true
+        font.family: "Futura"
+   }
 
 //    Text {
 //        id: text7
