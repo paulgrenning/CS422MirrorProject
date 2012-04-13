@@ -3,8 +3,8 @@ import QtQuick 1.1
 
 Item {
     id: container
-    width: 14
-    height: 35
+    width: 13
+    height: 38
 
     property bool blink: true
 
@@ -21,5 +21,14 @@ Item {
         visible: container.blink
         anchors.fill: parent
         font.pixelSize: 32
+    }
+
+    function cursorMove(quantity){
+        if(quantity < 0){
+            if(container.x + quantity >= 0)
+                container.x = container.x + quantity
+        }else
+            container.x = container.x + quantity
+
     }
 }

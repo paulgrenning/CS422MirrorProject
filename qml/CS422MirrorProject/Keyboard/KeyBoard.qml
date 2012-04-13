@@ -24,6 +24,30 @@ Item {
         key_board.input = key_board.input.substring(0, key_board.input.length-1)
     }
 
+    function keyPressed(value){
+        if(value == "sym"){
+            key_board.sym = !key_board.sym;
+        }
+        else if(value == "shift"){
+            key_board.shift = !key_board.shift;
+        }
+        else if(value == "del"){
+            key_board.deleteLast();
+        }
+        else if(value == "done"){
+
+        }
+        else if(key_board.isPassword == true){
+            key_board.input = key_board.input + "*";
+        }
+        else{
+            if(value == "space")
+                key_board.input = key_board.input + " ";
+            else
+                key_board.input = key_board.input + value;
+        }
+    }
+
 
     Row {
         id: inputField
@@ -47,24 +71,26 @@ Item {
 
             Text {
                 id: inputTxt
-                width: 437
+                x: 5
+                y: 7
+                width: 432
                 height: 35
                 text: key_board.input
+                anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 29
             }
 
             Cursor {
                 id: cursor
-                x: 0
-                y: 5
+                x: 0; y: 5
             }
         }
     }
 
     Row {
         id: row1
-        x: 0; y: 110
-        width: 1001; height: 84
+        x: 41; y: 110
+        width: 969; height: 84
 
         Key {
             id: key1
@@ -79,6 +105,7 @@ Item {
             x: 124; y: 1
             defaultValue: "w"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "2"
         }
 
         Key {
@@ -86,6 +113,7 @@ Item {
             x: 225; y: 1
             defaultValue: "e"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "3"
         }
 
         Key {
@@ -93,6 +121,7 @@ Item {
             x: 295; y: 1
             defaultValue: "r"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "4"
         }
 
         Key {
@@ -100,6 +129,7 @@ Item {
             x: 364; y: 1
             defaultValue: "t"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "5"
         }
 
         Key {
@@ -107,6 +137,7 @@ Item {
             x: 433; y: 1
             defaultValue: "y"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "6"
         }
 
         Key {
@@ -114,6 +145,7 @@ Item {
             x: 504; y: 1
             defaultValue: "u"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "7"
         }
 
         Key {
@@ -121,13 +153,7 @@ Item {
             x: 607; y: 1
             defaultValue: "i"
             shiftValue: defaultValue.toUpperCase()
-        }
-
-        Key {
-            id: key9
-            x: 686; y: 1
-            defaultValue: "i"
-            shiftValue: defaultValue.toUpperCase()
+            symValue: "8"
         }
 
         Key {
@@ -135,6 +161,7 @@ Item {
             x: 764; y: 1
             defaultValue: "o"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "8"
         }
 
         Key {
@@ -142,12 +169,16 @@ Item {
             x: 872; y: 1
             defaultValue: "p"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "9"
         }
 
         Key {
             id: key32
             x: 952
             y: 1
+            width: 128
+            clickedPath: "../Keyboard/images/keyClickedMedium.png"
+            defaultPath: "../Keyboard/images/keyBackgroundMedium.png"
             defaultValue: "del"
         }
     }
@@ -165,6 +196,7 @@ Item {
             x: 63; y: 1
             defaultValue: "a"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "!"
         }
 
         Key {
@@ -172,6 +204,7 @@ Item {
             x: 124; y: 1
             defaultValue: "s"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "#"
         }
 
         Key {
@@ -179,6 +212,7 @@ Item {
             x: 225; y: 1
             defaultValue: "d"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "$"
         }
 
         Key {
@@ -186,6 +220,7 @@ Item {
             x: 295; y: 1
             defaultValue: "f"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "%"
         }
 
         Key {
@@ -193,6 +228,7 @@ Item {
             x: 364; y: 1
             defaultValue: "g"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "^"
         }
 
         Key {
@@ -200,6 +236,7 @@ Item {
             x: 433; y: 1
             defaultValue: "h"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "&"
         }
 
         Key {
@@ -207,6 +244,7 @@ Item {
             x: 504; y: 1
             defaultValue: "j"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "*"
         }
 
         Key {
@@ -214,6 +252,7 @@ Item {
             x: 607; y: 1
             defaultValue: "k"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "("
         }
 
         Key {
@@ -221,13 +260,13 @@ Item {
             x: 686; y: 1
             defaultValue: "l"
             shiftValue: defaultValue.toUpperCase()
+            symValue: ")"
         }
 
         Key {
             id: key21
             x: 764; y: 1
             defaultValue: "@"
-            shiftValue: defaultValue.toUpperCase()
         }
     }
 
@@ -243,6 +282,7 @@ Item {
             x: 63; y: 1
             defaultValue: "z"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "-"
         }
 
         Key {
@@ -250,6 +290,7 @@ Item {
             x: 124; y: 1
             defaultValue: "x"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "_"
         }
 
         Key {
@@ -257,6 +298,7 @@ Item {
             x: 225; y: 1
             defaultValue: "c"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "="
         }
 
         Key {
@@ -264,6 +306,7 @@ Item {
             x: 295; y: 1
             defaultValue: "v"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "+"
         }
 
         Key {
@@ -271,6 +314,7 @@ Item {
             x: 364; y: 1
             defaultValue: "b"
             shiftValue: defaultValue.toUpperCase()
+            symValue: ";"
         }
 
         Key {
@@ -278,6 +322,7 @@ Item {
             x: 433; y: 1
             defaultValue: "n"
             shiftValue: defaultValue.toUpperCase()
+            symValue: ":"
         }
 
         Key {
@@ -285,20 +330,19 @@ Item {
             x: 504; y: 1
             defaultValue: "m"
             shiftValue: defaultValue.toUpperCase()
+            symValue: "?"
         }
 
         Key {
             id: key30
             x: 607; y: 1
             defaultValue: ","
-            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key31
             x: 686; y: 1
             defaultValue: "."
-            shiftValue: defaultValue.toUpperCase()
         }
     }
 
@@ -306,7 +350,7 @@ Item {
         id: row4
         x: 301
         y: 362
-        width: 619
+        width: 747
         height: 84
         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -314,38 +358,50 @@ Item {
             id: key22
             x: 3
             y: 2
+            width: 120
             defaultValue: "shift"
+            defaultPath: "../Keyboard/images/keyBackgroundMedium.png"
+            clickedPath: "../Keyboard/images/keyClickedMedium.png"
         }
 
         Key {
             id: key33
             x: 107
             y: 2
+            width: 120
             defaultValue: "sym"
+            defaultPath: "../Keyboard/images/keyBackgroundMedium.png"
+            clickedPath: "../Keyboard/images/keyClickedMedium.png"
         }
 
         Key {
             id: key34
             x: 201
             y: 2
-            width: 280
+            width: 270
             defaultValue: "space"
             defaultPath: "../Keyboard/images/keyBackgroundLarge.png"
-            //clickedPath: "../Keyboard/images/keyClickedLarge.png"
+            clickedPath: "../Keyboard/images/keyClickedLarge.png"
         }
 
         Key {
             id: key35
             x: 477
             y: 2
+            width: 120
             defaultValue: ".com"
+            defaultPath: "../Keyboard/images/keyBackgroundMedium.png"
+            clickedPath: "../Keyboard/images/keyClickedMedium.png"
         }
 
         Key {
             id: key36
             x: 559
             y: 2
+            width: 120
             defaultValue: "done"
+            defaultPath: "../Keyboard/images/keyBackgroundMedium.png"
+            clickedPath: "../Keyboard/images/keyClickedMedium.png"
         }
     }
 }

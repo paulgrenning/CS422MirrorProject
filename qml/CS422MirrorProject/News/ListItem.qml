@@ -24,7 +24,7 @@ Item {
         x: 17
         y: 26
         font {
-            family: list_item.fontType
+            family: list_item.fontName
             pointSize: list_item.fontSize
         }
         color: list_item.fontColor

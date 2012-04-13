@@ -7,8 +7,9 @@ Button {
     height: 83
 
     property bool shiftPressed: false
+    property bool symPressed: false
 
-    property string currentValue: (shiftPressed) ? shiftValue : defaultValue
+    property string currentValue: key.defaultValue
     property string defaultValue
     property string shiftValue
     property string symValue
