@@ -38,7 +38,7 @@ Item {
         y: 10
         anchors {
             top: parent.top
-            left: accountsMouseArea.right
+            left: generalMouseArea.right
             topMargin: 10
         }
 
@@ -57,7 +57,7 @@ Item {
         y: 10
         anchors {
             top: parent.top
-            left: languageMouseArea.right
+            left: accountsMouseArea.right
             topMargin: 10
         }
 

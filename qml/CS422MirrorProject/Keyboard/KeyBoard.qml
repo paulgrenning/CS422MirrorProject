@@ -70,7 +70,7 @@ Item {
             id: key1
             x: 63; y: 1
             defaultValue: "q"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
             symValue: "1"
         }
 
@@ -78,70 +78,70 @@ Item {
             id: key2
             x: 124; y: 1
             defaultValue: "w"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key3
             x: 225; y: 1
             defaultValue: "e"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key4
             x: 295; y: 1
             defaultValue: "r"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key5
             x: 364; y: 1
             defaultValue: "t"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key6
             x: 433; y: 1
             defaultValue: "y"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key7
             x: 504; y: 1
             defaultValue: "u"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key8
             x: 607; y: 1
             defaultValue: "i"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key9
             x: 686; y: 1
             defaultValue: "i"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key10
             x: 764; y: 1
             defaultValue: "o"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key11
             x: 872; y: 1
             defaultValue: "p"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
@@ -164,70 +164,70 @@ Item {
             id: key12
             x: 63; y: 1
             defaultValue: "a"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key13
             x: 124; y: 1
             defaultValue: "s"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key14
             x: 225; y: 1
             defaultValue: "d"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key15
             x: 295; y: 1
             defaultValue: "f"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key16
             x: 364; y: 1
             defaultValue: "g"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key17
             x: 433; y: 1
             defaultValue: "h"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key18
             x: 504; y: 1
             defaultValue: "j"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key19
             x: 607; y: 1
             defaultValue: "k"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key20
             x: 686; y: 1
             defaultValue: "l"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key21
             x: 764; y: 1
             defaultValue: "@"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
     }
 
@@ -242,63 +242,63 @@ Item {
             id: key23
             x: 63; y: 1
             defaultValue: "z"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key24
             x: 124; y: 1
             defaultValue: "x"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key25
             x: 225; y: 1
             defaultValue: "c"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key26
             x: 295; y: 1
             defaultValue: "v"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key27
             x: 364; y: 1
             defaultValue: "b"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key28
             x: 433; y: 1
             defaultValue: "n"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key29
             x: 504; y: 1
             defaultValue: "m"
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key30
             x: 607; y: 1
             defaultValue: ","
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
 
         Key {
             id: key31
             x: 686; y: 1
             defaultValue: "."
-            shiftValue: defaultValue.toUpperCase
+            shiftValue: defaultValue.toUpperCase()
         }
     }
 
@@ -330,7 +330,8 @@ Item {
             y: 2
             width: 280
             defaultValue: "space"
-            defaultPath: "../Keyboard/images/spacekeyBackground.png"
+            defaultPath: "../Keyboard/images/keyBackgroundLarge.png"
+            //clickedPath: "../Keyboard/images/keyClickedLarge.png"
         }
 
         Key {
