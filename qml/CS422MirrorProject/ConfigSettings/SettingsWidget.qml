@@ -9,7 +9,7 @@ Item {
 
     Image {
         id: backgroundImage
-        source: "images/configTabGeneral.png"
+        source: (appVar.currentLanguage == "Español") ? "images/configTabGeneralSP.png" : "images/configTabGeneral.png"
     }
 
     MouseArea {
@@ -27,7 +27,6 @@ Item {
         anchors.leftMargin: 21
 
         onClicked: {
-            console.log("general");
             settingsTab.state = "general";
         }
     }
@@ -46,7 +45,6 @@ Item {
         height: 36
 
         onClicked: {
-            console.log("accounts");
             settingsTab.state = "accounts";
         }
     }
@@ -65,33 +63,35 @@ Item {
         height: 36
 
         onClicked: {
-            console.log("wifi");
             settingsTab.state = "wifi"
         }
     }
 
-    LanguageSettings {
-        id: languageSettings
-        opacity: 0
+    GeneralTab {
+        id: generalTab
         anchors {
             top: parent.top
             left: parent.left
+            leftMargin: 5
         }
+
+        opacity: 0.0
     }
+
 
     states: [
         State {
             name: "general"
-            PropertyChanges { target: backgroundImage; source: "images/configTabGeneral.png" }
-            PropertyChanges { target: languageSettings; opacity: 1.0 }
+            PropertyChanges { target: backgroundImage; source: (appVar.currentLanguage == "Español") ? "images/configTabGeneralSP.png" : "images/configTabGeneral.png" }
+            PropertyChanges { target: generalTab; opacity: 1.0 }
         },
         State {
             name: "accounts"
-            PropertyChanges { target: backgroundImage; source: "images/configTabAccounts.png" }
+            PropertyChanges { target: backgroundImage; source: (appVar.currentLanguage == "Español") ? "images/configTabAccountsSP.png" : "images/configTabAccounts.png" }
         },
         State {
             name: "wifi"
-            PropertyChanges { target: backgroundImage; source: "images/configTabWifi.png" }
+            PropertyChanges { target: backgroundImage; source: (appVar.currentLanguage == "Español") ? "images/configTabWifiSP.png" : "images/configTabWifi.png" }
         }
 
     ]

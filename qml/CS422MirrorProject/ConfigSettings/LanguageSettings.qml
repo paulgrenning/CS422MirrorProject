@@ -10,7 +10,6 @@ Item {
     }
 
     clip: true;
-    height: 200
     ListView {
         id: languageList
         clip: true
@@ -29,7 +28,7 @@ Item {
 
         delegate: Item {
             signal languageClicked();
-             width:parent.width - 80
+             width:parent.width
              height: 50
 
              MouseArea {
@@ -51,9 +50,9 @@ Item {
                  id: aLanguage
                  anchors {
                      left: parent.left
-                     leftMargin: 5
+                     leftMargin: 15
                      top: parent.top
-                     topMargin: 10
+                     topMargin: 12
                  }
 
                  anchors.horizontalCenter: parent.horizontalCenter
@@ -68,11 +67,11 @@ Item {
                  anchors {
                      top: aLanguage.bottom
                      left: aLanguage.left
-                     leftMargin: -5
+                     leftMargin: -15
                      topMargin: 2
                  }
 
-                 source: "../SocialWidget/images/divider.png"
+                 source: "images/longDivider.png"
              }
         }
     }

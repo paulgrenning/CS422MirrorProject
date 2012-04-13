@@ -7,7 +7,7 @@ Item {
     width: nameInput.width
     height: nameInput.height
     anchors.centerIn: parent
-
+opacity: 0
     property InputView activeView
 
     state: "inactive"
