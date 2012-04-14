@@ -9,7 +9,7 @@ Button {
     property bool shiftPressed: false
     property bool symPressed: false
 
-    property string currentValue: key.defaultValue
+    property string currentValue: (symPressed == true) ? symValue : ((shiftPressed == true) ?  shiftValue : defaultValue)
     property string defaultValue
     property string shiftValue
     property string symValue

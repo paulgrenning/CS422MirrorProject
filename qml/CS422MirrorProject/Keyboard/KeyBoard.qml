@@ -1,11 +1,12 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../AppVariables"
 
 Item {
     id: key_board
     width: 1050
     height: 458
-    opacity: 1
+    opacity: inUse ? 1 : 0
 
     property string inputLabel
 
@@ -13,7 +14,7 @@ Item {
     property bool shift: false
     property bool sym: false
     property bool isPassword: false
-    property bool inUse: false
+    property bool inUse: true
     property string fontType: "Futura"
     property int fontSize: 32
     property string fontColor: "#7dd9b3"
@@ -27,6 +28,7 @@ Item {
     function keyPressed(value){
         if(value == "sym"){
             key_board.sym = !key_board.sym;
+            key_board.shift = false;
         }
         else if(value == "shift"){
             key_board.shift = !key_board.shift;
@@ -35,16 +37,20 @@ Item {
             key_board.deleteLast();
         }
         else if(value == "done"){
-
+            key_board.inUse = false
         }
         else if(key_board.isPassword == true){
             key_board.input = key_board.input + "*";
+
+            key_board.shift = false;
         }
         else{
             if(value == "space")
                 key_board.input = key_board.input + " ";
             else
                 key_board.input = key_board.input + value;
+
+            key_board.shift = false;
         }
     }
 
@@ -98,6 +104,8 @@ Item {
             defaultValue: "q"
             shiftValue: defaultValue.toUpperCase()
             symValue: "1"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -106,6 +114,8 @@ Item {
             defaultValue: "w"
             shiftValue: defaultValue.toUpperCase()
             symValue: "2"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -114,6 +124,8 @@ Item {
             defaultValue: "e"
             shiftValue: defaultValue.toUpperCase()
             symValue: "3"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -122,6 +134,8 @@ Item {
             defaultValue: "r"
             shiftValue: defaultValue.toUpperCase()
             symValue: "4"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -130,6 +144,8 @@ Item {
             defaultValue: "t"
             shiftValue: defaultValue.toUpperCase()
             symValue: "5"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -138,6 +154,8 @@ Item {
             defaultValue: "y"
             shiftValue: defaultValue.toUpperCase()
             symValue: "6"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -146,6 +164,8 @@ Item {
             defaultValue: "u"
             shiftValue: defaultValue.toUpperCase()
             symValue: "7"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -154,6 +174,8 @@ Item {
             defaultValue: "i"
             shiftValue: defaultValue.toUpperCase()
             symValue: "8"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -162,6 +184,8 @@ Item {
             defaultValue: "o"
             shiftValue: defaultValue.toUpperCase()
             symValue: "8"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -170,6 +194,8 @@ Item {
             defaultValue: "p"
             shiftValue: defaultValue.toUpperCase()
             symValue: "9"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -197,6 +223,8 @@ Item {
             defaultValue: "a"
             shiftValue: defaultValue.toUpperCase()
             symValue: "!"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -205,6 +233,8 @@ Item {
             defaultValue: "s"
             shiftValue: defaultValue.toUpperCase()
             symValue: "#"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -213,6 +243,8 @@ Item {
             defaultValue: "d"
             shiftValue: defaultValue.toUpperCase()
             symValue: "$"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -221,6 +253,8 @@ Item {
             defaultValue: "f"
             shiftValue: defaultValue.toUpperCase()
             symValue: "%"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -229,6 +263,8 @@ Item {
             defaultValue: "g"
             shiftValue: defaultValue.toUpperCase()
             symValue: "^"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -237,6 +273,8 @@ Item {
             defaultValue: "h"
             shiftValue: defaultValue.toUpperCase()
             symValue: "&"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -245,6 +283,8 @@ Item {
             defaultValue: "j"
             shiftValue: defaultValue.toUpperCase()
             symValue: "*"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -253,6 +293,8 @@ Item {
             defaultValue: "k"
             shiftValue: defaultValue.toUpperCase()
             symValue: "("
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -261,6 +303,8 @@ Item {
             defaultValue: "l"
             shiftValue: defaultValue.toUpperCase()
             symValue: ")"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -283,6 +327,8 @@ Item {
             defaultValue: "z"
             shiftValue: defaultValue.toUpperCase()
             symValue: "-"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -291,6 +337,8 @@ Item {
             defaultValue: "x"
             shiftValue: defaultValue.toUpperCase()
             symValue: "_"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -299,6 +347,8 @@ Item {
             defaultValue: "c"
             shiftValue: defaultValue.toUpperCase()
             symValue: "="
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -307,6 +357,8 @@ Item {
             defaultValue: "v"
             shiftValue: defaultValue.toUpperCase()
             symValue: "+"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -315,6 +367,8 @@ Item {
             defaultValue: "b"
             shiftValue: defaultValue.toUpperCase()
             symValue: ";"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -323,6 +377,8 @@ Item {
             defaultValue: "n"
             shiftValue: defaultValue.toUpperCase()
             symValue: ":"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
@@ -331,6 +387,8 @@ Item {
             defaultValue: "m"
             shiftValue: defaultValue.toUpperCase()
             symValue: "?"
+            shiftPressed: key_board.shift
+            symPressed: key_board.sym
         }
 
         Key {
