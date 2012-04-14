@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wifiList>
+            <wifi>
+                <name>EVL Network</name>
+                <image>images/wifi1.png</image>
+            </wifi>
+            <wifi>
+                <name>Duhh Bears</name>
+                <image>images/wifi1.png</image>
+            </wifi>
+            <wifi>
+                <name>Batman's Network</name>
+                <image>images/wifi2.png</image>
+            </wifi>
+            <wifi>
+                <name>Paul's Wifi</name>
+                <image>images/wifi2.png</image>
+            </wifi>
+            <wifi>
+                <name>Johnny's Network</name>
+                <image>images/wifi3.png</image>
+            </wifi>
+            <wifi>
+                <name>Chicago Rules</name>
+                <image>images/wifi3.png</image>
+            </wifi>
+            <wifi>
+                <name>FBI</name>
+                <image>images/wifi4.png</image>
+            </wifi>
+            <wifi>
+                <name>Fiona's Wireless</name>
+                <image>images/wifi4.png</image>
+            </wifi>
+            <wifi>
+                <name>Yes, This Is Dog</name>
+                <image>images/wifi4.png</image>
+            </wifi>
+</wifiList>
+
