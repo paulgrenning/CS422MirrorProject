@@ -11,7 +11,7 @@ InputView {
 
     signal inputReady(string input)
 
-    onHideViewChanged: keyboard.inUse = !hideView;
+    // onHideViewChanged: keyboard.inUse = !hideView;
 
     KeyBoard {
         id: keyboard

@@ -3,6 +3,10 @@ import QtQuick 1.1
 
 Text {
     id: stdText
-    color: "#7dd9b3"
+    color: (useBlue) ? "#b9eef3" : "#bee7d5"
     font { family: "Futura" }
+    style: Text.Raised
+    styleColor: "#91b3a4"
+
+    property bool useBlue: false
 }

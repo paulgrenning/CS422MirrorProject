@@ -5,21 +5,27 @@ Button {
     id: key
     width: 84
     height: 83
+    state: key_board.state
 
-    property bool shiftPressed: false
-    property bool symPressed: false
+    defaultPath: "../Keyboard/images/keyBackground.png"
+    clickedPath: "../Keyboard/images/keyClicked.png"
 
-    property string currentValue: (symPressed == true) ? symValue : ((shiftPressed == true) ?  shiftValue : defaultValue)
+    property string currentValue: defaultValue
     property string defaultValue
-    property string shiftValue
-    property string symValue
+    property string shiftValue: defaultValue
+    property string symValue: defaultValue
 
     property string fontType: "Futura"
     property int fontSize: 32
     property string fontColor: "#7dd9b3"
 
-    defaultPath: "../Keyboard/images/keyBackground.png"
-    clickedPath: "../Keyboard/images/keyClicked.png"
+    onStateChanged: {
+        switch(state) {
+            case "default": currentValue = defaultValue; break
+            case "shift": currentValue = shiftValue; break
+            case "sym": currentValue = symValue; break
+        }
+    }
 
     onButtonClicked: key_board.keyPressed(currentValue)
 

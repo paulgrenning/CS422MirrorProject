@@ -7,7 +7,7 @@ Item {
     width: nameInput.width
     height: nameInput.height
     anchors.centerIn: parent
-opacity: 0
+
     property InputView activeView
 
     state: "inactive"
@@ -15,7 +15,8 @@ opacity: 0
         State { name: "inactive" },
         State { name: "photoView" },
         State { name: "nameEntry" },
-        State { name: "emailEntry" }
+        State { name: "emailEntry" },
+        State { name: "confirmEmail" }
     ]
 
     onStateChanged: {
@@ -24,6 +25,7 @@ opacity: 0
             case "photoView": activeView = photoView; break
             case "nameEntry": activeView = nameInput; break
             case "emailEntry": activeView = emailInput; break
+            case "confirmEmail": activeView = confirmEmailView; break
             default: break
         }
         if(activeView) activeView.toggleHide()
@@ -40,6 +42,8 @@ opacity: 0
             console.log("GOT 'PHOTO'")
             parent.state = "nameEntry"
         }
+
+        onHideViewChanged: console.log("should render photoview")
     }
 
     TextView {
@@ -58,6 +62,11 @@ opacity: 0
 
         onInputReady: {
             console.log("GOT EMAIL: " + input)
+            parent.state = "confirmEmail"
         }
+    }
+
+    ConfirmationView {
+        id: confirmEmailView
     }
 }

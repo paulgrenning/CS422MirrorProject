@@ -1,20 +1,43 @@
 import QtQuick 1.1
 import "../UtilityElements"
+import "../DateWidget"
 
 Widget {
     id: calendarContainer
-    width: 305
-    height: 334
+    width: 290
+    height: 331
     bgImgPath: "../CalendarWidget/images/calendarBG.png"
 
     property int day: 0
-    property string dayTitle: "today"
+    property string dayTitle: getDayTitle()
+    property string currentLanguage: appVar.currentLanguage
 
     onDayChanged: {
+        if(day < 0) day = 0
+        dayTitle = getDayTitle()
+    }
+
+    onCurrentLanguageChanged: {
+        dayTitle = getDayTitle()
+    }
+
+    function getDayTitle() {
         switch(day) {
-            case 0: return "today"
-            case 1: return "tomorrow"
-            default: return "not defined yet"
+            case 0:
+                var today = { English: "today", Español: "hoy" }
+                return today[currentLanguage]
+            case 1:
+                var tomorrow = { English: "tomorrow", Español: "mañana" }
+                return tomorrow[currentLanguage]
+            case 6: case 5: case 4: case 3: case 2:
+                var jsDay = ((new Date()).getDay() + day) % 7;
+                return dateWidget.getDayName(jsDay, currentLanguage).toLowerCase()
+            default:
+                var jsDay = new Date()
+                jsDay.setDate(jsDay.getDate() + day)
+                var month = jsDay.getMonth() + 1; var date = jsDay.getDate()
+                var dateFormat = { English: month + "/" + date, Español: date + "/" + month }
+                return dateFormat[currentLanguage]
         }
     }
 
@@ -23,10 +46,29 @@ Widget {
         font.pixelSize: 30
         anchors {
             top: parent.top
-            topMargin: -10
+            topMargin: -13
             horizontalCenter: parent.horizontalCenter
         }
+        useBlue: true
         text: dayTitle
+    }
+
+    CalendarButton {
+        id: calendarLeft
+        direction: "Left"
+        anchors.left: parent.left
+        anchors.leftMargin: -4
+
+        onButtonClicked: parent.day--;
+    }
+
+    CalendarButton {
+        id: calendarRight
+        direction: "Right"
+        anchors.right: parent.right
+        anchors.rightMargin: -4
+
+        onButtonClicked: parent.day++;
     }
 
     XmlListModel {
@@ -42,8 +84,8 @@ Widget {
 
     ListView {
         id: calendarView
-        height: parent.height - anchors.topMargin
-        width: parent.width - anchors.leftMargin
+        height: parent.height - anchors.topMargin * 2
+        width: parent.width - anchors.leftMargin * 2
         anchors {
             top: parent.top
             topMargin: 30
@@ -53,6 +95,9 @@ Widget {
 
         model: calendarModel
         delegate: calendarDelegate
+
+        snapMode: ListView.SnapToItem
+        clip: true
 
         Component {
             id: calendarDelegate
@@ -64,7 +109,7 @@ Widget {
 
                 Column {
                     id: textContainer
-                    width: timeRow
+                    width: parent.width
                     height: startText.height + descText.height + locText.height + spacing * 2
                     spacing: 1
 
@@ -76,13 +121,17 @@ Widget {
 
                     StdText {
                         id: descText
+                        width: parent.width
                         font.pixelSize: 16
+                        elide: Text.ElideRight
                         text: "   • " + description
                     }
 
                     StdText {
                         id: locText
+                        width: parent.width
                         font.pixelSize: 14
+                        elide: Text.ElideRight
                         text: "          " + location
                     }
                 }

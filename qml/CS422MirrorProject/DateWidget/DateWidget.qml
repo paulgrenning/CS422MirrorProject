@@ -4,8 +4,11 @@ import "../UtilityElements"
 
 Widget {
     id: dateWidget
-    height: dateText.height
-    width: dateText.width
+    height: textCol.height
+    width: textCol.width
+
+    property string currentLanguage: appVar.currentLanguage
+    onCurrentLanguageChanged: getDate()
 
     property string day
     property string date
@@ -14,10 +17,10 @@ Widget {
 
     function getDate() {
         var today = new Date();
-        day = getDayName(today.getDay(), appVar.currentLanguage)
+        day = getDayName(today.getDay(), currentLanguage)
         date = today.getDate()
         date += getSuffix()
-        month = getMonthName(today.getMonth(), appVar.currentLanguage)
+        month = getMonthName(today.getMonth(), currentLanguage)
         year = today.getFullYear();
     }
 
@@ -26,7 +29,7 @@ Widget {
             English: {
                 day_names: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
             },
-            Spanish: {
+            Español: {
                 day_names: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
             }
         }
@@ -35,6 +38,8 @@ Widget {
     }
 
     function getSuffix() {
+        if(currentLanguage == "Español") return "º"
+
         var ones = date % 10
         var tens = (date - ones) / 10
 
@@ -52,7 +57,7 @@ Widget {
             English: {
                 month_names: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
             },
-            Spanish: {
+            Español: {
                 month_names: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octobre', 'Noviembre', 'Deciembre']
             }
         }
@@ -62,10 +67,26 @@ Widget {
 
     Component.onCompleted: getDate();
 
-    StdText {
-        id: dateText
-        font.pointSize: 28
-        horizontalAlignment: Text.AlignRight
-        text: day + " --- " + date + "\n" + month + ", " + year
+    Column {
+        id: textCol
+        height: dateText.height + mnthYearText.height + spacing
+        width: (dateText.width > mnthYearText.width) ? dateText.width : mnthYearText.width
+        spacing: 2
+
+        StdText {
+            id: dateText
+            font.pointSize: 32
+            anchors.horizontalCenter: parent.horizontalCenter
+            useBlue: true
+            text: day + " --- " + date
+        }
+
+        StdText {
+            id: mnthYearText
+            font.pointSize: 32
+            anchors.horizontalCenter: parent.horizontalCenter
+            useBlue: true
+            text: month + ", " + year
+        }
     }
 }

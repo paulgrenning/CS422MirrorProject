@@ -7,7 +7,7 @@ InputView {
     height: elements.height
     anchors.centerIn: parent
 
-    onHideViewChanged: elements.hideElements = hideView
+//    onHideViewChanged: elements.hideElements = hideView
 
     signal photoReady()
 
@@ -18,7 +18,7 @@ InputView {
         spacing: 5
         anchors.centerIn: parent
 
-        property bool hideElements: true
+//        property bool hideElements: true
 
         Image {
             id: photoFrame
@@ -30,10 +30,10 @@ InputView {
             smooth: true
             source: "../IntroFlow/images/photoFrameBG.png"
 
-            opacity: (parent.hideElements) ? 0 : 100
-            Behavior on opacity {
-                NumberAnimation { duration: 200 }
-            }
+//            opacity: (parent.hideElements) ? 0 : 100
+//            Behavior on opacity {
+//                NumberAnimation { duration: 200 }
+//            }
         }
 
         Button {
@@ -44,10 +44,10 @@ InputView {
             defaultPath: "../IntroFlow/images/photoButtonUP.png"
             clickedPath: "../IntroFlow/images/photoButtonDN.png"
 
-            opacity: (parent.hideElements) ? 0 : 100
-            Behavior on opacity {
-                NumberAnimation { duration: 200 }
-            }
+//            opacity: (parent.hideElements) ? 0 : 100
+//            Behavior on opacity {
+//                NumberAnimation { duration: 200 }
+//            }
 
             onButtonClicked: parent.parent.photoReady()
         }

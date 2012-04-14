@@ -29,6 +29,13 @@
                <description>Take a nap</description>
                <location>My bed</location>
             </event>
+
+            <event>
+                <start_time>7:15</start_time>
+                <end_time>8:00</end_time>
+                <description>Dinner with the family</description>
+                <location>The table</location>
+            </event>
         </events>
     </day>
 
