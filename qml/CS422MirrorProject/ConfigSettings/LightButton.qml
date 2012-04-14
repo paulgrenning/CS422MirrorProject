@@ -12,6 +12,13 @@ Item {
     signal clicked();
 
     Image {
+        y: -350
+        x: -30
+        source: "images/lightSource.png"
+        opacity: 1.0 - sliderLight.value
+    }
+
+    Image {
         id: lightButImage
         x: 0
         y: 209
@@ -37,6 +44,9 @@ Item {
         y: 74
         width: 29
         height: 140
+        maximum: 0.99
+        minimum: 0.0
+        value: 1
     }
 
     states: [
