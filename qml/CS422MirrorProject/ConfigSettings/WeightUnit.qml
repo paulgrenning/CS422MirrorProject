@@ -21,7 +21,7 @@ Item {
         height: 50
         onClicked: {
             button.state = "lb"
-            appVar.currentDegreesUnit = "lb"
+            appVar.currentWeightUnit = "lb"
         }
     }
 
@@ -35,7 +35,7 @@ Item {
         height: 50
         onClicked: {
             button.state = "kg"
-            appVar.currentDegreesUnit = "Kg"
+            appVar.currentWeightUnit = "Kg"
         }
     }
 

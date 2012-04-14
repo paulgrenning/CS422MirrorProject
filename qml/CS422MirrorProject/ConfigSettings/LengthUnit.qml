@@ -21,7 +21,7 @@ Item {
         height: 50
         onClicked: {
             button.state = "mi"
-            appVar.currentDegreesUnit = "mi"
+            appVar.currentDistanceUnit = "mi"
         }
     }
 
@@ -35,7 +35,7 @@ Item {
         height: 50
         onClicked: {
             button.state = "km"
-            appVar.currentDegreesUnit = "Km"
+            appVar.currentDistanceUnit = "Km"
         }
     }
 
