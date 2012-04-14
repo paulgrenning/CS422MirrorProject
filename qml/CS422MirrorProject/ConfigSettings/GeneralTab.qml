@@ -47,6 +47,17 @@ Item {
         opacity: 1.0
     }
 
+    UnitsSettings {
+        anchors {
+            top: languageSelected.bottom
+            left: languageSelected.left
+            leftMargin: 50
+            topMargin: 15
+        }
+        id: unitsSettings
+        opacity: 0.0
+    }
+
     states: [
         State {
             name: "languages"
@@ -59,7 +70,7 @@ Item {
     ]
 
     PropertyAnimation {id:languageFade; target: languageSettings; property: "opacity"; to: (languageSettings.opacity == 0) ? displayOpacity : 0; duration: 500}
-//    PropertyAnimation {id:languageFade; target: languageSettings; property: "opacity"; to: (languageSettings.opacity == 0) ? displayOpacity : 0; duration: 500}
+    PropertyAnimation {id:unitsFade; target: unitsSettings; property: "opacity"; to: (unitsSettings.opacity == 0) ? displayOpacity : 0; duration: 500}
 
 
     MouseArea {
@@ -73,7 +84,8 @@ Item {
         height: 60
         onClicked: {
             generalTabHandler.state = "languages";
-            languageFade.start()
+            languageFade.start();
+            unitsFade.start();
         }
     }
 
@@ -88,7 +100,8 @@ Item {
         height: 60
         onClicked: {
             generalTabHandler.state = "units";
-            languageFade.start()
+            languageFade.start();
+            unitsFade.start();
         }
     }
 }
