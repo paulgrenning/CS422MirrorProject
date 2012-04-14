@@ -24,7 +24,7 @@ Item{
                width: 133
                height: 16
                color: "#e5eeeb"
-               text: low_f+"°"
+               text: (appVar.currentDegreeSystem == "Celsius") ? parseInt((low_f*1 - 32)*5/9.0) + "°C" : low_f + "°F"
                anchors.horizontalCenterOffset: 0
                horizontalAlignment: Text.AlignHCenter
                anchors.horizontalCenter: parent.horizontalCenter
@@ -38,7 +38,7 @@ Item{
                width: 132
                height: 17
                color: "#bfe4d5"
-               text: high_f+"°"
+               text: (appVar.currentDegreeSystem == "Celsius") ? parseInt((high_f*1 - 32)*5/9.0) + "°C" : high_f + "°F"
                font.pointSize: 16
                anchors.horizontalCenterOffset: 0
                horizontalAlignment: Text.AlignHCenter

@@ -21,7 +21,7 @@ Item {
         height: 50
         onClicked: {
             button.state = "fahrenheit"
-            appVar.currentDegreesUnit = "Fahrenheit"
+            appVar.currentDegreeSystem = "Fahrenheit"
         }
     }
 
@@ -35,7 +35,7 @@ Item {
         height: 50
         onClicked: {
             button.state = "celsius"
-            appVar.currentDegreesUnit = "Celsius"
+            appVar.currentDegreeSystem = "Celsius"
         }
     }
 
