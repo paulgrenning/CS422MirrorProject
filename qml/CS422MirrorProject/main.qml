@@ -174,6 +174,24 @@ Rectangle {
         }
     }
 
+    TextView {
+        id: mainInputField
+        x: 100
+        y: 200
+        opacity: 0
+
+        property QtObject returnWidget;
+        property QtObject runAnimation;
+
+        onInputReady: {
+            console.log("Input: " + input)
+            runAnimation.start()
+            keyboardFade.start()
+        }
+
+    }
+    PropertyAnimation {id:keyboardFade; target: mainInputField; property: "opacity"; to: (mainInputField.opacity == 0) ? 1 : 0; duration: 500}
+
     PropertyAnimation {id:musicanimopen; target: musicplayer; property: "opacity"; to: (musicplayer.opacity == 0) ? displayOpacity : 0; duration: 500}
     PropertyAnimation {id:healthanimopen; target: healthwidget; property: "opacity"; to: (healthwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
     PropertyAnimation {id:socialanimopen; target: socialwidget; property: "opacity"; to: (socialwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }

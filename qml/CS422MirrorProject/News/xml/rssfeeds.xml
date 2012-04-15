@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feeds>
+	<category name="Sports">	
+		<item>
+			<name></name>
+			<xmlUrl></xmlUrl>
+			<logo></logo>
+		</item>
+	</category>
+	<category name="Local">	
+		<item>
+			<name></name>
+			<xmlUrl></xmlUrl>
+			<logo></logo>
+		</item>
+	</category>
+	<category name="National">	
+		<item>
+			<name></name>
+			<xmlUrl></xmlUrl>
+			<logo></logo>
+		</item>
+	</category>
+	<category name="International">	
+		<item>
+			<name></name>
+			<xmlUrl></xmlUrl>
+			<logo></logo>
+		</item>
+	</category>
+	<category name="Entertainment">	
+		<item>
+			<name></name>
+			<xmlUrl></xmlUrl>
+			<logo></logo>
+		</item>
+	</category>
+	<category name="Sports">	
+		<item>
+			<name></name>
+			<xmlUrl></xmlUrl>
+			<logo></logo>
+		</item>
+	</category>
+	<category name="Tech">	
+		<item>
+			<name></name>
+			<xmlUrl></xmlUrl>
+			<logo></logo>
+		</item>
+	</category>
+</feeds>

@@ -1,21 +1,70 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
+import "../UtilityElements"
 import QtQuick 1.1
 
-Item {
-    width: 310; height: 502
+Widget{
+    id: news
+    width: 310; height: 496
 
-    Image {
-        id: image1
-        anchors.fill: parent
-        source: (appVar.currentLanguage === "Español") ? "images/newsWidgetBackgroundSP.png" : "images/newsWidgetBackground.png"
+
+    property string currentFeed: ""
+    property string currentFeedMedia: ""
+
+    bgImgPath:  (appVar.currentLanguage == "Español") ? "../News/images/newsWidgetBackgroundSP.png" : "../News/images/newsWidgetBackground.png"
+
+    MouseArea {
+        id: mouse_area1
+        x: 222; y: 0
+        width: 40; height: 40
+        onPressed: news.state = "add"
     }
 
-    FeedView {
-        id: feedview1
-        x: 22; y: 53
-        width: 267
-        height: 426
-        feedName: "Yahoo Sports"
-        feedUrl: "http://rss.news.yahoo.com/rss/sports"
+    ActiveFeedView {
+        id: feedview
+        x: 19; y: 52
+        feedURL: news.currentFeed
+        feedMURL: news.currentFeedMedia
+        opacity: 0
     }
+
+    FeedListView{
+        id: feedlist
+        x: 19; y: 52
+        opacity: 1
+    }
+
+
+    states: [
+        State {
+            name: "base state"
+
+            PropertyChanges {
+                target: feedlist
+                opacity: 1
+            }
+            PropertyChanges {
+                target: feedview
+                opacity: 0
+            }
+        },
+        State {
+            name: "newsfeed"
+
+            PropertyChanges {
+                target: feedview
+                opacity: 1
+            }
+            PropertyChanges {
+                target: feedlist
+                opacity: 0
+            }
+        },
+        State {
+            name: "article"
+        },
+        State {
+            name: "add"
+
+        }
+    ]
 }

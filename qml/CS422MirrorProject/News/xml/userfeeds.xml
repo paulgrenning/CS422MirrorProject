@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feeds>
+    <item>
+        <name>Yahoo Sports</name>
+        <xmlUrl>http://rss.news.yahoo.com/rss/sports</xmlUrl>
+        <mediaUrl>http://search.yahoo.com/mrss/</mediaUrl>
+        <logo>logos/Yahoo.png</logo>
+    </item>
+</feeds>
