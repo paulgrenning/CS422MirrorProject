@@ -62,9 +62,7 @@ Rectangle {
     Clock {
         id: clockWidget
         x: rootElement.width / 2 - clockWidget.width / 2
-        y: 15
-        width: 200
-        height: 50
+        y: 0
     }
 
     WeatherWidget {

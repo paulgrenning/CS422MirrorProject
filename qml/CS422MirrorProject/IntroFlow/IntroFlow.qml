@@ -1,4 +1,3 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import "../UtilityElements"
 
@@ -56,6 +55,7 @@ Item {
         failMessage: "you have to enter something for your name"
 
         onInputReady: {
+            appVar.currentUser = input
             parent.state = "emailEntry"
         }
     }
@@ -71,8 +71,8 @@ Item {
         failMessage: "your email must contain an '@' symbol to be valid"
 
         onInputReady: {
-            parent.state = "emailPasswordEntry"
             confirmEmailView.service = input.split("@")[1]
+            parent.state = "emailPasswordEntry"
         }
 
         onSkipInput: parent.state = "inactive"

@@ -1,14 +1,17 @@
 import QtQuick 1.0
+import "../UtilityElements"
 
-Item {
+Column {
     id: clock
-    width: 250; height: 100
+    width: (clockText.width > greeting.paintedWidth) ? clockText.width : greeting.paintedWidth
+    height: clockText.height + greeting.paintedHeight + spacing
+    spacing: -15
 
     property int hours: 0
     property int minutes: 0
     property int seconds: 0
     property bool military: false
-    property string meridiem: "XX"
+    property string meridiem
     property bool blinkerOn: true
     property bool blinkColon: !blinkerOn
 
@@ -18,14 +21,14 @@ Item {
         minutes = date.getMinutes();
         hours = date.getHours();
 
-        if(hours > 12)
-            meridiem = "PM"
-        else
+        if(!military) {
             meridiem = "AM"
-
-        if(military == false && hours > 12)
-            hours = hours - 12;
-
+            if(hours == 0) hours = 12
+            else if(hours > 12) {
+                meridiem = "PM"
+                hours = hours - 12;
+            }
+        }
     }
 
     Timer {
@@ -35,78 +38,64 @@ Item {
 
     Timer{
         interval: 500; running: blinkerOn; repeat: true;
-        onTriggered: {
-            blinkColon = !blinkColon
-        }
+        onTriggered: blinkColon = !blinkColon
     }
 
-    Rectangle {
-        id: rectangle1
-        x: 1
-        y: 71
-        width: 199
-        height: 50
-        color: "#00000000"
-        z: 1
-        anchors.verticalCenter: parent.verticalCenter
+    Item {
+        id: clockText
+        width: hourText.width + colon.width + minuteText.width + meridiemText.width
+        height: hourText.paintedHeight
+        anchors { left: parent.left; top: parent.top }
 
-        Text {
-            id: timeTxt
-            x: 0; y: -20
-            color: "#7dd9b3"
+        StdText {
+            id: hourText
+            font.pointSize: 70
+            anchors { left: parent.left; top: parent.top }
             text: (clock.hours < 10) ? ("0" + clock.hours) : (clock.hours)
-            z: 1
-            anchors.verticalCenterOffset: 1
-            anchors.verticalCenter: parent.verticalCenter
-            font.pointSize: 70
-            font.family: "Futura"
         }
 
-        Text {
+        StdText {
             id: colon
-            x: 90; y: -32
             visible: blinkColon
-            color: "#7dd9b3"
+            font.pointSize: 70
+            anchors { top: parent.top; topMargin: -7; left: hourText.right }
             text: ":"
-            z: 1
-            anchors.verticalCenterOffset: -11
-            anchors.verticalCenter: parent.verticalCenter
-            font.pointSize: 70
-            font.family: "Futura"
         }
 
-        Text {
-            id: minTxt
-            x: 112; y: -20
-            color: "#7dd9b3"
+        StdText {
+            id: minuteText
+            font.pointSize: 70
+            font.family: "Futura"
+            anchors { top: parent.top; left: colon.right }
             text: (clock.minutes < 10) ? ("0" + clock.minutes) : (clock.minutes)
-            anchors.verticalCenterOffset: 1
-            anchors.verticalCenter: parent.verticalCenter
-            font.pointSize: 70
-            font.family: "Futura"
 
-            Text {
-                id: text1
-                x: 89
-                y: 14
-                text: clock.meridiem
-                font.pixelSize: 20
-                font.family: "Futura"
-                color:"#7dd9b3"
-            }
         }
 
-       /*Text {
-            id: secTxt
-            x: 199; y: 19
-            color: "#7dd9b3"
-           text: (clock.seconds<10) ? "0"+clock.seconds:clock.seconds
-           anchors.verticalCenterOffset: 20
-            anchors.verticalCenter: parent.verticalCenter
-            font.pointSize: 40
-            font.family: "Futura"
-        }*/
-
-
+        StdText {
+            id: meridiemText
+            font.pixelSize: 20
+            anchors { top: parent.top; topMargin: 15; left: minuteText.right }
+            text: clock.meridiem
+        }
     }
+
+    StdText {
+        id: greeting
+        font.pixelSize: 24
+        visible: appVar.currentUser
+        anchors { horizontalCenter: parent.horizontalCenter }
+        text: "Good " + ((hours > 17 && hours < 5) ? "evening, " : (hours < 12) ? "morning, " : "afternoon, ") + appVar.currentUser
+    }
+
 }
+
+   /*Text {
+        id: secTxt
+        x: 199; y: 19
+        color: "#7dd9b3"
+       text: (clock.seconds<10) ? "0"+clock.seconds:clock.seconds
+       anchors.verticalCenterOffset: 20
+        anchors.verticalCenter: parent.verticalCenter
+        font.pointSize: 40
+        font.family: "Futura"
+    }*/
