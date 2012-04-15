@@ -77,7 +77,7 @@ Widget {
             id: dateText
             font.pointSize: 32
             anchors.horizontalCenter: parent.horizontalCenter
-            useBlue: true
+            state: "blue"
             text: day + " --- " + date
         }
 
@@ -85,7 +85,7 @@ Widget {
             id: mnthYearText
             font.pointSize: 32
             anchors.horizontalCenter: parent.horizontalCenter
-            useBlue: true
+            state: "blue"
             text: month + ", " + year
         }
     }

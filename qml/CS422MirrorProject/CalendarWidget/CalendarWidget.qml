@@ -49,7 +49,7 @@ Widget {
             topMargin: -13
             horizontalCenter: parent.horizontalCenter
         }
-        useBlue: true
+        state: "blue"
         text: dayTitle
     }
 

@@ -1,6 +1,6 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import "../Keyboard"
+import "../UtilityElements"
 
 InputView {
     id: textView
@@ -8,15 +8,52 @@ InputView {
     height: keyboard.height
 
     property string inputLabel
+    property string inputMessage
+
+    property variant validator
+    property string failMessage
 
     signal inputReady(string input)
 
-    // onHideViewChanged: keyboard.inUse = !hideView;
+    Column {
+        id: contents
+        width: keyboard.width
+        height: message.paintedHeight + keyboard.height
 
-    KeyBoard {
-        id: keyboard
-        inputLabel: parent.inputLabel
+        StdText {
+            id: message
+            anchors.horizontalCenter: parent.horizontalCenter
+            font.pixelSize: 30
+            state: "orange"
+            text: inputMessage
+        }
 
-        onInputReady: parent.inputReady(input)
+        KeyBoard {
+            id: keyboard
+            inputLabel: textView.inputLabel
+
+            onInputReady: {
+                if(validator) {
+                    if(input.match(validator)) textView.inputReady(input)
+                    else if(failMessage) popup.opacity = 1
+                } else {
+                    textView.inputReady(input)
+                }
+            }
+        }
+    }
+
+    Item {
+        id: popup
+        opacity: 0
+
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
+        }
+
+        StdText {
+            id: popupText
+            text: failMessage
+        }
     }
 }

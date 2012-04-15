@@ -3,10 +3,15 @@ import QtQuick 1.1
 
 Text {
     id: stdText
-    color: (useBlue) ? "#b9eef3" : "#bee7d5"
+    height: font.pixelSize
     font { family: "Futura" }
     style: Text.Raised
     styleColor: "#91b3a4"
 
-    property bool useBlue: false
+    state: "default"
+    states: [
+        State { name: "default"; PropertyChanges { target: stdText; color: "#bee7d5" }},
+        State { name: "blue"; PropertyChanges { target: stdText; color: "#b9eef3" }},
+        State { name: "orange"; PropertyChanges { target: stdText; color: "#ebab6c" }}
+    ]
 }

@@ -1,6 +1,6 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import "../AppVariables"
+import "../UtilityElements"
 
 Item {
     id: key_board
@@ -34,50 +34,72 @@ Item {
         if(value === "sym" || value === "shift") {
             state = value
         } else if(value === "del") {
-            deleteLast();
+            deleteLast()
         } else if(value === "done") {
             inputReady(input)
         } else {
-            key_board.input = key_board.input + value;
+            input += value
             if(state === "shift") state = "default"
         }
-        maskedInput = maskedInput + "*";
+        maskedInput += "*"
+        inputCursor.x = inputTxt.paintedWidth - 5
     }
 
     Row {
         id: inputField
         y: 25
         width: inputFieldLabel.width + inputBG.width + spacing
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            bottom: row1.top
+            bottomMargin: 10
+        }
         spacing: 5
 
-        Text {
+        StdText {
             id: inputFieldLabel
-            height: 49
             text: key_board.inputLabel
             font.pixelSize: 29
         }
 
-        Rectangle {
+        Item {
             id: inputBG
-            width: 455
-            height: 49
-            color: "#eeeeee"
+            width: 365
+            height: 50
+            anchors.verticalCenter: parent.verticalCenter
 
-            Text {
-                id: inputTxt
-                x: 5
-                y: 7
-                width: 432
-                height: 35
-                text: (isPassword) ? key_board.maskedInput : key_board.input
-                anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 29
+
+            Image {
+                id: inputFieldBg
+                width: 365
+                height: 50
+                anchors.fill: parent
+                source: "images/inputField.png"
             }
 
-            Cursor {
-                id: cursor
-                x: 0; y: 5
+            Item {
+                id: textElement
+                anchors {
+                    left: parent.left
+                    leftMargin: 20
+                    top: parent.top
+                    topMargin: 3
+                }
+
+                StdText {
+                    id: inputTxt
+                    width: inputFieldBg.width - 2 * textElement.anchors.leftMargin
+                    font.pixelSize: 29
+                    elide: Text.ElideRight
+                    text: (isPassword) ? key_board.maskedInput : key_board.input
+                    state: "blue"
+                }
+
+                Cursor {
+                    id: inputCursor
+                    anchors.top: parent.top
+                    anchors.topMargin: -2
+                }
             }
         }
     }

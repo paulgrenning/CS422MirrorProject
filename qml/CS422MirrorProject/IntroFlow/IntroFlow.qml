@@ -39,30 +39,29 @@ Item {
         id: photoView
 
         onPhotoReady: {
-            console.log("GOT 'PHOTO'")
             parent.state = "nameEntry"
         }
-
-        onHideViewChanged: console.log("should render photoview")
     }
 
     TextView {
         id: nameInput
-        inputLabel: "What is your name: "
+        inputLabel: "What is your name? "
 
         onInputReady: {
-            console.log("GOT NAME: " + input)
             parent.state = "emailEntry"
         }
     }
 
     TextView {
         id: emailInput
-        inputLabel: "Enter your email: "
+        inputLabel: "What is your email? "
+        inputMessage: "We'll use this to sync with your mail, and calendar, if it's available"
+
+        validator: /[\w._]*@[\w._]*/
 
         onInputReady: {
-            console.log("GOT EMAIL: " + input)
             parent.state = "confirmEmail"
+            confirmEmailView.service = input.split("@")[1]
         }
     }
 

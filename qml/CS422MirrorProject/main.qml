@@ -32,7 +32,7 @@ Rectangle {
     function handleNewUser() {
         if(appVar.renderIntroFlow) {
             introFlow.start();
-            widgets.hideWidgets = true
+            hideableWidgets.opacity = 0
         }
     }
 
@@ -52,23 +52,10 @@ Rectangle {
         id: introFlow
     }
 
-    ConfigSettings {
-        id: configsettings
-        x: 28
-        y: 444
-        width: 461
-        height: 300
-        onGeneralOpacityChanged: {
-            weatherwidget.opacity = displayOpacity
-            clockWidget.opacity = displayOpacity
-            widgetbar.opacity = displayOpacity
-            if(healthwidget.opacity == 0) healthwidget.opacity = 0;
-            else {healthwidget.opacity = displayOpacity;}
-            if(socialwidget.opacity == 0) socialwidget.opacity = 0;
-            else {socialwidget.opacity = displayOpacity;}
-            if(musicplayer.opacity == 0) musicplayer.opacity = 0;
-            else {musicplayer.opacity = displayOpacity;}
-        }
+    DateWidget {
+        id: dateWidget
+        x: 10
+        y: 0
     }
 
     Clock {
@@ -79,30 +66,44 @@ Rectangle {
         height: 50
     }
 
-    Item {
-        id: widgets
-        property bool hideWidgets: false
+    WeatherWidget {
+        id: weatherwidget
+        x: 954
+        y: 5
+        width: 324
+        height: 125
+    }
 
-        DateWidget {
-            id: dateWidget
-            x: 0
-            y: 0
-            hideWidget: parent.hideWidgets
+    Item {
+        id: hideableWidgets
+
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
+        }
+
+        ConfigSettings {
+            id: configsettings
+            x: 28
+            y: 444
+            width: 461
+            height: 300
+            onGeneralOpacityChanged: {
+                weatherwidget.opacity = displayOpacity
+                clockWidget.opacity = displayOpacity
+                widgetbar.opacity = displayOpacity
+                if(healthwidget.opacity == 0) healthwidget.opacity = 0;
+                else {healthwidget.opacity = displayOpacity;}
+                if(socialwidget.opacity == 0) socialwidget.opacity = 0;
+                else {socialwidget.opacity = displayOpacity;}
+                if(musicplayer.opacity == 0) musicplayer.opacity = 0;
+                else {musicplayer.opacity = displayOpacity;}
+            }
         }
 
         CalendarWidget {
              id: calendarWidget
-             hideWidget: parent.hideWidgets
              x: 0
              y: dateWidget.height
-        }
-
-        WeatherWidget {
-            id: weatherwidget
-            x: 954
-            y: 5
-            width: 324
-            height: 125
         }
 
         MusicPlayer{
@@ -112,7 +113,6 @@ Rectangle {
             width: 310
             height: 496
             opacity: 0
-            hideWidget: parent.hideWidgets
         }
 
         HealthWidget{
@@ -122,7 +122,6 @@ Rectangle {
             width: 554
             height: 375
             opacity: 0
-            hideWidget: parent.hideWidgets
         }
 
         SocialWidget{
@@ -140,41 +139,40 @@ Rectangle {
             y: 153
             opacity: 0
         }
-    }
 
-    WidgetBar{
-        id: widgetbar
-        x: 690
-        y: 656
-        width: 615
-        height: 120
-        onMusicClicked: {
-            musicanimopen.start()
-            healthanimclose.start()
-            socialanimclose.start()
-            newsanimclose.start()
-        }
-        onHealthClicked:{
-            musicanimclose.start()
-            healthanimopen.start()
-            socialanimclose.start()
-            healthwidget.barstate = healthwidget.laststate
-            newsanimclose.start()
-        }
-        onSocialClicked:{
-            musicanimclose.start()
-            healthanimclose.start()
-            socialanimopen.start()
-            newsanimclose.start()
-        }
-        onNewsClicked: {
-            musicanimclose.start()
-            healthanimclose.start()
-            socialanimclose.start()
-            newsanimopen.start()
+        WidgetBar{
+            id: widgetbar
+            x: 690
+            y: 656
+            width: 615
+            height: 120
+            onMusicClicked: {
+                musicanimopen.start()
+                healthanimclose.start()
+                socialanimclose.start()
+                newsanimclose.start()
+            }
+            onHealthClicked:{
+                musicanimclose.start()
+                healthanimopen.start()
+                socialanimclose.start()
+                healthwidget.barstate = healthwidget.laststate
+                newsanimclose.start()
+            }
+            onSocialClicked:{
+                musicanimclose.start()
+                healthanimclose.start()
+                socialanimopen.start()
+                newsanimclose.start()
+            }
+            onNewsClicked: {
+                musicanimclose.start()
+                healthanimclose.start()
+                socialanimclose.start()
+                newsanimopen.start()
+            }
         }
     }
-
 
     PropertyAnimation {id:musicanimopen; target: musicplayer; property: "opacity"; to: (musicplayer.opacity == 0) ? displayOpacity : 0; duration: 500}
     PropertyAnimation {id:healthanimopen; target: healthwidget; property: "opacity"; to: (healthwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
