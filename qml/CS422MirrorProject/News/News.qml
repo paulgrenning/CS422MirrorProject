@@ -21,6 +21,7 @@ Widget{
     ActiveFeedView {
         id: feedview
         x: 19; y: 52
+        clip: true
         feedURL: news.currentFeed
         feedMURL: news.currentFeedMedia
         opacity: 0
@@ -30,18 +31,20 @@ Widget{
         id: feedlist
         x: 19; y: 52
         width: 270
-        height: 394
+        height: 388
+        clip: true
         opacity: 1
     }
 
-    //Back button
-    /*Button {
+    Button {
         id: back
-        x: 134; y: 451
-        width: 40; height: 40
+        x: 209; y: 440
+        width: 80; height: 40
         //clickedPath: ""
-        //defaultPath: ""
-    }*/
+        defaultPath:  (appVar.currentLanguage == "Español") ?  "../News/images/newsBack80x40SP.png" : "../News/images/newsBack80x40.png"
+    }
+
+    //Back button
 
 
     states: [
