@@ -18,6 +18,14 @@ Item {
         height: 60
         width: 400
 
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                appVar.renderIntroFlow = true;
+                handleNewUser();
+            }
+        }
+
         id: runSetupButton
         source: (appVar.currentLanguage == "Español") ? "images/runSetupSP.png" : "images/runSetup.png"
         opacity: 1.0
