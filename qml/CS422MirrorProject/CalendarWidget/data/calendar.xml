@@ -5,7 +5,7 @@
             <event>
                <start_time>9:00</start_time>
                <end_time>10:00</end_time>
-               <description>Pick up Billy</description>
+               <description>Drop off Billy</description>
                <location>McJones Elementary</location>
             </event>
 
@@ -36,6 +36,20 @@
                 <description>Dinner with the family</description>
                 <location>The table</location>
             </event>
+
+            <event>
+                <start_time>10:00</start_time>
+                <end_time>10:15</end_time>
+                <description>My evening routine</description>
+                <location>On the lawn</location>
+            </event>
+
+            <event>
+                <start_time>11:00</start_time>
+                <end_time>11:15</end_time>
+                <description>Take sleeping pills</description>
+                <location>Wherever</location>
+            </event>
         </events>
     </day>
 
@@ -44,7 +58,7 @@
             <event>
                <start_time>9:00</start_time>
                <end_time>10:00</end_time>
-               <description>Pick up Billy</description>
+               <description>Drop off Billy</description>
                <location>McJones Elementary</location>
             </event>
 
@@ -56,17 +70,17 @@
             </event>
 
             <event>
-               <start_time>12:00</start_time>
-               <end_time>1:00</end_time>
-               <description>Lunch With Joan</description>
-               <location>The Spot</location>
+               <start_time>1:00</start_time>
+               <end_time>2:00</end_time>
+               <description>Monthly Company Lunch Meeting</description>
+               <location>Break Room</location>
             </event>
 
             <event>
                <start_time>5:45</start_time>
                <end_time>7:00</end_time>
-               <description>Take a nap</description>
-               <location>My bed</location>
+               <description>Evening run</description>
+               <location>Around the block</location>
             </event>
         </events>
     </day>
@@ -74,10 +88,10 @@
     <day id="3">
         <events>
             <event>
-               <start_time>9:00</start_time>
-               <end_time>10:00</end_time>
-               <description>Pick up Billy</description>
-               <location>McJones Elementary</location>
+               <start_time>8:45</start_time>
+               <end_time>10:00r</end_time>
+               <description>Forget Billy</description>
+               <location>At home, probably</location>
             </event>
 
             <event>
@@ -88,17 +102,17 @@
             </event>
 
             <event>
-               <start_time>12:00</start_time>
-               <end_time>1:00</end_time>
-               <description>Lunch With Joan</description>
-               <location>The Spot</location>
+               <start_time>11:00</start_time>
+               <end_time>4:00</end_time>
+               <description>Three Martini Lunch</description>
+               <location>Bar Louie</location>
             </event>
 
             <event>
-               <start_time>5:45</start_time>
-               <end_time>7:00</end_time>
-               <description>Take a nap</description>
-               <location>My bed</location>
+               <start_time>4:45</start_time>
+               <end_time>5:00</end_time>
+               <description>Drive home early</description>
+               <location>VanWyk Expressway</location>
             </event>
         </events>
     </day>

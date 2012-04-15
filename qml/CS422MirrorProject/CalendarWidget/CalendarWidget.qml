@@ -96,7 +96,7 @@ Widget {
         model: calendarModel
         delegate: calendarDelegate
 
-        snapMode: ListView.SnapToItem
+        spacing: 10
         clip: true
 
         Component {
@@ -137,5 +137,21 @@ Widget {
                 }
             }
         }
+    }
+
+    StdText {
+        id: emptyMessage
+        width: calendarView.width
+        font.pixelSize: 20
+        wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignHCenter
+        visible: calendarView.count == 0
+        anchors {
+            top: parent.top
+            topMargin: 30
+            left: parent.left
+            leftMargin: 50
+        }
+        text: "you have nothing scheduled for today"
     }
 }

@@ -21,6 +21,10 @@ Column {
         minutes = date.getMinutes();
         hours = date.getHours();
 
+        greeting.text = "Good "
+        greeting.text += ((hours > 17 && hours < 5) ? "evening, " : (hours < 12) ? "morning, " : "afternoon, ")
+        greeting.text += appVar.currentUser
+
         if(!military) {
             meridiem = "AM"
             if(hours == 0) hours = 12
@@ -84,7 +88,6 @@ Column {
         font.pixelSize: 24
         visible: appVar.currentUser
         anchors { horizontalCenter: parent.horizontalCenter }
-        text: "Good " + ((hours > 17 && hours < 5) ? "evening, " : (hours < 12) ? "morning, " : "afternoon, ") + appVar.currentUser
     }
 
 }
