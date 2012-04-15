@@ -43,8 +43,7 @@ Item {
                      wifiList.previousIndex = wifiList.currentIndex
                      mainInputField.inputLabel = "Enter Wifi Password: "
                      keyboardFade.start()
-                     mainInputField.runAnimation = configStateChange
-                     configStateChange.start()
+                     hideableWidgets.opacity = 0
                  }
              }
 

@@ -31,8 +31,6 @@ Item {
         }
     }
 
-    PropertyAnimation { id: configStateChange; target: config; property: "state"; to: (config.state == "closed" ) ? "open" : "closed"; duration: 1 }
-
     SettingsWidget {
         id: settingsWidget
         opacity: 0

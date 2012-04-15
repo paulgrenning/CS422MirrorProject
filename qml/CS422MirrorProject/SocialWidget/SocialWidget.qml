@@ -40,7 +40,7 @@ Item {
                 mainInputField.inputLabel = "Add Account Name: "
                 mainInputField.returnWidget = social
                 mainInputField.runAnimation = socialanimopen
-                socialanimclose.start()
+                hideableWidgets.opacity = 0
             }
         }
     }
