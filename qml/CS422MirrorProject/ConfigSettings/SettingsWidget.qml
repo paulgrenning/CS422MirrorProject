@@ -78,6 +78,17 @@ Item {
         opacity: 0.0
     }
 
+    AccountsTab {
+        id: accountsTab
+        anchors {
+            top: parent.top
+            left: parent.left
+            leftMargin: 5
+        }
+
+        opacity: 0.0
+    }
+
     WifiSettings {
         id: wifiTab
         anchors {
@@ -98,6 +109,7 @@ Item {
         State {
             name: "accounts"
             PropertyChanges { target: backgroundImage; source: (appVar.currentLanguage == "Español") ? "images/configTabAccountsSP.png" : "images/configTabAccounts.png" }
+            PropertyChanges { target: accountsTab; opacity: 1.0 }
         },
         State {
             name: "wifi"

@@ -185,7 +185,7 @@ Rectangle {
 
         onInputReady: {
             console.log("Input: " + input)
-            runAnimation.start()
+            hideableWidgets.opacity = 1
             keyboardFade.start()
         }
 
