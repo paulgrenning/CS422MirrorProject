@@ -1,7 +1,7 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../UtilityElements"
 
-Item{
+Item {
     id: weather
     width: 324
     height: 260
@@ -26,7 +26,7 @@ Item{
         anchors.horizontalCenter: parent.horizontalCenter
         border { left: 25; top: 25; right: 25; bottom: 25}
         Behavior on height {
-            NumberAnimation { duration: 500 }
+            NumberAnimation { duration: 500; easing { type: Easing.OutBack; overshoot: 1 }}
         }
 
         MouseArea {
@@ -44,7 +44,7 @@ Item{
 
 
 
-    ListView{
+    ListView {
         id: list
         x: 57
         y: 5
@@ -146,11 +146,11 @@ Item{
     transitions: [
         Transition{
             from: "simple"; to: "expanded"
-            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 1200}
+            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 800}
         },
         Transition{
             from: "expanded"; to: "simple"
-            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 300}
+            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 150}
         }
     ]
 
