@@ -54,6 +54,8 @@ Item {
 
     TextView {
         id: emailInput
+        skippable: true
+
         inputLabel: "What is your email? "
         inputMessage: "We'll use this to sync with your mail, and calendar, if it's available"
 
@@ -63,6 +65,18 @@ Item {
             parent.state = "confirmEmail"
             confirmEmailView.service = input.split("@")[1]
         }
+
+        onSkipInput: parent.state = "inactive"
+    }
+
+    TextView {
+        id: emailPasswordInput
+        isPassword: true
+
+        inputLabel: "Enter your email password: "
+        inputMessage: "We'll use this to sync with your mail, and calendar, if it's available"
+
+        onInputReady: parent.state = "confirmEmail"
     }
 
     ConfirmationView {

@@ -13,7 +13,11 @@ InputView {
     property variant validator
     property string failMessage
 
+    property bool skippable: false
+    property bool isPassword: false
+
     signal inputReady(string input)
+    signal skipInput()
 
     Column {
         id: contents
@@ -31,6 +35,8 @@ InputView {
         KeyBoard {
             id: keyboard
             inputLabel: textView.inputLabel
+            skippable: textView.skippable
+            isPassword: textView.isPassword
 
             onInputReady: {
                 if(validator) {
@@ -40,6 +46,8 @@ InputView {
                     textView.inputReady(input)
                 }
             }
+
+            onSkipInput: textView.skipInput()
         }
     }
 

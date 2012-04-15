@@ -12,12 +12,14 @@ Item {
     property string maskedInput: ""
 
     property bool isPassword: false
+    property bool skippable: false
 
     property string fontType: "Futura"
     property int fontSize: 32
     property string fontColor: "#7dd9b3"
 
     signal inputReady(string input)
+    signal skipInput()
 
     function deleteLast() {
         key_board.input = key_board.input.substring(0, key_board.input.length-1)
@@ -48,7 +50,7 @@ Item {
     Row {
         id: inputField
         y: 25
-        width: inputFieldLabel.width + inputBG.width + spacing
+        width: inputFieldLabel.width + inputBG.width + skipButton.width + spacing * 2
         anchors {
             horizontalCenter: parent.horizontalCenter
             bottom: row1.top
@@ -67,7 +69,6 @@ Item {
             width: 365
             height: 50
             anchors.verticalCenter: parent.verticalCenter
-
 
             Image {
                 id: inputFieldBg
@@ -101,6 +102,18 @@ Item {
                     anchors.topMargin: -2
                 }
             }
+        }
+
+        Button {
+            id: skipButton
+            width: (key_board.skippable) ? 106 : 0
+            height: (key_board.skippable) ? 51 : 0
+            opacity: (key_board.skippable) ? 1 : 0
+
+            defaultPath: "../Keyboard/images/skipButtonUP.png"
+            clickedPath: "../Keyboard/images/skipButtonDN.png"
+
+            onButtonClicked: key_board.skipInput()
         }
     }
 
