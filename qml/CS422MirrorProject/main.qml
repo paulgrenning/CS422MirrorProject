@@ -55,22 +55,22 @@ Rectangle {
 
     DateWidget {
         id: dateWidget
-        x: 10
+        x: 40
         y: 0
     }
 
     Clock {
         id: clockWidget
-        x: 540
-        y: 21
+        x: rootElement.width / 2 - clockWidget.width / 2
+        y: 15
         width: 200
         height: 50
     }
 
     WeatherWidget {
         id: weatherwidget
-        x: 954
-        y: 5
+        x: rootElement.width - weatherwidget.width - 6
+        y: 10
         width: 324
         height: 125
     }
@@ -84,8 +84,8 @@ Rectangle {
 
         ConfigSettings {
             id: configsettings
-            x: 28
-            y: 444
+            x: 0
+            y: rootElement.height - configsettings.height - 5
             width: 461
             height: 300
             onGeneralOpacityChanged: {
@@ -103,14 +103,14 @@ Rectangle {
 
         CalendarWidget {
              id: calendarWidget
-             x: 0
-             y: dateWidget.height
+             x: 4
+             y: dateWidget.height + 20
         }
 
         MusicPlayer{
             id: musicplayer
-            x: 964
-            y: 160
+            x: rootElement.width - musicplayer.width
+            y: rootElement.height - musicplayer.height - widgetbar.height
             width: 310
             height: 496
             opacity: 0
@@ -118,8 +118,8 @@ Rectangle {
 
         HealthWidget{
             id: healthwidget
-            x: 725
-            y: 280
+            x: rootElement.width - healthwidget.width
+            y: rootElement.height - healthwidget.height - widgetbar.height
             width: 554
             height: 375
             opacity: 0
@@ -127,8 +127,8 @@ Rectangle {
 
         SocialWidget{
             id: socialwidget
-            x: 964
-            y: 160
+            x: rootElement.width - socialwidget.width
+            y: rootElement.height - socialwidget.height - widgetbar.height
             width: 310
             height: 496
             opacity: 0
@@ -136,15 +136,15 @@ Rectangle {
 
         News {
             id: newswidget
-            x: 964
-            y: 153
+            x: rootElement.width - newswidget.width
+            y: rootElement.height - newswidget.height - widgetbar.height
             opacity: 0
         }
 
-        WidgetBar{
+        WidgetBar {
             id: widgetbar
-            x: 690
-            y: 656
+            x: rootElement.width - widgetbar.width
+            y: rootElement.height - widgetbar.height
             width: 615
             height: 120
             onMusicClicked: {
@@ -191,7 +191,6 @@ Rectangle {
         }
 
     }
-
 
     Image {
         id: lightSource
