@@ -16,6 +16,7 @@ Item {
         x: 0
         y: 0
         currentIndex: 0
+        property real previousIndex: 0
         anchors.rightMargin: 0
         anchors.bottomMargin: 0
         anchors.leftMargin: 50
@@ -38,6 +39,13 @@ Item {
 
              onWifiChanged: {
                  wifiList.currentIndex = wifiList.indexAt(x,y)
+                 if(wifiList.currentIndex != wifiList.previousIndex){
+                     wifiList.previousIndex = wifiList.currentIndex
+                     mainInputField.inputLabel = "Enter Wifi Password: "
+                     keyboardFade.start()
+                     mainInputField.runAnimation = configStateChange
+                     configStateChange.start()
+                 }
              }
 
              Text {
