@@ -18,11 +18,8 @@ Item {
 
     BorderImage {
         id: border_image1
-        x: -8
-        y: -7
         width: 339
         height: 158
-        anchors.horizontalCenterOffset: 0
         anchors.horizontalCenter: parent.horizontalCenter
         border { left: 25; top: 25; right: 25; bottom: 25}
         Behavior on height {
@@ -39,7 +36,7 @@ Item {
         }
         horizontalTileMode: BorderImage.Stretch
         verticalTileMode: BorderImage.Stretch
-        source: "images/borderImage2.png"
+        source: "images/borderImage3.png"
     }
 
     ListView {

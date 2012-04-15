@@ -1,26 +1,24 @@
 import QtQuick 1.1
 import "../UtilityElements"
 
-Item{
-    width: 290; height: 124
+Row {
+    id: todaysForecast
+    width: image1.width + forecastText.width + spacing
+    height: image1.height + image1.anchors.topMargin
     clip: true
-
-    Rectangle {
-        id: rectangle2
-        x: 0
-        y: 0
-        width: 290
-        height: 124
-        color: "#00000000"
-    }
+    spacing: 15
 
     Image {
         id: image1
-        x: 19
-        y: 10
-        width: 110
-        height: 114
+        width: 130
+        height: 121
+        anchors {
+            top: parent.top
+            topMargin: 15
+        }
+
         z: -2
+        smooth: true
         source:  {
             switch(condition){
             case "Overcast" :
@@ -73,65 +71,50 @@ Item{
 
     }
 
-Rectangle {
-            id: rectangle1
-            x: 146
-            y: 0
-            width: 132
-            height: 125
-            color: "#00000000"
+    Column {
+            id: forecastText
+            width: (tempTxt.width > details.width) ? tempTxt.width : details.width
+            height: tempTxt.height + details.height + spacing
             clip: false
             z: -1
+            spacing: 15
+
+            anchors {
+                top: parent.top
+                topMargin: 15
+            }
 
             StdText{
                 id: tempTxt
-                x: -67
-                y: 0
-                width: 132
-                height: 68
                 state: "white"
                 text: (appVar.currentDegreeSystem == "Celsius") ? temp_c + "°C" : temp_f + "°F"
-                horizontalAlignment: Text.AlignHCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                wrapMode: Text.WordWrap
                 font.pointSize: 50
             }
 
-            StdText{
-                id: condTxt
-                x: -68
-                y: 63
-                width: 133
-                height: 16
-                text: condition
-                anchors.horizontalCenterOffset: 0
-                horizontalAlignment: Text.AlignHCenter
+            Column {
+                id: details
+                height: condTxt.height + humidityTxt.height + windTxt.height + spacing * 2
                 anchors.horizontalCenter: parent.horizontalCenter
-            }
+                spacing: 2
 
-            StdText{
-                id: humidityTxt
-                x: -67
-                y: 87
-                width: 132
-                height: 17
-                text: humidity
-                anchors.horizontalCenterOffset: 0
-                horizontalAlignment: Text.AlignHCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
+                StdText{
+                    id: condTxt
+                    text: condition
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
 
-            StdText{
-                id: windTxt
-                x: -68
-                y: 110
-                width: 133
-                height: 16
-                text: wind_condition
-                anchors.horizontalCenterOffset: 0
-                horizontalAlignment: Text.AlignHCenter
-                anchors.horizontalCenter: parent.horizontalCenter
+                StdText{
+                    id: humidityTxt
+                    text: humidity
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
 
+                StdText{
+                    id: windTxt
+                    text: wind_condition
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
             }
         }
 }
