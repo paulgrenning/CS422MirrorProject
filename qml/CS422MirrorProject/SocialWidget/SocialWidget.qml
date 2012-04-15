@@ -32,7 +32,20 @@ Item {
             leftMargin: 218
             topMargin: 4
         }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                fadeInKeyboard.start()
+                mainInputField.inputLabel = "Add Account Name: "
+                mainInputField.returnWidget = social
+                mainInputField.runAnimation = socialanimopen
+                socialanimclose.start()
+            }
+        }
     }
+
+    PropertyAnimation {id:fadeInKeyboard; target: mainInputField; property: "opacity"; to: (musicplayer.opacity == 0) ? 1 : 0; duration: 500}
 
     Item {
         width: 300
