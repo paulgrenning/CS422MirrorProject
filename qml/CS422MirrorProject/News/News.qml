@@ -30,8 +30,19 @@ Widget{
     FeedListView{
         id: feedlist
         x: 19; y: 52
+        width: 270
+        height: 394
         opacity: 1
     }
+
+    //Back button
+    /*Button {
+        id: back
+        x: 134; y: 451
+        width: 40; height: 40
+        //clickedPath: ""
+        //defaultPath: ""
+    }*/
 
 
     states: [
