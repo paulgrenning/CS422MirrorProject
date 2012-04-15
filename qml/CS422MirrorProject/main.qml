@@ -43,13 +43,14 @@ Rectangle {
 //        z:-1
 //    }
 
-    //create object to hold all important variables for the application
+    // create object to hold all important variables for the application
     AppVariables {
         id: appVar
     }
 
     IntroFlow {
         id: introFlow
+        onIntroFlowFinished: hideableWidgets.opacity = 1
     }
 
     DateWidget {

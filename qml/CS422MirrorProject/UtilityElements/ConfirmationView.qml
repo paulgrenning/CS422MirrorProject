@@ -9,6 +9,8 @@ InputView {
 
     property string service
 
+    signal confirmationReceived(bool confirmed)
+
     Image {
         id: confirmationBackground
         width: 742
@@ -23,7 +25,7 @@ InputView {
     Column {
         id: content
         width: parent.width
-        height: authorizeQuestion.height + + productName.height + buttonRow.height + spacing * 2
+        height: authDesc1.paintedHeight + productName.paintedHeight + authDesc2.paintedHeight + spacing * 2
         spacing: 20
 
         anchors {
@@ -33,9 +35,9 @@ InputView {
         }
 
         StdText {
-            id: authorizeQuestion
+            id: authDesc1
             anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 20
+            font.pixelSize: 24
             text: "do you want to authorize"
         }
 
@@ -47,34 +49,51 @@ InputView {
             state: "blue"
         }
 
-        Row {
-            id: buttonRow
-            height: yesButton.height
-            width: yesButton.width * 2 + spacing
-            spacing: 10
+        StdText {
+            id: authDesc2
+            width: parent.width - 200
             anchors.horizontalCenter: parent.horizontalCenter
+            font.pixelSize: 24
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
+            text: "to access the email and calendar asscosciated with your '" + service + "' account?"
+        }
+    }
 
-            LabeledButton {
-                id: yesButton
-                width: 147
-                height: 102
+    Row {
+        id: buttonRow
+        height: yesButton.height
+        width: yesButton.width * 2 + spacing
+        spacing: 10
 
-                defaultPath: "../IntroFlow/images/confirmButtonUP.png"
-                clickedPath: "../IntroFlow/images/confirmButtonDN.png"
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            bottom: parent.bottom
+            bottomMargin: 30
+        }
 
-                label: "yes"
-            }
+        LabeledButton {
+            id: yesButton
+            width: 147
+            height: 102
 
-            LabeledButton {
-                id: noButton
-                width: 147
-                height: 102
+            defaultPath: "../IntroFlow/images/confirmButtonUP.png"
+            clickedPath: "../IntroFlow/images/confirmButtonDN.png"
+            label: "yes"
 
-                defaultPath: "../IntroFlow/images/confirmButtonUP.png"
-                clickedPath: "../IntroFlow/images/confirmButtonDN.png"
+            onButtonClicked: confirmationReceived(true)
+        }
 
-                label: "no"
-            }
+        LabeledButton {
+            id: noButton
+            width: 147
+            height: 102
+
+            defaultPath: "../IntroFlow/images/confirmButtonUP.png"
+            clickedPath: "../IntroFlow/images/confirmButtonDN.png"
+            label: "no"
+
+            onButtonClicked: confirmationReceived(false)
         }
     }
 }

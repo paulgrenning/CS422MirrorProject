@@ -67,7 +67,7 @@ Item {
         inputLabel: "What is your email? "
         inputMessage: "We'll use this to sync with your mail, and calendar, if it's available"
 
-        validator: /[\w._]*@[\w._]*/
+        validator: /[\w._]+@[\w._]+/
         failMessage: "your email must contain an '@' symbol to be valid"
 
         onInputReady: {
@@ -93,5 +93,6 @@ Item {
 
     ConfirmationView {
         id: confirmEmailView
+        onConfirmationReceived: parent.state = "inactive"
     }
 }
