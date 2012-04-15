@@ -190,6 +190,16 @@ Rectangle {
         }
 
     }
+
+
+    Image {
+        id: lightSource
+        x: 90
+        y: 200
+        source: "ConfigSettings/images/lightSource.png"
+        opacity: 1.0 - configsettings.lightOpacity
+    }
+
     PropertyAnimation {id:keyboardFade; target: mainInputField; property: "opacity"; to: (mainInputField.opacity == 0) ? 1 : 0; duration: 500}
 
     PropertyAnimation {id:musicanimopen; target: musicplayer; property: "opacity"; to: (musicplayer.opacity == 0) ? displayOpacity : 0; duration: 500}

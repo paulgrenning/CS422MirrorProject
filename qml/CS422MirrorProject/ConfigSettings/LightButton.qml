@@ -10,13 +10,7 @@ Item {
 
     property alias state: config.state
     signal clicked();
-
-    Image {
-        y: -350
-        x: -30
-        source: "images/lightSource.png"
-        opacity: 1.0 - sliderLight.value
-    }
+    property real sliderValue: sliderLight.value
 
     Image {
         id: lightButImage
