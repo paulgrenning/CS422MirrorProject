@@ -9,7 +9,7 @@ Item {
     height:300
 
     property alias generalOpacity: opacitybutton.genOpacity
-
+    property alias lightOpacity: lightbutton.sliderValue
     ConfigButton {
         id: configbutton1
         x: 0
