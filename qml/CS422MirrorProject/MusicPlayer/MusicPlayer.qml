@@ -11,7 +11,7 @@ Widget {
     id:music
     width:310
     height:496
-
+    isVisible: false
     bgImgPath:  (appVar.currentLanguage == "Español") ? "../MusicPlayer/images/musicwidgetbackgroundSP.png" : "../MusicPlayer/images/musicwidgetbackground.png"
 
     VolumeSliderVertical {
