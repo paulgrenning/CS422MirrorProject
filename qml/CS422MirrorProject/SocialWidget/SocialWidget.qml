@@ -68,16 +68,31 @@ Item {
             model : allTweets
             delegate: Item {
                  width:parent.width
-                 height: Math.max(tweetText.height + 20, twitterAccountImage.height + 20)
+                 height: Math.max(timeText.height + tweetText.height + 20, twitterAccountImage.height + 20)
 
+                 Text {
+                     id: timeText
+                     anchors {
+                         left: twitterAccountImage.right
+                         leftMargin: 5
+                         top: twitterAccountImage.top
+                         topMargin: -5
+                     }
+
+                     color: "#7dd9b3"
+                     font.pointSize: 10
+                     font.family: "Futura"
+                     wrapMode: Text.WordWrap
+
+                     text: postTime
+                 }
 
                  Text {
                      id: tweetText
                      anchors {
                          left: twitterAccountImage.right
                          leftMargin: 5
-                         top: twitterAccountImage.top
-                         topMargin: -5
+                         top: timeText.bottom
                      }
 
                      anchors.horizontalCenter: parent.horizontalCenter
@@ -115,17 +130,16 @@ Item {
 
         XmlListModel {
             id: allTweets
-            source: "http://twitter.com/statuses/user_timeline/paul_grenning.atom"
-            namespaceDeclarations: "declare default element namespace 'http://www.w3.org/2005/Atom'; " +
-                                   "declare namespace twitter=\"http://api.twitter.com/\";";
+//            source: "http://twitter.com/statuses/user_timeline/paul_grenning.atom"
+//            namespaceDeclarations: "declare default element namespace 'http://www.w3.org/2005/Atom'; " +
+//                                   "declare namespace twitter=\"http://api.twitter.com/\";";
 
-            query: "/feed/entry"
-
-            XmlRole { name: "statusText"; query: "content/string()" }
-    //        XmlRole { name: "timestamp"; query: "published/string()" }
-    //        XmlRole { name: "source"; query: "twitter:source/string()" }
-    //        XmlRole { name: "name"; query: "author/name/string()" }
-            XmlRole { name: "userImage"; query: "link[@rel = 'image']/@href/string()" }
+//            query: "/feed/entry"
+            source: "xmlFiles/socialFeed.xml"
+            query: "/socialFeeds/item"
+            XmlRole { name: "statusText"; query: "name/string()" }
+            XmlRole { name: "postTime"; query: "time/string()" }
+            XmlRole { name: "userImage"; query: "image/string()" }
         }
 
     }
