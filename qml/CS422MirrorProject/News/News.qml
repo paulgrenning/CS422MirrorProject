@@ -8,6 +8,7 @@ Widget{
 
     property string currentFeed: ""
     property string currentFeedMedia: ""
+    property string currentArticleUrl: ""
 
     bgImgPath:  (appVar.currentLanguage == "Español") ? "../News/images/newsWidgetBackgroundSP.png" : "../News/images/newsWidgetBackground.png"
 
@@ -16,6 +17,12 @@ Widget{
         x: 222; y: 0
         width: 40; height: 40
         onPressed: news.state = "add"
+    }
+
+    FeedListView{
+        id: feedlist
+        x: 19; y: 52
+        opacity: 1
     }
 
     ActiveFeedView {
@@ -27,13 +34,12 @@ Widget{
         opacity: 0
     }
 
-    FeedListView{
-        id: feedlist
+    Article {
+        id: article
         x: 19; y: 52
-        width: 270
-        height: 388
         clip: true
-        opacity: 1
+        opacity: 0
+        articleContent: news.currentArticleUrl
     }
 
     Button {
@@ -59,6 +65,10 @@ Widget{
                 target: feedview
                 opacity: 0
             }
+            PropertyChanges {
+                target: article
+                opacity: 0
+            }
         },
         State {
             name: "newsfeed"
@@ -71,9 +81,26 @@ Widget{
                 target: feedlist
                 opacity: 0
             }
+            PropertyChanges {
+                target: article
+                opacity: 0
+            }
         },
         State {
             name: "article"
+
+            PropertyChanges {
+                target: feedlist
+                opacity: 0
+            }
+            PropertyChanges {
+                target: feedview
+                opacity: 0
+            }
+            PropertyChanges {
+                target: article
+                opacity: 1
+            }
         },
         State {
             name: "add"

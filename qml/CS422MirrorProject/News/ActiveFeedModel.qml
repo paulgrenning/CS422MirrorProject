@@ -12,5 +12,7 @@ XmlListModel {
     query: "/rss/channel/item"
 
     XmlRole { name: "title"; query: "title/string()" }
+    XmlRole { name: "url"; query: "link/string()" }
+    XmlRole { name: "content"; query: "media:text/string()" }
     XmlRole { name: "thumb"; query: "media:content/@url/string()"}
 }
