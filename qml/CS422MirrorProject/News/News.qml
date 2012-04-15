@@ -6,7 +6,6 @@ Widget{
     id: news
     width: 310; height: 496
 
-
     property string currentFeed: ""
     property string currentFeedMedia: ""
 

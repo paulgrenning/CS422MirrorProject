@@ -1,5 +1,5 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../UtilityElements"
 
 Item{
     id: barGraphDelegate
@@ -44,43 +44,39 @@ Item{
         source: "images/graphBarBorderImage.png"
         PropertyAnimation {id: animation; target: barimage; property: "scale"; from: 0; to: 1; duration: 1000}
     }
-    Text {
+    StdText {
         Component.onCompleted: animationtext.start()
         id: text1
         x: -2
         y: 132
-        color: "#bfe4d5"
         text: run_date
         anchors.horizontalCenterOffset: 0
         anchors.horizontalCenter: parent.horizontalCenter
-        font.family: "Futura"
         font.bold: true
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 10
         opacity:1
         PropertyAnimation {id: animationtext; target: text1; property: "opacity"; from: 0; to: 1; duration: 200}
     }
-    Text {
+    StdText {
         Component.onCompleted: animationtext2.start()
         id: text2
         x: 14
         y: 145
         width: 23
         height: 14
-        color: "#bfe4d5"
         text: qsTr("text")
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 10
         PropertyAnimation {id: animationtext2; target: text2; property: "opacity"; from: 0; to: 1; duration: 200}
     }
-    Text {
+    StdText {
         Component.onCompleted: animationtext3.start()
         id: text3
         x: 14
         y: 159
         width: 23
         height: 14
-        color: "#bfe4d5"
         text: qsTr("text")
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 10

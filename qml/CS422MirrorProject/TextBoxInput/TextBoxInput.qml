@@ -1,5 +1,5 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../UtilityElements"
 
 Item {
     Item {
@@ -7,7 +7,7 @@ Item {
         id: textBox
         opacity: 0
 
-        Text {
+        StdText {
             anchors{
                 right: textBoxImage.left
                 top: textBoxImage.top
@@ -16,9 +16,7 @@ Item {
             id: infoText
             text: ""
 
-            color: "#7dd9b3"
             font.pointSize: 20
-            font.family: "Futura"
         }
 
         Image {
@@ -41,7 +39,7 @@ Item {
                         rightMargin: 20
                     }
 
-                    color: "#7dd9b3"
+                    color: "#bee7d5"
                     font.pointSize: 20
                     font.family: "Futura"
             }

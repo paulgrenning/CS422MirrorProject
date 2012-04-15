@@ -1,5 +1,5 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../UtilityElements"
 
 Item {
    width: 75; height: 100
@@ -17,47 +17,44 @@ Item {
            clip: true
            z: -1
 
-           Text{
+           StdText{
                id: lowTxt
                x: -29
                y: 84
                width: 133
                height: 16
-               color: "#e5eeeb"
+               state: "blue"
                text: (appVar.currentDegreeSystem == "Celsius") ? parseInt((low_f*1 - 32)*5/9.0) + "°C" : low_f + "°F"
                anchors.horizontalCenterOffset: 0
                horizontalAlignment: Text.AlignHCenter
                anchors.horizontalCenter: parent.horizontalCenter
-               font.family: "Futura"
            }
 
-           Text{
+           StdText{
                id: highxt
                x: -28
                y: 65
                width: 132
                height: 17
-               color: "#bfe4d5"
+               state: "orange"
                text: (appVar.currentDegreeSystem == "Celsius") ? parseInt((high_f*1 - 32)*5/9.0) + "°C" : high_f + "°F"
                font.pointSize: 16
                anchors.horizontalCenterOffset: 0
                horizontalAlignment: Text.AlignHCenter
                anchors.horizontalCenter: parent.horizontalCenter
-               font.family: "Futura"
            }
 
-           Text{
+           StdText{
                id: timeTxt
                x: 0
                y: 0
                width: 132
                height: 68
-               color: "#bfe4d5"
+               state: "white"
                text: time_of_day
                font.pointSize: 16
                horizontalAlignment: Text.AlignHCenter
                anchors.horizontalCenter: parent.horizontalCenter
-               font.family: "Futura"
                wrapMode: Text.WordWrap
            }
 

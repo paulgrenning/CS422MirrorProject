@@ -1,6 +1,6 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import "../AppVariables"
+import "../UtilityElements"
 
 Item {
     id:background
@@ -9,7 +9,7 @@ Item {
     width: 520
     height: 310
 
-    Text {
+    StdText {
         id: text1
         x: 313
         y: 30
@@ -33,34 +33,30 @@ Item {
     }
 
 
-    Text {
+    StdText {
         id: text2
         x: 337
         y: 76
         width: 30
         height: 26
-        color: "#bfe4d5"
         text: (kg*2.2).toFixed(1)
         horizontalAlignment: Text.AlignRight
         anchors.right: parent.right
         anchors.rightMargin: 153
         font.pixelSize: 15
         font.bold: true
-        font.family: "Futura"
     }
 
-    Text {
+    StdText {
         id: text3
         x: 58
         y: 55
         width: 218
         height: 33
-        color: "#bfe4d5"
         text: (appVar.currentLanguage === "Español") ? "su peso actual:" : "your current weight:"
         horizontalAlignment: Text.AlignRight
         font.pixelSize: 25
         font.bold: true
-        font.family: "Futura"
     }
 
 
@@ -120,40 +116,38 @@ Item {
         XmlRole { name: "weight_kg"; query: "kg/string()" }
         XmlRole { name: "weight_date"; query: "day/string()" }
     }
-    Text {
+
+    StdText {
         id: text4
         x: 375
         y: 30
         width: 57
         height: 53
-        color: "#eefff9"
+        state: "white"
         text: "kg"
         z: 1
         font.pixelSize: 35
     }
 
-    Text {
+    StdText {
         id: text5
         x: 375
         y: 76
         width: 35
         height: 26
-        color: "#bfe4d5"
         text: "lbs"
         font.pixelSize: 15
         anchors.rightMargin: 110
         font.bold: true
-        font.family: "Futura"
         anchors.right: parent.right
     }
 
-    Text {
+    StdText {
         id: text
         x: 21
         y: 120
         width: 40
         height: 131
-        color: "#bfe4d5"
         text: { if(appVar.currentWeightUnit == "Kg") return "100 kg 90 kg 80 kg 70 kg 60 kg 50 kg 40 kg 30 kg 20 kg 10 kg"
               else return "220 lbs 200 lbs 180 lbs 160 lbs 140 lbs 120 lbs 100 lbs 80 lbs 60 lbs 40 lbs 20 lbs"
         }
@@ -161,7 +155,6 @@ Item {
         wrapMode: Text.WordWrap
         font.pixelSize: 10
         font.bold: true
-        font.family: "Futura"
     }
 
 }

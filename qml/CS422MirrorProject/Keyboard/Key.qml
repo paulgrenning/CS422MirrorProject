@@ -15,9 +15,7 @@ Button {
     property string shiftValue: defaultValue
     property string symValue: defaultValue
 
-    property string fontType: "Futura"
     property int fontSize: 32
-    property string fontColor: "#7dd9b3"
 
     onStateChanged: {
         switch(state) {
@@ -29,13 +27,11 @@ Button {
 
     onButtonClicked: key_board.keyPressed(currentValue)
 
-    Text {
+    StdText {
         anchors.centerIn: parent
         text: currentValue
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        color: key.fontColor
-        font.family: key.fontType;
         font.pixelSize: key.fontSize;
     }
 }

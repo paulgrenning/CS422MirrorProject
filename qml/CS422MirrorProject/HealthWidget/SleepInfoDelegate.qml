@@ -1,5 +1,5 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../UtilityElements"
 
 Item{
     id: item1
@@ -29,16 +29,15 @@ Item{
             source: "images/sleepBorderImage.png"
             PropertyAnimation {id: animation3; target: barimage3; property: "width"; from: 0; to: (light_minutes/deep_minutes)*180; duration: 1000}
 
-            Text {
+            StdText {
                 id: text3
                 y: 12
-                color: "#eefff9"
+                state: "white"
                 text: (parseInt(light_minutes)/60.0).toFixed(1)+" hrs"
                 anchors.left: parent.left
                 anchors.leftMargin: 191
                 anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 20
-                font.family: "Futura"
                 font.bold: true
                 horizontalAlignment: Text.AlignLeft
             }
@@ -57,17 +56,16 @@ Item{
             source: "images/sleepBorderImage.png"
             PropertyAnimation {id: animation; target: barimage1; property: "width"; from: 0; to: (rem_minutes/deep_minutes)*180; duration: 1000}
 
-            Text {
+            StdText {
                 id: text1
                 y: 12
-                color: "#eefff9"
+                state: "white"
                 text: (parseInt(rem_minutes/60)).toFixed(1)+" hrs"
                 anchors.left: parent.left
                 anchors.leftMargin: 191
                 anchors.verticalCenterOffset: 0
                 anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 20
-                font.family: "Futura"
                 font.bold: true
                 horizontalAlignment: Text.AlignLeft
             }
@@ -86,15 +84,14 @@ Item{
             source: "images/sleepBorderImage.png"
             PropertyAnimation {id: animation2; target: barimage2; property: "width"; from: 0; to: (deep_minutes/deep_minutes)*180; duration: 1000}
 
-            Text {
+            StdText {
                 id: text2
                 y: 10
-                color: "#eefff9"
+                state: "white"
                 text: (parseInt(deep_minutes)/60).toFixed(1)+" hrs"
                 anchors.left: parent.left
                 anchors.leftMargin: 191
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "Futura"
                 font.bold: true
                 horizontalAlignment: Text.AlignLeft
                 font.pixelSize: 20
@@ -105,33 +102,31 @@ Item{
     }
 
 
-    Text {
+    StdText {
         id: text4
         x: 104
         y: 5
         width: 101
         height: 60
-        color: "#eefff9"
+        state: "white"
         text: ((parseInt(light_minutes)+parseInt(deep_minutes)+parseInt(rem_minutes))/60).toFixed(1)
         verticalAlignment: Text.AlignBottom
         font.pixelSize: 60
         font.bold: true
-        font.family: "Futura"
         horizontalAlignment: Text.AlignLeft
     }
 
-    Text {
+    StdText {
         id: text5
         x: 205
         y: 15
         width: 103
         height: 43
-        color: "#ffffff"
+        state: "white"
         text: " hrs"
         anchors.left: text4.right
         anchors.leftMargin: 0
         font.pixelSize: 33
-        font.family: "Futura"
         font.bold: true
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignVCenter

@@ -178,11 +178,11 @@ Widget {
         radius: 10
         clip: true
 
-        Text {
+        StdText {
             id: currentSongPlaying
             y: 14
             height: 24
-            color: "#ffffff"
+            state: "white"
             text: ""
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignVCenter

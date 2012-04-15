@@ -1,5 +1,5 @@
- // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../UtilityElements"
 
 Item{
     width: 290; height: 124
@@ -83,56 +83,50 @@ Rectangle {
             clip: false
             z: -1
 
-            Text{
+            StdText{
                 id: tempTxt
                 x: -67
                 y: 0
                 width: 132
                 height: 68
-                color: "#7dd9b3"
+                state: "white"
                 text: (appVar.currentDegreeSystem == "Celsius") ? temp_c + "°C" : temp_f + "°F"
                 horizontalAlignment: Text.AlignHCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.family: "Futura"
                 wrapMode: Text.WordWrap
                 font.pointSize: 50
             }
 
-            Text{
+            StdText{
                 id: condTxt
                 x: -68
                 y: 63
                 width: 133
                 height: 16
-                color: "#7dd9b3"
                 text: condition
                 anchors.horizontalCenterOffset: 0
                 horizontalAlignment: Text.AlignHCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.family: "Futura"
             }
 
-            Text{
+            StdText{
                 id: humidityTxt
                 x: -67
                 y: 87
                 width: 132
                 height: 17
-                color: "#7dd9b3"
                 text: humidity
                 anchors.horizontalCenterOffset: 0
                 horizontalAlignment: Text.AlignHCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.family: "Futura"
             }
 
-            Text{
+            StdText{
                 id: windTxt
                 x: -68
                 y: 110
                 width: 133
                 height: 16
-                color: "#7dd9b3"
                 text: wind_condition
                 anchors.horizontalCenterOffset: 0
                 horizontalAlignment: Text.AlignHCenter

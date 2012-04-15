@@ -1,5 +1,5 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../UtilityElements"
 
 Item {
     anchors.fill:parent;
@@ -45,7 +45,7 @@ Item {
                  }
              }
 
-             Text {
+             StdText {
                  width: parent.width
                  id: aLanguage
                  anchors {
@@ -57,9 +57,7 @@ Item {
 
                  anchors.horizontalCenter: parent.horizontalCenter
 
-                 color: "#7dd9b3"
                  font.pointSize: 24
-                 font.family: "Futura"
 
                  text: language
              }

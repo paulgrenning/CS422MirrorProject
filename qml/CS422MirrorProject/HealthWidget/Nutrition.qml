@@ -1,6 +1,6 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import "../AppVariables"
+import "../UtilityElements"
 
 Item {
     id:background
@@ -10,18 +10,18 @@ Item {
     width: 520
     height: 310
 
-    Text {
+    StdText {
         id: text1
         x: 378
         y: 47
-        text: (cal)+" cal"
         anchors.right: parent.right
         anchors.rightMargin: 50
         horizontalAlignment: Text.AlignRight
         font.bold: true
-        font.family: "Futura"
         font.pixelSize: 35
-        color: "#eefff9"
+        state: "white"
+
+        text: (cal)+" cal"
 
         Timer{ interval: {if(cal<1850) return 1;
                          else return 50;}
@@ -33,16 +33,14 @@ Item {
         }
     }
 
-    Text {
+    StdText {
         id: text3
         x: 39
         y: 57
-        color: "#bfe4d5"
         text: (appVar.currentLanguage === "Español") ? "calorías consumidas ayer:" : "calories consumed yesterday:"
         wrapMode: Text.WordWrap
         font.pixelSize: 20
         font.bold: true
-        font.family: "Futura"
     }
 
     XmlListModel {
@@ -52,17 +50,15 @@ Item {
         XmlRole { name: "bar_height"; query: "calories/string()" }
     }
 
-    Text {
+    StdText {
         id: text2
-
         x: 378
         y: 120
-        color: "#eefff9"
+        state: "white"
         text: (objcal)+" cal"
         font.pixelSize: 35
         anchors.rightMargin: 50
         font.bold: true
-        font.family: "Futura"
         anchors.right: parent.right
         horizontalAlignment: Text.AlignRight
         Timer{ interval: {if(objcal<1800) return 1;
@@ -77,62 +73,58 @@ Item {
 
         }
     }
-    Text {
+
+    StdText {
         id: text4
         x: 39
         y: 130
-        color: "#bfe4d5"
         text: (appVar.currentLanguage === "Español") ? "objetivo de hoy:" : "today's goal:"
         font.pixelSize: 20
         font.bold: true
-        font.family: "Futura"
     }
 
-    Text {
+    StdText {
         id: text5
         x: 39
         y: 197
         width: 263
         height: 33
-        color: "#bfe4d5"
         text: (appVar.currentLanguage === "Español") ? "ejercicio recomendado:" : "recommended workout:"
         wrapMode: Text.WordWrap
         font.pixelSize: 23
-        font.family: "Futura"
         font.bold: true
     }
 
-    Text {
+    StdText {
         id: text6
         x: 352
         y: 190
         width: 105
         height: 33
-        color: "#eefff9"
+        state: "white"
         text: (appVar.currentLanguage === "Español") ? "correr":"running"
         wrapMode: Text.WordWrap
         font.pixelSize: 30
         anchors.rightMargin: 50
         font.bold: true
-        font.family: "Futura"
         anchors.right: parent.right
         horizontalAlignment: Text.AlignRight
         opacity: 0
         PropertyAnimation {id: animationtext6; target: text6; property: "opacity"; from: 0; to: 1; duration: 500}
     }
-    Text {
+
+    StdText {
         id: text7
         x: 300
         y: 230
         width: 157
         height: 33
-        color: "#eefff9"
+        state: "white"
         text: "30 min"
         wrapMode: Text.WordWrap
         font.pixelSize: 23
         anchors.rightMargin: 50
         font.bold: true
-        font.family: "Futura"
         anchors.right: parent.right
         horizontalAlignment: Text.AlignRight
         opacity: 0

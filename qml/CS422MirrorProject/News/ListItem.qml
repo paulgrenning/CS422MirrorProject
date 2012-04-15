@@ -1,11 +1,10 @@
 import QtQuick 1.0
+import "../UtilityElements"
 
 Item {
     id: container
 
-    property string fontName: "Futura"
     property int fontSize: 12
-    property color fontColor: "#7dd9b3"
     property string text: "NOT SET"
     property string icon: ""
 
@@ -14,17 +13,13 @@ Item {
     width: 270; height: 64
     clip: true
 
-    Text {
+    StdText {
         id: itemText
         x: 45
         y: 0
         width: 225
         height: 48
-        font {
-            family: container.fontName
-            pointSize: container.fontSize
-        }
-        color: container.fontColor
+        font.pointSize: container.fontSize
         text: container.text
         verticalAlignment: Text.AlignVCenter
     }

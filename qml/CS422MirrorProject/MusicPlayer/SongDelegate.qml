@@ -1,5 +1,5 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../UtilityElements"
 
 Item{
     id: songItem
@@ -25,12 +25,12 @@ Item{
         source:songImage
     }
 
-    Text {
+    StdText {
         id: songNameTxt
         x: 71
         y: 5
         height: 40
-        color: "#ffffff"
+        state: "white"
         text: ""
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 15
@@ -45,12 +45,12 @@ Item{
         onClicked: songClicked()
     }
 
-    Text {
+    StdText {
         id: songDescription
         x: 181
         y: 5
         height: 40
-        color: "#ffffff"
+        state: "white"
         text: ""
         font.italic: true
         font.pixelSize: 12

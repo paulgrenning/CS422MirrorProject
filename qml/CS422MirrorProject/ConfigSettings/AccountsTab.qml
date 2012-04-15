@@ -1,5 +1,5 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../UtilityElements"
 
 Item {
     anchors.fill: parent
@@ -31,7 +31,7 @@ Item {
         opacity: 1.0
     }
 
-    Text {
+    StdText {
         anchors {
             top: runSetupButton.bottom
             left: runSetupButton.left
@@ -39,9 +39,7 @@ Item {
         }
         height: 60
         width: 400
-        color: "#7dd9b3"
         font.pointSize: 24
-        font.family: "Futura"
         text: (appVar.currentLanguage == "Español") ? "Quite Cuentas" : "Remove Accounts"
     }
 }

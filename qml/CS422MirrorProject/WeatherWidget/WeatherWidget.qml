@@ -42,8 +42,6 @@ Item {
         source: "images/borderImage2.png"
     }
 
-
-
     ListView {
         id: list
         x: 57

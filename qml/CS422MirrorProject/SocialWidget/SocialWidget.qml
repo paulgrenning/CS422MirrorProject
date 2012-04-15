@@ -1,5 +1,5 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "../UtilityElements"
 
 Item {
     id: social
@@ -68,9 +68,9 @@ Item {
             model : allTweets
             delegate: Item {
                  width:parent.width
-                 height: Math.max(timeText.height + tweetText.height + 20, twitterAccountImage.height + 20)
+                 height: Math.max(timeText.height + tweetText.paintedHeight + 20, twitterAccountImage.height + 20)
 
-                 Text {
+                 StdText {
                      id: timeText
                      anchors {
                          left: twitterAccountImage.right
@@ -79,31 +79,28 @@ Item {
                          topMargin: -5
                      }
 
-                     color: "#7dd9b3"
+                     state: "white"
                      font.pointSize: 10
-                     font.family: "Futura"
                      wrapMode: Text.WordWrap
 
                      text: postTime
                  }
 
-                 Text {
+                 StdText {
                      id: tweetText
                      anchors {
                          left: twitterAccountImage.right
                          leftMargin: 5
                          top: timeText.bottom
+                         topMargin: 2
                      }
 
                      anchors.horizontalCenter: parent.horizontalCenter
 
-                     color: "#7dd9b3"
                      font.pointSize: 14
-                     font.family: "Futura"
                      wrapMode: Text.WordWrap
 
                      text: statusText
-
                  }
 
                  Image {

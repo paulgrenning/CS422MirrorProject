@@ -13,6 +13,7 @@ Text {
     states: [
         State { name: "default"; PropertyChanges { target: stdText; color: "#bee7d5" }},
         State { name: "blue"; PropertyChanges { target: stdText; color: "#b9eef3" }},
-        State { name: "orange"; PropertyChanges { target: stdText; color: "#ebab6c" }}
+        State { name: "orange"; PropertyChanges { target: stdText; color: "#ebab6c" }},
+        State { name: "white"; PropertyChanges { target: stdText; color: "#eefff9" }}
     ]
 }
