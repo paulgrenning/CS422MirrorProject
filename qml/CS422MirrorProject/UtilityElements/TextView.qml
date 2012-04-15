@@ -41,26 +41,50 @@ InputView {
             onInputReady: {
                 if(validator) {
                     if(input.match(validator)) textView.inputReady(input)
-                    else if(failMessage) popup.opacity = 1
+                    else if(failMessage) errorPopup.opacity = 1
                 } else {
                     textView.inputReady(input)
                 }
             }
 
             onSkipInput: textView.skipInput()
+            onReceivedTouch: errorPopup.opacity = 0
         }
     }
 
     Item {
-        id: popup
+        id: errorPopup
+        width: popupBackground.width
+        height: popupBackground.height
         opacity: 0
+
+        anchors {
+            bottom: contents.top
+            bottomMargin: (inputMessage) ? -85 : -55
+            right: contents.right
+            rightMargin: (skippable) ? 330 : 285
+        }
 
         Behavior on opacity {
             NumberAnimation { duration: 200 }
         }
 
+        Image {
+            id: popupBackground
+            width: 225
+            height: 114
+            source: "../IntroFlow/images/errorPopup.png"
+            anchors.fill: parent
+        }
+
         StdText {
             id: popupText
+            width: parent.width - 30
+            height: parent.height - 10
+            anchors.centerIn: parent
+            font.pixelSize: 18
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
             text: failMessage
         }
     }

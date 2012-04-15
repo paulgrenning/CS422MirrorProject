@@ -16,8 +16,11 @@ Item {
         State { name: "photoView" },
         State { name: "nameEntry" },
         State { name: "emailEntry" },
+        State { name: "emailPasswordEntry" },
         State { name: "confirmEmail" }
     ]
+
+    signal introFlowFinished()
 
     onStateChanged: {
         if(activeView) activeView.toggleHide()
@@ -25,7 +28,9 @@ Item {
             case "photoView": activeView = photoView; break
             case "nameEntry": activeView = nameInput; break
             case "emailEntry": activeView = emailInput; break
+            case "emailPasswordEntry": activeView = emailPasswordInput; break
             case "confirmEmail": activeView = confirmEmailView; break
+            case "inactive": introFlowFinished(); return
             default: break
         }
         if(activeView) activeView.toggleHide()
@@ -47,6 +52,9 @@ Item {
         id: nameInput
         inputLabel: "What is your name? "
 
+        validator: /[\w._]+/
+        failMessage: "you have to enter something for your name"
+
         onInputReady: {
             parent.state = "emailEntry"
         }
@@ -60,9 +68,10 @@ Item {
         inputMessage: "We'll use this to sync with your mail, and calendar, if it's available"
 
         validator: /[\w._]*@[\w._]*/
+        failMessage: "your email must contain an '@' symbol to be valid"
 
         onInputReady: {
-            parent.state = "confirmEmail"
+            parent.state = "emailPasswordEntry"
             confirmEmailView.service = input.split("@")[1]
         }
 
@@ -75,6 +84,9 @@ Item {
 
         inputLabel: "Enter your email password: "
         inputMessage: "We'll use this to sync with your mail, and calendar, if it's available"
+
+        validator: /[\w._]+/
+        failMessage: "you have to enter something for your password"
 
         onInputReady: parent.state = "confirmEmail"
     }

@@ -18,6 +18,7 @@ Item {
     property int fontSize: 32
     property string fontColor: "#7dd9b3"
 
+    signal receivedTouch()
     signal inputReady(string input)
     signal skipInput()
 
@@ -32,7 +33,7 @@ Item {
         State { name: "sym" }
     ]
 
-    function keyPressed(value){
+    function keyPressed(value) {
         if(value === "sym" || value === "shift") {
             state = value
         } else if(value === "del") {
@@ -45,6 +46,7 @@ Item {
         }
         maskedInput += "*"
         inputCursor.x = inputTxt.paintedWidth - 5
+        if(value !== "done") receivedTouch()
     }
 
     Row {

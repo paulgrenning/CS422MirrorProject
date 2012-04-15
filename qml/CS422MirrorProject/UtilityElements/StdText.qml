@@ -7,6 +7,7 @@ Text {
     font { family: "Futura" }
     style: Text.Raised
     styleColor: "#91b3a4"
+    smooth: true
 
     state: "default"
     states: [

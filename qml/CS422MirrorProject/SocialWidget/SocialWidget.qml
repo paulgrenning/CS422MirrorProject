@@ -105,6 +105,7 @@ Item {
                      text: statusText
 
                  }
+
                  Image {
                      id: twitterAccountImage
                      anchors {
