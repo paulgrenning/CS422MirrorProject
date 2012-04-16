@@ -7,6 +7,7 @@ Item {
     id:config
     width:510
     height:300
+    z: 2
 
     property alias configButtonState: configbutton1.state
     property alias lightButtonState: lightbutton.state
@@ -15,6 +16,11 @@ Item {
     property alias lightOpacity: lightbutton.sliderValue
     signal helpclicked()
     signal aboutclicked()
+    property real removeAccount: configbutton1.removeAccount
+
+    onRemoveAccountChanged: {
+        configbutton1.removeAccount = config.removeAccount
+    }
 
     ConfigButton {
         id: configbutton1

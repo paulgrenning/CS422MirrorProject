@@ -75,7 +75,7 @@ Item {
             removeNotice.removeAccount = -1
             removeNotice.closing()
             hideableWidgets.opacity = 1
-            removeEmailAccount.opacity = 0
+            removeMainAccount.opacity = 0
         }
     }
 
@@ -98,7 +98,7 @@ Item {
             removeNotice.removeAccount = 1
             removeNotice.closing()
             hideableWidgets.opacity = 1
-            removeEmailAccount.opacity = 0
+            removeMainAccount.opacity = 0
         }
     }
 }

@@ -114,6 +114,7 @@ Rectangle {
             y: rootElement.height - configsettings.height - 5
             width: 461
             height: 300
+            removeAccount: 1
             onGeneralOpacityChanged: {
 //                weatherwidget.opacity = displayOpacity
 //                clockWidget.opacity = displayOpacity
@@ -313,6 +314,16 @@ Rectangle {
         x: 280
         y: 250
         opacity: 0
+    }
+
+    RemoveMainAccount {
+        id: removeMainAccount
+        x: 280
+        y: 250
+        opacity: 0
+        onClosing: {
+            configsettings.removeAccount *= removeMainAccount.removeAccount
+        }
     }
 
     RemoveEmailAccount {

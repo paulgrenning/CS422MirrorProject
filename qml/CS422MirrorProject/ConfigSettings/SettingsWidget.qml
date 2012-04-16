@@ -6,6 +6,7 @@ Item {
     state: "general"
     width: 400
     height: 400
+    property real removeAccount
 
     Image {
         id: backgroundImage
@@ -76,6 +77,10 @@ Item {
         }
 
         opacity: 0.0
+    }
+
+    onRemoveAccountChanged: {
+        accountsTab.removeAccount = settingsTab.removeAccount
     }
 
     AccountsTab {

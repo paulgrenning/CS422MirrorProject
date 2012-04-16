@@ -25,17 +25,12 @@ Widget {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-//                keyboardFade.start()
-//                mainInputField.inputLabel = "Add Email Account: "
-//                mainInputField.returnWidget = 1
-//                hideableWidgets.opacity = 0
-
                 mainTextConfirmView.returnWidget = 1
 
 
-                mainTextConfirmView.inputLabel = "What's the email account name? "
+                mainTextConfirmView.inputLabel = (appVar.currentLanguage == "Español") ? "Lo que es el nombre de cuenta" : "What's the account name? "
                 mainTextConfirmView.validator = /[\w._]+/
-                mainTextConfirmView.failMessage = "you have to enter something for your account name"
+                mainTextConfirmView.failMessage = (appVar.currentLanguage == "Español") ? "tiene que entrar algo para su nombre de cuenta" : "you have to enter something for your account name"
                 mainTextConfirmView.inputParser = inputParser
 
                 mainTextConfirmView.start()
