@@ -9,6 +9,7 @@ Item {
     clip: true
 
     property string newName: ""
+    property real removeAccount: 1
 
     anchors {
         top: parent.top
@@ -19,6 +20,10 @@ Item {
 
     onNewNameChanged: {
         allNames.append({ name: socialAccountNames.newName })
+    }
+
+    onRemoveAccountChanged: {
+        allNames.remove(listOfAccounts.currentIndex)
     }
 
     ListModel {

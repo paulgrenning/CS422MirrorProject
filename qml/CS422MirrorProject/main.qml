@@ -291,6 +291,9 @@ Rectangle {
         x: 280
         y: 250
         opacity: 0
+        onClosing: {
+            socialwidget.removeAccount *= removeSocialAccount.removeAccount
+        }
     }
 
     BorderImage {

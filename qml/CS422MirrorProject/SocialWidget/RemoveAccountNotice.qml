@@ -3,11 +3,12 @@ import QtQuick 1.1
 import "../UtilityElements"
 
 Item {
-    id: anEmailView
+    id: removeNotice
     width: 742
     height: 357
     property string accountName: ""
-
+    property real removeAccount: 1
+    signal closing()
     Behavior on opacity {
         NumberAnimation { duration: 200 }
     }
@@ -44,7 +45,7 @@ Item {
             left: anEmailView.left
             leftMargin: 80
         }
-        state: "orange"
+        state: "blue"
         font.pointSize: 40
 
         wrapMode: Text.WordWrap
@@ -69,8 +70,12 @@ Item {
         defaultPath: "../IntroFlow/images/confirmButtonUP.png"
         clickedPath: "../IntroFlow/images/confirmButtonDN.png"
         label: "yes"
-
-        //onButtonClicked: confirmationReceived(true)
+        onButtonClicked: {
+            removeNotice.removeAccount = -1
+            removeNotice.closing()
+            hideableWidgets.opacity = 1
+            removeSocialAccount.opacity = 0
+        }
     }
 
     LabeledButton {
@@ -88,6 +93,11 @@ Item {
         clickedPath: "../IntroFlow/images/confirmButtonDN.png"
         label: "no"
 
-        //onButtonClicked: confirmationReceived(false)
+        onButtonClicked: {
+            removeNotice.removeAccount = 1
+            removeNotice.closing()
+            hideableWidgets.opacity = 1
+            removeSocialAccount.opacity = 0
+        }
     }
 }

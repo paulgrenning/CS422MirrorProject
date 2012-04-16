@@ -8,6 +8,7 @@ Widget {
     isVisible: false
     bgImgPath:"../SocialWidget/images/twitterTab.png"
     property string newName: socialAccountList.newName
+    property real removeAccount: socialAccountList.removeAccount
     state: "viewFeed"
     PlusButton {
         x: 218
@@ -94,6 +95,10 @@ Widget {
 
     onNewNameChanged: {
         socialAccountList.newName = social.newName
+    }
+
+    onRemoveAccountChanged: {
+        socialAccountList.removeAccount = social.removeAccount
     }
 
     AccountsList {
