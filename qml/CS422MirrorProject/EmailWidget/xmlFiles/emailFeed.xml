@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emailFeeds>
+            <item>
+                <from>Victor Garren</from>
+                <subject>Drinks After Work?</subject>
+                <time>Today, 4:27 PM</time>
+                <body>We are all going to Little Joe's after work, are you going?</body>
+            </item>
+            <item>
+                <from>Human Resources</from>
+                <subject>Reminder: Blood Drive Tomorrow</subject>
+                <time>Today, 3:57 PM</time>
+                <body>Tomorrow we have the American Red Cross coming to the company grounds. They will setup in conference room B. They will be here all day but please try to sign up before you leave work today. We hope everyone can participate. See everyone tomorrow. -Randy</body>
+            </item>
+            <item>
+                <from>Auto Email</from>
+                <subject>Meeting starts in 10 minutes</subject>
+                <time>Today, 3:50 PM</time>
+                <body>Email reminder, meeting in the Bears conference room starting in 10 minutes.</body>
+            </item>
+            <item>
+                <from>Grandma Ruth</from>
+                <subject>SPAM: Forward this to 10 people you know!</subject>
+                <time>Today, 3:33 PM</time>
+                <body>This is not a hoax, you need to forward this email to at least 10 people in the next 10 minutes or else a little Nigerian Prince will die. Also send $1 to the Nigerian Prince at 1567 Evergreen terrace, Chicago, Il 606067</body>
+            </item>
+            <item>
+                <from>Human Resources</from>
+                <subject>HR Mass Email</subject>
+                <time>Today, 3:01 PM</time>
+                <body>We need to remind everyone that shorts are not appropriate for work. This is a customer relations environment, please stay business casual at work. -HR</body>
+            </item>
+            <item>
+                <from>Robert Montaya</from>
+                <subject>Going to be late to the meeting</subject>
+                <time>Today, 2:04 PM</time>
+                <body>I got into a minor car accident on the way back from lunch, I am going to be late to the synergy meeting. -sent from android phone.</body>
+            </item>
+            <item>
+                <from>Jenny Fang</from>
+                <subject>Where are you going to lunch?</subject>
+                <time>Today, 11:44 PM</time>
+                <body>Are you going out to lunch today? If so I was thinking Chotchkies of Flingers. Do you have any preference? -Jenny</body>
+            </item>
+            <item>
+                <from>Gary Olds</from>
+                <subject>Source Build Failing!!!!</subject>
+                <time>Today, 10:26 PM</time>
+                <body>Who committed code to the repository and broke the build!!!! We have a very important meeting later and this needs to be working. FIX IT NOW!!!!!</body>
+            </item>
+</emailFeeds>
+

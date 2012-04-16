@@ -18,6 +18,7 @@ import "./News"
 //import opencvqml 1.0
 import "./Keyboard"
 import "./News"
+import "./EmailWidget"
 
 Rectangle {
     width: 1280
@@ -165,6 +166,15 @@ Rectangle {
                 opacity: 0
             }
 
+            EmailWidget {
+                id: emailWidget
+                x: rootElement.width - emailWidget.width
+                y: rootElement.height - emailWidget.height - widgetbar.height
+                width: 310
+                height: 496
+                opacity: 0
+            }
+
         News {
             id: newswidget
             x: rootElement.width - newswidget.width
@@ -188,6 +198,7 @@ Rectangle {
                 healthwidget.isVisible = false
                 socialwidget.isVisible = false
                 newswidget.isVisible = false
+                emailWidget.isVisible = false
             }
             onHealthClicked:{
                 healthwidget.barstate = healthwidget.laststate
@@ -200,6 +211,7 @@ Rectangle {
                 musicwidget.isVisible = false
                 socialwidget.isVisible = false
                 newswidget.isVisible = false
+                emailWidget.isVisible = false
             }
             onSocialClicked:{
                 if(socialwidget.isVisible) {
@@ -211,6 +223,7 @@ Rectangle {
                 musicwidget.isVisible = false
                 healthwidget.isVisible = false
                 newswidget.isVisible = false
+                emailWidget.isVisible = false
             }
             onNewsClicked: {
                 if(newswidget.isVisible) {
@@ -222,6 +235,19 @@ Rectangle {
                 musicwidget.isVisible = false
                 socialwidget.isVisible = false
                 healthwidget.isVisible = false
+                emailWidget.isVisible = false
+            }
+            onEmailClicked: {
+                if(emailWidget.isVisible) {
+                    emailWidget.isVisible=false
+                }
+                else{
+                    emailWidget.isVisible=true
+                }
+                musicwidget.isVisible = false
+                socialwidget.isVisible = false
+                healthwidget.isVisible = false
+                newswidget.isVisible = false
             }
           }
        }
