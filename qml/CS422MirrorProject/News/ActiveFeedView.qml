@@ -6,7 +6,7 @@ Item {
     property string feedURL: ""
     property string feedMURL: ""
 
-    width: 270; height: 420
+    width: 270; height: 388
 
     ActiveFeedModel {
         id: listModel

@@ -4,12 +4,12 @@ import QtWebKit 1.0
 
 Item {
     id: article
-    width: 270; height: 420
+    width: 270; height: 388
 
     property string articleContent: ""
 
     WebView {
-        html: article.articleContent
+        html:  article.articleContent
         preferredHeight: article.height
         preferredWidth: article.width
     }

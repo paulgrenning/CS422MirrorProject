@@ -48,9 +48,15 @@ Widget{
         width: 80; height: 40
         //clickedPath: ""
         defaultPath:  (appVar.currentLanguage == "Español") ?  "../News/images/newsBack80x40SP.png" : "../News/images/newsBack80x40.png"
+        onButtonClicked: {
+            if(news.state === "newsfeed")
+                news.state = "base sate"
+            else if(news.state === "article")
+                news.state = "newsfeed"
+        }
+        opacity: 0
     }
 
-    //Back button
 
 
     states: [
@@ -69,6 +75,10 @@ Widget{
                 target: article
                 opacity: 0
             }
+            PropertyChanges {
+                target: back
+                opacity: 0
+            }
         },
         State {
             name: "newsfeed"
@@ -85,6 +95,10 @@ Widget{
                 target: article
                 opacity: 0
             }
+            PropertyChanges {
+                target: back
+                opacity: 1
+            }
         },
         State {
             name: "article"
@@ -99,6 +113,10 @@ Widget{
             }
             PropertyChanges {
                 target: article
+                opacity: 1
+            }
+            PropertyChanges {
+                target: back
                 opacity: 1
             }
         },
