@@ -16,7 +16,7 @@ import "./Keyboard"
 import "./News"
 import "./Keyboard"
 import "./EmailWidget"
-//import opencvqml 1.0
+import opencvqml 1.0
 
 Rectangle {
     width: 1280
@@ -34,28 +34,28 @@ Rectangle {
          }
      }
 
-//        MouseArea{
-//            z:-5
-//            anchors.fill: parent
-//            onClicked: {
-//                if(musicwidget.isVisible) musicwidget.isVisible = false
-//                if(healthwidget.isVisible) healthwidget.isVisible = false
-//                if(socialwidget.isVisible) socialwidget.isVisible = false
-//                if(newswidget.isVisible) newswidget.isVisible = false
-//                configsettings.configButtonState = "closed"
-//                configsettings.lightButtonState = "closed"
-//                configsettings.opacityButtonState = "closed"
-//            }
-//        }
+        MouseArea{
+            z:-5
+            anchors.fill: parent
+            onClicked: {
+                if(musicwidget.isVisible) musicwidget.isVisible = false
+                if(healthwidget.isVisible) healthwidget.isVisible = false
+                if(socialwidget.isVisible) socialwidget.isVisible = false
+                if(newswidget.isVisible) newswidget.isVisible = false
+                configsettings.configButtonState = "closed"
+                configsettings.lightButtonState = "closed"
+                configsettings.opacityButtonState = "closed"
+            }
+        }
 
 
 
-//    CameraOpenCv{
-//        id:cambackground
-//        x:0
-//        y:0
-//        z:-2
-//    }
+    CameraOpenCv{
+        id:cambackground
+        x:0
+        y:0
+        z:-2
+    }
 
     // create object to hold all important variables for the application
     AppVariables {
