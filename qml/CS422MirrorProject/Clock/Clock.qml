@@ -22,8 +22,14 @@ Column {
         minutes = date.getMinutes();
         hours = date.getHours();
 
-        greeting.text = "Good "
-        greeting.text += ((hours > 17 && hours < 5) ? "evening, " : (hours < 12) ? "morning, " : "afternoon, ")
+        greeting.text = (appVar.currentLanguage == "Español") ? "Buenos ": "Good "
+        if(hours > 17 && hours < 5) {
+            greeting.text += (appVar.currentLanguage == "Español") ? "noches, ":"evening, ";
+        } else if(hours < 12) {
+            greeting.text += (appVar.currentLanguage == "Español") ? "dias, ":"morning, ";
+        } else {
+            greeting.text += (appVar.currentLanguage == "Español") ? "tardes, " : "afternoon, ";
+        }
         greeting.text += appVar.currentUser
 
         if(!military) {
