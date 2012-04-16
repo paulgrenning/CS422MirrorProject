@@ -6,7 +6,6 @@ Item {
     width:310
     height:496
 
-
     MouseArea {
          anchors.fill: parent
          drag.target: social

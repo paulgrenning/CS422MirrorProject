@@ -8,6 +8,7 @@ Widget{
 
     property string currentFeed: ""
     property string currentFeedMedia: ""
+    property string currentArticleUrl: ""
 
     bgImgPath:  (appVar.currentLanguage == "Español") ? "../News/images/newsWidgetBackgroundSP.png" : "../News/images/newsWidgetBackground.png"
 
@@ -18,30 +19,38 @@ Widget{
         onPressed: news.state = "add"
     }
 
+    FeedListView{
+        id: feedlist
+        x: 19; y: 52
+        opacity: 1
+    }
+
     ActiveFeedView {
         id: feedview
         x: 19; y: 52
+        clip: true
         feedURL: news.currentFeed
         feedMURL: news.currentFeedMedia
         opacity: 0
     }
 
-    FeedListView{
-        id: feedlist
+    Article {
+        id: article
         x: 19; y: 52
-        width: 270
-        height: 394
-        opacity: 1
+        clip: true
+        opacity: 0
+        articleContent: news.currentArticleUrl
+    }
+
+    Button {
+        id: back
+        x: 209; y: 440
+        width: 80; height: 40
+        //clickedPath: ""
+        defaultPath:  (appVar.currentLanguage == "Español") ?  "../News/images/newsBack80x40SP.png" : "../News/images/newsBack80x40.png"
     }
 
     //Back button
-    /*Button {
-        id: back
-        x: 134; y: 451
-        width: 40; height: 40
-        //clickedPath: ""
-        //defaultPath: ""
-    }*/
 
 
     states: [
@@ -56,6 +65,10 @@ Widget{
                 target: feedview
                 opacity: 0
             }
+            PropertyChanges {
+                target: article
+                opacity: 0
+            }
         },
         State {
             name: "newsfeed"
@@ -68,9 +81,26 @@ Widget{
                 target: feedlist
                 opacity: 0
             }
+            PropertyChanges {
+                target: article
+                opacity: 0
+            }
         },
         State {
             name: "article"
+
+            PropertyChanges {
+                target: feedlist
+                opacity: 0
+            }
+            PropertyChanges {
+                target: feedview
+                opacity: 0
+            }
+            PropertyChanges {
+                target: article
+                opacity: 1
+            }
         },
         State {
             name: "add"

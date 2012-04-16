@@ -6,8 +6,7 @@ Item {
     property string feedURL: ""
     property string feedMURL: ""
 
-    width: 270
-    height: 420
+    width: 270; height: 420
 
     ActiveFeedModel {
         id: listModel
@@ -21,7 +20,7 @@ Item {
         ListItem {
             text: title
             icon: thumb
-            //onClicked: ""
+            onSelected: {news.currentArticleUrl = content; news.state = "article";}
         }
     }
 
