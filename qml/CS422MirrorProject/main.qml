@@ -126,7 +126,7 @@ Rectangle {
 //                else {musicwidget.opacity = displayOpacity;}
                 topWidgets.opacity = displayOpacity
                 nonConfigWidgets.opacity = displayOpacity
-                console.log(displayOpacity)
+                //console.log(displayOpacity)
             }
         }
 
