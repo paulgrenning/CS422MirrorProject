@@ -10,24 +10,6 @@ Item {
 
     Component.onCompleted: bargraphmodel.reload()
 
-    function getTodaysText(){
-        var today = bargraphmodel.get(grid.currentIndex).run_date
-        var year = today.slice(0,4);
-        var month = today.slice(5,7);
-        var day = today.slice(8,10);
-        var date = new Date(parseInt(year),parseInt(month),parseInt(day)-1)
-        var days = ['S','S','M','T','W','T','F']
-        var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
-
-        //console.log(year)
-        console.log(today)
-        textDateDay.text = days[date.getDay()]
-        //textDateDayNumber.text = day
-        //textDateMonth.text = months[parseInt(month-1)]
-        //console.log(date.getDay())
-    }
-
-
     StdText {
         id: text1
         x: 23
@@ -255,12 +237,39 @@ Item {
                 var month = today.slice(5,7);
                 var day = today.slice(8,10);
                 var date = new Date(parseInt(year),parseInt(month),parseInt(day)-1)
-                var days = ['S','S','M','T','W','T','F']
+                 var days = ['Saturday, ','Sunday, ','Monday, ','Tuesday, ','Wednesday, ','Thursday, ','Friday, ']
                 var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 
                 //console.log(year)
                 //console.log(today)
                 return days[date.getDay()]
+                //textDateDayNumber.text = day
+                //textDateMonth.text = months[parseInt(month-1)]
+                //console.log(date.getDay())
+
+            }
+
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 15
+            font.bold: true
+        }
+        StdText {
+            id: textDateDayNum
+            x: 6
+            y: 14
+            z: 6
+            text:{
+                var today = bargraphmodel.get(grid.currentIndex).run_date
+                var year = today.slice(0,4);
+                var month = today.slice(5,7);
+                var day = today.slice(8,10);
+                var date = new Date(parseInt(year),parseInt(month),parseInt(day)-1)
+                 var days = ['Saturday, ','Sunday, ','Monday, ','Tuesday, ','Wednesday, ','Thursday, ','Friday, ']
+                var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+
+                //console.log(year)
+                //console.log(today)
+                return day
                 //textDateDayNumber.text = day
                 //textDateMonth.text = months[parseInt(month-1)]
                 //console.log(date.getDay())
