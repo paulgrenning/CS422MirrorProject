@@ -7,6 +7,7 @@ Item {
     id:config
     width:461
     height:300
+    z: 2
 
     property alias configButtonState: configbutton1.state
     property alias lightButtonState: lightbutton.state
