@@ -7,7 +7,9 @@ Widget {
     height:496
     isVisible: false
     bgImgPath:"../SocialWidget/images/twitterTab.png"
-
+    property string newName: socialAccountList.newName
+    property real removeAccount: socialAccountList.removeAccount
+    state: "viewFeed"
     PlusButton {
         x: 218
         y: 4
@@ -44,15 +46,109 @@ Widget {
         }
     }
 
-    Item {
+    Image {
+        anchors {
+            top: parent.top
+            left: parent.left
+            leftMargin: -40
+            topMargin: 50
+        }
+        opacity: 1
+        id: viewFeedSelected
+        source: (appVar.currentLanguage == "Español") ? "images/viewFeedSP.png" : "images/viewFeed.png"
+    }
+
+    Image {
+        anchors {
+            top: parent.top
+            left: parent.left
+            leftMargin: -40
+            topMargin: 50
+        }
+        opacity: 0
+        id: viewAccountsSelected
+        source: (appVar.currentLanguage == "Español") ? "images/accountsSP.png" : "images/accounts.png"
+    }
+
+    MouseArea {
+        anchors{
+            top: parent.top
+            left: parent.left
+            topMargin: 50
+        }
+        width: 200
+        height: 60
+        onClicked: social.state = "viewFeed"
+    }
+
+    MouseArea {
+        anchors{
+            top: parent.top
+            left: parent.left
+            topMargin: 50
+            leftMargin: 160
+        }
+        width: 200
+        height: 60
+        onClicked: social.state = "accounts"
+    }
+
+    states: [
+        State {
+            name: "viewFeed"
+            PropertyChanges { target: viewAccountsSelected; opacity: 0.0 }
+            PropertyChanges { target: viewFeedSelected; opacity: 1.0 }
+            PropertyChanges { target: socialAccountList; opacity: 0.0 }
+            PropertyChanges { target: allSocialFeed; opacity: 1.0 }
+        },
+        State {
+            name: "accounts"
+            PropertyChanges { target: viewAccountsSelected; opacity: 1.0 }
+            PropertyChanges { target: viewFeedSelected; opacity: 0.0 }
+            PropertyChanges { target: socialAccountList; opacity: 1.0 }
+            PropertyChanges { target: allSocialFeed; opacity: 0.0 }
+        }
+    ]
+
+    onNewNameChanged: {
+        socialAccountList.newName = social.newName
+    }
+
+    onRemoveAccountChanged: {
+        socialAccountList.removeAccount = social.removeAccount
+    }
+
+    AccountsList {
+        id: socialAccountList
+        opacity: 0
         width: 300
-        height: 410
+        height: 350
+        clip: true
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
+        }
+        anchors {
+            top: parent.top
+            topMargin: 110
+            left: parent.left
+            leftMargin: 10
+        }
+    }
+
+    Item {
+        id: allSocialFeed
+        width: 300
+        height: 350
         clip: true
         anchors {
             top: parent.top
-            topMargin: 60
+            topMargin: 110
             left: parent.left
             leftMargin: 10
+        }
+
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
         }
 
         ListView {
@@ -78,7 +174,7 @@ Widget {
                          topMargin: -5
                      }
 
-                     state: "white"
+                     state: "orange"
                      font.pointSize: 10
                      wrapMode: Text.WordWrap
 
@@ -127,11 +223,7 @@ Widget {
 
         XmlListModel {
             id: allTweets
-//            source: "http://twitter.com/statuses/user_timeline/paul_grenning.atom"
-//            namespaceDeclarations: "declare default element namespace 'http://www.w3.org/2005/Atom'; " +
-//                                   "declare namespace twitter=\"http://api.twitter.com/\";";
 
-//            query: "/feed/entry"
             source: "xmlFiles/socialFeed.xml"
             query: "/socialFeeds/item"
             XmlRole { name: "statusText"; query: "name/string()" }

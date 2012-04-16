@@ -14,11 +14,9 @@ import "./UtilityElements"
 import "./IntroFlow"
 import "./Keyboard"
 import "./News"
-//import opencvqml 1.0
-//import opencvqml 1.0
 import "./Keyboard"
-import "./News"
 import "./EmailWidget"
+//import opencvqml 1.0
 
 Rectangle {
     width: 1280
@@ -26,6 +24,15 @@ Rectangle {
     color: "#00000000"
     id: rootElement
 
+    property real displayOpacity : 1.0-configsettings.generalOpacity
+    Component.onCompleted: handleNewUser();
+
+     function handleNewUser() {
+         if(appVar.renderIntroFlow) {
+             introFlow.start();
+             hideableWidgets.opacity = 0
+         }
+     }
 
 //        MouseArea{
 //            z:-5
@@ -42,16 +49,6 @@ Rectangle {
 //        }
 
 
-    property real displayOpacity : 1.0-configsettings.generalOpacity
-
-    Component.onCompleted: handleNewUser();
-
-    function handleNewUser() {
-        if(appVar.renderIntroFlow) {
-            introFlow.start();
-            hideableWidgets.opacity = 0
-        }
-    }
 
 //    CameraOpenCv{
 //        id:cambackground
@@ -65,11 +62,16 @@ Rectangle {
         id: appVar
     }
 
+
     // set the appVar to false if you don't want to see the intro flow
+
     IntroFlow {
         id: introFlow
         onIntroFlowFinished: hideableWidgets.opacity = 1
     }
+
+
+
     Item {
         id: topWidgets
 
@@ -101,9 +103,9 @@ Rectangle {
     Item {
         id: hideableWidgets
 
-        Behavior on opacity {
-            NumberAnimation { duration: 200 }
-        }
+//        Behavior on opacity {
+//            NumberAnimation { duration: 200 }
+//        }
 
         ConfigSettings {
             id: configsettings
@@ -119,10 +121,11 @@ Rectangle {
 //                else {healthwidget.opacity = displayOpacity;}
 //                if(socialwidget.opacity == 0) socialwidget.opacity = 0;
 //                else {socialwidget.opacity = displayOpacity;}
-//                if(musicplayer.opacity == 0) musicplayer.opacity = 0;
-//                else {musicplayer.opacity = displayOpacity;}
+//                if(musicwidget.opacity == 0) musicwidget.opacity = 0;
+//                else {musicwidget.opacity = displayOpacity;}
                 topWidgets.opacity = displayOpacity
                 nonConfigWidgets.opacity = displayOpacity
+                //console.log(displayOpacity)
             }
         }
 
@@ -214,6 +217,7 @@ Rectangle {
                 emailWidget.isVisible = false
             }
             onSocialClicked:{
+
                 if(socialwidget.isVisible) {
                     socialwidget.isVisible=false
                 }
@@ -226,6 +230,7 @@ Rectangle {
                 emailWidget.isVisible = false
             }
             onNewsClicked: {
+
                 if(newswidget.isVisible) {
                     newswidget.isVisible=false
                 }
@@ -238,16 +243,20 @@ Rectangle {
                 emailWidget.isVisible = false
             }
             onEmailClicked: {
+
                 if(emailWidget.isVisible) {
                     emailWidget.isVisible=false
                 }
                 else{
                     emailWidget.isVisible=true
+
                 }
                 musicwidget.isVisible = false
                 socialwidget.isVisible = false
                 healthwidget.isVisible = false
                 newswidget.isVisible = false
+                console.log(displayOpacity)
+                console.log(emailWidget.opacity)
             }
           }
        }
@@ -263,7 +272,7 @@ Rectangle {
         property QtObject runAnimation;
 
         onInputReady: {
-            console.log("Input: " + input)
+            socialwidget.newName = input
             hideableWidgets.opacity = 1
             keyboardFade.start()
         }
@@ -280,6 +289,16 @@ Rectangle {
         x: 280
         y: 250
         opacity: 0
+    }
+
+    RemoveAccountNotice {
+        id: removeSocialAccount
+        x: 280
+        y: 250
+        opacity: 0
+        onClosing: {
+            socialwidget.removeAccount *= removeSocialAccount.removeAccount
+        }
     }
 
     BorderImage {

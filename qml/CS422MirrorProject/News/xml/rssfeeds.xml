@@ -2,51 +2,88 @@
 <feeds>
 	<category name="Sports">	
 		<item>
-			<name></name>
-			<xmlUrl></xmlUrl>
-			<logo></logo>
+			<name>Yahoo Sports</name>
+			<xmlUrl>http://rss.news.yahoo.com/rss/sports</xmlUrl>
+            <mediaUrl>http://search.yahoo.com/mrss/</mediaUrl>
+			<logo>logos/Yahoo.png</logo>
 		</item>
+        <item>
+			<name>BBC Sports</name>
+			<xmlUrl>http://newsrss.bbc.co.uk/rss/sportonline_uk_edition/latest_published_stories/rss.xml</xmlUrl>
+            <mediaUrl></mediaUrl>
+			<logo>logos/bbc.png</logo>
+		</item>
+        <item>
+			<name>Reuters Sports</name>
+			<xmlUrl>http://feeds.reuters.com/reuters/sportsNews</xmlUrl>
+            <mediaUrl></mediaUrl>
+			<logo>logos/reuters.png</logo>
+		</item>
+        <item>
+            <name>Other..</name>
+            <xmlUrl></xmlUrl>
+            <mediaUrl></mediaUrl>
+            <logo></logo>
+        </item>
 	</category>
-	<category name="Local">	
-		<item>
-			<name></name>
-			<xmlUrl></xmlUrl>
-			<logo></logo>
+	<category name="News">	
+        <item>
+			<name>Yahoo World</name>
+			<xmlUrl>http://rss.news.yahoo.com/rss/world</xmlUrl>
+            <mediaUrl>http://search.yahoo.com/mrss/</mediaUrl>
+			<logo>logos/Yahoo.png</logo>
 		</item>
-	</category>
-	<category name="National">	
 		<item>
-			<name></name>
-			<xmlUrl></xmlUrl>
-			<logo></logo>
+			<name>Reuters Top News</name>
+			<xmlUrl>http://feeds.reuters.com/reuters/topNews</xmlUrl>
+            <mediaUrl></mediaUrl>
+			<logo>logos/reuters.png</logo>
 		</item>
-	</category>
-	<category name="International">	
-		<item>
-			<name></name>
-			<xmlUrl></xmlUrl>
-			<logo></logo>
-		</item>
+        <item>
+            <name>Other..</name>
+            <xmlUrl></xmlUrl>
+            <mediaUrl></mediaUrl>
+            <logo></logo>
+        </item>
 	</category>
 	<category name="Entertainment">	
 		<item>
-			<name></name>
-			<xmlUrl></xmlUrl>
-			<logo></logo>
+			<name>Yahoo Entertainment</name>
+			<xmlUrl>http://rss.news.yahoo.com/rss/entertainment</xmlUrl>
+            <mediaUrl>http://search.yahoo.com/mrss/</mediaUrl>
+			<logo>logos/Yahoo.png</logo>
 		</item>
+        <item>
+			<name>CNN Entertainment</name>
+			<xmlUrl>http://rss.cnn.com/rss/edition_entertainment.rss</xmlUrl>
+            <mediaUrl>http://search.yahoo.com/mrss/</mediaUrl>
+			<logo>logos/cnn.png</logo>
+		</item>
+        <item>
+            <name>Other..</name>
+            <xmlUrl></xmlUrl>
+            <mediaUrl></mediaUrl>
+            <logo></logo>
+        </item>
 	</category>
-	<category name="Sports">	
-		<item>
-			<name></name>
-			<xmlUrl></xmlUrl>
-			<logo></logo>
+	<category name="Tech">
+        <item>
+			<name>Gizmodo</name>
+			<xmlUrl>http://gizmodo.com/index.xml</xmlUrl>
+            <mediaUrl></mediaUrl>
+			<logo>logos/gizmodo.png</logo>
 		</item>
-	</category>
-	<category name="Tech">	
 		<item>
-			<name></name>
-			<xmlUrl></xmlUrl>
-			<logo></logo>
+			<name>Reuters Technology</name>
+			<xmlUrl>>http://feeds.reuters.com/reuters/technologyNews</xmlUrl>
+            <mediaUrl></mediaUrl>
+			<logo>logos/reuters.png</logo>
 		</item>
+        <item>
+            <name>Other..</name>
+            <xmlUrl></xmlUrl>
+            <mediaUrl></mediaUrl>
+            <logo></logo>
+        </item>
 	</category>
 </feeds>

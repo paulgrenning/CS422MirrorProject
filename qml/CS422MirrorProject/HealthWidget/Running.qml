@@ -115,7 +115,7 @@ Item {
                 runDate: run_date
                 onBarclicked: {
                     grid.currentIndex = grid.indexAt(x,y)
-                    rectangle1.visible = true
+                    barinfo.visible = true
                     if(timer1.running) timer1.restart()
                     else timer1.running=true
                 }
@@ -130,7 +130,7 @@ Item {
         running:false;
         repeat: false;
         onTriggered:{
-           rectangle1.visible = false
+           barinfo.visible = false
         }
     }
 
@@ -208,15 +208,123 @@ Item {
         verticalAlignment: Text.AlignVCenter
     }
 
-    Rectangle {
-        id: rectangle1
-        x: 25
-        y: 104
+    Item{
+        id:barinfo
+        x: 21
+        y: 107
         width: 479
         height: 56
-        color: "#555758"
-        opacity: 0.5
-        radius: 15
-        visible: false
+        visible:false
+
+        Rectangle {
+            id: rectangle1
+            x: -3
+            y: 0
+            width: 485
+            height: 56
+            anchors.fill: parent
+            color: "#555758"
+            opacity: 0.5
+            radius: 15
+            anchors.bottomMargin: 0
+            anchors.leftMargin: -3
+            anchors.topMargin: 0
+            anchors.rightMargin: -3
+            z: 1
+        }
+        StdText {
+            id: text8
+            x: 25
+            y: 77
+            text: (appVar.currentLanguage === "Español") ? "tiempo:" : "time:"
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 15
+            font.bold: true
+        }
+
+        StdText {
+            id: text9
+            x: 201
+            y: 77
+            text: (appVar.currentLanguage === "Español") ? "distancia:" : "distance:"
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 15
+            font.bold: true
+        }
+
+        StdText {
+            id: text10
+            x: 355
+            y: 77
+            text: (appVar.currentLanguage === "Español") ? "calorías:" : "calories:"
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 15
+            font.bold: true
+        }
+        StdText {
+            id: text11
+            x: 69
+            y: 18
+            width: 109
+            height: 20
+            state: "white"
+            text:{
+                var timeTotSec = parseInt(bargraphmodel.get(bargraphmodel.count-1).run_time)/1000
+                var timeHrs = parseInt(timeTotSec/3600)
+                var timeMin = ((timeTotSec%3600)/60).toFixed(0)
+                var timeSec = ((timeTotSec%3600)%60).toFixed(0)
+                var returnString = (timeHrs===0)? "":timeHrs+"hrs"
+                returnString = returnString + timeMin + "min"
+                var retunTimeSec = ((appVar.currentLanguage==="Español"))?timeSec+"seg": timeSec+"sec"
+                returnString = returnString + retunTimeSec
+                return returnString
+            }
+            z: 3
+            anchors.left: text2.right
+            anchors.leftMargin: 10
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 18
+            font.bold: true
+        }
+
+        StdText {
+            id: text12
+            x: 268
+            y: 18
+            width: 83
+            height: 20
+            state: "white"
+            text:{
+                var distanceKm = parseFloat(bargraphmodel.get(bargraphmodel.count-1).run_distance)
+
+                if(appVar.currentDistanceUnit === "Km") return distanceKm.toFixed(1) + " km"
+                else return (distanceKm*0.62).toFixed(1)+ " mi"
+            }
+            z: 1
+            anchors.left: parent.left
+            anchors.leftMargin: 268
+            font.pixelSize: 18
+            font.bold: true
+            verticalAlignment: Text.AlignVCenter
+        }
+
+        StdText {
+            id: text13
+            x: 393
+            y: 18
+            width: 80
+            height: 20
+            state: "white"
+            text: {
+                var caloriesCal = parseFloat(bargraphmodel.get(bargraphmodel.count-1).run_calories)
+                return caloriesCal.toFixed(0) + " cal"
+            }
+            z: 2
+            anchors.left: text4.right
+            anchors.leftMargin: 10
+            font.pixelSize: 18
+            font.bold: true
+            verticalAlignment: Text.AlignVCenter
+        }
     }
 }

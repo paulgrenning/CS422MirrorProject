@@ -4,8 +4,11 @@ import QtQuick 1.1
 XmlListModel {
     id: fmodel
 
-    source: "./xml/userfeeds.xml"
-    query: "/feeds/item"
+    property string modelSource:""
+    property string modelQuery: ""
+
+    source: modelSource
+    query: modelQuery
 
     XmlRole { name: "name"; query: "name/string()" }
     XmlRole { name: "url"; query: "xmlUrl/string()" }
