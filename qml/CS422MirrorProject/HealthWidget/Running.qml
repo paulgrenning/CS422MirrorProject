@@ -119,7 +119,7 @@ Item {
 
     Timer{
         id: timer1
-        interval: 2000
+        interval: 1500
         running:false;
         repeat: false;
         onTriggered:{
@@ -217,7 +217,7 @@ Item {
             height: 56
             anchors.fill: parent
             color: "#555758"
-            opacity: 0.700
+            opacity: 0.9
             radius: 15
             anchors.bottomMargin: 0
             anchors.leftMargin: -3
