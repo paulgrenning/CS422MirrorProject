@@ -74,7 +74,7 @@ Widget {
                      hideableWidgets.opacity = 0
                  }
 
-                 Text {
+                 StdText {
                      id: fromText
                      anchors {
                          left: anItem.left
@@ -82,8 +82,7 @@ Widget {
                          top: anItem.top
                          topMargin: 6
                      }
-
-                     color: "#7dd9b3"
+                     state: "orange"
                      font.pointSize: 14
                      font.family: "Futura"
                      wrapMode: Text.WordWrap
@@ -91,7 +90,7 @@ Widget {
                      text: "From: " + from
                  }
 
-                 Text {
+                 StdText {
                      id: timeText
                      anchors {
                          right: anItem.right
@@ -100,7 +99,7 @@ Widget {
                          topMargin: 6
                      }
 
-                     color: "#7dd9b3"
+                     state: "orange"
                      font.pointSize: 10
                      font.family: "Futura"
                      wrapMode: Text.WordWrap
@@ -118,8 +117,8 @@ Widget {
                      }
 
                      anchors.horizontalCenter: parent.horizontalCenter
-
-                     color: "#7dd9b3"
+                    // state: "blue"
+                     color: "#b9eef3"
                      font.pointSize: 14
                      font.family: "Futura"
                      wrapMode: Text.WordWrap

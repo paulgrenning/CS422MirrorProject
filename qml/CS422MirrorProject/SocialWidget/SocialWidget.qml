@@ -62,7 +62,7 @@ Widget {
                          topMargin: -5
                      }
 
-                     state: "white"
+                     state: "orange"
                      font.pointSize: 10
                      wrapMode: Text.WordWrap
 
