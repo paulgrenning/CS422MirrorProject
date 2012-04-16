@@ -1,26 +1,27 @@
 import QtQuick 1.1
 import "../UtilityElements"
 
-Item {
+Widget {
     id: social
     width:310
     height:496
+    isVisible: false
+    bgImgPath:"../SocialWidget/images/twitterTab.png"
 
-    MouseArea {
-         anchors.fill: parent
-         drag.target: social
-         drag.axis: Drag.XandYAxis
-         drag.minimumX: 0
-         drag.maximumX: rootElement.width - parent.width
-         drag.minimumY: 0
-         drag.maximumY: rootElement.height - parent.height
-    }
+//    MouseArea {
+//         anchors.fill: parent
+//         drag.target: social
+//         drag.axis: Drag.XandYAxis
+//         drag.minimumX: 0
+//         drag.maximumX: rootElement.width - parent.width
+//         drag.minimumY: 0
+//         drag.maximumY: rootElement.height - parent.height
+//    }
 
-    Image {
-        id: musicbackground
-        anchors.fill: parent
-        source: "images/twitterTab.png"
-    }
+//    Image {
+//        id: musicbackground
+//        anchors.fill: parent
+//    }
 
     PlusButton {
         x: 218
@@ -38,7 +39,6 @@ Item {
                 keyboardFade.start()
                 mainInputField.inputLabel = "Add Account Name: "
                 mainInputField.returnWidget = social
-                mainInputField.runAnimation = socialanimopen
                 hideableWidgets.opacity = 0
             }
         }

@@ -8,7 +8,7 @@ Item {
     state: "closed"
 
     property alias state: config.state
-        signal clicked();
+    signal clicked();
 
     Image {
         id: image1

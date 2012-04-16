@@ -6,8 +6,6 @@ Item {
     width:91
     height:300
     state: "closed"
-
-    property alias state: config.state
     property alias genOpacity: sliderOpacity.value
     signal clicked();
 
