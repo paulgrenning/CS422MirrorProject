@@ -6,7 +6,9 @@ Row {
     width: image1.width + forecastText.width + spacing
     height: image1.height + image1.anchors.topMargin
     clip: true
-    spacing: 15
+    spacing: 7
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.horizontalCenterOffset: -2
 
     Image {
         id: image1

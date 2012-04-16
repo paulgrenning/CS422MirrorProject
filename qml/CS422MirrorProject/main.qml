@@ -53,24 +53,31 @@ Rectangle {
         onIntroFlowFinished: hideableWidgets.opacity = 1
     }
 
-    DateWidget {
-        id: dateWidget
-        x: 40
-        y: 0
-    }
+    Item {
+        id: topWidgets
 
-    Clock {
-        id: clockWidget
-        x: rootElement.width / 2 - clockWidget.width / 2
-        y: 0
-    }
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
+        }
 
-    WeatherWidget {
-        id: weatherwidget
-        x: rootElement.width - weatherwidget.width - 6
-        y: 10
-        width: 324
-        height: 125
+        DateWidget {
+            id: dateWidget
+            x: 40
+            y: 2
+        }
+
+        Clock {
+            id: clockWidget
+            x: rootElement.width / 2 - clockWidget.width / 2
+            y: -7
+        }
+
+        WeatherWidget {
+            id: weatherwidget
+            x: rootElement.width - weatherwidget.width - 5
+            y: 4
+        }
+
     }
 
     Item {
@@ -82,93 +89,103 @@ Rectangle {
 
         ConfigSettings {
             id: configsettings
-            x: 0
+            x: 4
             y: rootElement.height - configsettings.height - 5
             width: 461
             height: 300
             onGeneralOpacityChanged: {
-                weatherwidget.opacity = displayOpacity
-                clockWidget.opacity = displayOpacity
-                widgetbar.opacity = displayOpacity
-                if(healthwidget.opacity == 0) healthwidget.opacity = 0;
-                else {healthwidget.opacity = displayOpacity;}
-                if(socialwidget.opacity == 0) socialwidget.opacity = 0;
-                else {socialwidget.opacity = displayOpacity;}
-                if(musicplayer.opacity == 0) musicplayer.opacity = 0;
-                else {musicplayer.opacity = displayOpacity;}
+//                weatherwidget.opacity = displayOpacity
+//                clockWidget.opacity = displayOpacity
+//                widgetbar.opacity = displayOpacity
+//                if(healthwidget.opacity == 0) healthwidget.opacity = 0;
+//                else {healthwidget.opacity = displayOpacity;}
+//                if(socialwidget.opacity == 0) socialwidget.opacity = 0;
+//                else {socialwidget.opacity = displayOpacity;}
+//                if(musicplayer.opacity == 0) musicplayer.opacity = 0;
+//                else {musicplayer.opacity = displayOpacity;}
+                topWidgets.opacity = displayOpacity
+                nonConfigWidgets.opacity = displayOpacity
             }
         }
 
-        CalendarWidget {
-             id: calendarWidget
-             x: 4
-             y: dateWidget.height + 20
-        }
+        Item {
+            id: nonConfigWidgets
 
-        MusicPlayer{
-            id: musicplayer
-            x: rootElement.width - musicplayer.width
-            y: rootElement.height - musicplayer.height - widgetbar.height
-            width: 310
-            height: 496
-            opacity: 0
-        }
-
-        HealthWidget{
-            id: healthwidget
-            x: rootElement.width - healthwidget.width
-            y: rootElement.height - healthwidget.height - widgetbar.height
-            width: 554
-            height: 375
-            opacity: 0
-        }
-
-        SocialWidget{
-            id: socialwidget
-            x: rootElement.width - socialwidget.width
-            y: rootElement.height - socialwidget.height - widgetbar.height
-            width: 310
-            height: 496
-            opacity: 0
-        }
-
-        News {
-            id: newswidget
-            x: rootElement.width - newswidget.width
-            y: rootElement.height - newswidget.height - widgetbar.height
-            opacity: 0
-        }
-
-        WidgetBar {
-            id: widgetbar
-            x: rootElement.width - widgetbar.width
-            y: rootElement.height - widgetbar.height
-            width: 615
-            height: 120
-            onMusicClicked: {
-                musicanimopen.start()
-                healthanimclose.start()
-                socialanimclose.start()
-                newsanimclose.start()
+            Behavior on opacity {
+                NumberAnimation { duration: 200 }
             }
-            onHealthClicked:{
-                musicanimclose.start()
-                healthanimopen.start()
-                socialanimclose.start()
-                healthwidget.barstate = healthwidget.laststate
-                newsanimclose.start()
+
+            CalendarWidget {
+                 id: calendarWidget
+                 x: 4
+                 y: dateWidget.height + dateWidget.y + 20
             }
-            onSocialClicked:{
-                musicanimclose.start()
-                healthanimclose.start()
-                socialanimopen.start()
-                newsanimclose.start()
+
+            MusicPlayer{
+                id: musicplayer
+                x: rootElement.width - musicplayer.width
+                y: rootElement.height - musicplayer.height - widgetbar.height
+                width: 310
+                height: 496
+                opacity: 0
             }
-            onNewsClicked: {
-                musicanimclose.start()
-                healthanimclose.start()
-                socialanimclose.start()
-                newsanimopen.start()
+
+            HealthWidget{
+                id: healthwidget
+                x: rootElement.width - healthwidget.width
+                y: rootElement.height - healthwidget.height - widgetbar.height
+                width: 554
+                height: 375
+                opacity: 0
+            }
+
+            SocialWidget{
+                id: socialwidget
+                x: rootElement.width - socialwidget.width
+                y: rootElement.height - socialwidget.height - widgetbar.height
+                width: 310
+                height: 496
+                opacity: 0
+            }
+
+            News {
+                id: newswidget
+                x: rootElement.width - newswidget.width
+                y: rootElement.height - newswidget.height - widgetbar.height
+                opacity: 0
+            }
+
+            WidgetBar {
+                id: widgetbar
+                x: rootElement.width - widgetbar.width
+                y: rootElement.height - widgetbar.height
+                width: 615
+                height: 120
+                onMusicClicked: {
+                    musicanimopen.start()
+                    healthanimclose.start()
+                    socialanimclose.start()
+                    newsanimclose.start()
+                }
+                onHealthClicked:{
+                    musicanimclose.start()
+                    healthanimopen.start()
+                    socialanimclose.start()
+                    healthwidget.barstate = healthwidget.laststate
+                    newsanimclose.start()
+                }
+                onSocialClicked:{
+                    musicanimclose.start()
+                    healthanimclose.start()
+                    socialanimopen.start()
+                    newsanimclose.start()
+                }
+                onNewsClicked: {
+                    musicanimclose.start()
+                    healthanimclose.start()
+                    socialanimclose.start()
+                    newsanimopen.start()
+                }
             }
         }
     }

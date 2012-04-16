@@ -3,7 +3,7 @@ import "../UtilityElements"
 
 Item {
     id: weather
-    width: 324
+    width: 303
     height: 260
     state: "simple"
 
@@ -18,7 +18,7 @@ Item {
 
     BorderImage {
         id: border_image1
-        width: 339
+        width: 303
         height: 158
         anchors.horizontalCenter: parent.horizontalCenter
         border { left: 25; top: 25; right: 25; bottom: 25}
@@ -65,7 +65,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         flow: GridView.TopToBottom
         interactive: false
-        cellWidth: 60
+        cellWidth: 56
         model: weathertoday
         delegate: WeatherDayForecast{}
     }
@@ -126,8 +126,8 @@ Item {
             PropertyChanges {
                 target: border_image1
                 x: 1
-                width: 339
-                height: 280
+                width: 303
+                height: 265
                 anchors.horizontalCenterOffset: 0
             }
 

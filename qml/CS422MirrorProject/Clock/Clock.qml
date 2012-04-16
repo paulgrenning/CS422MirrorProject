@@ -14,6 +14,7 @@ Column {
     property string meridiem
     property bool blinkerOn: true
     property bool blinkColon: !blinkerOn
+    property string textColor: "blue"
 
     function timeChanged() {
         var date = new Date;
@@ -47,14 +48,15 @@ Column {
 
     Item {
         id: clockText
-        width: hourText.width + colon.width + minuteText.width + meridiemText.width
+        width: hourText.width + colon.width + minuteText.width
         height: hourText.paintedHeight
-        anchors { left: parent.left; top: parent.top }
+        anchors { horizontalCenter: parent.horizontalCenter; top: parent.top }
 
         StdText {
             id: hourText
             font.pointSize: 70
             anchors { left: parent.left; top: parent.top }
+            state: textColor
             text: (clock.hours < 10) ? ("0" + clock.hours) : (clock.hours)
         }
 
@@ -62,6 +64,7 @@ Column {
             id: colon
             visible: blinkColon
             font.pointSize: 70
+            state: textColor
             anchors { top: parent.top; topMargin: -7; left: hourText.right }
             text: ":"
         }
@@ -70,6 +73,7 @@ Column {
             id: minuteText
             font.pointSize: 70
             font.family: "Futura"
+            state: textColor
             anchors { top: parent.top; left: colon.right }
             text: (clock.minutes < 10) ? ("0" + clock.minutes) : (clock.minutes)
 
@@ -78,6 +82,7 @@ Column {
         StdText {
             id: meridiemText
             font.pixelSize: 20
+            state: textColor
             anchors { top: parent.top; topMargin: 15; left: minuteText.right }
             text: clock.meridiem
         }
@@ -87,18 +92,8 @@ Column {
         id: greeting
         font.pixelSize: 24
         visible: appVar.currentUser
+        state: textColor
         anchors { horizontalCenter: parent.horizontalCenter }
     }
 
 }
-
-   /*Text {
-        id: secTxt
-        x: 199; y: 19
-        color: "#7dd9b3"
-       text: (clock.seconds<10) ? "0"+clock.seconds:clock.seconds
-       anchors.verticalCenterOffset: 20
-        anchors.verticalCenter: parent.verticalCenter
-        font.pointSize: 40
-        font.family: "Futura"
-    }*/
