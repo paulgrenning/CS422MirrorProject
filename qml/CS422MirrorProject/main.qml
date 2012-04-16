@@ -270,6 +270,11 @@ Rectangle {
 
     }
 
+    TextConfirmView {
+        id: mainTextConfirmView
+        onInputConfirmed: hideableWidgets.opacity = 1
+    }
+
     EmailViewer {
         id: emailViewer
         x: 280

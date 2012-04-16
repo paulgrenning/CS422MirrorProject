@@ -20,10 +20,26 @@ Widget {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                keyboardFade.start()
-                mainInputField.inputLabel = "Add Account Name: "
-                mainInputField.returnWidget = social
+//                keyboardFade.start()
+//                mainInputField.inputLabel = "Add Account Name: "
+//                mainInputField.returnWidget = social
+
+
+                mainTextConfirmView.inputLabel = "What's the account name? "
+                mainTextConfirmView.validator = /[\w._]+/
+                mainTextConfirmView.failMessage = "you have to enter something for your account name"
+                mainTextConfirmView.inputParser = inputParser
+
+                mainTextConfirmView.start()
                 hideableWidgets.opacity = 0
+            }
+
+            // define functions in this format to change manipulation of input that will appear as the 'service' in the ConfirmationView
+            FunctionClosure {
+                id: inputParser
+                function parse(input) {
+                    return input
+                }
             }
         }
     }
