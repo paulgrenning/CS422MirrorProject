@@ -1,7 +1,7 @@
 import QtQuick 1.0
 import Qt 4.7
 import "../UtilityElements"
-//import QtMultimediaKit 1.1
+import QtMultimediaKit 1.1
 
 //code used as reference: http://doc.qt.nokia.com/4.7-snapshot/demos-declarative-flickr-common-slider-qml.html
 //modifications made to make it a vertical slider and used our own images
@@ -84,10 +84,10 @@ Widget {
         }
     }
 
-   /*Audio {
+   Audio {
         id: playMusic
         source: "music/ABandaMaisBonitaDaCidade/11-11 Oração.mp3"
-    }*/
+    }
 
    ListView{
        id: songlist

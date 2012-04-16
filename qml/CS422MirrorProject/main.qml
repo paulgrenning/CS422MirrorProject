@@ -426,7 +426,7 @@ Rectangle {
                      y: 112
                      width: 400
                      height: 350
-                     source: "USFQROV.mp4"
+                     source: "HelpVideo.mov"
                      focus: true
                      MouseArea{
                          anchors.fill: parent
