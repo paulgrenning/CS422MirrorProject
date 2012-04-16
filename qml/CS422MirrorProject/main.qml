@@ -418,24 +418,6 @@ Rectangle {
                 id: flickable1
                 interactive: false
                 anchors.fill: parent
-
-                Video{
-                     id:videoPlayer
-                     x: 468
-                     y: 112
-                     width: 400
-                     height: 350
-                     source: "HelpVideo.mov"
-                     focus: true
-                     MouseArea{
-                         anchors.fill: parent
-                         onClicked: {
-                             if(!videoPlayer.playing)videoPlayer.play()
-                             else if(videoPlayer.paused)videoPlayer.play()
-                             else if(videoPlayer.playing) videoPlayer.pause()
-                         }
-                     }
-                 }
                 Flickable {
                     id: flickable2
                     x: 58
@@ -455,27 +437,7 @@ Rectangle {
                         y: 14
                         height:600
                         width:600
-                        StdText {
-                            id: stdtext4
-                            text:{
-                                if (appVar.currentLanguage ==="Español") {
-                                    return "<p>Diseñado e Implementado por:<ul><li> Ty Cobb</li>"
-                                            +"<li> Ronald Garay</li>"
-                                            +"<li> Paul Grenning</li>"
-                                            +"<li> Paulo Guerra</li></ul></p>"
-                                }
 
-                                else{
-                                    return "<p>Designed and Implemented by:<ul><li> Ty Cobb</li>"
-                                            +"<li> Ronald Garay</li>"
-                                            +"<li> Paul Grenning</li>"
-                                            +"<li> Paulo Guerra</li></ul></p>"
-                                }
-                            }
-                            anchors.fill: parent
-                            font.pointSize: 20
-                            font.bold: false
-                        }
 
 
                     }
@@ -590,6 +552,24 @@ Rectangle {
                             }
                             font.pointSize: 20
                             font.bold: false
+
+                            Video{
+                                id:videoPlayer
+                                x: 107
+                                y: -102
+                                width: 400
+                                height: 350
+                                source: "HelpVideo.mov"
+                                focus: true
+                                MouseArea{
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        if(!videoPlayer.playing)videoPlayer.play()
+                                        else if(videoPlayer.paused)videoPlayer.play()
+                                        else if(videoPlayer.playing) videoPlayer.pause()
+                                    }
+                                }
+                            }
                         }
 
                         StdText {
