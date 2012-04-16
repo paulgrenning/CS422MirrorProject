@@ -49,8 +49,6 @@ Rectangle {
             }
         }
 
-
-
 //    CameraOpenCv{
 //        id:cambackground
 //        x:0
@@ -131,6 +129,7 @@ Rectangle {
             }
             onHelpclicked: {
                 helpscreen.visible = !helpscreen.visible
+                if(videoPlayer.playing)videoplayer.stop()
             }
             onAboutclicked: {
                aboutscreen.visible = !aboutscreen.visible
@@ -505,7 +504,6 @@ Rectangle {
                 onClicked: aboutscreen.visible=!aboutscreen.visible
             }
         }
-
         Rectangle {
             id: rectabout
             x: 232
@@ -619,7 +617,6 @@ Rectangle {
                 }
             }
         }
-
 
     }
 
