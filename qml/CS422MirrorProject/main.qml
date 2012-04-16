@@ -16,8 +16,8 @@ import "./Keyboard"
 import "./News"
 import "./Keyboard"
 import "./EmailWidget"
+import opencvqml 1.0
 import QtMultimediaKit 1.1
-//import opencvqml 1.0
 
 Rectangle {
     width: 1280
@@ -51,12 +51,12 @@ Rectangle {
 
 
 
-//    CameraOpenCv{
-//        id:cambackground
-//        x:0
-//        y:0
-//        z:-2
-//    }
+    CameraOpenCv{
+        id:cambackground
+        x:0
+        y:0
+        z:-2
+    }
 
     // create object to hold all important variables for the application
     AppVariables {
@@ -426,7 +426,7 @@ Rectangle {
                      y: 112
                      width: 400
                      height: 350
-                     source: "USFQROV.mp4"
+                     source: "HelpVideo.mov"
                      focus: true
                      MouseArea{
                          anchors.fill: parent
