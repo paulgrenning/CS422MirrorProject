@@ -282,6 +282,25 @@ Rectangle {
 
     }
 
+    TextConfirmView {
+        id: mainTextConfirmView
+        property real returnWidget;
+        onInputConfirmed: {
+
+            hideableWidgets.opacity = 1
+            if(returnWidget == 0){
+                if(mainTextConfirmView.finalInput != ""){
+                    socialwidget.newName = mainTextConfirmView.finalInput
+                }
+            } else if(returnWidget == 1){
+                if(mainTextConfirmView.finalInput != "") {
+                    emailWidget.newName = mainTextConfirmView.finalInput
+                }
+            }
+        }
+
+    }
+
     EmailViewer {
         id: emailViewer
         x: 280

@@ -10,10 +10,21 @@ Item {
 
     Component.onCompleted: bargraphmodel.reload()
 
-    function getMonth(){
-        var date = new Date();
-        var months = ['January','February','March','April','May','June','July','August','September','October','November','December']
-        return months[date.getMonth()]
+    function getTodaysText(){
+        var today = bargraphmodel.get(grid.currentIndex).run_date
+        var year = today.slice(0,4);
+        var month = today.slice(5,7);
+        var day = today.slice(8,10);
+        var date = new Date(parseInt(year),parseInt(month),parseInt(day)-1)
+        var days = ['S','S','M','T','W','T','F']
+        var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+
+        //console.log(year)
+        console.log(today)
+        textDateDay.text = days[date.getDay()]
+        //textDateDayNumber.text = day
+        //textDateMonth.text = months[parseInt(month-1)]
+        //console.log(date.getDay())
     }
 
 
@@ -213,7 +224,7 @@ Item {
         x: 21
         y: 107
         width: 479
-        height: 56
+        height: 82
         visible:false
 
         Rectangle {
@@ -224,7 +235,7 @@ Item {
             height: 56
             anchors.fill: parent
             color: "#555758"
-            opacity: 0.5
+            opacity: 0.700
             radius: 15
             anchors.bottomMargin: 0
             anchors.leftMargin: -3
@@ -232,11 +243,41 @@ Item {
             anchors.rightMargin: -3
             z: 1
         }
+
+        StdText {
+            id: textDateDay
+            x: 6
+            y: 14
+            z: 6
+            text:{
+                var today = bargraphmodel.get(grid.currentIndex).run_date
+                var year = today.slice(0,4);
+                var month = today.slice(5,7);
+                var day = today.slice(8,10);
+                var date = new Date(parseInt(year),parseInt(month),parseInt(day)-1)
+                var days = ['S','S','M','T','W','T','F']
+                var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+
+                //console.log(year)
+                //console.log(today)
+                return days[date.getDay()]
+                //textDateDayNumber.text = day
+                //textDateMonth.text = months[parseInt(month-1)]
+                //console.log(date.getDay())
+
+            }
+
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: 15
+            font.bold: true
+        }
+
         StdText {
             id: text8
-            x: 25
-            y: 77
+            x: 6
+            y: 43
             text: (appVar.currentLanguage === "Español") ? "tiempo:" : "time:"
+            z: 4
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 15
             font.bold: true
@@ -244,9 +285,10 @@ Item {
 
         StdText {
             id: text9
-            x: 201
-            y: 77
+            x: 180
+            y: 43
             text: (appVar.currentLanguage === "Español") ? "distancia:" : "distance:"
+            z: 5
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 15
             font.bold: true
@@ -254,22 +296,23 @@ Item {
 
         StdText {
             id: text10
-            x: 355
-            y: 77
+            x: 335
+            y: 43
             text: (appVar.currentLanguage === "Español") ? "calorías:" : "calories:"
+            z: 6
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 15
             font.bold: true
         }
         StdText {
             id: text11
-            x: 69
-            y: 18
+            x: 457
+            y: 41
             width: 109
             height: 20
             state: "white"
             text:{
-                var timeTotSec = parseInt(bargraphmodel.get(bargraphmodel.count-1).run_time)/1000
+                var timeTotSec = parseInt(bargraphmodel.get(grid.currentIndex).run_time)/1000
                 var timeHrs = parseInt(timeTotSec/3600)
                 var timeMin = ((timeTotSec%3600)/60).toFixed(0)
                 var timeSec = ((timeTotSec%3600)%60).toFixed(0)
@@ -279,9 +322,11 @@ Item {
                 returnString = returnString + retunTimeSec
                 return returnString
             }
+            anchors.verticalCenterOffset: 0
+            anchors.left: text8.right
+            anchors.leftMargin: 6
+            anchors.verticalCenter: text8.verticalCenter
             z: 3
-            anchors.left: text2.right
-            anchors.leftMargin: 10
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 18
             font.bold: true
@@ -289,20 +334,21 @@ Item {
 
         StdText {
             id: text12
-            x: 268
-            y: 18
+            x: 667
+            y: 41
             width: 83
             height: 20
             state: "white"
             text:{
-                var distanceKm = parseFloat(bargraphmodel.get(bargraphmodel.count-1).run_distance)
-
+                var distanceKm = parseFloat(bargraphmodel.get(grid.currentIndex).run_distance)
                 if(appVar.currentDistanceUnit === "Km") return distanceKm.toFixed(1) + " km"
                 else return (distanceKm*0.62).toFixed(1)+ " mi"
             }
+            anchors.verticalCenterOffset: 0
+            anchors.left: text9.right
+            anchors.leftMargin: 6
+            anchors.verticalCenter: text9.verticalCenter
             z: 1
-            anchors.left: parent.left
-            anchors.leftMargin: 268
             font.pixelSize: 18
             font.bold: true
             verticalAlignment: Text.AlignVCenter
@@ -310,18 +356,20 @@ Item {
 
         StdText {
             id: text13
-            x: 393
-            y: 18
+            x: 830
+            y: 39
             width: 80
             height: 20
             state: "white"
             text: {
-                var caloriesCal = parseFloat(bargraphmodel.get(bargraphmodel.count-1).run_calories)
+                var caloriesCal = parseFloat(bargraphmodel.get(grid.currentIndex).run_calories)
                 return caloriesCal.toFixed(0) + " cal"
             }
+            anchors.verticalCenterOffset: 0
+            anchors.left: text10.right
+            anchors.leftMargin: 6
+            anchors.verticalCenter: text10.verticalCenter
             z: 2
-            anchors.left: text4.right
-            anchors.leftMargin: 10
             font.pixelSize: 18
             font.bold: true
             verticalAlignment: Text.AlignVCenter

@@ -25,10 +25,27 @@ Widget {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                keyboardFade.start()
-                mainInputField.inputLabel = "Add Email Account: "
-                mainInputField.returnWidget = 1
+//                keyboardFade.start()
+//                mainInputField.inputLabel = "Add Email Account: "
+//                mainInputField.returnWidget = 1
+//                hideableWidgets.opacity = 0
+
+                mainTextConfirmView.returnWidget = 1
+
+
+                mainTextConfirmView.inputLabel = "What's the email account name? "
+                mainTextConfirmView.validator = /[\w._]+/
+                mainTextConfirmView.failMessage = "you have to enter something for your account name"
+                mainTextConfirmView.inputParser = inputParser
+
+                mainTextConfirmView.start()
                 hideableWidgets.opacity = 0
+            }
+            FunctionClosure {
+                id: inputParser
+                function parse(input) {
+                    return input
+                }
             }
         }
     }
