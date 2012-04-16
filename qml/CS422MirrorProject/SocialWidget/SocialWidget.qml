@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "../UtilityElements"
+import "../AppVariables"
 
 Widget {
     id: social
