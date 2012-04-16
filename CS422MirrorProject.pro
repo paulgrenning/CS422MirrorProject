@@ -38,7 +38,7 @@ MOBILITY += multimedia
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
  ##UNCOMMENT TO USE OPENCV
- cameraobject.cpp
+ #cameraobject.cpp
  ##UNCOMMENT TO USE OPENCV
 
 # Please do not modify the following two lines. Required for deployment.
@@ -51,6 +51,6 @@ OTHER_FILES += \
 
 HEADERS += \
     ##UNCOMMENT TO USE OPENCV
-    cameraopencv.h \
-    cameraobject.h
+    #cameraopencv.h \
+    #   cameraobject.h
     ##UNCOMMENT TO USE OPENCV

@@ -244,7 +244,6 @@ Rectangle {
 
     }
 
-
     BorderImage {
         id: lightSourceBorder
         source: "ConfigSettings/images/lightSourceBorderImage.png"
