@@ -49,6 +49,11 @@ Item {
         if(value !== "done") receivedTouch()
     }
 
+    function clearInput() {
+        input = ""
+        maskedInput = ""
+    }
+
     Row {
         id: inputField
         y: 25
