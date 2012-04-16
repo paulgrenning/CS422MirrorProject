@@ -62,6 +62,7 @@ Item {
             anchors.fill: parent
             onClicked: helpclicked()
         }
+        opacity:1.0-opacitybutton.genOpacity
     }
 
     Image {
@@ -75,6 +76,7 @@ Item {
             anchors.fill: parent
             onClicked: aboutclicked()
         }
+        opacity:1.0-opacitybutton.genOpacity
     }
 
 

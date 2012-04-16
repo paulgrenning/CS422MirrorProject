@@ -362,6 +362,26 @@ Rectangle {
 
         visible:false
 
+        StdText {
+            id: stdtext5
+            x: 310
+            y: 211
+            width: 496
+            height: 45
+            text: {
+                if (appVar.currentLanguage ==="Español") {
+                    return "<p>El siguiente video le ayudará a familiarizarse con la interfase de 'THE LOOKING GLASS'</p>"
+                }
+
+                else{
+                    return "<p>The following video will help you familiarize with 'THE LOOKING GLASS' interface</p>"
+                }
+            }
+            z: 2
+            font.bold: false
+            font.pointSize: 20
+        }
+
         Rectangle{
             anchors.fill: parent
             color:"#000"
@@ -400,21 +420,70 @@ Rectangle {
                 interactive: false
                 anchors.fill: parent
 
+                Video{
+                     id:videoPlayer
+                     x: 468
+                     y: 112
+                     width: 400
+                     height: 350
+                     source: "USFQROV.mp4"
+                     focus: true
+                     MouseArea{
+                         anchors.fill: parent
+                         onClicked: {
+                             if(!videoPlayer.playing)videoPlayer.play()
+                             else if(videoPlayer.paused)videoPlayer.play()
+                             else if(videoPlayer.playing) videoPlayer.pause()
+                         }
+                     }
+                 }
                 Flickable {
                     id: flickable2
                     x: 58
-                    y: 100
+                    y: 112
                     width: 400
                     height: 350
+                    boundsBehavior: Flickable.DragOverBounds
+                    flickableDirection: Flickable.AutoFlickDirection
+                    clip: true
 
-                    StdText {
-                        id: stdtext1
-                        anchors.fill: parent
-                        text: ""
+                    contentHeight: helpcontent.height
+                    contentWidth: helpcontent.width
+
+                    Item{
+                        id:helpcontent
+                        x: 0
+                        y: 14
+                        height:600
+                        width:600
+                        StdText {
+                            id: stdtext4
+                            text:{
+                                if (appVar.currentLanguage ==="Español") {
+                                    return "<p>Diseñado e Implementado por:<ul><li> Ty Cobb</li>"
+                                            +"<li> Ronald Garay</li>"
+                                            +"<li> Paul Grenning</li>"
+                                            +"<li> Paulo Guerra</li></ul></p>"
+                                }
+
+                                else{
+                                    return "<p>Designed and Implemented by:<ul><li> Ty Cobb</li>"
+                                            +"<li> Ronald Garay</li>"
+                                            +"<li> Paul Grenning</li>"
+                                            +"<li> Paulo Guerra</li></ul></p>"
+                                }
+                            }
+                            anchors.fill: parent
+                            font.pointSize: 20
+                            font.bold: false
+                        }
+
+
                     }
                 }
             }
         }
+
 
 
     }
