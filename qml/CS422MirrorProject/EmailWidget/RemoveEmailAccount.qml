@@ -18,6 +18,7 @@ Item {
         source: "../IntroFlow/images/confirmBackground.png"
     }
 
+
     StdText {
         id: notice
         width: parent.width - 80
@@ -74,7 +75,7 @@ Item {
             removeNotice.removeAccount = -1
             removeNotice.closing()
             hideableWidgets.opacity = 1
-            removeSocialAccount.opacity = 0
+            removeEmailAccount.opacity = 0
         }
     }
 
@@ -97,7 +98,7 @@ Item {
             removeNotice.removeAccount = 1
             removeNotice.closing()
             hideableWidgets.opacity = 1
-            removeSocialAccount.opacity = 0
+            removeEmailAccount.opacity = 0
         }
     }
 }

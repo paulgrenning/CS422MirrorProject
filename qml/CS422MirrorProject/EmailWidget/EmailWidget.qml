@@ -8,6 +8,10 @@ Widget {
     height:496
     isVisible: false
     bgImgPath:"../EmailWidget/images/emailTab.png"
+    property real removeAccount: 1
+    property string newName: emailAccountList.newName
+
+    state: "viewFeed"
 
     PlusButton {
         x: 218
@@ -23,14 +27,105 @@ Widget {
             onClicked: {
                 keyboardFade.start()
                 mainInputField.inputLabel = "Add Email Account: "
+                mainInputField.returnWidget = 1
                 hideableWidgets.opacity = 0
             }
         }
     }
 
+    onRemoveAccountChanged: {
+        emailAccountList.removeAccount = email.removeAccount
+    }
+
+    onNewNameChanged: {
+        emailAccountList.newName = email.newName
+    }
+
+    Image {
+        anchors {
+            top: parent.top
+            left: parent.left
+            leftMargin: -40
+            topMargin: 416
+        }
+        opacity: 1
+        id: viewFeedSelected
+        source: (appVar.currentLanguage == "Español") ? "images/emailFeedSP.png" : "images/emailFeed.png"
+    }
+
+    Image {
+        anchors {
+            top: parent.top
+            left: parent.left
+            leftMargin: -40
+            topMargin: 416
+        }
+        opacity: 0
+        id: viewAccountsSelected
+        source: (appVar.currentLanguage == "Español") ? "images/accountsSP.png" : "images/accounts.png"
+    }
+
+    MouseArea {
+        anchors{
+            top: parent.top
+            left: parent.left
+            topMargin: 416
+        }
+        width: 200
+        height: 60
+        onClicked: email.state = "viewFeed"
+    }
+
+    MouseArea {
+        anchors{
+            top: parent.top
+            left: parent.left
+            topMargin: 416
+            leftMargin: 160
+        }
+        width: 200
+        height: 60
+        onClicked: email.state = "accounts"
+    }
+
+    states: [
+        State {
+            name: "viewFeed"
+            PropertyChanges { target: viewAccountsSelected; opacity: 0.0 }
+            PropertyChanges { target: viewFeedSelected; opacity: 1.0 }
+            PropertyChanges { target: emailAccountList; opacity: 0.0 }
+            PropertyChanges { target: allEmailFeed; opacity: 1.0 }
+        },
+        State {
+            name: "accounts"
+            PropertyChanges { target: viewAccountsSelected; opacity: 1.0 }
+            PropertyChanges { target: viewFeedSelected; opacity: 0.0 }
+            PropertyChanges { target: emailAccountList; opacity: 1.0 }
+            PropertyChanges { target: allEmailFeed; opacity: 0.0 }
+        }
+    ]
+
+    EmailAccountList {
+        id: emailAccountList
+        opacity: 0
+        width: 300
+        height: 350
+        clip: true
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
+        }
+        anchors {
+            top: parent.top
+            topMargin: 60
+            left: parent.left
+            leftMargin: 10
+        }
+    }
+
     Item {
+        id: allEmailFeed
         width: 290
-        height: 410
+        height: 350
         clip: true
         anchors {
             top: parent.top

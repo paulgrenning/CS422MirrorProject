@@ -24,6 +24,7 @@ Widget {
             onClicked: {
                 keyboardFade.start()
                 mainInputField.inputLabel = "Add Account Name: "
+                mainInputField.returnWidget = 0
                 hideableWidgets.opacity = 0
             }
         }
@@ -34,7 +35,7 @@ Widget {
             top: parent.top
             left: parent.left
             leftMargin: -40
-            topMargin: 50
+            topMargin: 416
         }
         opacity: 1
         id: viewFeedSelected
@@ -46,7 +47,7 @@ Widget {
             top: parent.top
             left: parent.left
             leftMargin: -40
-            topMargin: 50
+            topMargin: 416
         }
         opacity: 0
         id: viewAccountsSelected
@@ -57,7 +58,7 @@ Widget {
         anchors{
             top: parent.top
             left: parent.left
-            topMargin: 50
+            topMargin: 416
         }
         width: 200
         height: 60
@@ -68,7 +69,7 @@ Widget {
         anchors{
             top: parent.top
             left: parent.left
-            topMargin: 50
+            topMargin: 416
             leftMargin: 160
         }
         width: 200
@@ -112,7 +113,7 @@ Widget {
         }
         anchors {
             top: parent.top
-            topMargin: 110
+            topMargin: 60
             left: parent.left
             leftMargin: 10
         }
@@ -125,7 +126,7 @@ Widget {
         clip: true
         anchors {
             top: parent.top
-            topMargin: 110
+            topMargin: 60
             left: parent.left
             leftMargin: 10
         }

@@ -268,11 +268,14 @@ Rectangle {
         y: 200
         opacity: 0
 
-        property QtObject returnWidget;
-        property QtObject runAnimation;
+        property real returnWidget;
 
         onInputReady: {
-            socialwidget.newName = input
+            if(returnWidget == 0){
+                socialwidget.newName = input
+            } else if(returnWidget == 1){
+                emailWidget.newName = input
+            }
             hideableWidgets.opacity = 1
             keyboardFade.start()
         }
@@ -284,6 +287,16 @@ Rectangle {
         x: 280
         y: 250
         opacity: 0
+    }
+
+    RemoveEmailAccount {
+        id: removeEmailAccount
+        x: 280
+        y: 250
+        opacity: 0
+        onClosing: {
+            emailWidget.removeAccount *= removeEmailAccount.removeAccount
+        }
     }
 
     RemoveAccountNotice {
