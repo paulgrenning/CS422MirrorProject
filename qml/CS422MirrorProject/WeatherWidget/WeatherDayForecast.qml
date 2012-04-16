@@ -65,6 +65,7 @@ Item {
                width: 40
                height: 40
                anchors.horizontalCenter: parent.horizontalCenter
+               smooth: true
                source:  {
                    switch(condition){
                    case "Cloudy":

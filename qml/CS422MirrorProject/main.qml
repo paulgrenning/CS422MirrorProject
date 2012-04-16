@@ -64,95 +64,106 @@ Rectangle {
         id: appVar
     }
 
+    // set the appVar to false if you don't want to see the intro flow
     IntroFlow {
         id: introFlow
         onIntroFlowFinished: hideableWidgets.opacity = 1
     }
+    Item {
+        id: topWidgets
 
-    DateWidget {
-        id: dateWidget
-        x: 40
-        y: 0
-        isVisible: true
-    }
+//        Behavior on opacity {
+//            NumberAnimation { duration: 200 }
+//        }
 
-    Clock {
-        id: clockWidget
-        x: rootElement.width / 2 - clockWidget.width / 2
-        y: 0
-    }
+        DateWidget {
+            id: dateWidget
+            x: 40
+            y: 2
+            isVisible: true
+        }
 
-    WeatherWidget {
-        id: weatherwidget
-        x: rootElement.width - weatherwidget.width - 6
-        y: 10
-        width: 324
-        height: 125
+        Clock {
+            id: clockWidget
+            x: rootElement.width / 2 - clockWidget.width / 2
+            y: -7
+        }
+
+        WeatherWidget {
+            id: weatherwidget
+            x: rootElement.width - weatherwidget.width - 5
+            y: 4
+        }
+
     }
 
     Item {
         id: hideableWidgets
 
-        Behavior on opacity {
-            NumberAnimation { duration: 100 }
-        }
+//        Behavior on opacity {
+//            NumberAnimation { duration: 100 }
+//        }
 
         ConfigSettings {
             id: configsettings
-            x: 0
+            x: 4
             y: rootElement.height - configsettings.height - 5
             width: 461
             height: 300
             onGeneralOpacityChanged: {
-                weatherwidget.opacity = displayOpacity
-                clockWidget.opacity = displayOpacity
-                widgetbar.opacity = displayOpacity
-                calendarWidget.opacity = displayOpacity
-                dateWidget.opacity = displayOpacity
-                if(healthwidget.opacity == 0) healthwidget.opacity = 0;
-                else {healthwidget.opacity = displayOpacity;}
-                if(newswidget.opacity == 0) socialwidget.opacity = 0;
-                else {newswidget.opacity = displayOpacity;}
-                if(socialwidget.opacity == 0) socialwidget.opacity = 0;
-                else {socialwidget.opacity = displayOpacity;}
-                if(musicwidget.opacity == 0) musicwidget.opacity = 0;
-                else {musicwidget.opacity = displayOpacity;}
+//                weatherwidget.opacity = displayOpacity
+//                clockWidget.opacity = displayOpacity
+//                widgetbar.opacity = displayOpacity
+//                if(healthwidget.opacity == 0) healthwidget.opacity = 0;
+//                else {healthwidget.opacity = displayOpacity;}
+//                if(socialwidget.opacity == 0) socialwidget.opacity = 0;
+//                else {socialwidget.opacity = displayOpacity;}
+//                if(musicplayer.opacity == 0) musicplayer.opacity = 0;
+//                else {musicplayer.opacity = displayOpacity;}
+                topWidgets.opacity = displayOpacity
+                nonConfigWidgets.opacity = displayOpacity
             }
         }
 
-        CalendarWidget {
-             id: calendarWidget
-             x: 4
-             y: dateWidget.height + 20
-             isVisible: true
-        }
+        Item {
+            id: nonConfigWidgets
+           // Behavior on opacity {
+           //     NumberAnimation { duration: 200 }
+           // }
 
-        MusicPlayer{
-            id: musicwidget
-            x: rootElement.width - musicwidget.width
-            y: rootElement.height - musicwidget.height - widgetbar.height
-            width: 310
-            height: 496
-            opacity: 0
-        }
+            CalendarWidget {
+                 id: calendarWidget
+                 x: 4
+                 y: dateWidget.height + dateWidget.y + 20
+                 isVisible: true
+            }
 
-        HealthWidget{
-            id: healthwidget
-            x: rootElement.width - healthwidget.width
-            y: rootElement.height - healthwidget.height - widgetbar.height
-            width: 554
-            height: 375
-            opacity: 0
-        }
+            MusicPlayer{
+                id: musicwidget
+                x: rootElement.width - musicwidget.width
+                y: rootElement.height - musicwidget.height - widgetbar.height
+                width: 310
+                height: 496
+                opacity: 0
+            }
 
-        SocialWidget{
-            id: socialwidget
-            x: rootElement.width - socialwidget.width
-            y: rootElement.height - socialwidget.height - widgetbar.height
-            width: 310
-            height: 496
-            opacity:0
-        }
+            HealthWidget{
+                id: healthwidget
+                x: rootElement.width - healthwidget.width
+                y: rootElement.height - healthwidget.height - widgetbar.height
+                width: 554
+                height: 375
+                opacity: 0
+            }
+
+            SocialWidget{
+                id: socialwidget
+                x: rootElement.width - socialwidget.width
+                y: rootElement.height - socialwidget.height - widgetbar.height
+                width: 310
+                height: 496
+                opacity: 0
+            }
 
         News {
             id: newswidget
@@ -212,7 +223,8 @@ Rectangle {
                 socialwidget.isVisible = false
                 healthwidget.isVisible = false
             }
-        }
+          }
+       }
     }
 
     TextView {

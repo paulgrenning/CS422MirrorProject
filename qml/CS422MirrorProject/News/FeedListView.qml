@@ -5,7 +5,7 @@ Item {
     id: container
 
     width: 270
-    height: 420
+    height: 388
 
     FeedListModel {
         id: listModel

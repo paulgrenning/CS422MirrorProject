@@ -3,7 +3,7 @@ import "../UtilityElements"
 
 Item {
     id: weather
-    width: 324
+    width: 303
     height: 260
     state: "simple"
 
@@ -18,11 +18,8 @@ Item {
 
     BorderImage {
         id: border_image1
-        x: -8
-        y: -7
-        width: 339
+        width: 303
         height: 158
-        anchors.horizontalCenterOffset: 0
         anchors.horizontalCenter: parent.horizontalCenter
         border { left: 25; top: 25; right: 25; bottom: 25}
         Behavior on height {
@@ -39,7 +36,7 @@ Item {
         }
         horizontalTileMode: BorderImage.Stretch
         verticalTileMode: BorderImage.Stretch
-        source: "images/borderImage2.png"
+        source: "images/borderImage3.png"
     }
 
     ListView {
@@ -68,7 +65,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         flow: GridView.TopToBottom
         interactive: false
-        cellWidth: 60
+        cellWidth: 56
         model: weathertoday
         delegate: WeatherDayForecast{}
     }
@@ -129,8 +126,8 @@ Item {
             PropertyChanges {
                 target: border_image1
                 x: 1
-                width: 339
-                height: 280
+                width: 303
+                height: 265
                 anchors.horizontalCenterOffset: 0
             }
 
@@ -144,11 +141,11 @@ Item {
     transitions: [
         Transition{
             from: "simple"; to: "expanded"
-            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 800}
+            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 800 }
         },
         Transition{
             from: "expanded"; to: "simple"
-            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 150}
+            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 100 }
         }
     ]
 
