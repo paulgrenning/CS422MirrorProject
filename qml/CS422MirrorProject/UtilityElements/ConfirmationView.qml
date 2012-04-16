@@ -17,8 +17,8 @@ InputView {
             English: {
                 appName: "The Looking Glass",
                 question1: "do you want to authorize",
-                question2: "to access the email and calendar asscosciated with your \'",
-                question3: "\' account?",
+                question2: "to access the email and calendar asscosciated with your '",
+                question3: "' account?",
                 yes: "yes",
                 no: "no"
             },
