@@ -16,6 +16,7 @@ import "./Keyboard"
 import "./News"
 import "./Keyboard"
 import "./EmailWidget"
+import "./helptxt.js" as HelpTxt
 //import opencvqml 1.0
 
 Rectangle {
@@ -34,19 +35,19 @@ Rectangle {
          }
      }
 
-//        MouseArea{
-//            z:-5
-//            anchors.fill: parent
-//            onClicked: {
-//                if(musicwidget.isVisible) musicwidget.isVisible = false
-//                if(healthwidget.isVisible) healthwidget.isVisible = false
-//                if(socialwidget.isVisible) socialwidget.isVisible = false
-//                if(newswidget.isVisible) newswidget.isVisible = false
-//                configsettings.configButtonState = "closed"
-//                configsettings.lightButtonState = "closed"
-//                configsettings.opacityButtonState = "closed"
-//            }
-//        }
+        MouseArea{
+            z:-5
+            anchors.fill: parent
+            onClicked: {
+                if(musicwidget.isVisible) musicwidget.isVisible = false
+                if(healthwidget.isVisible) healthwidget.isVisible = false
+                if(socialwidget.isVisible) socialwidget.isVisible = false
+                if(newswidget.isVisible) newswidget.isVisible = false
+                configsettings.configButtonState = "closed"
+                configsettings.lightButtonState = "closed"
+                configsettings.opacityButtonState = "closed"
+            }
+        }
 
 
 
@@ -59,7 +60,7 @@ Rectangle {
 
     // create object to hold all important variables for the application
     AppVariables {
-        id: appVar
+        id: appVar 
     }
 
 
@@ -126,6 +127,12 @@ Rectangle {
                 topWidgets.opacity = displayOpacity
                 nonConfigWidgets.opacity = displayOpacity
                 //console.log(displayOpacity)
+            }
+            onHelpclicked: {
+                helpscreen.visible = !helpscreen.visible
+            }
+            onAboutclicked: {
+               aboutscreen.visible = !aboutscreen.visible
             }
         }
 
@@ -335,6 +342,205 @@ Rectangle {
         border.left: 50; border.top: 40
         border.right: 50; border.bottom: 40
         opacity: 1.0 - configsettings.lightOpacity
+
+    }
+
+    Item{
+        id:helpscreen
+        anchors.fill: parent
+
+        visible:false
+
+        Rectangle{
+            anchors.fill: parent
+            color:"#000"
+            z: -1
+            opacity: 0.5
+
+            MouseArea{
+                anchors.fill:parent
+                onClicked: helpscreen.visible=!helpscreen.visible
+            }
+        }
+
+        Rectangle {
+            id: recthelp
+            x: 232
+            y: 140
+            width: 900
+            height: 500
+            color: "#525454"
+            radius: 20
+            z: 1
+            opacity: 0.750
+
+            StdText {
+                id: helptext
+                x: 53
+                y: 29
+                text: (appVar.currentLanguage ==="Español") ? "Ayuda" : "Help"
+                verticalAlignment: Text.AlignVCenter
+                font.pixelSize: 30
+                font.bold: true
+            }
+
+            Flickable {
+                id: flickable1
+                interactive: false
+                anchors.fill: parent
+
+                Flickable {
+                    id: flickable2
+                    x: 58
+                    y: 100
+                    width: 400
+                    height: 350
+
+                    StdText {
+                        Component.onCompleted: console.log(HelpTxt.getHelpTxt())
+                        id: stdtext1
+                        anchors.fill: parent
+                        text: ""
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    Item{
+        id:aboutscreen
+        anchors.fill: parent
+
+        visible:false
+
+        Rectangle{
+            anchors.fill: parent
+            color:"#000"
+            z: -1
+            opacity: 0.5
+
+            MouseArea{
+                anchors.fill:parent
+                onClicked: aboutscreen.visible=!aboutscreen.visible
+            }
+        }
+
+        Rectangle {
+            id: rectabout
+            x: 232
+            y: 140
+            width: 900
+            height: 500
+            color: "#525454"
+            radius: 20
+            z: 1
+            opacity: 0.750
+
+            StdText {
+                id: abouttext
+                x: 53
+                y: 29
+                text: (appVar.currentLanguage ==="Español") ? "Acerca De" : "About"
+                verticalAlignment: Text.AlignVCenter
+                font.pixelSize: 30
+                font.bold: true
+            }
+
+            Flickable {
+                id: flickable3
+                x: 0
+                y: 0
+                anchors.rightMargin: 0
+                anchors.bottomMargin: 0
+                anchors.leftMargin: 0
+                anchors.topMargin: 0
+                interactive: false
+                anchors.fill: parent
+
+                Flickable {
+                    id: flickable4
+                    x: 150
+                    y: 94
+                    width: 600
+                    height: 350
+                    boundsBehavior: Flickable.DragOverBounds
+                    flickableDirection: Flickable.AutoFlickDirection
+                    clip: true
+
+                    contentHeight: aboutcontent.height
+                    contentWidth: aboutcontent.width
+
+                    Item{
+                        id:aboutcontent
+                        height:600
+                        width:600
+
+
+                        StdText {
+                            id: stdtext
+                            x: 0
+                            y: 0
+                            width: 293
+                            height: 89
+                            text:{
+                                return "<p>THE LOOKING GLASS</p>"
+                                +"<p>Version 1.0</p>"
+                                        }
+                            font.pointSize: 28
+                        }
+                        StdText {
+                            id: stdtext2
+                            x: 0
+                            y: 112
+                            width: 283
+                            height: 146
+                            text:{
+                                if (appVar.currentLanguage ==="Español") {
+                                    return "<p>Diseñado e Implementado por:<ul><li> Ty Cobb</li>"
+                                    +"<li> Ronald Garay</li>"
+                                    +"<li> Paul Grenning</li>"
+                                    +"<li> Paulo Guerra</li></ul></p>"
+                                }
+
+                                else{
+                                    return "<p>Designed and Implemented by:<ul><li> Ty Cobb</li>"
+                                    +"<li> Ronald Garay</li>"
+                                    +"<li> Paul Grenning</li>"
+                                    +"<li> Paulo Guerra</li></ul></p>"
+                                }
+                            }
+                            font.pointSize: 20
+                            font.bold: false
+                        }
+
+                        StdText {
+                            id: stdtext3
+                            x: 0
+                            y: 272
+                            width: 600
+                            height: 138
+                            text: {
+                                    if (appVar.currentLanguage ==="Español") {
+                                        return "<p>Referencia<ul><li> Ejemplo Qt+OpenCv <br> http://gitorious.org/qtopencv</li>"
+                                        +"<li>Archivo de iconos de Clima para Android<br> http://fc01.deviantart.net/fs70/f/2010/270/9/1/android__weather_icons_by_bharathp666-d2zlfrd.zip</li>"
+                                        +"</ul></p>"
+                                    }
+                                    else{
+                                        return "<p>Reference<ul><li> Qt+OpenCv example<br> http://gitorious.org/qtopencv</li>"
+                                        +"<li> Android Weather Icons PSD File <br> http://fc01.deviantart.net/fs70/f/2010/270/9/1/android__weather_icons_by_bharathp666-d2zlfrd.zip</li>"
+                                        +"</ul></p>"
+                                    }
+                                }
+                                wrapMode: Text.WrapAnywhere
+                            font.pointSize: 20
+                        }
+                    }
+                }
+            }
+        }
+
 
     }
 

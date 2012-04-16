@@ -14,7 +14,7 @@ Item {
         id: text1
         x: 23
         y: 25
-        text: (appVar.currentLanguage == "Español") ? "carrera de hoy" : "today's run"
+        text: (appVar.currentLanguage === "Español") ? "carrera de hoy" : "today's run"
         font.bold: true
         font.pixelSize: 25
     }
@@ -25,7 +25,7 @@ Item {
         id: text2
         x: 25
         y: 77
-        text: (appVar.currentLanguage == "Español") ? "tiempo:" : "time:"
+        text: (appVar.currentLanguage ==="Español") ? "tiempo:" : "time:"
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 15
         font.bold: true

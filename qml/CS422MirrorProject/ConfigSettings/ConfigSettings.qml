@@ -5,15 +5,17 @@ import Qt 4.7
 
 Item {
     id:config
-    width:461
+    width:510
     height:300
 
     property alias configButtonState: configbutton1.state
     property alias lightButtonState: lightbutton.state
     property alias opacityButtonState: opacitybutton.state
-
     property alias generalOpacity: opacitybutton.genOpacity
     property alias lightOpacity: lightbutton.sliderValue
+    signal helpclicked()
+    signal aboutclicked()
+
     ConfigButton {
         id: configbutton1
         x: 0
@@ -42,6 +44,32 @@ Item {
         x: 274
         y: 206
         opacity: 1.0-opacitybutton.genOpacity
+    }
+
+    Image {
+        id: image1
+        x: 466
+        y: 211
+        width: 40
+        height: 40
+        source: "images/helpButton.png"
+        MouseArea{
+            anchors.fill: parent
+            onClicked: helpclicked()
+        }
+    }
+
+    Image {
+        id: image2
+        x: 466
+        y: 252
+        width: 40
+        height: 40
+        source: "images/aboutButton.png"
+        MouseArea{
+            anchors.fill: parent
+            onClicked: aboutclicked()
+        }
     }
 
 
