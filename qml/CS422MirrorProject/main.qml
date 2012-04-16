@@ -14,10 +14,9 @@ import "./UtilityElements"
 import "./IntroFlow"
 import "./Keyboard"
 import "./News"
-//import opencvqml 1.0
-//import opencvqml 1.0
 import "./Keyboard"
 import "./EmailWidget"
+//import opencvqml 1.0
 
 Rectangle {
     width: 1280

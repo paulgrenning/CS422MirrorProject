@@ -126,5 +126,36 @@ For more details on how to use the application visit: http://pauloguerraf.com/cs
 
 CURRENT STATUS:
 
+- Current version of the application implements basic features that would allow users to consult
+health related information. It also implements several additional features that enrich the
+user experience when using the interface.
+
+- The application relays on xml databases to access the data used in most of the widgets.
+
+- The application uses local and web based databases. Web based databases are used to get data from sites
+like nikeplus.com and to connect to internet radio stations like somafm.com
+
+- Multiple languages support is implemented. The current version only implements two languages: English and Spanish
+But it can be easily expanded to support more languages.
+
+- Weather widget providing current and hourly forecast.
+
+- Music player accessing itunes library xml data.
+
+- Health widget providing running and steps info.
+
+- Email and social widgets using data from local xml files and fromo twitter.com.
+
+- News widget displaying headlines and news summaries from user's favorite sites.
+
+- Wifi, languages, accounts and units settigns available.
+
+- New account creation process for face recognition training and accounts synchronization.
 
 REFERENCE:
+-"Qt+OpenCv example"
+<http://gitorious.org/qtopencv>
+
+
+-"Android Weather Icons PSD File"
+<http://fc01.deviantart.net/fs70/f/2010/270/9/1/android__weather_icons_by_bharathp666-d2zlfrd.zip>
