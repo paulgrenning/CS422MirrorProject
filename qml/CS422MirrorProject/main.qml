@@ -101,9 +101,9 @@ Rectangle {
     Item {
         id: hideableWidgets
 
-//        Behavior on opacity {
-//            NumberAnimation { duration: 100 }
-//        }
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
+        }
 
         ConfigSettings {
             id: configsettings
@@ -268,6 +268,13 @@ Rectangle {
             keyboardFade.start()
         }
 
+    }
+
+    EmailViewer {
+        id: emailViewer
+        x: 280
+        y: 250
+        opacity: 0
     }
 
 

@@ -56,6 +56,7 @@ Widget {
                  id: anItem
                  width:parent.width
                  height: emailSubject.height + fromText.height + 20
+                 property string bodyText: emailBody
 
                  signal emailClicked()
                  MouseArea {
@@ -65,6 +66,12 @@ Widget {
 
                  onEmailClicked: {
                      emailView.currentIndex = emailView.indexAt(x,y)
+                     emailViewer.opacity = 1
+                     emailViewer.emailFrom = from
+                     emailViewer.emailTime = postTime
+                     emailViewer.emailSubject = subject
+                     emailViewer.emailBody = emailBody
+                     hideableWidgets.opacity = 0
                  }
 
                  Text {
@@ -146,6 +153,7 @@ Widget {
             XmlRole { name: "subject"; query: "subject/string()" }
             XmlRole { name: "postTime"; query: "time/string()" }
             XmlRole { name: "from"; query: "from/string()" }
+            XmlRole { name: "emailBody"; query: "body/string()" }
         }
 
     }
