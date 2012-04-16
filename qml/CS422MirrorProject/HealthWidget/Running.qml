@@ -255,7 +255,6 @@ Item {
         }
         StdText {
             id: textDateDayNum
-            x: 6
             y: 14
             z: 6
             text:{
@@ -264,7 +263,7 @@ Item {
                 var month = today.slice(5,7);
                 var day = today.slice(8,10);
                 var date = new Date(parseInt(year),parseInt(month),parseInt(day)-1)
-                 var days = ['Saturday, ','Sunday, ','Monday, ','Tuesday, ','Wednesday, ','Thursday, ','Friday, ']
+                 var days = ['Saturday ','Sunday ','Monday ','Tuesday ','Wednesday ','Thursday ','Friday ']
                 var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 
                 //console.log(year)
@@ -275,6 +274,8 @@ Item {
                 //console.log(date.getDay())
 
             }
+            anchors.left: textDateDay.right
+            anchors.leftMargin: 0
 
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 15
