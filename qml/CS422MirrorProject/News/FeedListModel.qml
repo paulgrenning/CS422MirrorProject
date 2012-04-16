@@ -8,7 +8,7 @@ XmlListModel {
     property string modelQuery: ""
 
     source: modelSource
-    query: "/feeds/item"
+    query: modelQuery
 
     XmlRole { name: "name"; query: "name/string()" }
     XmlRole { name: "url"; query: "xmlUrl/string()" }
