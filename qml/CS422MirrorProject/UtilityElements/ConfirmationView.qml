@@ -45,7 +45,7 @@ InputView {
             id: productName
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 40
-            text: "COOL MIRROR PRODUCT NAME"
+            text: "The Looking Glass"
             state: "blue"
         }
 

@@ -273,7 +273,7 @@ Rectangle {
         property QtObject runAnimation;
 
         onInputReady: {
-            console.log("Input: " + input)
+            socialwidget.newName = input
             hideableWidgets.opacity = 1
             keyboardFade.start()
         }
@@ -287,6 +287,12 @@ Rectangle {
         opacity: 0
     }
 
+    RemoveAccountNotice {
+        id: removeSocialAccount
+        x: 280
+        y: 250
+        opacity: 0
+    }
 
     BorderImage {
         id: lightSourceBorder
