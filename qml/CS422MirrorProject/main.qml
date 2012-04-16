@@ -48,10 +48,10 @@ Rectangle {
         id: appVar
     }
 
-    /*IntroFlow {
+    IntroFlow {
         id: introFlow
         onIntroFlowFinished: hideableWidgets.opacity = 1
-    }*/
+    }
 
     Item {
         id: topWidgets

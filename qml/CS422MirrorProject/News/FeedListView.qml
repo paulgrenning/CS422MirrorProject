@@ -9,6 +9,8 @@ Item {
 
     FeedListModel {
         id: listModel
+        modelSource: "./xml/userfeeds.xml"
+        modelQuery: "/feeds/item"
     }
 
     Component {

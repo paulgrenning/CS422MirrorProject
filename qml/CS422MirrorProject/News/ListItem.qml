@@ -5,7 +5,7 @@ Item {
     id: container
 
     property int fontSize: 12
-    property string text: "NOT SET"
+    property string text: ""
     property string icon: ""
 
     signal selected
@@ -15,10 +15,8 @@ Item {
 
     StdText {
         id: itemText
-        x: 45
-        y: 0
-        width: 225
-        height: 48
+        x: 45; y: 0
+        width: 225; height: 48
         font.pointSize: container.fontSize
         text: container.text
         verticalAlignment: Text.AlignVCenter
@@ -33,17 +31,14 @@ Item {
 
     Image {
         id: divider
-        x: 0
-        y: 48
-        width: container.width
-        height: 16
+        x: 0; y: 48
+        width: container.width; height: 16
         source: "./images/divider.png"
     }
 
     BorderImage {
         id: click_image
-        width: 270
-        height: 48
+        width: 270; height: 48
         anchors.bottomMargin: 16
         anchors.fill: parent
         source: "./images/newsItemBackground.png"
