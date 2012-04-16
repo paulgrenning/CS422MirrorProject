@@ -25,7 +25,6 @@ Item {
     signal inputConfirmed()
 
     onStateChanged: {
-        console.log("state changed: " + state)
         if(activeView) activeView.toggleHide()
         switch(state) {
             case "textView": activeView = textView; break
@@ -62,7 +61,6 @@ Item {
         }
 
         onSkipInput: parent.state = "inactive"
-        onHideViewChanged: console.log("textView.hideView: " + hideView)
     }
 
     ConfirmationView {
@@ -73,7 +71,5 @@ Item {
             }
             parent.state = "inactive"
         }
-
-        onHideViewChanged: console.log("confirmationView.hideView: " + hideView)
     }
 }

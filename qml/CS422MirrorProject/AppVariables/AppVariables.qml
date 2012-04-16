@@ -28,6 +28,6 @@ QtObject {
     property string currentWeightUnit:"Kg"
     property real displayOpacity: 1.0
 
-    property bool renderIntroFlow: false
+    property bool renderIntroFlow: true
     property string currentUser
 }

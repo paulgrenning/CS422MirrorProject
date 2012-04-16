@@ -1,4 +1,3 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 
 InputView {
@@ -8,8 +7,31 @@ InputView {
     anchors.centerIn: parent
 
     property string service
+    property string language: appVar.currentLanguage
+    property variant labels
 
     signal confirmationReceived(bool confirmed)
+
+    Component.onCompleted: {
+        labels = {
+            English: {
+                appName: "The Looking Glass",
+                question1: "do you want to authorize",
+                question2: "to access the email and calendar asscosciated with your '",
+                question3: "' account?",
+                yes: "yes",
+                no: "no"
+            },
+            Español: {
+                appName: "The Looking Glass",
+                question1: "¿desea autorizar a",
+                question2: "para que acceda a los datos asociados a su cuenta '",
+                question3: "'?",
+                yes: "sí",
+                no: "no"
+            }
+        }
+    }
 
     Image {
         id: confirmationBackground
@@ -38,14 +60,14 @@ InputView {
             id: authDesc1
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 24
-            text: "do you want to authorize"
+            text: labels[language].question1
         }
 
         StdText {
             id: productName
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 40
-            text: "The Looking Glass"
+            text: labels[language].appName
             state: "blue"
         }
 
@@ -56,7 +78,7 @@ InputView {
             font.pixelSize: 24
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter
-            text: "to access the email and calendar asscosciated with your '" + service + "' account?"
+            text: labels[language].question2 + service + labels[language].question3
         }
     }
 
@@ -79,7 +101,7 @@ InputView {
 
             defaultPath: "../IntroFlow/images/confirmButtonUP.png"
             clickedPath: "../IntroFlow/images/confirmButtonDN.png"
-            label: "yes"
+            label: labels[language].yes
 
             onButtonClicked: confirmationReceived(true)
         }
@@ -91,7 +113,7 @@ InputView {
 
             defaultPath: "../IntroFlow/images/confirmButtonUP.png"
             clickedPath: "../IntroFlow/images/confirmButtonDN.png"
-            label: "no"
+            label: labels[language].no
 
             onButtonClicked: confirmationReceived(false)
         }
