@@ -16,7 +16,6 @@ import "./Keyboard"
 import "./News"
 import "./Keyboard"
 import "./EmailWidget"
-import "./helptxt.js" as HelpTxt
 //import opencvqml 1.0
 
 Rectangle {
