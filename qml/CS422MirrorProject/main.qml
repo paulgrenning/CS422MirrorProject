@@ -16,6 +16,7 @@ import "./Keyboard"
 import "./News"
 import "./Keyboard"
 import "./EmailWidget"
+import QtMultimediaKit 1.1
 //import opencvqml 1.0
 
 Rectangle {
@@ -407,7 +408,6 @@ Rectangle {
                     height: 350
 
                     StdText {
-                        Component.onCompleted: console.log(HelpTxt.getHelpTxt())
                         id: stdtext1
                         anchors.fill: parent
                         text: ""
