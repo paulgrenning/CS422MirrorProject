@@ -8,7 +8,7 @@ Item {
     property bool isRendered: true
     property bool isVisible: !hideWidget && isRendered
 
-    onIsVisibleChanged: opacity = (isVisible) ? displayOpacity : 0
+    onIsVisibleChanged: opacity = (isVisible) ? hideableWidgets.opacity : 0
 //    Behavior on opacity {
 //        NumberAnimation { duration: 200}
 //    }
