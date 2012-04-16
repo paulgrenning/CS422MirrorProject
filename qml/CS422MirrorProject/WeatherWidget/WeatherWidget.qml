@@ -141,11 +141,11 @@ Item {
     transitions: [
         Transition{
             from: "simple"; to: "expanded"
-            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 800}
+            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 800 }
         },
         Transition{
             from: "expanded"; to: "simple"
-            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 150}
+            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutExpo; duration: 100 }
         }
     ]
 
