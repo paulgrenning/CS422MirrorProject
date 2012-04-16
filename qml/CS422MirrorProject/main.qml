@@ -18,6 +18,7 @@ import "./News"
 //import opencvqml 1.0
 import "./Keyboard"
 import "./News"
+import "./EmailWidget"
 
 Rectangle {
     width: 1280
@@ -100,9 +101,9 @@ Rectangle {
     Item {
         id: hideableWidgets
 
-//        Behavior on opacity {
-//            NumberAnimation { duration: 100 }
-//        }
+        Behavior on opacity {
+            NumberAnimation { duration: 200 }
+        }
 
         ConfigSettings {
             id: configsettings
@@ -165,6 +166,15 @@ Rectangle {
                 opacity: 0
             }
 
+            EmailWidget {
+                id: emailWidget
+                x: rootElement.width - emailWidget.width
+                y: rootElement.height - emailWidget.height - widgetbar.height
+                width: 310
+                height: 496
+                opacity: 0
+            }
+
         News {
             id: newswidget
             x: rootElement.width - newswidget.width
@@ -188,6 +198,7 @@ Rectangle {
                 healthwidget.isVisible = false
                 socialwidget.isVisible = false
                 newswidget.isVisible = false
+                emailWidget.isVisible = false
             }
             onHealthClicked:{
                 healthwidget.barstate = healthwidget.laststate
@@ -200,6 +211,7 @@ Rectangle {
                 musicwidget.isVisible = false
                 socialwidget.isVisible = false
                 newswidget.isVisible = false
+                emailWidget.isVisible = false
             }
             onSocialClicked:{
                 if(socialwidget.isVisible) {
@@ -211,6 +223,7 @@ Rectangle {
                 musicwidget.isVisible = false
                 healthwidget.isVisible = false
                 newswidget.isVisible = false
+                emailWidget.isVisible = false
             }
             onNewsClicked: {
                 if(newswidget.isVisible) {
@@ -222,6 +235,19 @@ Rectangle {
                 musicwidget.isVisible = false
                 socialwidget.isVisible = false
                 healthwidget.isVisible = false
+                emailWidget.isVisible = false
+            }
+            onEmailClicked: {
+                if(emailWidget.isVisible) {
+                    emailWidget.isVisible=false
+                }
+                else{
+                    emailWidget.isVisible=true
+                }
+                musicwidget.isVisible = false
+                socialwidget.isVisible = false
+                healthwidget.isVisible = false
+                newswidget.isVisible = false
             }
           }
        }
@@ -244,6 +270,13 @@ Rectangle {
 
     }
 
+    EmailViewer {
+        id: emailViewer
+        x: 280
+        y: 250
+        opacity: 0
+    }
+
     BorderImage {
         id: lightSourceBorder
         source: "ConfigSettings/images/lightSourceBorderImage.png"
@@ -252,14 +285,6 @@ Rectangle {
         border.right: 50; border.bottom: 40
         opacity: 1.0 - configsettings.lightOpacity
 
-    }
-
-    Image {
-        id: lightSource
-        x: 90
-        y: 200
-        source: "ConfigSettings/images/lightSource.png"
-        opacity: 1.0 - configsettings.lightOpacity
     }
 
     PropertyAnimation {id:keyboardFade; target: mainInputField; property: "opacity"; to: (mainInputField.opacity == 0) ? 1 : 0; duration: 500}

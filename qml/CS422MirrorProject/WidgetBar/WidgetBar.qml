@@ -8,6 +8,7 @@ Item {
     signal healthClicked();
     signal socialClicked();
     signal newsClicked();
+    signal emailClicked();
 
     clip: true
 
@@ -106,6 +107,7 @@ Item {
         MouseArea {
             id: emailMouseArea
             anchors.fill: parent
+            onClicked: emailClicked()
         }
         source: (appVar.currentLanguage == "Español") ? "images/emailIconSP.png" : "images/emailIcon.png"
     }

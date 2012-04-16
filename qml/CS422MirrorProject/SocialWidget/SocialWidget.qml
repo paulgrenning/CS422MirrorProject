@@ -8,21 +8,6 @@ Widget {
     isVisible: false
     bgImgPath:"../SocialWidget/images/twitterTab.png"
 
-//    MouseArea {
-//         anchors.fill: parent
-//         drag.target: social
-//         drag.axis: Drag.XandYAxis
-//         drag.minimumX: 0
-//         drag.maximumX: rootElement.width - parent.width
-//         drag.minimumY: 0
-//         drag.maximumY: rootElement.height - parent.height
-//    }
-
-//    Image {
-//        id: musicbackground
-//        anchors.fill: parent
-//    }
-
     PlusButton {
         x: 218
         y: 4
@@ -30,7 +15,6 @@ Widget {
             top: parent.top
             left: parent.left
             leftMargin: 218
-            topMargin: 4
         }
 
         MouseArea {
