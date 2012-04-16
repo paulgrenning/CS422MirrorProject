@@ -65,18 +65,16 @@ Rectangle {
         id: appVar
     }
 
-<<<<<<< HEAD
-=======
+
     // set the appVar to false if you don't want to see the intro flow
->>>>>>> 9d44ff9fc56522d78ce983ffb84eddea634a218b
+
     IntroFlow {
         id: introFlow
         onIntroFlowFinished: hideableWidgets.opacity = 1
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 9d44ff9fc56522d78ce983ffb84eddea634a218b
+
+
     Item {
         id: topWidgets
 
