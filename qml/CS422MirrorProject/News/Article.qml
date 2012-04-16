@@ -8,9 +8,18 @@ Item {
 
     property string articleContent: ""
 
-    WebView {
-        html:  article.articleContent
-        preferredHeight: article.height
-        preferredWidth: article.width
+    Flickable {
+        id: flickable1
+        x: 0; y: 0
+        width: article.width; height: article.height
+        flickableDirection: Flickable.HorizontalFlick
+        clip: true
+
+        WebView {
+            x: 0; y: 0
+            html:  article.articleContent
+            preferredWidth: article.width
+            preferredHeight: article.height * 2
+        }
     }
 }

@@ -17,12 +17,13 @@ Widget{
         id: mouse_area1
         x: 222; y: 0
         width: 40; height: 40
-        onPressed: news.state = "add"
+        onPressed: news.state = "addFromSaved"
     }
 
     FeedListView{
-        id: feedlist
+        id: userfeedlist
         x: 19; y: 52
+        clip: true
         opacity: 1
     }
 
@@ -43,11 +44,17 @@ Widget{
         articleContent: news.currentArticleUrl
     }
 
+    AddView {
+        id: addList
+        x: 19; y:52
+        clip: true;
+        opacity: 0
+    }
+
     Button {
         id: back
         x: 209; y: 440
         width: 80; height: 40
-        //clickedPath: ""
         defaultPath:  (appVar.currentLanguage == "Español") ?  "../News/images/newsBack80x40SP.png" : "../News/images/newsBack80x40.png"
         onButtonClicked: {
             if(news.state === "newsfeed")
@@ -65,7 +72,7 @@ Widget{
             name: "base state"
 
             PropertyChanges {
-                target: feedlist
+                target: userfeedlist
                 opacity: 1
             }
             PropertyChanges {
@@ -89,7 +96,7 @@ Widget{
                 opacity: 1
             }
             PropertyChanges {
-                target: feedlist
+                target: userfeedlist
                 opacity: 0
             }
             PropertyChanges {
@@ -105,7 +112,7 @@ Widget{
             name: "article"
 
             PropertyChanges {
-                target: feedlist
+                target: userfeedlist
                 opacity: 0
             }
             PropertyChanges {
@@ -122,8 +129,31 @@ Widget{
             }
         },
         State {
-            name: "add"
-
+            name: "addFromSaved"
+            PropertyChanges {
+                target: userfeedlist
+                opacity: 0
+            }
+            PropertyChanges {
+                target: feedview
+                opacity: 0
+            }
+            PropertyChanges {
+                target: article
+                opacity: 0
+            }
+            PropertyChanges {
+                target: addList
+                opacity: 1
+            }
+            PropertyChanges {
+                target: back
+                opacity: 0
+            }
+        },
+        State {
+            name: "userAdd"
         }
+
     ]
 }
