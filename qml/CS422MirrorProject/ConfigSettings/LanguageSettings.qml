@@ -66,7 +66,7 @@ Item {
                      top: aLanguage.bottom
                      left: aLanguage.left
                      leftMargin: -15
-                     topMargin: 2
+                     topMargin: 12
                  }
 
                  source: "images/longDivider.png"

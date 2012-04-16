@@ -4,16 +4,15 @@ Item {
     id: widget
 
     property string bgImgPath
-
     property bool hideWidget: false
     property bool isRendered: true
     property bool isVisible: !hideWidget && isRendered
 
-    onIsVisibleChanged: opacity = (isVisible) ? 100 : 0
+    onIsVisibleChanged: opacity = (isVisible) ? displayOpacity : 0
 
-    Behavior on opacity {
-        NumberAnimation { duration: 200 }
-    }
+//    Behavior on opacity {
+//        NumberAnimation { duration: 200}
+//    }
 
     MouseArea {
          anchors.fill: parent
@@ -33,4 +32,5 @@ Item {
         fillMode: Image.PreserveAspectCrop
         anchors.fill: parent
     }
+
 }

@@ -78,7 +78,7 @@ Item {
                      top: aWifi.bottom
                      left: aWifi.left
                      leftMargin: -15
-                     topMargin: 2
+                     topMargin: 12
                  }
 
                  source: "images/longDivider.png"

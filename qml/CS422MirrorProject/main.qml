@@ -18,12 +18,29 @@ import "./News"
 //import opencvqml 1.0
 import "./Keyboard"
 import "./News"
+import "./EmailWidget"
 
 Rectangle {
     width: 1280
     height: 960
     color: "#00000000"
     id: rootElement
+
+
+//        MouseArea{
+//            z:-5
+//            anchors.fill: parent
+//            onClicked: {
+//                if(musicwidget.isVisible) musicwidget.isVisible = false
+//                if(healthwidget.isVisible) healthwidget.isVisible = false
+//                if(socialwidget.isVisible) socialwidget.isVisible = false
+//                if(newswidget.isVisible) newswidget.isVisible = false
+//                configsettings.configButtonState = "closed"
+//                configsettings.lightButtonState = "closed"
+//                configsettings.opacityButtonState = "closed"
+//            }
+//        }
+
 
     property real displayOpacity : 1.0-configsettings.generalOpacity
 
@@ -40,7 +57,7 @@ Rectangle {
 //        id:cambackground
 //        x:0
 //        y:0
-//        z:-1
+//        z:-2
 //    }
 
     // create object to hold all important variables for the application
@@ -48,22 +65,30 @@ Rectangle {
         id: appVar
     }
 
+<<<<<<< HEAD
+=======
+    // set the appVar to false if you don't want to see the intro flow
+>>>>>>> 9d44ff9fc56522d78ce983ffb84eddea634a218b
     IntroFlow {
         id: introFlow
         onIntroFlowFinished: hideableWidgets.opacity = 1
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9d44ff9fc56522d78ce983ffb84eddea634a218b
     Item {
         id: topWidgets
 
-        Behavior on opacity {
-            NumberAnimation { duration: 200 }
-        }
+//        Behavior on opacity {
+//            NumberAnimation { duration: 200 }
+//        }
 
         DateWidget {
             id: dateWidget
             x: 40
             y: 2
+            isVisible: true
         }
 
         Clock {
@@ -110,21 +135,21 @@ Rectangle {
 
         Item {
             id: nonConfigWidgets
-
-            Behavior on opacity {
-                NumberAnimation { duration: 200 }
-            }
+           // Behavior on opacity {
+           //     NumberAnimation { duration: 200 }
+           // }
 
             CalendarWidget {
                  id: calendarWidget
                  x: 4
                  y: dateWidget.height + dateWidget.y + 20
+                 isVisible: true
             }
 
             MusicPlayer{
-                id: musicplayer
-                x: rootElement.width - musicplayer.width
-                y: rootElement.height - musicplayer.height - widgetbar.height
+                id: musicwidget
+                x: rootElement.width - musicwidget.width
+                y: rootElement.height - musicwidget.height - widgetbar.height
                 width: 310
                 height: 496
                 opacity: 0
@@ -148,46 +173,91 @@ Rectangle {
                 opacity: 0
             }
 
-            News {
-                id: newswidget
-                x: rootElement.width - newswidget.width
-                y: rootElement.height - newswidget.height - widgetbar.height
+            EmailWidget {
+                id: emailWidget
+                x: rootElement.width - emailWidget.width
+                y: rootElement.height - emailWidget.height - widgetbar.height
+                width: 310
+                height: 496
                 opacity: 0
             }
 
-            WidgetBar {
-                id: widgetbar
-                x: rootElement.width - widgetbar.width
-                y: rootElement.height - widgetbar.height
-                width: 615
-                height: 120
-                onMusicClicked: {
-                    musicanimopen.start()
-                    healthanimclose.start()
-                    socialanimclose.start()
-                    newsanimclose.start()
-                }
-                onHealthClicked:{
-                    musicanimclose.start()
-                    healthanimopen.start()
-                    socialanimclose.start()
-                    healthwidget.barstate = healthwidget.laststate
-                    newsanimclose.start()
-                }
-                onSocialClicked:{
-                    musicanimclose.start()
-                    healthanimclose.start()
-                    socialanimopen.start()
-                    newsanimclose.start()
-                }
-                onNewsClicked: {
-                    musicanimclose.start()
-                    healthanimclose.start()
-                    socialanimclose.start()
-                    newsanimopen.start()
-                }
-            }
+        News {
+            id: newswidget
+            x: rootElement.width - newswidget.width
+            y: rootElement.height - newswidget.height - widgetbar.height
+            opacity:0
         }
+
+        WidgetBar {
+            id: widgetbar
+            x: rootElement.width - widgetbar.width
+            y: rootElement.height - widgetbar.height
+            width: 615
+            height: 120
+            onMusicClicked: {
+                if(musicwidget.isVisible) {
+                    musicwidget.isVisible=false
+                }
+                else{
+                    musicwidget.isVisible=true
+                }
+                healthwidget.isVisible = false
+                socialwidget.isVisible = false
+                newswidget.isVisible = false
+                emailWidget.isVisible = false
+            }
+            onHealthClicked:{
+                healthwidget.barstate = healthwidget.laststate
+                if(healthwidget.isVisible) {
+                    healthwidget.isVisible=false
+                }
+                else{
+                    healthwidget.isVisible=true
+                }
+                musicwidget.isVisible = false
+                socialwidget.isVisible = false
+                newswidget.isVisible = false
+                emailWidget.isVisible = false
+            }
+            onSocialClicked:{
+                if(socialwidget.isVisible) {
+                    socialwidget.isVisible=false
+                }
+                else{
+                   socialwidget.isVisible=true
+                }
+                musicwidget.isVisible = false
+                healthwidget.isVisible = false
+                newswidget.isVisible = false
+                emailWidget.isVisible = false
+            }
+            onNewsClicked: {
+                if(newswidget.isVisible) {
+                    newswidget.isVisible=false
+                }
+                else{
+                    newswidget.isVisible=true
+                }
+                musicwidget.isVisible = false
+                socialwidget.isVisible = false
+                healthwidget.isVisible = false
+                emailWidget.isVisible = false
+            }
+            onEmailClicked: {
+                if(emailWidget.isVisible) {
+                    emailWidget.isVisible=false
+                }
+                else{
+                    emailWidget.isVisible=true
+                }
+                musicwidget.isVisible = false
+                socialwidget.isVisible = false
+                healthwidget.isVisible = false
+                newswidget.isVisible = false
+            }
+          }
+       }
     }
 
     TextView {
@@ -207,23 +277,32 @@ Rectangle {
 
     }
 
-    Image {
-        id: lightSource
-        x: 90
-        y: 200
-        source: "ConfigSettings/images/lightSource.png"
+    EmailViewer {
+        id: emailViewer
+        x: 280
+        y: 250
+        opacity: 0
+    }
+
+
+    BorderImage {
+        id: lightSourceBorder
+        source: "ConfigSettings/images/lightSourceBorderImage.png"
+        anchors.fill: parent
+        border.left: 50; border.top: 40
+        border.right: 50; border.bottom: 40
         opacity: 1.0 - configsettings.lightOpacity
+
     }
 
     PropertyAnimation {id:keyboardFade; target: mainInputField; property: "opacity"; to: (mainInputField.opacity == 0) ? 1 : 0; duration: 500}
 
-    PropertyAnimation {id:musicanimopen; target: musicplayer; property: "opacity"; to: (musicplayer.opacity == 0) ? displayOpacity : 0; duration: 500}
-    PropertyAnimation {id:healthanimopen; target: healthwidget; property: "opacity"; to: (healthwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
-    PropertyAnimation {id:socialanimopen; target: socialwidget; property: "opacity"; to: (socialwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
-    PropertyAnimation {id:newsanimopen; target: newswidget; property: "opacity"; to: (newswidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
+//    PropertyAnimation {id:healthanimopen; target: healthwidget; property: "opacity"; to: (healthwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
+//    PropertyAnimation {id:socialanimopen; target: socialwidget; property: "opacity"; to: (socialwidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
+//    PropertyAnimation {id:newsanimopen; target: newswidget; property: "opacity"; to: (newswidget.opacity == 0) ? displayOpacity : 0; duration: 500 }
 
-    PropertyAnimation {id:musicanimclose; target: musicplayer; property: "opacity"; to: 0; duration: 500}
-    PropertyAnimation {id:healthanimclose; target: healthwidget; property: "opacity"; to: 0; duration: 500 }
-    PropertyAnimation {id:socialanimclose; target: socialwidget; property: "opacity"; to: 0; duration: 500 }
-    PropertyAnimation {id:newsanimclose; target: newswidget; property: "opacity"; to: 0; duration: 500 }
+//    PropertyAnimation {id:musicanimclose; target: musicwidget; property: "opacity"; to: 0; duration: 500}
+//    PropertyAnimation {id:healthanimclose; target: healthwidget; property: "opacity"; to: 0; duration: 500 }
+//    PropertyAnimation {id:socialanimclose; target: socialwidget; property: "opacity"; to: 0; duration: 500 }
+//    PropertyAnimation {id:newsanimclose; target: newswidget; property: "opacity"; to: 0; duration: 500 }
 }

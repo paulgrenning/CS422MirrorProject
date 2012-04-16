@@ -8,6 +8,10 @@ Item {
     width:461
     height:300
 
+    property alias configButtonState: configbutton1.state
+    property alias lightButtonState: lightbutton.state
+    property alias opacityButtonState: opacitybutton.state
+
     property alias generalOpacity: opacitybutton.genOpacity
     property alias lightOpacity: lightbutton.sliderValue
     ConfigButton {

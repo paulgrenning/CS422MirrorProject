@@ -45,6 +45,7 @@ InputView {
                 } else {
                     textView.inputReady(input)
                 }
+                clearInput()
             }
 
             onSkipInput: textView.skipInput()

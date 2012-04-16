@@ -29,13 +29,14 @@ Item {
             case "emailEntry": activeView = emailInput; break
             case "emailPasswordEntry": activeView = emailPasswordInput; break
             case "confirmEmail": activeView = confirmEmailView; break
-            case "inactive": introFlowFinished(); return
+            case "inactive": activeView = null; introFlowFinished(); return
             default: break
         }
         if(activeView) activeView.toggleHide()
     }
 
     function start() {
+        console.log(photoView.hideView + " " + emailInput.hideView)
         state = "photoView"
     }
 

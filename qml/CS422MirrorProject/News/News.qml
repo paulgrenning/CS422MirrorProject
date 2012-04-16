@@ -8,6 +8,7 @@ Widget{
 
     property string currentFeed: ""
     property string currentFeedMedia: ""
+    isVisible: false
     property string currentArticleUrl: ""
 
     bgImgPath:  (appVar.currentLanguage == "Español") ? "../News/images/newsWidgetBackgroundSP.png" : "../News/images/newsWidgetBackground.png"

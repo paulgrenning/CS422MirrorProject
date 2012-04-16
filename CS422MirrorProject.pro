@@ -25,7 +25,9 @@ MOBILITY += multimedia
 
 ##UNCOMMENT TO USE OPENCV
 #LIBS += -L/usr/local/lib -lopencv_calib3d -lopencv_contrib -lopencv_features2d -lopencv_flann -lopencv_gpu -lopencv_imgproc -lopencv_legacy -lopencv_ml -lopencv_objdetect -lopencv_video -lopencv_highgui -lopencv_core
+LIBS += -L/opt/local/lib -lopencv_calib3d -lopencv_contrib -lopencv_features2d -lopencv_flann -lopencv_gpu -lopencv_imgproc -lopencv_legacy -lopencv_ml -lopencv_objdetect -lopencv_video -lopencv_highgui -lopencv_core
 #INCLUDEPATH += /usr/local/include
+INCLUDEPATH += /opt/local/include
 ##UNCOMMENT TO USE OPENCV
 
 
@@ -38,7 +40,7 @@ MOBILITY += multimedia
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
  ##UNCOMMENT TO USE OPENCV
- #cameraobject.cpp
+ cameraobject.cpp
  ##UNCOMMENT TO USE OPENCV
 
 # Please do not modify the following two lines. Required for deployment.
@@ -51,6 +53,6 @@ OTHER_FILES += \
 
 HEADERS += \
     ##UNCOMMENT TO USE OPENCV
-    #cameraopencv.h \
-    #cameraobject.h
+    cameraopencv.h \
+    cameraobject.h
     ##UNCOMMENT TO USE OPENCV
