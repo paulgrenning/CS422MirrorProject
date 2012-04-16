@@ -25,7 +25,9 @@ QtObject {
     property string currentDegreeSystem:"Celsius"
     property string currentDistanceUnit: "Km"
     property string currentWeightUnit:"Kg"
+    property real displayOpacity: 1.0
 
     property bool renderIntroFlow: false
     property string currentUser
+
 }

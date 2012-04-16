@@ -9,7 +9,6 @@ Item {
     property bool isVisible: !hideWidget && isRendered
 
     onIsVisibleChanged: opacity = (isVisible) ? displayOpacity : 0
-
 //    Behavior on opacity {
 //        NumberAnimation { duration: 200}
 //    }
