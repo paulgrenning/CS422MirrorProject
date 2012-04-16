@@ -36,6 +36,11 @@ Item {
 
     onRemoveAccountChanged: {
         mainAccountNames.remove(listOfMainAccounts.currentIndex)
+        if(mainAccountNames.count == 0){
+            appVar.currentUser = ""
+        } else {
+            appVar.currentUser = listOfMainAccounts.currentIndex.accountName.text
+        }
     }
 
     StdText {
@@ -52,7 +57,9 @@ Item {
     }
 
     onNewUserNameChanged: {
-        mainAccountNames.append({ name: accountsTabHandler.newUserName} )
+        if(accountsTabHandler.newUserName != ""){
+            mainAccountNames.append({ name: accountsTabHandler.newUserName} )
+        }
     }
 
     ListModel {
