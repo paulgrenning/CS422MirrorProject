@@ -28,12 +28,7 @@ Item {
 
     ListModel {
         id: allNames
-        ListElement {
-            name: "PAUL"
-        }
-        ListElement {
-            name: "alex"
-        }
+
     }
 
 

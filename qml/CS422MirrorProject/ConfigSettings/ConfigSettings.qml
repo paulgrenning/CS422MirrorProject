@@ -14,6 +14,12 @@ Item {
 
     property alias generalOpacity: opacitybutton.genOpacity
     property alias lightOpacity: lightbutton.sliderValue
+    property real removeAccount: configbutton1.removeAccount
+
+    onRemoveAccountChanged: {
+        configbutton1.removeAccount = config.removeAccount
+    }
+
     ConfigButton {
         id: configbutton1
         x: 0

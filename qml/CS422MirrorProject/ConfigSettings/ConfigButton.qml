@@ -8,6 +8,7 @@ Item {
     state: "closed"
 
     property alias state: config.state
+    property real removeAccount: settingsWidget.removeAccount
     signal clicked();
 
     Image {
@@ -29,6 +30,10 @@ Item {
                 else config.state = "open";
             }
         }
+    }
+
+    onRemoveAccountChanged: {
+        settingsWidget.removeAccount = config.removeAccount
     }
 
     SettingsWidget {
