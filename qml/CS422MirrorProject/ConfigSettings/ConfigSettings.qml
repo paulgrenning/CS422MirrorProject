@@ -1,20 +1,20 @@
 import QtQuick 1.0
 import Qt 4.7
-//import QtMultimediaKit 1.1
 
 
 Item {
     id:config
-    width:461
+    width:510
     height:300
     z: 2
 
     property alias configButtonState: configbutton1.state
     property alias lightButtonState: lightbutton.state
     property alias opacityButtonState: opacitybutton.state
-
     property alias generalOpacity: opacitybutton.genOpacity
     property alias lightOpacity: lightbutton.sliderValue
+    signal helpclicked()
+    signal aboutclicked()
     property real removeAccount: configbutton1.removeAccount
 
     onRemoveAccountChanged: {
@@ -49,6 +49,34 @@ Item {
         x: 274
         y: 206
         opacity: 1.0-opacitybutton.genOpacity
+    }
+
+    Image {
+        id: image1
+        x: 466
+        y: 211
+        width: 40
+        height: 40
+        source: "images/helpButton.png"
+        MouseArea{
+            anchors.fill: parent
+            onClicked: helpclicked()
+        }
+        opacity:1.0-opacitybutton.genOpacity
+    }
+
+    Image {
+        id: image2
+        x: 466
+        y: 252
+        width: 40
+        height: 40
+        source: "images/aboutButton.png"
+        MouseArea{
+            anchors.fill: parent
+            onClicked: aboutclicked()
+        }
+        opacity:1.0-opacitybutton.genOpacity
     }
 
 

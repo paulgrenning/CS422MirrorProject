@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import "../UtilityElements"
+import "../AppVariables"
 
 Widget {
     id: social
@@ -22,14 +23,12 @@ Widget {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-//                keyboardFade.start()
-//                mainInputField.inputLabel = "Add Account Name: "
                 mainTextConfirmView.returnWidget = 0
 
 
-                mainTextConfirmView.inputLabel = "What's the social account name? "
+                mainTextConfirmView.inputLabel = (appVar.currentLanguage == "Español") ? "Lo que es el nombre de cuenta" : "What's the account name? "
                 mainTextConfirmView.validator = /[\w._]+/
-                mainTextConfirmView.failMessage = "you have to enter something for your account name"
+                mainTextConfirmView.failMessage = (appVar.currentLanguage == "Español") ? "tiene que entrar algo para su nombre de cuenta" : "you have to enter something for your account name"
                 mainTextConfirmView.inputParser = inputParser
 
                 mainTextConfirmView.start()

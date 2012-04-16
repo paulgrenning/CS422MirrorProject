@@ -34,7 +34,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
 
         horizontalAlignment: TextInput.AlignHCenter
-        text: "Are you sure you want to remove the account:"
+        text: (appVar.currentLanguage == "Español") ? "Son seguro quiere quitar la cuenta: " : "Are you sure you want to remove the account:"
     }
 
     StdText {
