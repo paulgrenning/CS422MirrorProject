@@ -47,6 +47,7 @@ Rectangle {
             configsettings.lightButtonState = "closed"
             configsettings.opacityButtonState = "closed"
         }
+     }
 
 //    CameraOpenCv{
 //        id:cambackground
@@ -388,7 +389,7 @@ Rectangle {
                 anchors.fill:parent
                 onClicked: {
                     if(helpscreen.visible){
-                        videoPlayer.position = 0
+                        videoPlayer.position = 1
                         videoPlayer.stop()
 
                     }
