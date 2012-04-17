@@ -8,6 +8,8 @@ Item {
     anchors.centerIn: parent
 
     property InputView activeView
+    property string language: appVar.currentLanguage
+    property variant labels
 
     state: "inactive"
     states: [
@@ -40,6 +42,29 @@ Item {
         state = "photoView"
     }
 
+    Component.onCompleted: {
+        labels = {
+            English: {
+                nameLabel: "What is your name? ",
+                nameFail: "you have to enter something for your name",
+                emailLabel: "What is your email? ",
+                emailMessage: "We'll use this to sync with your mail, and calendar, if it's available",
+                emailFail: "your email must contain an '@' symbol to be valid",
+                passwordLabel: "Enter your email password: ",
+                passwordFail: "you have to enter something for your password"
+            },
+            Español: {
+                nameLabel: "¿Cómo te llamas? ",
+                nameFail: "tienes que entrar algo para tu nombre",
+                emailLabel: "¿Cuál es tu email? ",
+                emailMessage: "Usaremos etso para sincronizar con tu correo, y calendario, si está disponible",
+                emailFail: "su email deba contener un '@' símbolo para ser válido",
+                passwordLabel: "Escriba su contraseña de email: ",
+                passwordFail: "deba escribir algo para su contraseña"
+            }
+        }
+    }
+
     PhotoView {
         id: photoView
 
@@ -50,10 +75,10 @@ Item {
 
     TextView {
         id: nameInput
-        inputLabel: "What is your name? "
+        inputLabel: labels[language].nameLabel
 
         validator: /[\w._]+/
-        failMessage: "you have to enter something for your name"
+        failMessage: labels[language].nameFail
 
         onInputReady: {
             appVar.currentUser = input
@@ -65,11 +90,11 @@ Item {
         id: emailInput
         skippable: true
 
-        inputLabel: "What is your email? "
-        inputMessage: "We'll use this to sync with your mail, and calendar, if it's available"
+        inputLabel: labels[language].emailLabel
+        inputMessage: labels[language].emailMessage
 
         validator: /[\w._]+@[\w._]+/
-        failMessage: "your email must contain an '@' symbol to be valid"
+        failMessage: labels[language].emailFail
 
         onInputReady: {
             confirmEmailView.service = input.split("@")[1]
@@ -83,11 +108,11 @@ Item {
         id: emailPasswordInput
         isPassword: true
 
-        inputLabel: "Enter your email password: "
-        inputMessage: "We'll use this to sync with your mail, and calendar, if it's available"
+        inputLabel: labels[language].passwordLabel
+        inputMessage: labels[language].emailMessage
 
         validator: /[\w._]+/
-        failMessage: "you have to enter something for your password"
+        failMessage: labels[language].passwordFail
 
         onInputReady: parent.state = "confirmEmail"
     }

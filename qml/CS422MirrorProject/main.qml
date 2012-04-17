@@ -16,7 +16,7 @@ import "./Keyboard"
 import "./News"
 import "./Keyboard"
 import "./EmailWidget"
-import opencvqml 1.0
+//import opencvqml 1.0
 import QtMultimediaKit 1.1
 
 Rectangle {
@@ -28,42 +28,39 @@ Rectangle {
     property real displayOpacity : 1.0-configsettings.generalOpacity
     Component.onCompleted: handleNewUser();
 
-     function handleNewUser() {
-         if(appVar.renderIntroFlow) {
-             introFlow.start();
-             hideableWidgets.opacity = 0
-         }
-     }
+    function handleNewUser() {
+        if(appVar.renderIntroFlow) {
+            introFlow.start();
+            hideableWidgets.opacity = 0
+        }
+    }
 
-        MouseArea{
-            z:-5
-            anchors.fill: parent
-            onClicked: {
-                if(musicwidget.isVisible) musicwidget.isVisible = false
-                if(healthwidget.isVisible) healthwidget.isVisible = false
-                if(socialwidget.isVisible) socialwidget.isVisible = false
-                if(newswidget.isVisible) newswidget.isVisible = false
-                configsettings.configButtonState = "closed"
-                configsettings.lightButtonState = "closed"
-                configsettings.opacityButtonState = "closed"
-            }
+    MouseArea{
+        z:-5
+        anchors.fill: parent
+        onClicked: {
+            if(musicwidget.isVisible) musicwidget.isVisible = false
+            if(healthwidget.isVisible) healthwidget.isVisible = false
+            if(socialwidget.isVisible) socialwidget.isVisible = false
+            if(newswidget.isVisible) newswidget.isVisible = false
+            configsettings.configButtonState = "closed"
+            configsettings.lightButtonState = "closed"
+            configsettings.opacityButtonState = "closed"
         }
 
-    CameraOpenCv{
-        id:cambackground
-        x:0
-        y:0
-        z:-2
-    }
+//    CameraOpenCv{
+//        id:cambackground
+//        x:0
+//        y:0
+//        z:-2
+//    }
 
     // create object to hold all important variables for the application
     AppVariables {
         id: appVar 
     }
 
-
     // set the appVar to false if you don't want to see the intro flow
-
     IntroFlow {
         id: introFlow
         onIntroFlowFinished: hideableWidgets.opacity = 1
@@ -80,7 +77,7 @@ Rectangle {
 
         DateWidget {
             id: dateWidget
-            x: 40
+            x: 150 - dateWidget.width / 2 // so it stays centered at default position when you change language
             y: 2
             isVisible: true
         }
@@ -145,7 +142,7 @@ Rectangle {
             CalendarWidget {
                  id: calendarWidget
                  x: 4
-                 y: dateWidget.height + dateWidget.y + 20
+                 y: 85
                  isVisible: true
             }
 
