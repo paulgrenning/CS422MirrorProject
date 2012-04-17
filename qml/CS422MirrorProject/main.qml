@@ -129,7 +129,7 @@ Rectangle {
             }
             onHelpclicked: {
                 helpscreen.visible = !helpscreen.visible
-                if(videoPlayer.playing)videoplayer.stop()
+                if(videoPlayer.playing) videoPlayer.stop()
             }
             onAboutclicked: {
                aboutscreen.visible = !aboutscreen.visible
@@ -389,7 +389,14 @@ Rectangle {
 
             MouseArea{
                 anchors.fill:parent
-                onClicked: helpscreen.visible=!helpscreen.visible
+                onClicked: {
+                    if(helpscreen.visible){
+                        videoPlayer.position = 0
+                        videoPlayer.stop()
+
+                    }
+                    helpscreen.visible=!helpscreen.visible
+                }
             }
         }
 
@@ -418,35 +425,33 @@ Rectangle {
                 id: flickable1
                 interactive: false
                 anchors.fill: parent
-                Flickable {
-                    id: flickable2
-                    x: 58
-                    y: 112
-                    width: 400
-                    height: 350
-                    boundsBehavior: Flickable.DragOverBounds
-                    flickableDirection: Flickable.AutoFlickDirection
-                    clip: true
 
-                    contentHeight: helpcontent.height
-                    contentWidth: helpcontent.width
-
-                    Item{
-                        id:helpcontent
-                        x: 0
-                        y: 14
-                        height:600
-                        width:600
-
-
-
-                    }
+                Video{
+                     id:videoPlayer
+                     x: 250
+                     y: 98
+                     width: 400
+                     height: 350
+                     source: "HelpVideo.mov"
+                     focus: true
+                     MouseArea{
+                         anchors.fill: parent
+                         onClicked: {
+                             if(!videoPlayer.playing)videoPlayer.play()
+                             else if(videoPlayer.paused)videoPlayer.play()
+                             else if(videoPlayer.playing) videoPlayer.pause()
+                         }
+                     }
+                 }
+                Image {
+                    id: playvideo
+                    x: 428
+                    y: 248
+                    source: "./MusicPlayer/images/playbutton.png"
+                    visible: (!videoPlayer.playing || videoPlayer.paused) ? true : false
                 }
             }
         }
-
-
-
     }
 
     Item{
@@ -552,24 +557,6 @@ Rectangle {
                             }
                             font.pointSize: 20
                             font.bold: false
-
-                            Video{
-                                id:videoPlayer
-                                x: 107
-                                y: -102
-                                width: 400
-                                height: 350
-                                source: "HelpVideo.mov"
-                                focus: true
-                                MouseArea{
-                                    anchors.fill: parent
-                                    onClicked: {
-                                        if(!videoPlayer.playing)videoPlayer.play()
-                                        else if(videoPlayer.paused)videoPlayer.play()
-                                        else if(videoPlayer.playing) videoPlayer.pause()
-                                    }
-                                }
-                            }
                         }
 
                         StdText {
